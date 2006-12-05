@@ -1,0 +1,4 @@
+*.~*~
+#*#
+*.project
+config.inc.php

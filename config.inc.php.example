@@ -1,0 +1,120 @@
+<?php
+######################################################################
+# SCUTTLE: Online social bookmarks manager
+######################################################################
+# Copyright (C) 2005 - 2006 Scuttle project
+# http://sourceforge.net/projects/scuttle/
+# http://scuttle.org/
+#
+# This module is to configure the main options for your site
+#
+# This program is free software. You can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License.
+######################################################################
+
+######################################################################
+# Database Configuration
+#
+# dbtype:   Database driver - mysql, mysqli, mysql4, oracle, postgres,
+#                             sqlite, db2, firebird, mssql, mssq-odbc
+# dbhost:   Database hostname
+# dbport:   Database port
+# dbuser:   Database username
+# dbpass:   Database password
+# dbname:   Database name
+######################################################################
+
+$dbtype = 'mysql4';
+$dbhost = '127.0.0.1';
+$dbport = '3306';
+$dbuser = 'username';
+$dbpass = 'password';
+$dbname = 'scuttle';
+
+######################################################################
+# You have finished configuring the database!
+# ONLY EDIT THE INFORMATION BELOW IF YOU KNOW WHAT YOU ARE DOING.
+######################################################################
+# System Configuration
+#
+# sitename:         The name of this site.
+# locale:           The locale used.
+# top_include:      The header file.
+# bottom_include:   The footer file.
+# shortdate:        The format of short dates.
+# longdate:         The format of long dates.
+# nofollow:             true    - Include rel="nofollow" attribute on
+#                                 bookmark links.
+#                       false   - Don't include rel="nofollow".
+# defaultPerPage:   The default number of bookmarks per page.
+#                   -1 means no limit!
+# defaultRecentDays:    The number of days that bookmarks or tags should
+#                       be considered recent.
+# defaultOrderBy:   The default order in which bookmarks will appear.
+#                   Possible values are:
+#                   date_desc   - By date of entry descending.
+#                                 Latest entry first. (Default)
+#                   date_asc    - By date of entry ascending.
+#                                 Earliest entry first.
+#                   title_desc  - By title, descending alphabetically.
+#                   title_asc   - By title, ascending alphabetically.
+#                   url_desc    - By URL, descending alphabetically.
+#                   url_asc     - By URL, ascending alphabetically.
+# TEMPLATES_DIR: The directory where the template files should be
+#                loaded from (the *.tpl.php files)
+# root         : Set to NULL to autodetect the root url of the website
+# cookieprefix : The prefix to use for the cookies on the site
+# tableprefix  : The table prefix used for this installation
+# adminemail   : Contact address for the site administrator. Used
+#                as the FROM address in password retrieval e-mails.
+# cleanurls    : true   - Use mod_rewrite to hide PHP extensions
+#              : false  - Don't hide extensions [Default]
+#
+# usecache     : true   - Cache pages when possible
+#                false  - Don't cache at all [Default]
+# dir_cache    : The directory where cache files will be stored
+#
+# useredir     : true   - Improve privacy by redirecting all bookmarks
+#                         through the address specified in url_redir
+#                false  - Don't redirect bookmarks
+# url_redir    : URL prefix for bookmarks to redirect through
+#
+# filetypes    : An array of bookmark extensions that Scuttle should
+#                add system tags for.
+# reservedusers : An array of usernames that cannot be registered
+######################################################################
+
+$sitename           = 'Scuttle';
+$locale             = 'en_GB';
+$top_include        = 'top.inc.php';
+$bottom_include     = 'bottom.inc.php';
+$shortdate          = 'd-m-Y';
+$longdate           = 'j F Y';
+$nofollow           = true;
+$defaultPerPage     = 10;
+$defaultRecentDays  = 14;
+$defaultOrderBy     = 'date_desc';
+$TEMPLATES_DIR      = dirname(__FILE__) .'/templates/';
+$root               = NULL;
+$cookieprefix       = 'SCUTTLE';
+$tableprefix        = 'sc_';
+$adminemail         = 'admin@example.org';
+$cleanurls          = false;
+
+$usecache           = false;
+$dir_cache          = dirname(__FILE__) .'/cache/';
+
+$useredir           = false;
+$url_redir          = 'http://www.google.com/url?sa=D&q=';
+
+$filetypes          = array(
+                        'audio' => array('mp3', 'ogg', 'wav'),
+                        'document' => array('doc', 'odt', 'pdf'),
+                        'image' => array('gif', 'jpeg', 'jpg', 'png'),
+                        'video' => array('avi', 'mov', 'mp4', 'mpeg', 'mpg', 'wmv')
+                        );
+$reservedusers      = array('all', 'watchlist');
+
+include_once('debug.inc.php');
+?>

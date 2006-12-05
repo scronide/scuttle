@@ -1,0 +1,436 @@
+/* BASE */
+
+* {
+    font-family: "trebuchet ms", tahoma, sans-serif;
+}
+a {
+    color: #47A;
+    text-decoration: none;
+}
+a:hover {
+    color: #258;
+    text-decoration: underline;
+}
+a img {
+    border: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+input[type=text],
+input[type=password],
+select,
+textarea {
+    border: 1px solid #AAA;
+    padding: 0.1em;
+}
+input[type=text],
+input[type=password],
+textarea {
+    padding: 0.2em;
+}
+input[type=text]:focus,
+input[type=password]:focus,
+select:focus,
+textarea:focus {
+    border-color: #666;
+}
+p.error,
+p.success {
+    border: 1px solid;
+    font-size: small;
+    margin: 0.5em;
+    padding: 0.5em;
+    width: 70%;
+}
+p.error {
+    background: #FCC;
+    border-color: #966;
+    color: #633;
+}
+p.success {
+    background: #CFC;
+    border-color: #696;
+    color: #363;
+}
+td#availability {
+    color: #285;
+    font-weight: bold;
+}
+td#availability.not-available {
+    color: #F00;
+}
+textarea {
+    font-size: small;
+    padding: 0.2em;
+}
+th {
+    padding-right: 1em;
+    text-align: right;
+}
+
+/* HEADER */
+
+div#header {
+    background: #FFF url('bg_header.png') bottom repeat-x;
+    border-bottom: 3px solid #9CD;
+    clear: both;
+}
+div#header:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+* html div#header {
+    height: 1%;
+}
+h1 {
+    float: left;
+    font-size: x-large;
+    font-weight: bold;
+    letter-spacing: 0.25em;
+    margin: 0;
+    padding: 1em;
+    text-transform: lowercase;
+}
+html > body h1 {
+    background: url('logo.png') no-repeat 10px;
+    padding-left: 75px;
+}
+html > body div#header.popup h1 {
+    background: url('logo_24.png') no-repeat 10px;
+    padding: 0.5em 0.5em 0.5em 50px;
+}
+h1 a {
+    color: #000;
+}
+h1 a:hover {
+    color: #000;
+}
+h2 {
+    background: #666 url('bg_bar.png') center center repeat-x;
+    border-bottom: 3px solid #DDD;
+    clear: both;
+    color: #DDD;
+    font-size: medium;
+    letter-spacing: 0.1em;
+    margin: 0 0 1em 0;
+    padding: 0.5em 1em;
+    text-transform: lowercase;
+}
+
+/* NAVIGATION */
+
+ul#navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 1.75em 1em;
+    text-transform: lowercase;
+    width: auto;
+}
+ul#navigation a {
+    font-size: medium;
+    font-weight: bold;
+    padding: 0.2em 0.5em;
+}
+ul#navigation a:hover {
+    background: #7AD;
+    color: #FFF;
+}
+ul#navigation li {
+    float: left;
+}
+ul#navigation li.access {
+    float: right;
+}
+
+/* BOOKMARKS */
+
+ol#bookmarks {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 1em;
+    width: 70%;
+}
+html > body ol#bookmarks {
+    margin: 0 1em;
+    padding: 0;
+}
+div.link a {
+    color: blue;
+    font-size: medium;
+}
+div.link a:visited {
+    color: purple;
+}
+div.meta {
+    color: #285;
+}
+div.meta span {
+    color: #F00;
+}
+li.xfolkentry {
+    border-bottom: 1px solid #DDD;
+    margin-bottom: 0;
+    padding: 1em 0.5em;
+}
+html > body li.xfolkentry {
+    border-bottom: 1px dotted #AAA;
+}
+li.xfolkentry div {
+    padding: 0.1em;
+}
+li.xfolkentry.deleted {
+    opacity: 0.5;
+}
+li.xfolkentry.private {
+    border-left: 3px solid #F00;
+}
+li.xfolkentry.shared {
+    border-left: 3px solid #FA0;
+}
+
+/* SIDEBAR */
+
+div#sidebar {
+    font-size: small;
+    position: absolute;
+    right: 1em;
+    top: 10em;
+    width: 25%;
+}
+div#sidebar a {
+    color: #995;
+}
+div#sidebar a:hover {
+    color: #773;
+}
+div#sidebar div {
+    background: #FFF url('bg_sidebar.png') bottom repeat-x;
+    border: 1px solid #CC8;
+    color: #555;
+    margin-bottom: 1em;
+}
+div#sidebar h2 {
+    background: transparent;
+    border: 0;
+    color: #995;
+    letter-spacing: 0;
+    margin: 0;
+    padding: 0.5em 0;
+}
+div#sidebar hr {
+    display: none;
+}
+div#sidebar p {
+    margin: 1em;
+}
+div#sidebar p.tags a {
+    margin: 0;
+}
+div#sidebar table {
+    margin: 0.5em 0.5em 0 0.5em;
+}
+div#sidebar table td {
+    padding-bottom: 0.25em;
+    padding-right: 0.5em;
+}
+div#sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0.5em;
+}
+div#sidebar ul li {
+    margin: 0.5em 0;
+}
+
+/* TAGS */
+
+p.tags {
+    line-height: 2.25em;
+    margin: 2em 10%;
+    text-align: justify;
+    vertical-align: middle;
+}
+p.tags a,
+p.tags span {
+    color: #47A;
+    margin-right: 0.5em;
+}
+p.tags span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+p.tags span.selected {
+    background: #CEC;
+}
+
+/* PROFILE */
+
+table.profile th {
+    width: 10em;
+}
+
+/* OTHER GUFF */
+
+dd {
+	background: #CEC;
+	border-right: 4px solid #ACA;
+	color: #464;
+	padding: 6px;
+}
+dd a {
+	color: #464;
+}
+dd a:hover {
+	color: #000 !important;
+	text-decoration: underline !important;
+}
+
+dl {
+	font-size: small;
+	margin: 1em;
+	width: 70%;
+}
+dl#profile dd {
+	background: #CDE;
+	border-color: #ABC;
+	color: #247;
+}
+dl#profile dt {
+	background: #BCE;
+	border-color: #9AC;
+	color: #245;
+	display: block;
+	font-weight: bold;
+	padding: 6px;
+}
+dl#profile a {
+	color: #446;
+}
+dl#profile a:hover {
+	color: #000 !important;
+	text-decoration: underline !important;
+}
+dl#meta dd {
+	line-height: 1.5em;
+}
+dl#meta dt {
+	background: #BDB;
+	color: #353;
+	display: block;
+	font-weight: bold;
+	padding: 6px;
+}
+dt {
+	border-right: 4px solid #9B9;
+}
+dt a {
+	background: #BDB;
+	color: #353;
+	display: block;
+	font-weight: bold;
+	padding: 6px;
+}
+dt a:hover {
+    background: #ACA;
+    border: 0;
+}
+form {
+	margin: 0;
+}
+form#search {
+	background: #FFF;
+	color: #555;
+	font-size: small;
+	margin-bottom: 1em;
+}
+form label,
+form td,
+form th {
+	font-size: small;
+}
+form table {
+	margin: 0 1em;
+}
+h3 {
+	background: #DDD;
+	color: #555;
+	font-size: small;
+	letter-spacing: 0.2em;
+	margin: 2em 1em 1em 1em;
+	padding: 0.25em 0.75em;
+}
+li {
+	font-size: small;
+	margin-bottom: 0.5em;
+}
+p {
+    font-size: small;
+    margin: 1em;
+}
+p#sort {
+    color: #CCC;
+    font-size: small;
+    float: right;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 7em;
+}
+html > body p#sort {
+    margin-right: 0.75em;
+}
+p#sort a {
+    background: #AAA;
+    color: #555;
+    font-weight: normal;
+    margin-right: 0.5em;
+    padding: 0 1em;
+}
+html > body p#sort a {
+    margin-right: 0;
+}
+p#sort a:hover {
+    background: #CCC;
+    text-decoration: none !important;
+}
+p#sort span {
+    display: none;
+}
+p.paging {
+	font-size: small;
+	margin-left: 1em;
+}
+p.paging a,
+p.paging span.disable {
+	background: #888;
+	color: #FFF;
+	display: inline;
+	margin-right: 0.5em;
+	padding: 0.25em 1em;
+}
+p.paging a:hover {
+	background: #666;
+}
+p.paging span {
+	display: none;
+}
+p.paging span.disable {
+	background: #DDD;
+	color: #AAA;
+}
+div.collapsible p.tags {
+	line-height: 2.25em;
+	margin: 1em 2em;
+}
+th label {
+	padding-right: 1em;
+}
+ul {
+	margin-right: 1em;
+	width: 75%;
+}

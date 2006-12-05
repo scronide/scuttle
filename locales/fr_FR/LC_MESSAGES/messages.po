@@ -1,0 +1,835 @@
+# Scuttle fr-FR Translation
+# Copyright (C) 2005 - 2006 Scuttle project
+# This file is distributed under the same license as the Scuttle package.
+# <toony.sf@chezouam.net>
+# nitram <nitram@no-log.org>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Scuttle\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-11-10 16:58+0100\n"
+"PO-Revision-Date: 2006-03-26 14:29-0800\n"
+"Last-Translator: Marcus Campbell <marcus.campbell@gmail.com>\n"
+"Language-Team: fr-FR <toony.sf@chezouam.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ..\..\..\about.php:25
+#: ..\..\..\templates\toolbar.inc.php:24
+msgid "About"
+msgstr "À propos"
+
+#: ..\..\..\ajaxDelete.php:29
+msgid "You are not allowed to delete this bookmark"
+msgstr "Vous ne pouvez pas supprimer ce signet."
+
+#: ..\..\..\ajaxDelete.php:33
+#, fuzzy
+msgid "Failed to delete bookmark"
+msgstr "Erreur de suppression du signet"
+
+#: ..\..\..\alltags.php:50
+msgid "All Tags"
+msgstr "Tous les labels"
+
+#: ..\..\..\alltags.php:59
+#: ..\..\..\populartags.php:63
+#: ..\..\..\profile.php:46
+#: ..\..\..\rss.php:55
+#: ..\..\..\search.php:61
+#: ..\..\..\watch.php:35
+#: ..\..\..\watched.php:62
+#, php-format
+msgid "User with username %s not was not found"
+msgstr "L'utilisateur %s n'a pas été trouvé."
+
+#: ..\..\..\bookmarks.php:71
+#, fuzzy, php-format
+msgid "User with username %s was not found"
+msgstr "L'utilisateur %s n'a pas été trouvé."
+
+#: ..\..\..\bookmarks.php:94
+#: ..\..\..\edit.php:44
+msgid "Your bookmark must have a title and an address"
+msgstr "Votre signet doit avoir un titre et une adresse."
+
+#: ..\..\..\bookmarks.php:114
+#: ..\..\..\edit.php:58
+msgid "Bookmark saved"
+msgstr "Signet enregistré."
+
+#: ..\..\..\bookmarks.php:122
+#: ..\..\..\import.php:99
+#: ..\..\..\importNetscape.php:74
+msgid "There was an error saving your bookmark. Please try again or contact the administrator."
+msgstr "Il y a eu une erreur en enregistrant ce signet. Veuillez rééssayer ou contacter votre administrateur."
+
+#: ..\..\..\bookmarks.php:160
+#: ..\..\..\templates\toolbar.inc.php:13
+msgid "Add a Bookmark"
+msgstr "Ajouter un signet"
+
+#: ..\..\..\bookmarks.php:163
+msgid "Add Bookmark"
+msgstr "Ajouter signet"
+
+#: ..\..\..\bookmarks.php:166
+msgid "You must be logged in before you can add bookmarks."
+msgstr "Vous devez être authentifié avant de pouvoir ajouter des signets."
+
+#: ..\..\..\bookmarks.php:213
+#, fuzzy
+msgid "My Bookmarks"
+msgstr "Mes signets"
+
+#: ..\..\..\edit.php:29
+msgid "Edit Bookmark"
+msgstr "Editer le signet"
+
+#: ..\..\..\edit.php:34
+#, fuzzy, php-format
+msgid "Bookmark with id %s not was not found"
+msgstr "Signet non trouvé"
+
+#: ..\..\..\edit.php:39
+msgid "You are not allowed to edit this bookmark"
+msgstr "Vous n'êtes pas autorisé à éditer ce signet."
+
+#: ..\..\..\edit.php:55
+msgid "Error while saving your bookmark"
+msgstr "Erreur pendant l'enregistrement de votre signet."
+
+#: ..\..\..\edit.php:78
+#, fuzzy
+msgid "Failed to delete the bookmark"
+msgstr "Vous ne pouvez pas supprimer ce signet."
+
+#: ..\..\..\edit.php:88
+#: ..\..\..\templates\editprofile.tpl.php:52
+msgid "Save Changes"
+msgstr "Enregister les modifications"
+
+#: ..\..\..\functions.inc.php:92
+msgid "message_die() was called multiple times."
+msgstr "message_die() was called multiple times. ?"
+
+#: ..\..\..\functions.inc.php:104
+msgid "SQL Error"
+msgstr "Erreur SQL"
+
+#: ..\..\..\functions.inc.php:110
+msgid "Line"
+msgstr "Ligne"
+
+#: ..\..\..\functions.inc.php:110
+#: ..\..\..\templates\importDelicious.tpl.php:8
+#: ..\..\..\templates\importNetscape.tpl.php:9
+msgid "File"
+msgstr "Fichier"
+
+#: ..\..\..\functions.inc.php:116
+#, fuzzy
+msgid "Information"
+msgstr "Instructions"
+
+#: ..\..\..\functions.inc.php:121
+msgid "Critical Information"
+msgstr "Information critique."
+
+#: ..\..\..\functions.inc.php:126
+msgid "An error occured"
+msgstr "Une erreur s'est produite."
+
+#: ..\..\..\functions.inc.php:129
+msgid "General Error"
+msgstr "Erreur générale."
+
+#: ..\..\..\functions.inc.php:137
+msgid "An critical error occured"
+msgstr "Une erreur critique s'est produite."
+
+#: ..\..\..\functions.inc.php:140
+msgid "Critical Error"
+msgstr "Erreur critique."
+
+#: ..\..\..\functions.inc.php:149
+msgid "DEBUG MODE"
+msgstr "Mode de débogage."
+
+#: ..\..\..\history.php:65
+msgid "History"
+msgstr "Historique"
+
+#: ..\..\..\history.php:66
+#, php-format
+msgid "History for %s"
+msgstr "Historique de %s"
+
+#: ..\..\..\history.php:81
+msgid "Address was not found"
+msgstr "L'adresse n'a pas été trouvée."
+
+#: ..\..\..\import.php:41
+msgid "Could not open XML input"
+msgstr "Impossible d'ouvrir le flux XML."
+
+#: ..\..\..\import.php:45
+#, php-format
+msgid "XML error: %s at line %d"
+msgstr "Erreur XML: %s à la ligne %d"
+
+#: ..\..\..\import.php:54
+msgid "Import Bookmarks from del.icio.us"
+msgstr "Importer les signet depuis del.icio.us"
+
+#: ..\..\..\import.php:86
+#: ..\..\..\importNetscape.php:64
+#, fuzzy
+msgid "You have already submitted this bookmark."
+msgstr "Vous avez déjà enregistré ce signet"
+
+#: ..\..\..\import.php:97
+#: ..\..\..\importNetscape.php:72
+#, fuzzy
+msgid "Bookmark imported."
+msgstr "Signets importés."
+
+#: ..\..\..\importNetscape.php:81
+#, fuzzy
+msgid "Import Bookmarks from Browser File"
+msgstr "Importer les signets depuis un fichier"
+
+#: ..\..\..\index.php:32
+msgid "You have now logged out"
+msgstr "Vous êtes maintenant déconnecté."
+
+#: ..\..\..\index.php:39
+#, php-format
+msgid "%s: Recent bookmarks"
+msgstr "%s: Signets récents"
+
+#: ..\..\..\index.php:72
+msgid "Store, share and tag your favourite links"
+msgstr "Conservez, partagez et taggez vos liens favoris"
+
+#: ..\..\..\index.php:73
+msgid "Recent Bookmarks"
+msgstr "Signets récents"
+
+#: ..\..\..\jsScuttle.php:22
+msgid "Are you sure?"
+msgstr "Etes-vous sûr ?"
+
+#: ..\..\..\jsScuttle.php:22
+msgid "Yes"
+msgstr "Oui"
+
+#: ..\..\..\jsScuttle.php:22
+msgid "No"
+msgstr "Non"
+
+#: ..\..\..\jsScuttle.php:68
+msgid "Available"
+msgstr "Disponible"
+
+#: ..\..\..\jsScuttle.php:71
+msgid "Not Available"
+msgstr "Non Disponible"
+
+#: ..\..\..\login.php:38
+#, fuzzy
+msgid "The details you have entered are incorrect. Please try again."
+msgstr "Les informations que vous avez entrées sont incorrectes. Veuillez recommencer."
+
+#: ..\..\..\login.php:48
+#: ..\..\..\templates\login.tpl.php:26
+#: ..\..\..\templates\toolbar.inc.php:28
+msgid "Log In"
+msgstr "Se connecter"
+
+#: ..\..\..\password.php:31
+msgid "You must enter your username."
+msgstr "Vous devez entrer votre nom d'utilisateur."
+
+#: ..\..\..\password.php:35
+msgid "You must enter your <abbr title=\"electronic mail\">e-mail</abbr> address."
+msgstr "Vous <em>devez</em> saisir une <abbr title=\"adresse électronique\">E-mail</abbr>."
+
+#: ..\..\..\password.php:42
+msgid "No matches found for that username."
+msgstr "Rien de trouvé pour ce nom d'utilisateur."
+
+#: ..\..\..\password.php:45
+#, fuzzy
+msgid "No matches found for that combination of username and <abbr title=\"electronic mail\">e-mail</abbr> address."
+msgstr "Nous n'avons rien trouvé pour cette combinaison de nom d'utilisateur et d'<abbr title=\"adresse mail\">e-mail</abbr>."
+
+#: ..\..\..\password.php:53
+msgid "There was an error while generating your new password. Please try again."
+msgstr "Il y a eu une erreur en enregistrant ce signet. Veuillez rééssayer ou contacter votre administrateur."
+
+#: ..\..\..\password.php:57
+msgid "Your new password is:"
+msgstr "Votre nouveau mot de passe est:"
+
+#: ..\..\..\password.php:57
+msgid "To keep your bookmarks secure, you should change this password in your profile the next time you log in."
+msgstr "Pour garder vos signets sûrs, vous devriez changer ce mot de passe dans votre profil lors de votre prochaine authentification."
+
+#: ..\..\..\password.php:60
+#, php-format
+msgid "%s Account Information"
+msgstr "Informations du compte de %s"
+
+#: ..\..\..\password.php:62
+#, php-format
+msgid "New password generated and sent to %s"
+msgstr "Nouveau mot de passe généré et envoyé à l'adresse %s"
+
+#: ..\..\..\password.php:69
+msgid "Forgotten Password"
+msgstr "Mot de passe oublié"
+
+#: ..\..\..\populartags.php:54
+#: ..\..\..\templates\dynamictags.inc.php:101
+#: ..\..\..\templates\sidebar.block.common.php:9
+#: ..\..\..\templates\sidebar.block.popular.php:15
+#: ..\..\..\templates\sidebar.block.recent.php:25
+msgid "Popular Tags"
+msgstr "Labels populaires"
+
+#: ..\..\..\profile.php:54
+#: ..\..\..\watched.php:114
+msgid "Username was not specified"
+msgstr "Le nom d'utilisateur n'a pas été spécifié."
+
+#: ..\..\..\profile.php:60
+msgid "My Profile"
+msgstr "Mon Profil"
+
+#: ..\..\..\profile.php:62
+#: ..\..\..\templates\sidebar.block.profile.php:12
+msgid "Profile"
+msgstr "Profil"
+
+#: ..\..\..\profile.php:80
+msgid "Password and confirmation do not match."
+msgstr "Le mot de passe et sa vérification ne correspondent pas."
+
+#: ..\..\..\profile.php:84
+msgid "Password must be at least 6 characters long."
+msgstr "Le mot de passe doit avoir au moins 6 caractères."
+
+#: ..\..\..\profile.php:88
+msgid "E-mail address is not valid."
+msgstr "Adresse de courrier électronique invalide."
+
+#: ..\..\..\profile.php:92
+msgid "An error occurred while saving your changes."
+msgstr "Une erreur s'est produite pendant l'enregistrement de vos modifications."
+
+#: ..\..\..\profile.php:94
+#, fuzzy
+msgid "Changes saved."
+msgstr "Modifications enregistrées."
+
+#: ..\..\..\register.php:33
+#, fuzzy
+msgid "You <em>must</em> enter a username, password and e-mail address."
+msgstr "Vous <em>devez</em> saisir un nom d'utilisateur, un mot de passe, un nom et un <abbr title=\"adresse électronique\">E-mail</abbr>"
+
+#: ..\..\..\register.php:37
+msgid "This username already exists, please make another choice."
+msgstr "Ce nom d'utilisateur existe déjà, veuillez en choisir un autre."
+
+#: ..\..\..\register.php:41
+msgid "E-mail address is not valid. Please try again."
+msgstr "Adresse de courrier électronique invalide. Veuilez réessayer."
+
+#: ..\..\..\register.php:50
+#, fuzzy
+msgid "You have successfully registered. Enjoy!"
+msgstr "Votre inscription a bien été prise en compte !"
+
+#: ..\..\..\register.php:52
+msgid "Registration failed. Please try again."
+msgstr "Enregistrement raté. Veuillez rééssayer."
+
+#: ..\..\..\register.php:57
+#: ..\..\..\templates\register.tpl.php:32
+#: ..\..\..\templates\toolbar.inc.php:27
+msgid "Register"
+msgstr "S'enregistrer"
+
+#: ..\..\..\search.inc.php:29
+#: ..\..\..\search.inc.php:57
+msgid "Search"
+msgstr "Chercher"
+
+#: ..\..\..\search.inc.php:35
+msgid "this user's bookmarks"
+msgstr "les signets de cet utilisateur"
+
+#: ..\..\..\search.inc.php:40
+msgid "my bookmarks"
+msgstr "mes signets"
+
+#: ..\..\..\search.inc.php:41
+msgid "my watchlist"
+msgstr "ma liste des consultés"
+
+#: ..\..\..\search.inc.php:45
+msgid "all bookmarks"
+msgstr "tous les signets"
+
+#: ..\..\..\search.inc.php:48
+msgid "for"
+msgstr "pour"
+
+#: ..\..\..\search.php:91
+#: ..\..\..\search.php:128
+msgid "Search Bookmarks"
+msgstr "Recherche de signets"
+
+#: ..\..\..\search.php:97
+msgid "Search Results"
+msgstr "Résulats de recherche"
+
+#: ..\..\..\tags.php:38
+#: ..\..\..\templates\editbookmark.tpl.php:44
+#: ..\..\..\templates\sidebar.block.profile.php:13
+msgid "Tags"
+msgstr "Labels"
+
+#: ..\..\..\watch.php:79
+#, php-format
+msgid "%s Bookmarks"
+msgstr "Signets de %s"
+
+#: ..\..\..\watch.php:84
+msgid "User removed from your watchlist"
+msgstr "Utilisateur enlevé de votre liste des consultés"
+
+#: ..\..\..\watch.php:86
+msgid "User added to your watchlist"
+msgstr "Utilisateur ajouté à la liste des consultés."
+
+#: ..\..\..\watched.php:105
+#, fuzzy
+msgid "My Watchlist"
+msgstr "Liste des signets vus"
+
+#: ..\..\..\watched.php:107
+#: ..\..\..\templates\sidebar.block.profile.php:14
+#: ..\..\..\templates\toolbar.inc.php:12
+#, fuzzy
+msgid "Watchlist"
+msgstr "Liste des signets vus"
+
+#: ..\..\..\templates\about.tpl.php:6
+msgid "<strong>Store</strong> all your favourite links in one place, accessible from anywhere."
+msgstr "<strong>Gardez</strong> tous vos signets au même endroit, accessible partout. "
+
+#: ..\..\..\templates\about.tpl.php:7
+#, fuzzy
+msgid "<strong>Share</strong> your bookmarks with everyone, with friends on your watchlist or just keep them private."
+msgstr "<strong>Partagez</strong> vos signets avec tout le monde, les utilisateurs autorisés ou uniquement pour vous."
+
+#: ..\..\..\templates\about.tpl.php:8
+msgid "<strong>Tag</strong> your bookmarks with as many labels as you want, instead of wrestling with folders."
+msgstr "<strong>Taggez</strong> vos signets avec autant de labels que vous le souhaitez au lieu de les hierarchiser avec des dossiers."
+
+#: ..\..\..\templates\about.tpl.php:9
+#, fuzzy, php-format
+msgid "<strong><a href=\"register.php\">Register now</a></strong> to start using %s!"
+msgstr "<a href=\"register.php\">Enregistrez-vous</a> maintenant pour poster vos propres signets !"
+
+#: ..\..\..\templates\about.tpl.php:12
+msgid "Geek Stuff"
+msgstr "(Geek Stuff)"
+
+#: ..\..\..\templates\about.tpl.php:14
+#, php-format
+msgid "%s is based on <a href=\"http://sourceforge.net/projects/scuttle/\">an open-source project</a> licensed under the <a href=\"http://www.gnu.org/copyleft/gpl.html\"><acronym title=\"GNU's Not Unix\">GNU</acronym> General Public License</a>. This means you can host it on your own web server for free, whether it is on the Internet, a private network or just your own computer."
+msgstr "%s est basé sur <a href=\"http://sourceforge.net/projects/scuttle/\">un projet open-source</a>, sous la license <a href=\"http://www.gnu.org/copyleft/gpl.html\"><acronym title=\"GNU's Not Unix\">GNU</acronym> General Public License</a>. Vous pouvez donc héberger Scuttle sur votre propre serveur gratuitement, qu'il soit relié à Internet, dans un réseau privé ou juste sur votre ordinateur personnel."
+
+#: ..\..\..\templates\about.tpl.php:15
+#, php-format
+msgid "%1$s supports most of the <a href=\"http://del.icio.us/doc/api\">del.icio.us <abbr title=\"Application Programming Interface\">API</abbr></a>. Almost all of the neat tools made for that system can be modified to work with %1$s instead. If you find a tool that won't let you change the API address, ask the creator to add this setting. You never know, they might just do it."
+msgstr "%1$s supporte la plupart de l'<a href=\"http://del.icio.us/doc/api\">del.icio.us <abbr title=\"Application Programming Interface\">API</abbr></a>."
+
+#: ..\..\..\templates\bookmarks.tpl.php:17
+#: ..\..\..\templates\tags.tpl.php:7
+msgid "Sort by:"
+msgstr "Classer par :"
+
+#: ..\..\..\templates\bookmarks.tpl.php:18
+msgid "Date"
+msgstr "Date"
+
+#: ..\..\..\templates\bookmarks.tpl.php:19
+#: ..\..\..\templates\editbookmark.tpl.php:34
+msgid "Title"
+msgstr "Titre"
+
+#: ..\..\..\templates\bookmarks.tpl.php:23
+msgid "URL"
+msgstr "URL"
+
+#: ..\..\..\templates\bookmarks.tpl.php:60
+msgid "Edit"
+msgstr "Editer"
+
+#: ..\..\..\templates\bookmarks.tpl.php:60
+msgid "Delete"
+msgstr "Supprimer"
+
+#: ..\..\..\templates\bookmarks.tpl.php:66
+msgid "by"
+msgstr "par"
+
+#: ..\..\..\templates\bookmarks.tpl.php:78
+#, fuzzy, php-format
+msgid " and %s1 other%s"
+msgstr " et les autres %s"
+
+#: ..\..\..\templates\bookmarks.tpl.php:81
+#, fuzzy, php-format
+msgid " and %2$s%1$s others%3$s"
+msgstr " et les autres %s"
+
+#: ..\..\..\templates\bookmarks.tpl.php:90
+msgid "Copy"
+msgstr "Copier"
+
+#: ..\..\..\templates\bookmarks.tpl.php:136
+#: ..\..\..\templates\bookmarks.tpl.php:142
+msgid "First"
+msgstr "Première"
+
+#: ..\..\..\templates\bookmarks.tpl.php:137
+#: ..\..\..\templates\bookmarks.tpl.php:143
+msgid "Previous"
+msgstr "Précédent"
+
+#: ..\..\..\templates\bookmarks.tpl.php:150
+#: ..\..\..\templates\bookmarks.tpl.php:153
+msgid "Next"
+msgstr "Suivant"
+
+#: ..\..\..\templates\bookmarks.tpl.php:151
+#: ..\..\..\templates\bookmarks.tpl.php:154
+msgid "Last"
+msgstr "Dernière"
+
+#: ..\..\..\templates\bookmarks.tpl.php:156
+#, php-format
+msgid "Page %d of %d"
+msgstr "Page %d de %d"
+
+#: ..\..\..\templates\bookmarks.tpl.php:160
+msgid "No bookmarks available"
+msgstr "Pas de signets disponibles."
+
+#: ..\..\..\templates\dynamictags.inc.php:108
+#: ..\..\..\templates\sidebar.block.common.php:15
+#: ..\..\..\templates\sidebar.block.popular.php:21
+#: ..\..\..\templates\sidebar.block.recent.php:20
+#: ..\..\..\templates\tags.tpl.php:16
+#, fuzzy
+msgid "bookmark"
+msgid_plural "bookmarks"
+msgstr[0] "Signet"
+msgstr[1] "Signets"
+
+#: ..\..\..\templates\editbookmark.tpl.php:29
+msgid "Address"
+msgstr "Adresse"
+
+#: ..\..\..\templates\editbookmark.tpl.php:31
+#: ..\..\..\templates\editbookmark.tpl.php:36
+#: ..\..\..\templates\editprofile.tpl.php:31
+msgid "Required"
+msgstr "Requis"
+
+#: ..\..\..\templates\editbookmark.tpl.php:39
+#: ..\..\..\templates\editprofile.tpl.php:47
+#: ..\..\..\templates\profile.tpl.php:28
+msgid "Description"
+msgstr "Description"
+
+#: ..\..\..\templates\editbookmark.tpl.php:46
+msgid "Comma-separated"
+msgstr "Séparés par des virgules"
+
+#: ..\..\..\templates\editbookmark.tpl.php:49
+#: ..\..\..\templates\importDelicious.tpl.php:15
+#: ..\..\..\templates\importNetscape.tpl.php:16
+msgid "Privacy"
+msgstr "Vision"
+
+#: ..\..\..\templates\editbookmark.tpl.php:52
+#: ..\..\..\templates\importDelicious.tpl.php:18
+#: ..\..\..\templates\importNetscape.tpl.php:19
+msgid "Public"
+msgstr "Publique"
+
+#: ..\..\..\templates\editbookmark.tpl.php:53
+#: ..\..\..\templates\importDelicious.tpl.php:19
+#: ..\..\..\templates\importNetscape.tpl.php:20
+msgid "Shared with Watch List"
+msgstr "Partagé avec liste d'accès"
+
+#: ..\..\..\templates\editbookmark.tpl.php:54
+#: ..\..\..\templates\importDelicious.tpl.php:20
+#: ..\..\..\templates\importNetscape.tpl.php:21
+msgid "Private"
+msgstr "Privée"
+
+#: ..\..\..\templates\editbookmark.tpl.php:66
+msgid "Delete Bookmark"
+msgstr "Supprimer le signet"
+
+#: ..\..\..\templates\editbookmark.tpl.php:93
+msgid "Bookmarklet"
+msgstr "Bookmarklet"
+
+#: ..\..\..\templates\editbookmark.tpl.php:94
+#, php-format
+msgid "Drag one of the following bookmarklets to your browser's bookmarks and click it whenever you want to add the page you are on to %s"
+msgstr "Déplacez l'un des 'bookmarklet' suivants dans les marques-pages de votre navigateur et cliquez dessus chaque fois que vous souhaitez ajouter un signet pour la page courante dans %s "
+
+#: ..\..\..\templates\editbookmark.tpl.php:106
+#, php-format
+msgid "Post to %s"
+msgstr "Ajouter à %s"
+
+#: ..\..\..\templates\editbookmark.tpl.php:107
+#, php-format
+msgid "Post to %s (Pop-up)"
+msgstr "Ajouter à %s (Pop-up)"
+
+#: ..\..\..\templates\editbookmark.tpl.php:111
+#: ..\..\..\templates\importDelicious.tpl.php:26
+#: ..\..\..\templates\importNetscape.tpl.php:27
+msgid "Import"
+msgstr "Importer"
+
+#: ..\..\..\templates\editbookmark.tpl.php:113
+msgid "Import bookmarks from bookmark file"
+msgstr "Importer les signets depuis un fichier"
+
+#: ..\..\..\templates\editbookmark.tpl.php:113
+msgid "Internet Explorer, Mozilla Firefox and Netscape"
+msgstr "Internet Explorer, Mozilla Firefox et Netscape"
+
+#: ..\..\..\templates\editbookmark.tpl.php:114
+msgid "Import bookmarks from del.icio.us"
+msgstr "Importer les signets depuis del.icio.us"
+
+#: ..\..\..\templates\editprofile.tpl.php:10
+msgid "Account Details"
+msgstr "Détail du compte"
+
+#: ..\..\..\templates\editprofile.tpl.php:14
+#: ..\..\..\templates\login.tpl.php:15
+#: ..\..\..\templates\password.tpl.php:10
+#: ..\..\..\templates\profile.tpl.php:7
+#: ..\..\..\templates\register.tpl.php:16
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: ..\..\..\templates\editprofile.tpl.php:19
+msgid "New Password"
+msgstr "Nouveau mot de passe"
+
+#: ..\..\..\templates\editprofile.tpl.php:24
+#, fuzzy
+msgid "Confirm Password"
+msgstr "Confirmer le nouveau mot de passe"
+
+#: ..\..\..\templates\editprofile.tpl.php:29
+#: ..\..\..\templates\register.tpl.php:26
+msgid "E-mail"
+msgstr "E-mail"
+
+#: ..\..\..\templates\editprofile.tpl.php:35
+msgid "Personal Details"
+msgstr "Détails personnels"
+
+#: ..\..\..\templates\editprofile.tpl.php:39
+#: ..\..\..\templates\profile.tpl.php:12
+msgid "Name"
+msgstr "Nom"
+
+#: ..\..\..\templates\editprofile.tpl.php:43
+#: ..\..\..\templates\profile.tpl.php:18
+msgid "Homepage"
+msgstr "Page personnelle"
+
+#: ..\..\..\templates\error.404.tpl.php:5
+#, fuzzy
+msgid "Not Found"
+msgstr "Utilisateur inconnu"
+
+#: ..\..\..\templates\error.404.tpl.php:6
+msgid "The requested URL was not found on this server"
+msgstr "L'URL demandée n'a pas été trouvée sur ce serveur."
+
+#: ..\..\..\templates\error.500.tpl.php:5
+msgid "General server error"
+msgstr "Erreur généralisée du serveur."
+
+#: ..\..\..\templates\error.500.tpl.php:6
+msgid "The requested URL could not be processed"
+msgstr "L'URL demandée n'a pas été trouvée."
+
+#: ..\..\..\templates\importDelicious.tpl.php:33
+msgid "Log in to the <a href=\"http://del.icio.us/api/posts/all\">export page at del.icio.us</a>"
+msgstr "Se connecter à la <a href=\"http://del.icio.us/api/posts/all\">page d'export de del.icio.us</a>"
+
+#: ..\..\..\templates\importDelicious.tpl.php:34
+msgid "Save the resulting <abbr title=\"Extensible Markup Language\">XML</abbr> file to your computer"
+msgstr "Enregistrer le fichier <abbr title=\"Extensible Markup Language\">XML</abbr> résultant sur votre ordinateur"
+
+#: ..\..\..\templates\importDelicious.tpl.php:35
+msgid "Click <kbd>Browse...</kbd> to find this file on your computer. The maximum size the file can be is 1MB"
+msgstr "Cliquez sur <kbd>Parcourir...</kbd> pour trouver le fichier sur votre ordinateur. La taille maximale du fichier ne peut excèder 1Mo"
+
+#: ..\..\..\templates\importDelicious.tpl.php:36
+#: ..\..\..\templates\importNetscape.tpl.php:43
+msgid "Select the default privacy setting for your imported bookmarks"
+msgstr "Selectionnez la vision par défaut à appliquer à vos signets importés"
+
+#: ..\..\..\templates\importDelicious.tpl.php:37
+#: ..\..\..\templates\importNetscape.tpl.php:44
+msgid "Click <kbd>Import</kbd> to start importing the bookmarks; it may take a minute"
+msgstr "Cliquez sur <kbd>Importer</kbd> pour débuter l'import des signets; cette opération peut prendre quelques minutes"
+
+#: ..\..\..\templates\importNetscape.tpl.php:32
+msgid "Instructions"
+msgstr "Instructions"
+
+#: ..\..\..\templates\importNetscape.tpl.php:35
+msgid "Export your bookmarks from your browser to a file"
+msgstr "Exporter vos signets dans un fichier depuis votre navigateur"
+
+#: ..\..\..\templates\importNetscape.tpl.php:37
+msgid "Internet Explorer: <kbd>File &gt; Import and Export... &gt; Export Favorites"
+msgstr "Internet Explorer: <kbd>Ficher &gt; Importer et Exporter... &gt; Exporter les favoris"
+
+#: ..\..\..\templates\importNetscape.tpl.php:38
+msgid "Mozilla Firefox: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; File &gt; Export..."
+msgstr "Mozilla Firefox: <kbd>Marques-pages &gt; Gérer les marques-pages... &gt; Fichier &gt; Exporter..."
+
+#: ..\..\..\templates\importNetscape.tpl.php:39
+msgid "Netscape: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; Tools &gt; Export..."
+msgstr "Netscape: <kbd>Marques-pages &gt; Gérer les marques-pages... &gt; Outils &gt; Exporter..."
+
+#: ..\..\..\templates\importNetscape.tpl.php:42
+msgid "Click <kbd>Browse...</kbd> to find the saved bookmark file on your computer. The maximum size the file can be is 1MB"
+msgstr "Cliquez sur <kbd>Parcourir...</kbd> pour trouver le fichier sur votre ordinateur. La taille maximale du fichier ne peut excèder 1Mo"
+
+#: ..\..\..\templates\login.tpl.php:20
+#: ..\..\..\templates\register.tpl.php:21
+msgid "Password"
+msgstr "Mot de passe"
+
+#: ..\..\..\templates\login.tpl.php:22
+msgid "Don't ask for my password for 2 weeks"
+msgstr "Ne pas me demander le mot de passe pendant 2 semaines"
+
+#: ..\..\..\templates\login.tpl.php:30
+msgid "Forgotten your password?"
+msgstr "Avez-vous oublié votre mot de passe ?"
+
+#: ..\..\..\templates\password.tpl.php:5
+#, php-format
+msgid "If you have forgotten your password, %s can generate a new one. Enter the username and e-mail address of your account into the form below and we will e-mail your new password to you."
+msgstr "Si vous avez oublié votre mot de passe, %s peut en générer un nouveau. Entrez le nom d'utilisateur et l'adresse email de votre compte dans le formulaire ci-dessous et nous vous enverrons un nouveau mot de passe."
+
+#: ..\..\..\templates\password.tpl.php:14
+msgid "<abbr title=\"Electronic mail\">E-mail</abbr>"
+msgstr "<abbr title=\"Adresse électronique\">E-mail</abbr>"
+
+#: ..\..\..\templates\password.tpl.php:19
+#, fuzzy
+msgid "Generate Password"
+msgstr "Nouveau mot de passe"
+
+#: ..\..\..\templates\profile.tpl.php:23
+msgid "Member Since"
+msgstr "Membre depuis"
+
+#: ..\..\..\templates\profile.tpl.php:35
+#: ..\..\..\templates\sidebar.block.watchlist.php:8
+#, fuzzy
+msgid "Watching"
+msgstr "Liste des signets vus"
+
+#: ..\..\..\templates\profile.tpl.php:50
+#, fuzzy
+msgid "Watched By"
+msgstr "Consultés"
+
+#: ..\..\..\templates\register.tpl.php:11
+#, fuzzy, php-format
+msgid "Sign up here to create a free %s account. All the information requested below is required"
+msgstr "Enregistrez-vous ici pour vous créer un compte Scuttle gratuit. Toutes les inforamtions demandées ci-dessous sont nécessaires."
+
+#: ..\..\..\templates\rss.tpl.php:9
+#, fuzzy, php-format
+msgid "Recent bookmarks posted to %s"
+msgstr "Signets ajoutés à Scuttle récement"
+
+#: ..\..\..\templates\rss.tpl.php:17
+#: ..\..\..\templates\rss.tpl.php:19
+msgid "No bookmarks found"
+msgstr "Pas de signets trouvés"
+
+#: ..\..\..\templates\sidebar.block.recent.php:15
+#, fuzzy
+msgid "Recent Tags"
+msgstr "Labels en relation"
+
+#: ..\..\..\templates\sidebar.block.related.php:15
+msgid "Related Tags"
+msgstr "Labels en relation"
+
+#: ..\..\..\templates\sidebar.block.watchstatus.php:10
+msgid "Remove from Watchlist"
+msgstr "Enlever de la liste des consultés"
+
+#: ..\..\..\templates\sidebar.block.watchstatus.php:12
+msgid "Add to Watchlist"
+msgstr "Ajouter à la liste des consultés"
+
+#: ..\..\..\templates\sidebar.block.watchstatus.php:17
+#, fuzzy
+msgid "Actions"
+msgstr "Instructions"
+
+#: ..\..\..\templates\tags.tpl.php:8
+#, fuzzy
+msgid "Alphabet"
+msgstr "Alphabet"
+
+#: ..\..\..\templates\tags.tpl.php:9
+#, fuzzy
+msgid "Popularity"
+msgstr "Labels populaires"
+
+#: ..\..\..\templates\toolbar.inc.php:11
+#, fuzzy
+msgid "Bookmarks"
+msgstr "Signets de %s"
+
+#: ..\..\..\templates\toolbar.inc.php:16
+msgid "Log Out"
+msgstr "Quitter"
+

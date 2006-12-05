@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteRule ^tags/get tags_get.php
+RewriteRule ^posts/dates posts_dates.php
+RewriteRule ^posts/get posts_get.php
+RewriteRule ^posts/recent posts_recent.php
+RewriteRule ^posts/all posts_all.php
+RewriteRule ^posts/update posts_update.php
+RewriteRule ^posts/add posts_add.php
+RewriteRule ^posts/delete posts_delete.php
+RewriteRule ^tags/rename tags_rename.php
