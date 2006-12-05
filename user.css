@@ -1,0 +1,70 @@
+div#bio,
+h3,
+table#dates {
+    clear: both;
+}
+h3 {
+    background: #DDD;
+    padding: 0.25em 1em;
+    -moz-border-radius: 1em;
+}
+div#bio {
+    margin: 1em 0;
+}
+div#bio p {
+    margin: 0.75em 0.25em;
+}
+div#bookmarks,
+div#comments {
+    float: left;
+}
+div#bookmarks {
+    width: 70%;
+}
+div#profile {
+    float: left;
+    margin: 0 1em;
+    width: 25%;
+}
+div#watching a {
+    display: block;
+    float: left;
+    margin: 0 0.5em 1em 0;
+    text-align: center;
+}
+h3 {
+    margin: 1em 0;
+    padding: 0.5em 1em;
+}
+h3 span {
+    color: #00F;
+}
+ol#bookmarks {
+    width: 95%;
+}
+ul#user {
+    float: left;
+    list-style-type: none;
+    margin: 0.75em;
+    padding: 0;
+    width: auto;
+}
+ul#user li {
+    margin: 0;
+}
+ul#user li#username {
+    font-size: x-large;
+}
+p#picture {
+    float: left;
+    margin: 0 0 1em 0;
+}
+table#dates {
+    font-size: small;
+    margin: 0;
+    width: 100%;
+}
+th {
+    padding-right: 1em;
+    text-align: left;
+}

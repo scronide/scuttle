@@ -1,0 +1,18 @@
+Scuttle contains code from the following applications:
+
+------------
+GPL Licenced
+------------
+
+phpBB2 (database abstraction layer)
+http://www.phpbb.com/
+
+php-gettext
+Danilo Segan <danilo@kvota.net>
+http://savannah.nongnu.org/projects/php-gettext/
+
+UTF8 Helper Functions
+Andreas Gohr <andi@splitbrain.org>
+
+XSPF Web Music Player (Flash)
+http://musicplayer.sourceforge.net/
