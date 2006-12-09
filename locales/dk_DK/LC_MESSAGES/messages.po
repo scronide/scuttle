@@ -1,0 +1,808 @@
+# Scuttle dk-DK Translation
+# Copyright (C) 2006 Scuttle project
+# This file is distributed under the same license as the Scuttle package.
+# Nicki Brøchner <nicki.brochner@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Scuttle\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-04-29 11:17+0200\n"
+"PO-Revision-Date: 2006-04-16 22:04-0800\n"
+"Last-Translator: Marcus Campbell <marcus.campbell@gmail.com>\n"
+"Language-Team: dk-DK <Nicki.brochner@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ..\..\..\about.php:25
+#: ..\..\..\templates\toolbar.inc.php:24
+msgid "About"
+msgstr "Om programmet"
+
+#: ..\..\..\ajaxDelete.php:29
+msgid "You are not allowed to delete this bookmark"
+msgstr "Du har ikke tilladelse til at slette dette bogmærke"
+
+#: ..\..\..\ajaxDelete.php:33
+msgid "Failed to delete bookmark"
+msgstr "Kunne ikke slette bogmærket"
+
+#: ..\..\..\alltags.php:50
+msgid "All Tags"
+msgstr "Alle mærker"
+
+#: ..\..\..\alltags.php:59
+#: ..\..\..\populartags.php:63
+#: ..\..\..\profile.php:46
+#: ..\..\..\rss.php:55
+#: ..\..\..\search.php:61
+#: ..\..\..\watch.php:35
+#: ..\..\..\watched.php:62
+#, php-format
+msgid "User with username %s not was not found"
+msgstr "Bruger med brugernavn %s kunne ikke findes"
+
+#: ..\..\..\bookmarks.php:71
+#, php-format
+msgid "User with username %s was not found"
+msgstr "Bruger med brugernavn %s kunne ikke findes"
+
+#: ..\..\..\bookmarks.php:94
+#: ..\..\..\edit.php:44
+msgid "Your bookmark must have a title and an address"
+msgstr "Dit bogmærke skal have både en titel og en adresse"
+
+#: ..\..\..\bookmarks.php:114
+#: ..\..\..\edit.php:58
+msgid "Bookmark saved"
+msgstr "Bogmærke gemt"
+
+#: ..\..\..\bookmarks.php:122
+#: ..\..\..\import.php:99
+#: ..\..\..\importNetscape.php:74
+msgid "There was an error saving your bookmark. Please try again or contact the administrator."
+msgstr "Der opstod en fejl, ved forsøg på at gemme dit bogmærke. Prøv venligst igen eller kontakt Administrator"
+
+#: ..\..\..\bookmarks.php:160
+#: ..\..\..\templates\toolbar.inc.php:13
+msgid "Add a Bookmark"
+msgstr "Tilføj et bogmærke"
+
+#: ..\..\..\bookmarks.php:163
+msgid "Add Bookmark"
+msgstr "Tilføj bogmærke"
+
+#: ..\..\..\bookmarks.php:166
+msgid "You must be logged in before you can add bookmarks."
+msgstr "Du skal være logget ind før du kan tilføje bogmærker"
+
+#: ..\..\..\bookmarks.php:213
+msgid "My Bookmarks"
+msgstr "Mine bogmærker"
+
+#: ..\..\..\edit.php:29
+msgid "Edit Bookmark"
+msgstr "Rediger bogmærker"
+
+#: ..\..\..\edit.php:34
+#, php-format
+msgid "Bookmark with id %s not was not found"
+msgstr "Bogmærke med id %s kunne ikke findes"
+
+#: ..\..\..\edit.php:39
+msgid "You are not allowed to edit this bookmark"
+msgstr "Du har ikke tilladelse til at redigere dette bogmærke"
+
+#: ..\..\..\edit.php:55
+msgid "Error while saving your bookmark"
+msgstr "Der opstod en fejl, ved forsøg på at gemme dit bogmærke."
+
+#: ..\..\..\edit.php:78
+msgid "Failed to delete the bookmark"
+msgstr "Kunne ikke slette bogmærket"
+
+#: ..\..\..\edit.php:88
+#: ..\..\..\templates\editprofile.tpl.php:52
+msgid "Save Changes"
+msgstr "Gem ændringer"
+
+#: ..\..\..\functions.inc.php:92
+msgid "message_die() was called multiple times."
+msgstr "message_die() blev kaldt flere gange"
+
+#: ..\..\..\functions.inc.php:104
+msgid "SQL Error"
+msgstr "SQL fejl"
+
+#: ..\..\..\functions.inc.php:110
+msgid "Line"
+msgstr "Line"
+
+#: ..\..\..\functions.inc.php:110
+#: ..\..\..\templates\importDelicious.tpl.php:8
+#: ..\..\..\templates\importNetscape.tpl.php:9
+msgid "File"
+msgstr "Filer"
+
+#: ..\..\..\functions.inc.php:116
+msgid "Information"
+msgstr "Information"
+
+#: ..\..\..\functions.inc.php:121
+msgid "Critical Information"
+msgstr "Kritisk information"
+
+#: ..\..\..\functions.inc.php:126
+msgid "An error occured"
+msgstr "En fejl opstod"
+
+#: ..\..\..\functions.inc.php:129
+msgid "General Error"
+msgstr "General fejl"
+
+#: ..\..\..\functions.inc.php:137
+msgid "An critical error occured"
+msgstr "En kritisk fejl opstod"
+
+#: ..\..\..\functions.inc.php:140
+msgid "Critical Error"
+msgstr "Kritisk fejl"
+
+#: ..\..\..\functions.inc.php:149
+msgid "DEBUG MODE"
+msgstr "DEBUG MODE"
+
+#: ..\..\..\history.php:65
+msgid "History"
+msgstr "Historie"
+
+#: ..\..\..\history.php:66
+#, php-format
+msgid "History for %s"
+msgstr "Historie for %s"
+
+#: ..\..\..\history.php:81
+msgid "Address was not found"
+msgstr "Adressen kunne ikke findes"
+
+#: ..\..\..\import.php:41
+msgid "Could not open XML input"
+msgstr "Kunne ikke åbne XML input"
+
+#: ..\..\..\import.php:45
+#, php-format
+msgid "XML error: %s at line %d"
+msgstr "XLM fejl: %s i line %d"
+
+#: ..\..\..\import.php:54
+msgid "Import Bookmarks from del.icio.us"
+msgstr "Importere bogmærker fra del.icio.us"
+
+#: ..\..\..\import.php:86
+#: ..\..\..\importNetscape.php:64
+msgid "You have already submitted this bookmark."
+msgstr "Du har allerede tilføjet dette bogmærke"
+
+#: ..\..\..\import.php:97
+#: ..\..\..\importNetscape.php:72
+msgid "Bookmark imported."
+msgstr "Bogmærke importeret"
+
+#: ..\..\..\importNetscape.php:81
+msgid "Import Bookmarks from Browser File"
+msgstr "Importere bogmærker fra browser"
+
+#: ..\..\..\index.php:32
+msgid "You have now logged out"
+msgstr "Du er nu logget ud"
+
+#: ..\..\..\index.php:39
+#, php-format
+msgid "%s: Recent bookmarks"
+msgstr "%s: Seneste bogmærker"
+
+#: ..\..\..\index.php:72
+msgid "Store, share and tag your favourite links"
+msgstr "Gem, del og mærk dine favorit links"
+
+#: ..\..\..\index.php:73
+msgid "Recent Bookmarks"
+msgstr "Seneste bogmærker"
+
+#: ..\..\..\jsScuttle.php:22
+msgid "Are you sure?"
+msgstr "Er du sikker?"
+
+#: ..\..\..\jsScuttle.php:22
+msgid "Yes"
+msgstr "Ja"
+
+#: ..\..\..\jsScuttle.php:22
+msgid "No"
+msgstr "Nej"
+
+#: ..\..\..\jsScuttle.php:68
+msgid "Available"
+msgstr "Tilgængelig"
+
+#: ..\..\..\jsScuttle.php:71
+msgid "Not Available"
+msgstr "Ikke tilgængelig"
+
+#: ..\..\..\login.php:38
+msgid "The details you have entered are incorrect. Please try again."
+msgstr "Detaljerne du har indtastet er forkerte. Prøv venligst igen."
+
+#: ..\..\..\login.php:48
+#: ..\..\..\templates\login.tpl.php:26
+#: ..\..\..\templates\toolbar.inc.php:28
+msgid "Log In"
+msgstr "Log ind"
+
+#: ..\..\..\password.php:31
+msgid "You must enter your username."
+msgstr "Du skal indtaste dit brugernavn"
+
+#: ..\..\..\password.php:35
+msgid "You must enter your <abbr title=\"electronic mail\">e-mail</abbr> address."
+msgstr "Du skal indtaste din <abbr title=\"Elektronisk post\">E-mail</abbr> adresse."
+
+#: ..\..\..\password.php:42
+msgid "No matches found for that username."
+msgstr "Søgning gav igen resultat på det brugernavn."
+
+#: ..\..\..\password.php:45
+msgid "No matches found for that combination of username and <abbr title=\"electronic mail\">e-mail</abbr> address."
+msgstr "Søgning gav igen resultat på den kombination af brugernavn og <abbr title=\"elektronisk post\">e-mail</abbr> adresse."
+
+#: ..\..\..\password.php:53
+msgid "There was an error while generating your new password. Please try again."
+msgstr "Der opstod en fejl under genereringen af dit nye kodeord. Prøv venligst igen."
+
+#: ..\..\..\password.php:57
+msgid "Your new password is:"
+msgstr "Dit nye kodeord er:"
+
+#: ..\..\..\password.php:57
+msgid "To keep your bookmarks secure, you should change this password in your profile the next time you log in."
+msgstr "FFor at bevare dine bogmærker sikrere, bør du skifte dette kodeord i din profil næste gang du logger ind."
+
+#: ..\..\..\password.php:60
+#, php-format
+msgid "%s Account Information"
+msgstr "%s Konto oplysninger"
+
+#: ..\..\..\password.php:62
+#, php-format
+msgid "New password generated and sent to %s"
+msgstr "Nyt kodeord er blevet genereret og sendt til %s"
+
+#: ..\..\..\password.php:69
+msgid "Forgotten Password"
+msgstr "Glemt kodeord"
+
+#: ..\..\..\populartags.php:54
+#: ..\..\..\templates\dynamictags.inc.php:101
+#: ..\..\..\templates\sidebar.block.common.php:9
+#: ..\..\..\templates\sidebar.block.popular.php:15
+#: ..\..\..\templates\sidebar.block.recent.php:25
+msgid "Popular Tags"
+msgstr "Populære mærkater"
+
+#: ..\..\..\profile.php:54
+#: ..\..\..\watched.php:114
+msgid "Username was not specified"
+msgstr "Brugernavn var ikke specificerede"
+
+#: ..\..\..\profile.php:60
+msgid "My Profile"
+msgstr "Min profil"
+
+#: ..\..\..\profile.php:62
+#: ..\..\..\templates\sidebar.block.profile.php:12
+msgid "Profile"
+msgstr "Profil"
+
+#: ..\..\..\profile.php:80
+msgid "Password and confirmation do not match."
+msgstr "Kodeord og bekræftelse matcher ikke."
+
+#: ..\..\..\profile.php:84
+msgid "Password must be at least 6 characters long."
+msgstr "Kodeordet skal mindst være på 6 karakterer."
+
+#: ..\..\..\profile.php:88
+msgid "E-mail address is not valid."
+msgstr "E-mail adressen er ikke gyldig."
+
+#: ..\..\..\profile.php:92
+msgid "An error occurred while saving your changes."
+msgstr "En fejl opstod ved forsøg på at gemme dine ændringer."
+
+#: ..\..\..\profile.php:94
+msgid "Changes saved."
+msgstr "Ændringer gemt."
+
+#: ..\..\..\register.php:33
+msgid "You <em>must</em> enter a username, password and e-mail address."
+msgstr "Du <em>skal</em> indtaste et brugernavn, kodeord og e-mail adresse."
+
+#: ..\..\..\register.php:37
+msgid "This username already exists, please make another choice."
+msgstr "Brugernavnet eksistere allerede, vælg venligst et andet."
+
+#: ..\..\..\register.php:41
+msgid "E-mail address is not valid. Please try again."
+msgstr "E-mail addressen er ikke gyldig. Prøv venligst igen."
+
+#: ..\..\..\register.php:50
+msgid "You have successfully registered. Enjoy!"
+msgstr "Du er nu succesfuldt registeret. God fornøjelse!"
+
+#: ..\..\..\register.php:52
+msgid "Registration failed. Please try again."
+msgstr "Registreringen fejlede. Prøv venligst igen."
+
+#: ..\..\..\register.php:57
+#: ..\..\..\templates\register.tpl.php:32
+#: ..\..\..\templates\toolbar.inc.php:27
+msgid "Register"
+msgstr "Registrere"
+
+#: ..\..\..\search.inc.php:29
+#: ..\..\..\search.inc.php:57
+msgid "Search"
+msgstr "Søg"
+
+#: ..\..\..\search.inc.php:35
+msgid "this user's bookmarks"
+msgstr "denne brugers bogmærker"
+
+#: ..\..\..\search.inc.php:40
+msgid "my bookmarks"
+msgstr "mine bogmærker"
+
+#: ..\..\..\search.inc.php:41
+msgid "my watchlist"
+msgstr "Min Overvågningsliste"
+
+#: ..\..\..\search.inc.php:45
+msgid "all bookmarks"
+msgstr "alle bogmærkerne"
+
+#: ..\..\..\search.inc.php:48
+msgid "for"
+msgstr "for"
+
+#: ..\..\..\search.php:91
+#: ..\..\..\search.php:128
+msgid "Search Bookmarks"
+msgstr "Søge i bogmærker"
+
+#: ..\..\..\search.php:97
+msgid "Search Results"
+msgstr "Søge resultat"
+
+#: ..\..\..\tags.php:38
+#: ..\..\..\templates\editbookmark.tpl.php:44
+#: ..\..\..\templates\sidebar.block.profile.php:13
+msgid "Tags"
+msgstr "Mærkater"
+
+#: ..\..\..\watch.php:79
+#, php-format
+msgid "%s Bookmarks"
+msgstr "%s Bogmærker"
+
+#: ..\..\..\watch.php:84
+msgid "User removed from your watchlist"
+msgstr "Bruger fjernet fra din overvågningsliste"
+
+#: ..\..\..\watch.php:86
+msgid "User added to your watchlist"
+msgstr "Bruger tilføjet til din overvågningsliste "
+
+#: ..\..\..\watched.php:105
+msgid "My Watchlist"
+msgstr "Min Overvågningsliste "
+
+#: ..\..\..\watched.php:107
+#: ..\..\..\templates\sidebar.block.profile.php:14
+#: ..\..\..\templates\toolbar.inc.php:12
+msgid "Watchlist"
+msgstr "Overvågningsliste"
+
+#: ..\..\..\templates\about.tpl.php:6
+msgid "<strong>Store</strong> all your favourite links in one place, accessible from anywhere."
+msgstr "<strong>Gem</strong> alle dine favorit links et sted, tilgængelig fra hvor som helst"
+
+#: ..\..\..\templates\about.tpl.php:7
+msgid "<strong>Share</strong> your bookmarks with everyone, with friends on your watchlist or just keep them private."
+msgstr "Del dine bogmærker med alle, med vennerne på din overvågningsliste eller behold dem private."
+
+#: ..\..\..\templates\about.tpl.php:8
+msgid "<strong>Tag</strong> your bookmarks with as many labels as you want, instead of wrestling with folders."
+msgstr "<strong>Marker</strong> dine bogmærker med så mange mærkater som du ønsker, i stedet for at kæmpe med mapper."
+
+#: ..\..\..\templates\about.tpl.php:9
+#, php-format
+msgid "<strong><a href=\"register.php\">Register now</a></strong> to start using %s!"
+msgstr "<strong><a href=\"register.php\">Register nu</a></strong> for at starte med at bruge %s!"
+
+#: ..\..\..\templates\about.tpl.php:12
+msgid "Geek Stuff"
+msgstr "Nørd Ting"
+
+#: ..\..\..\templates\about.tpl.php:14
+#, php-format
+msgid "%s is based on <a href=\"http://sourceforge.net/projects/scuttle/\">an open-source project</a> licensed under the <a href=\"http://www.gnu.org/copyleft/gpl.html\"><acronym title=\"GNU's Not Unix\">GNU</acronym> General Public License</a>. This means you can host it on your own web server for free, whether it is on the Internet, a private network or just your own computer."
+msgstr "%s er baseret på <a href=\"http://sourceforge.net/projects/scuttle/\">et åbent-kode projekt</a> licenseret under <a href=\"http://www.gnu.org/copyleft/gpl.html\"><acronym title=\"GNU's Not Unix\">GNU</acronym> General Public License</a>. Dette betyder at du kan hoste systemet på din egen server gratis, lige meget om det er på Internet, et privat netværk eller bare på din egen computer."
+
+#: ..\..\..\templates\about.tpl.php:15
+#, php-format
+msgid "%1$s supports most of the <a href=\"http://del.icio.us/doc/api\">del.icio.us <abbr title=\"Application Programming Interface\">API</abbr></a>. Almost all of the neat tools made for that system can be modified to work with %1$s instead. If you find a tool that won't let you change the API address, ask the creator to add this setting. You never know, they might just do it."
+msgstr "%1$s understøtter de fleste <a href=\"http://del.icio.us/doc/api\">del.icio.us <abbr title=\"Forbindelsesflade imellem forskellige programmer \">API</abbr></a>. Næsten alle de værktøjer udviklet til det system kan modificeres til at fungere med %1$s i stedet for. Hvis du finder et værktøj som ikke tillader at du fortager ændringer i API adresse, kunne du jo spørge udviklerne. Man ved aldrig det kunne jo være de ville."
+
+#: ..\..\..\templates\bookmarks.tpl.php:17
+#: ..\..\..\templates\tags.tpl.php:7
+msgid "Sort by:"
+msgstr "Sortere efter:"
+
+#: ..\..\..\templates\bookmarks.tpl.php:18
+msgid "Date"
+msgstr "Dato"
+
+#: ..\..\..\templates\bookmarks.tpl.php:19
+#: ..\..\..\templates\editbookmark.tpl.php:34
+msgid "Title"
+msgstr "Titel"
+
+#: ..\..\..\templates\bookmarks.tpl.php:23
+msgid "URL"
+msgstr "URL"
+
+#: ..\..\..\templates\bookmarks.tpl.php:60
+msgid "Edit"
+msgstr "Redigere"
+
+#: ..\..\..\templates\bookmarks.tpl.php:60
+msgid "Delete"
+msgstr "Slet"
+
+#: ..\..\..\templates\bookmarks.tpl.php:66
+msgid "by"
+msgstr "af"
+
+#: ..\..\..\templates\bookmarks.tpl.php:78
+#, php-format
+msgid " and %s1 other%s"
+msgstr "og %s1 andre%s"
+
+#: ..\..\..\templates\bookmarks.tpl.php:81
+#, php-format
+msgid " and %2$s%1$s others%3$s"
+msgstr " og %2$s%1$s andre%3$s"
+
+#: ..\..\..\templates\bookmarks.tpl.php:90
+msgid "Copy"
+msgstr "Kopi"
+
+#: ..\..\..\templates\bookmarks.tpl.php:136
+#: ..\..\..\templates\bookmarks.tpl.php:142
+msgid "First"
+msgstr "Første"
+
+#: ..\..\..\templates\bookmarks.tpl.php:137
+#: ..\..\..\templates\bookmarks.tpl.php:143
+msgid "Previous"
+msgstr "Forrige"
+
+#: ..\..\..\templates\bookmarks.tpl.php:150
+#: ..\..\..\templates\bookmarks.tpl.php:153
+msgid "Next"
+msgstr "Næste"
+
+#: ..\..\..\templates\bookmarks.tpl.php:151
+#: ..\..\..\templates\bookmarks.tpl.php:154
+msgid "Last"
+msgstr "Sidste"
+
+#: ..\..\..\templates\bookmarks.tpl.php:156
+#, php-format
+msgid "Page %d of %d"
+msgstr "Side %d af %d"
+
+#: ..\..\..\templates\bookmarks.tpl.php:160
+msgid "No bookmarks available"
+msgstr "Igen bogmærker tilgængelig"
+
+#: ..\..\..\templates\dynamictags.inc.php:108
+#: ..\..\..\templates\sidebar.block.common.php:15
+#: ..\..\..\templates\sidebar.block.popular.php:21
+#: ..\..\..\templates\sidebar.block.recent.php:20
+#: ..\..\..\templates\tags.tpl.php:16
+msgid "bookmark"
+msgid_plural "bookmarks"
+msgstr[0] "bogmærke"
+msgstr[1] "bogmærker"
+
+#: ..\..\..\templates\editbookmark.tpl.php:29
+msgid "Address"
+msgstr "Adresse"
+
+#: ..\..\..\templates\editbookmark.tpl.php:31
+#: ..\..\..\templates\editbookmark.tpl.php:36
+#: ..\..\..\templates\editprofile.tpl.php:31
+msgid "Required"
+msgstr "Påkrævet"
+
+#: ..\..\..\templates\editbookmark.tpl.php:39
+#: ..\..\..\templates\editprofile.tpl.php:47
+#: ..\..\..\templates\profile.tpl.php:28
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: ..\..\..\templates\editbookmark.tpl.php:46
+msgid "Comma-separated"
+msgstr "Komma adskillelse"
+
+#: ..\..\..\templates\editbookmark.tpl.php:49
+#: ..\..\..\templates\importDelicious.tpl.php:15
+#: ..\..\..\templates\importNetscape.tpl.php:16
+msgid "Privacy"
+msgstr "Privat"
+
+#: ..\..\..\templates\editbookmark.tpl.php:52
+#: ..\..\..\templates\importDelicious.tpl.php:18
+#: ..\..\..\templates\importNetscape.tpl.php:19
+msgid "Public"
+msgstr "Offentligt"
+
+#: ..\..\..\templates\editbookmark.tpl.php:53
+#: ..\..\..\templates\importDelicious.tpl.php:19
+#: ..\..\..\templates\importNetscape.tpl.php:20
+msgid "Shared with Watch List"
+msgstr "Del med Overvågningslisten"
+
+#: ..\..\..\templates\editbookmark.tpl.php:54
+#: ..\..\..\templates\importDelicious.tpl.php:20
+#: ..\..\..\templates\importNetscape.tpl.php:21
+msgid "Private"
+msgstr "Private"
+
+#: ..\..\..\templates\editbookmark.tpl.php:66
+msgid "Delete Bookmark"
+msgstr "Slet bogmærker"
+
+#: ..\..\..\templates\editbookmark.tpl.php:93
+msgid "Bookmarklet"
+msgstr "Bogmærkelet"
+
+#: ..\..\..\templates\editbookmark.tpl.php:94
+#, php-format
+msgid "Drag one of the following bookmarklets to your browser's bookmarks and click it whenever you want to add the page you are on to %s"
+msgstr "Træk en af de følgende bogmærkeletter til din browsers bogmærker, og tryk på den hver gang du ønsker at tilføje den side du er på til %s"
+
+#: ..\..\..\templates\editbookmark.tpl.php:106
+#, php-format
+msgid "Post to %s"
+msgstr "Send til %s"
+
+#: ..\..\..\templates\editbookmark.tpl.php:107
+#, php-format
+msgid "Post to %s (Pop-up)"
+msgstr "Send til %s (Pop-up)"
+
+#: ..\..\..\templates\editbookmark.tpl.php:111
+#: ..\..\..\templates\importDelicious.tpl.php:26
+#: ..\..\..\templates\importNetscape.tpl.php:27
+msgid "Import"
+msgstr "Importere"
+
+#: ..\..\..\templates\editbookmark.tpl.php:113
+msgid "Import bookmarks from bookmark file"
+msgstr "Importere bogmærker fra bogmærke fil"
+
+#: ..\..\..\templates\editbookmark.tpl.php:113
+msgid "Internet Explorer, Mozilla Firefox and Netscape"
+msgstr "Internet Explorer, Mozilla Firefox og Netscape"
+
+#: ..\..\..\templates\editbookmark.tpl.php:114
+msgid "Import bookmarks from del.icio.us"
+msgstr "Importere bogmærker fra del.icio.us"
+
+#: ..\..\..\templates\editprofile.tpl.php:10
+msgid "Account Details"
+msgstr "Konto oplysninger"
+
+#: ..\..\..\templates\editprofile.tpl.php:14
+#: ..\..\..\templates\login.tpl.php:15
+#: ..\..\..\templates\password.tpl.php:10
+#: ..\..\..\templates\profile.tpl.php:7
+#: ..\..\..\templates\register.tpl.php:16
+msgid "Username"
+msgstr "Brugernavn"
+
+#: ..\..\..\templates\editprofile.tpl.php:19
+msgid "New Password"
+msgstr "Nyt kodeord"
+
+#: ..\..\..\templates\editprofile.tpl.php:24
+msgid "Confirm Password"
+msgstr "bekræft kodeord"
+
+#: ..\..\..\templates\editprofile.tpl.php:29
+#: ..\..\..\templates\register.tpl.php:26
+msgid "E-mail"
+msgstr "E-mail"
+
+#: ..\..\..\templates\editprofile.tpl.php:35
+msgid "Personal Details"
+msgstr "Personlige detaljer"
+
+#: ..\..\..\templates\editprofile.tpl.php:39
+#: ..\..\..\templates\profile.tpl.php:12
+msgid "Name"
+msgstr "Navn"
+
+#: ..\..\..\templates\editprofile.tpl.php:43
+#: ..\..\..\templates\profile.tpl.php:18
+msgid "Homepage"
+msgstr "Hjemmeside"
+
+#: ..\..\..\templates\error.404.tpl.php:5
+msgid "Not Found"
+msgstr "Ikke fundet"
+
+#: ..\..\..\templates\error.404.tpl.php:6
+msgid "The requested URL was not found on this server"
+msgstr "Den forespurgte adresse kunne ikke findes på denne server"
+
+#: ..\..\..\templates\error.500.tpl.php:5
+msgid "General server error"
+msgstr "General server fejl"
+
+#: ..\..\..\templates\error.500.tpl.php:6
+msgid "The requested URL could not be processed"
+msgstr "Den forespurgte adresse kunne ikke afvikles"
+
+#: ..\..\..\templates\importDelicious.tpl.php:33
+msgid "Log in to the <a href=\"http://del.icio.us/api/posts/all\">export page at del.icio.us</a>"
+msgstr "Log ind på <a href=\"http://del.icio.us/api/posts/all\">del.icio.us' eksport side</a>"
+
+#: ..\..\..\templates\importDelicious.tpl.php:34
+msgid "Save the resulting <abbr title=\"Extensible Markup Language\">XML</abbr> file to your computer"
+msgstr "Gem <abbr title=\"Extensible Markup Language\">XML</abbr> fillen på din computer"
+
+#: ..\..\..\templates\importDelicious.tpl.php:35
+msgid "Click <kbd>Browse...</kbd> to find this file on your computer. The maximum size the file can be is 1MB"
+msgstr "Tryk <kbd>Gennemse...</kbd> for at finde denne fil på din computer. Filstørrelsen må maksimum være på 1MB"
+
+#: ..\..\..\templates\importDelicious.tpl.php:36
+#: ..\..\..\templates\importNetscape.tpl.php:43
+msgid "Select the default privacy setting for your imported bookmarks"
+msgstr "Vælg den ønskede standart privatindstilling for dine importerede bogmærker"
+
+#: ..\..\..\templates\importDelicious.tpl.php:37
+#: ..\..\..\templates\importNetscape.tpl.php:44
+msgid "Click <kbd>Import</kbd> to start importing the bookmarks; it may take a minute"
+msgstr "Tryk Import for at starte med at importere dine bogmærker; dette kan tage et par minutter."
+
+#: ..\..\..\templates\importNetscape.tpl.php:32
+msgid "Instructions"
+msgstr "Instruktioner"
+
+#: ..\..\..\templates\importNetscape.tpl.php:35
+msgid "Export your bookmarks from your browser to a file"
+msgstr "Eksportere dine bogmærker fra din browser til en fil"
+
+#: ..\..\..\templates\importNetscape.tpl.php:37
+msgid "Internet Explorer: <kbd>File &gt; Import and Export... &gt; Export Favorites"
+msgstr "Internet Explorer: <kbd>Filer &gt; Importer og eksporter... &gt; Eksporter foretrukne emner"
+
+#: ..\..\..\templates\importNetscape.tpl.php:38
+msgid "Mozilla Firefox: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; File &gt; Export..."
+msgstr "Mozilla Firefox: <kbd>Bogmærker &gt; Arranger bogmærker... &gt; Filer &gt; Eksporter..."
+
+#: ..\..\..\templates\importNetscape.tpl.php:39
+msgid "Netscape: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; Tools &gt; Export..."
+msgstr "Netscape: <kbd>Bogmærker &gt; Arranger bogmærker... &gt; Værktøjer &gt; Eksporter..."
+
+#: ..\..\..\templates\importNetscape.tpl.php:42
+msgid "Click <kbd>Browse...</kbd> to find the saved bookmark file on your computer. The maximum size the file can be is 1MB"
+msgstr "Tryk <kbd>Gennemse...</kbd> for at finde den gemte bogmærke fil på din computer. Filstørrelsen må maksimum være på 1MB"
+
+#: ..\..\..\templates\login.tpl.php:20
+#: ..\..\..\templates\register.tpl.php:21
+msgid "Password"
+msgstr "Kodeord"
+
+#: ..\..\..\templates\login.tpl.php:22
+msgid "Don't ask for my password for 2 weeks"
+msgstr "Søg ikke efter mit kodeord i 2 uger"
+
+#: ..\..\..\templates\login.tpl.php:30
+msgid "Forgotten your password?"
+msgstr "Glemt dit kodeord?"
+
+#: ..\..\..\templates\password.tpl.php:5
+#, php-format
+msgid "If you have forgotten your password, %s can generate a new one. Enter the username and e-mail address of your account into the form below and we will e-mail your new password to you."
+msgstr "Hvis du har glemte dit kodeord, kan %s generere et nyt et. Skriv brugernavnet og e-mail adressen på din konto i formularen nedenfor og vi vil sende dit nye kodeord til dig via e-mail."
+
+#: ..\..\..\templates\password.tpl.php:14
+msgid "<abbr title=\"Electronic mail\">E-mail</abbr>"
+msgstr "<abbr title=\"Elektronisk post\">E-mail</abbr>"
+
+#: ..\..\..\templates\password.tpl.php:19
+msgid "Generate Password"
+msgstr "Generere kodeord"
+
+#: ..\..\..\templates\profile.tpl.php:23
+msgid "Member Since"
+msgstr "Medlem siden"
+
+#: ..\..\..\templates\profile.tpl.php:35
+#: ..\..\..\templates\sidebar.block.watchlist.php:8
+msgid "Watching"
+msgstr "Overvåger"
+
+#: ..\..\..\templates\profile.tpl.php:50
+msgid "Watched By"
+msgstr "Overvågede af"
+
+#: ..\..\..\templates\register.tpl.php:11
+#, php-format
+msgid "Sign up here to create a free %s account. All the information requested below is required"
+msgstr "Tilmeld dig her for at oprette en gratis %s konto. Alle forspurgte informationerne neden for er påkrævet."
+
+#: ..\..\..\templates\rss.tpl.php:9
+#, php-format
+msgid "Recent bookmarks posted to %s"
+msgstr "Seneste bogmærker sendt til %s"
+
+#: ..\..\..\templates\rss.tpl.php:17
+#: ..\..\..\templates\rss.tpl.php:19
+msgid "No bookmarks found"
+msgstr "Igen bogmærker fundet"
+
+#: ..\..\..\templates\sidebar.block.recent.php:15
+msgid "Recent Tags"
+msgstr "Nylig mærker"
+
+#: ..\..\..\templates\sidebar.block.related.php:15
+msgid "Related Tags"
+msgstr "Lignede mærker"
+
+#: ..\..\..\templates\sidebar.block.watchstatus.php:10
+msgid "Remove from Watchlist"
+msgstr "Fjern fra Overvågningslisten"
+
+#: ..\..\..\templates\sidebar.block.watchstatus.php:12
+msgid "Add to Watchlist"
+msgstr "Tilføj til Overvågningslisten"
+
+#: ..\..\..\templates\sidebar.block.watchstatus.php:17
+msgid "Actions"
+msgstr "Aktion"
+
+#: ..\..\..\templates\tags.tpl.php:8
+msgid "Alphabet"
+msgstr "Alfabet"
+
+#: ..\..\..\templates\tags.tpl.php:9
+msgid "Popularity"
+msgstr "Popularitet"
+
+#: ..\..\..\templates\toolbar.inc.php:11
+msgid "Bookmarks"
+msgstr "Bogmærker"
+
+#: ..\..\..\templates\toolbar.inc.php:16
+msgid "Log Out"
+msgstr "Log ud"
+

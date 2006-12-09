@@ -1,0 +1,812 @@
+# Scuttle hi-IN Translation
+# Copyright (C) 2005 - 2006 Scuttle project
+# This file is distributed under the same license as the Scuttle package.
+# Debashish Chakrabarty <debashish @ gmail.com>
+# Ravishankar Shrivastava <raviratlami@yahoo.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Scuttle\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-04-29 11:17+0200\n"
+"PO-Revision-Date: 2006-04-16 21:56-0800\n"
+"Last-Translator: Marcus Campbell <marcus.campbell@gmail.com>\n"
+"Language-Team: hi-IN Debashish Chakrabarty <debashish @ gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Hindi\n"
+"X-Poedit-Country: India\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ..\..\..\about.php:25
+#: ..\..\..\templates\toolbar.inc.php:24
+msgid "About"
+msgstr "के बारे में"
+
+#: ..\..\..\ajaxDelete.php:29
+msgid "You are not allowed to delete this bookmark"
+msgstr "आपको इस पृष्ठ-स्मृति को मिटाने की अनुमति नहीं है."
+
+#: ..\..\..\ajaxDelete.php:33
+msgid "Failed to delete bookmark"
+msgstr "पृष्ठ-स्मृति मिटाने में असफल"
+
+#: ..\..\..\alltags.php:50
+msgid "All Tags"
+msgstr "सभी टैग"
+
+#: ..\..\..\alltags.php:59
+#: ..\..\..\populartags.php:63
+#: ..\..\..\profile.php:46
+#: ..\..\..\rss.php:55
+#: ..\..\..\search.php:61
+#: ..\..\..\watch.php:35
+#: ..\..\..\watched.php:62
+#, php-format
+msgid "User with username %s not was not found"
+msgstr "%s नाम का कोई भी उपयोक्ता नहीं मिला"
+
+#: ..\..\..\bookmarks.php:71
+#, fuzzy, php-format
+msgid "User with username %s was not found"
+msgstr "%s नाम का कोई भी उपयोक्ता नहीं मिला"
+
+#: ..\..\..\bookmarks.php:94
+#: ..\..\..\edit.php:44
+msgid "Your bookmark must have a title and an address"
+msgstr "आपकी पृष्ठ-स्मृति के लिए एक शीर्षक तथा एक पता होना आवश्यक है"
+
+#: ..\..\..\bookmarks.php:114
+#: ..\..\..\edit.php:58
+msgid "Bookmark saved"
+msgstr "पृष्ठ-स्मृति सहेजी गई"
+
+#: ..\..\..\bookmarks.php:122
+#: ..\..\..\import.php:99
+#: ..\..\..\importNetscape.php:74
+msgid "There was an error saving your bookmark. Please try again or contact the administrator."
+msgstr "आपकी पृष्ठ-स्मृति को सहेजने के दौरान एक त्रुटि हुई. कृपया फिर से कोशिश करें या प्रशासक से सम्पर्क साधें."
+
+#: ..\..\..\bookmarks.php:160
+#: ..\..\..\templates\toolbar.inc.php:13
+msgid "Add a Bookmark"
+msgstr "एक पृष्ठ-स्मृति जोड़ें"
+
+#: ..\..\..\bookmarks.php:163
+msgid "Add Bookmark"
+msgstr "पृष्ठ-स्मृति जोड़ें"
+
+#: ..\..\..\bookmarks.php:166
+msgid "You must be logged in before you can add bookmarks."
+msgstr "पृष्ठ-स्मृति जोड़ने से पहले आपका लॉगइन होना आवश्यक है."
+
+#: ..\..\..\bookmarks.php:213
+msgid "My Bookmarks"
+msgstr "मेरी पृष्ठ-स्मृतियाँ"
+
+#: ..\..\..\edit.php:29
+msgid "Edit Bookmark"
+msgstr "पृष्ठ-स्मृति संपादन"
+
+#: ..\..\..\edit.php:34
+#, php-format
+msgid "Bookmark with id %s not was not found"
+msgstr "पहचान चिह्न %s युक्त पृष्ठ-स्मृति नहीं मिला"
+
+#: ..\..\..\edit.php:39
+msgid "You are not allowed to edit this bookmark"
+msgstr "आप इस पृष्ठ-स्मृति को संपादित नही कर सकते"
+
+#: ..\..\..\edit.php:55
+msgid "Error while saving your bookmark"
+msgstr "पृष्ठ-स्मृति सहेजने के दौरान त्रुटि हुई"
+
+#: ..\..\..\edit.php:78
+msgid "Failed to delete the bookmark"
+msgstr "पृष्ठ-स्मृति मिटाने में असफल"
+
+#: ..\..\..\edit.php:88
+#: ..\..\..\templates\editprofile.tpl.php:52
+msgid "Save Changes"
+msgstr "परिवर्तन सहेजें"
+
+#: ..\..\..\functions.inc.php:92
+msgid "message_die() was called multiple times."
+msgstr "message_die() को कई मर्तबा काल किया गया."
+
+#: ..\..\..\functions.inc.php:104
+msgid "SQL Error"
+msgstr "एसक्यूएल त्रुटि"
+
+#: ..\..\..\functions.inc.php:110
+msgid "Line"
+msgstr "पंक्ति"
+
+#: ..\..\..\functions.inc.php:110
+#: ..\..\..\templates\importDelicious.tpl.php:8
+#: ..\..\..\templates\importNetscape.tpl.php:9
+msgid "File"
+msgstr "फ़ाइल"
+
+#: ..\..\..\functions.inc.php:116
+msgid "Information"
+msgstr "जानकारी"
+
+#: ..\..\..\functions.inc.php:121
+msgid "Critical Information"
+msgstr "जरूरी जानकारी"
+
+#: ..\..\..\functions.inc.php:126
+msgid "An error occured"
+msgstr "एक त्रुटि हुई"
+
+#: ..\..\..\functions.inc.php:129
+msgid "General Error"
+msgstr "सामान्य त्रुटि"
+
+#: ..\..\..\functions.inc.php:137
+msgid "An critical error occured"
+msgstr "एक गंभीर त्रुटि हुई"
+
+#: ..\..\..\functions.inc.php:140
+msgid "Critical Error"
+msgstr "गंभीर त्रुटि"
+
+#: ..\..\..\functions.inc.php:149
+msgid "DEBUG MODE"
+msgstr "डिबग मोड"
+
+#: ..\..\..\history.php:65
+msgid "History"
+msgstr "इतिहास"
+
+#: ..\..\..\history.php:66
+#, php-format
+msgid "History for %s"
+msgstr "%s का इतिहास"
+
+#: ..\..\..\history.php:81
+msgid "Address was not found"
+msgstr "पता नहीं मिला"
+
+#: ..\..\..\import.php:41
+msgid "Could not open XML input"
+msgstr "एक्सएमएल इनपुट खोल नहीं सकता"
+
+#: ..\..\..\import.php:45
+#, php-format
+msgid "XML error: %s at line %d"
+msgstr "एक्सएमएल त्रुटि: %s में पंक्ति %d पर"
+
+#: ..\..\..\import.php:54
+msgid "Import Bookmarks from del.icio.us"
+msgstr "del.icio.us से पृष्ठ-स्मृति आयात करें"
+
+#: ..\..\..\import.php:86
+#: ..\..\..\importNetscape.php:64
+msgid "You have already submitted this bookmark."
+msgstr "आप इस पृष्ठ-स्मृति को पहले ही पेश कर चुके हैं"
+
+#: ..\..\..\import.php:97
+#: ..\..\..\importNetscape.php:72
+msgid "Bookmark imported."
+msgstr "पृष्ठ-स्मृति आयातित."
+
+#: ..\..\..\importNetscape.php:81
+msgid "Import Bookmarks from Browser File"
+msgstr "ब्राउज़र फ़ाइल से पृष्ठ-स्मृति को आयात करें"
+
+#: ..\..\..\index.php:32
+msgid "You have now logged out"
+msgstr "अब आप लॉग आउट हैं"
+
+#: ..\..\..\index.php:39
+#, php-format
+msgid "%s: Recent bookmarks"
+msgstr "%s: हालिया पृष्ठ-स्मृति"
+
+#: ..\..\..\index.php:72
+msgid "Store, share and tag your favourite links"
+msgstr "अपनी मनपसंद पृष्ठ-स्मृतियाँ सहेजें, साझा करें और टैग करें"
+
+#: ..\..\..\index.php:73
+msgid "Recent Bookmarks"
+msgstr "हालिया पृष्ठ-स्मृतियाँ"
+
+#: ..\..\..\jsScuttle.php:22
+msgid "Are you sure?"
+msgstr "पक्की बात ना?"
+
+#: ..\..\..\jsScuttle.php:22
+msgid "Yes"
+msgstr "हाँ"
+
+#: ..\..\..\jsScuttle.php:22
+msgid "No"
+msgstr "नहीं"
+
+#: ..\..\..\jsScuttle.php:68
+msgid "Available"
+msgstr "उपलब्ध"
+
+#: ..\..\..\jsScuttle.php:71
+msgid "Not Available"
+msgstr "उपलब्ध नहीं"
+
+#: ..\..\..\login.php:38
+msgid "The details you have entered are incorrect. Please try again."
+msgstr "आपने जो विवरण भरे हैं वे गलत हैं. कृपया पुनः प्रयास करें."
+
+#: ..\..\..\login.php:48
+#: ..\..\..\templates\login.tpl.php:26
+#: ..\..\..\templates\toolbar.inc.php:28
+msgid "Log In"
+msgstr "लॉग इन"
+
+#: ..\..\..\password.php:31
+msgid "You must enter your username."
+msgstr "आपका उपयोक्ता नाम प्रविष्ट करना ज़रूरी है."
+
+#: ..\..\..\password.php:35
+msgid "You must enter your <abbr title=\"electronic mail\">e-mail</abbr> address."
+msgstr "<abbr title=\"electronic mail\">ईमेल</abbr> पता भरना आवश्यक है."
+
+#: ..\..\..\password.php:42
+msgid "No matches found for that username."
+msgstr "इस से मेल खाता कोई उपयोक्ता नाम नहीं मिला."
+
+#: ..\..\..\password.php:45
+msgid "No matches found for that combination of username and <abbr title=\"electronic mail\">e-mail</abbr> address."
+msgstr "इस उपयोक्ता तथा <abbr title=\"electronic mail\">ईमेल</abbr> पते से मेल खाता कोई जोड़ नहीं मिला."
+
+#: ..\..\..\password.php:53
+msgid "There was an error while generating your new password. Please try again."
+msgstr "आपका नया कूटशब्द बनाने समय कोई त्रुटि हुई है। कृपया पुनः प्रयास करें।"
+
+#: ..\..\..\password.php:57
+msgid "Your new password is:"
+msgstr "आपका नया कूटशब्द हैः"
+
+#: ..\..\..\password.php:57
+msgid "To keep your bookmarks secure, you should change this password in your profile the next time you log in."
+msgstr "अपनी पृष्ठ-स्मृतियाँ सुरक्षित रखने के लिये, जब आप अगली बार लॉगिन करें तो अपने प्रोफाईल में जाकर अपना कूटशब्द अवश्य बदल लें."
+
+#: ..\..\..\password.php:60
+#, php-format
+msgid "%s Account Information"
+msgstr "%s खाते की जानकारी"
+
+#: ..\..\..\password.php:62
+#, php-format
+msgid "New password generated and sent to %s"
+msgstr "नया कूटशब्द बना कर %s को भेज दिया गया है."
+
+#: ..\..\..\password.php:69
+msgid "Forgotten Password"
+msgstr "भूला कूटशब्द"
+
+#: ..\..\..\populartags.php:54
+#: ..\..\..\templates\dynamictags.inc.php:101
+#: ..\..\..\templates\sidebar.block.common.php:9
+#: ..\..\..\templates\sidebar.block.popular.php:15
+#: ..\..\..\templates\sidebar.block.recent.php:25
+msgid "Popular Tags"
+msgstr "लोकप्रिय टैग"
+
+#: ..\..\..\profile.php:54
+#: ..\..\..\watched.php:114
+msgid "Username was not specified"
+msgstr "उपयोक्ता नाम निर्दिष्ट नहीं है"
+
+#: ..\..\..\profile.php:60
+msgid "My Profile"
+msgstr "मेरा प्रोफ़ाइल"
+
+#: ..\..\..\profile.php:62
+#: ..\..\..\templates\sidebar.block.profile.php:12
+msgid "Profile"
+msgstr "प्रोफ़ाइल"
+
+#: ..\..\..\profile.php:80
+msgid "Password and confirmation do not match."
+msgstr "कूटशब्द तथा उसका पुष्टिकरण मेल नहीं खाते"
+
+#: ..\..\..\profile.php:84
+msgid "Password must be at least 6 characters long."
+msgstr "कूटशब्द को कम से कम 6 अक्षर लंबा होना चाहिए"
+
+#: ..\..\..\profile.php:88
+msgid "E-mail address is not valid."
+msgstr "ईमेल पता वैध नहीं है."
+
+#: ..\..\..\profile.php:92
+msgid "An error occurred while saving your changes."
+msgstr "आपके द्वारा किए गए परिवर्तनों को सहेजने के दौरान त्रुटि हुई."
+
+#: ..\..\..\profile.php:94
+msgid "Changes saved."
+msgstr "परिवर्तनों को सहेजा गया."
+
+#: ..\..\..\register.php:33
+msgid "You <em>must</em> enter a username, password and e-mail address."
+msgstr "आपको उपयोक्ता नाम, कूटशब्द तथा <abbr title=\"electronic mail\">ईमेल</abbr> पता भरना <em>आवश्यक</em> है"
+
+#: ..\..\..\register.php:37
+msgid "This username already exists, please make another choice."
+msgstr "यह उपयोक्ता नाम पहले ही मौजूद है, कृपया कोई दूसरा चुनें."
+
+#: ..\..\..\register.php:41
+msgid "E-mail address is not valid. Please try again."
+msgstr "<abbr title=\"electronic mail\">ईमेल</abbr> पता वैध नहीं है."
+
+#: ..\..\..\register.php:50
+msgid "You have successfully registered. Enjoy!"
+msgstr "आप सफलता पूर्वक पंजीकृत हो गए हैं. बधाई!"
+
+#: ..\..\..\register.php:52
+msgid "Registration failed. Please try again."
+msgstr "पंजीकरण असफल. कृपया फिर से कोशिश करें."
+
+#: ..\..\..\register.php:57
+#: ..\..\..\templates\register.tpl.php:32
+#: ..\..\..\templates\toolbar.inc.php:27
+msgid "Register"
+msgstr "पंजीकरण"
+
+#: ..\..\..\search.inc.php:29
+#: ..\..\..\search.inc.php:57
+msgid "Search"
+msgstr "ढूंढें"
+
+#: ..\..\..\search.inc.php:35
+msgid "this user's bookmarks"
+msgstr "इस उपयोक्ता की पृष्ठ-स्मृतियाँ"
+
+#: ..\..\..\search.inc.php:40
+msgid "my bookmarks"
+msgstr "मेरी पृष्ठ-स्मृतियाँ"
+
+#: ..\..\..\search.inc.php:41
+msgid "my watchlist"
+msgstr "मेरी निगरानी सूची"
+
+#: ..\..\..\search.inc.php:45
+msgid "all bookmarks"
+msgstr "सभी पृष्ठ-स्मृतियाँ"
+
+#: ..\..\..\search.inc.php:48
+msgid "for"
+msgstr "के लिए"
+
+#: ..\..\..\search.php:91
+#: ..\..\..\search.php:128
+msgid "Search Bookmarks"
+msgstr "पृष्ठ-स्मृतियाँ ढूंढें"
+
+#: ..\..\..\search.php:97
+msgid "Search Results"
+msgstr "खोज परिणाम"
+
+#: ..\..\..\tags.php:38
+#: ..\..\..\templates\editbookmark.tpl.php:44
+#: ..\..\..\templates\sidebar.block.profile.php:13
+msgid "Tags"
+msgstr "टैग"
+
+#: ..\..\..\watch.php:79
+#, php-format
+msgid "%s Bookmarks"
+msgstr "%s पृष्ठ-स्मृतियाँ"
+
+#: ..\..\..\watch.php:84
+msgid "User removed from your watchlist"
+msgstr "आपकी निगरानी सूची से उपयोक्ता को मिटाया गया"
+
+#: ..\..\..\watch.php:86
+msgid "User added to your watchlist"
+msgstr "उपयोक्ता को आपकी निगरानी सूची में जोड़ा"
+
+#: ..\..\..\watched.php:105
+msgid "My Watchlist"
+msgstr "मेरी निगरानी सूची"
+
+#: ..\..\..\watched.php:107
+#: ..\..\..\templates\sidebar.block.profile.php:14
+#: ..\..\..\templates\toolbar.inc.php:12
+#, fuzzy
+msgid "Watchlist"
+msgstr "निगरानी सूची"
+
+#: ..\..\..\templates\about.tpl.php:6
+msgid "<strong>Store</strong> all your favourite links in one place, accessible from anywhere."
+msgstr "अपनी पसंद की कड़ियों को कहीं से भी पहुँच योग्य बनाने के लिए  एक ही स्थल पर<strong>संचित</strong>करें."
+
+#: ..\..\..\templates\about.tpl.php:7
+msgid "<strong>Share</strong> your bookmarks with everyone, with friends on your watchlist or just keep them private."
+msgstr "अपने पृष्ठ-स्मृति कड़ियों को सबके साथ, अपने निगरानी सूची के मित्रों के साथ <strong>साझा</strong> करें या निजी इस्तेमाल करें"
+
+#: ..\..\..\templates\about.tpl.php:8
+msgid "<strong>Tag</strong> your bookmarks with as many labels as you want, instead of wrestling with folders."
+msgstr "अपनी पृष्ठ-स्मृति कड़ियों को किसी फोल्डर में ठूंसने के बजाए चाहे जितने लेबलों के साथ<strong>टैग</strong> कर सकते हैं."
+
+#: ..\..\..\templates\about.tpl.php:9
+#, php-format
+msgid "<strong><a href=\"register.php\">Register now</a></strong> to start using %s!"
+msgstr "<strong><a href=\"register.php\">तुरंत पंजीकृत हों</a></strong> %s का इस्तेमाल करने के लिए!"
+
+#: ..\..\..\templates\about.tpl.php:12
+msgid "Geek Stuff"
+msgstr "विद्वानों का खजाना"
+
+#: ..\..\..\templates\about.tpl.php:14
+#, php-format
+msgid "%s is based on <a href=\"http://sourceforge.net/projects/scuttle/\">an open-source project</a> licensed under the <a href=\"http://www.gnu.org/copyleft/gpl.html\"><acronym title=\"GNU's Not Unix\">GNU</acronym> General Public License</a>. This means you can host it on your own web server for free, whether it is on the Internet, a private network or just your own computer."
+msgstr "%s एक <a href=\"http://sourceforge.net/projects/scuttle/\">मुक्त स्रोत परियोजना</a> पर आधारित है तथा इसे<a href=\"http://www.gnu.org/copyleft/gpl.html\"><acronym title=\"GNU's Not Unix\">ग्नू</acronym> जनरल पब्लिक लाइसेंस</a> के तहत जारी किया गया है. इसका अर्थ है कि आप इसे अपने स्वयं के वेब सर्वर पर चाहे इंटरनेट पर हो या निजी नेटवर्क पर या आपके व्यक्तिगत कम्प्यूटर पर, होस्ट कर सकते हैं."
+
+#: ..\..\..\templates\about.tpl.php:15
+#, php-format
+msgid "%1$s supports most of the <a href=\"http://del.icio.us/doc/api\">del.icio.us <abbr title=\"Application Programming Interface\">API</abbr></a>. Almost all of the neat tools made for that system can be modified to work with %1$s instead. If you find a tool that won't let you change the API address, ask the creator to add this setting. You never know, they might just do it."
+msgstr "%1$s में प्रायः सभी <a href=\"http://del.icio.us/doc/api\">del.icio.us <abbr title=\"Application Programming Interface\">एपीआई</abbr></a> का समर्थन मिलता है. उस तंत्र के लिए बनाए गए प्रायः सभी औजारों को %1$s के लिए कार्य करने लायक परिवर्धित किया जा सकता है. यदि आपको कोई औजार ऐसा मिलता है जो आपको एपीआई पता बदलने नहीं देता है तो उसके सृजक को इस विन्यास को जोड़ने के लिए कहें. कौन जाने वे ऐसा भी कर लें."
+
+#: ..\..\..\templates\bookmarks.tpl.php:17
+#: ..\..\..\templates\tags.tpl.php:7
+msgid "Sort by:"
+msgstr "इस आधार पर छांटें:"
+
+#: ..\..\..\templates\bookmarks.tpl.php:18
+msgid "Date"
+msgstr "तारीख़"
+
+#: ..\..\..\templates\bookmarks.tpl.php:19
+#: ..\..\..\templates\editbookmark.tpl.php:34
+msgid "Title"
+msgstr "शीर्षक"
+
+#: ..\..\..\templates\bookmarks.tpl.php:23
+msgid "URL"
+msgstr "यूआरएल"
+
+#: ..\..\..\templates\bookmarks.tpl.php:60
+msgid "Edit"
+msgstr "संपादन"
+
+#: ..\..\..\templates\bookmarks.tpl.php:60
+msgid "Delete"
+msgstr "मिटाएँ"
+
+#: ..\..\..\templates\bookmarks.tpl.php:66
+msgid "by"
+msgstr "द्वारा"
+
+#: ..\..\..\templates\bookmarks.tpl.php:78
+#, php-format
+msgid " and %s1 other%s"
+msgstr " तथा %s1 अन्य%s"
+
+#: ..\..\..\templates\bookmarks.tpl.php:81
+#, php-format
+msgid " and %2$s%1$s others%3$s"
+msgstr " तथा %2$s%1$s अन्य%3$s"
+
+#: ..\..\..\templates\bookmarks.tpl.php:90
+msgid "Copy"
+msgstr "नक़ल करें"
+
+#: ..\..\..\templates\bookmarks.tpl.php:136
+#: ..\..\..\templates\bookmarks.tpl.php:142
+msgid "First"
+msgstr "प्रथम"
+
+#: ..\..\..\templates\bookmarks.tpl.php:137
+#: ..\..\..\templates\bookmarks.tpl.php:143
+msgid "Previous"
+msgstr "पिछला"
+
+#: ..\..\..\templates\bookmarks.tpl.php:150
+#: ..\..\..\templates\bookmarks.tpl.php:153
+msgid "Next"
+msgstr "अगला"
+
+#: ..\..\..\templates\bookmarks.tpl.php:151
+#: ..\..\..\templates\bookmarks.tpl.php:154
+msgid "Last"
+msgstr "अंतिम"
+
+#: ..\..\..\templates\bookmarks.tpl.php:156
+#, php-format
+msgid "Page %d of %d"
+msgstr "%d में से पृष्ठ %d"
+
+#: ..\..\..\templates\bookmarks.tpl.php:160
+msgid "No bookmarks available"
+msgstr "कोई पृष्ठ-स्मृति उपलब्ध नहीं"
+
+#: ..\..\..\templates\dynamictags.inc.php:108
+#: ..\..\..\templates\sidebar.block.common.php:15
+#: ..\..\..\templates\sidebar.block.popular.php:21
+#: ..\..\..\templates\sidebar.block.recent.php:20
+#: ..\..\..\templates\tags.tpl.php:16
+msgid "bookmark"
+msgid_plural "bookmarks"
+msgstr[0] "पृष्ठ-स्मृति"
+msgstr[1] "पृष्ठ-स्मृतियाँ"
+
+#: ..\..\..\templates\editbookmark.tpl.php:29
+msgid "Address"
+msgstr "पता"
+
+#: ..\..\..\templates\editbookmark.tpl.php:31
+#: ..\..\..\templates\editbookmark.tpl.php:36
+#: ..\..\..\templates\editprofile.tpl.php:31
+msgid "Required"
+msgstr "आवश्यक"
+
+#: ..\..\..\templates\editbookmark.tpl.php:39
+#: ..\..\..\templates\editprofile.tpl.php:47
+#: ..\..\..\templates\profile.tpl.php:28
+msgid "Description"
+msgstr "वर्णन"
+
+#: ..\..\..\templates\editbookmark.tpl.php:46
+msgid "Comma-separated"
+msgstr "अल्पविराम से अलग की गई"
+
+#: ..\..\..\templates\editbookmark.tpl.php:49
+#: ..\..\..\templates\importDelicious.tpl.php:15
+#: ..\..\..\templates\importNetscape.tpl.php:16
+msgid "Privacy"
+msgstr "गोपनीयता"
+
+#: ..\..\..\templates\editbookmark.tpl.php:52
+#: ..\..\..\templates\importDelicious.tpl.php:18
+#: ..\..\..\templates\importNetscape.tpl.php:19
+msgid "Public"
+msgstr "सार्वजनिक"
+
+#: ..\..\..\templates\editbookmark.tpl.php:53
+#: ..\..\..\templates\importDelicious.tpl.php:19
+#: ..\..\..\templates\importNetscape.tpl.php:20
+msgid "Shared with Watch List"
+msgstr "निगरानी सूची के साथ साझा"
+
+#: ..\..\..\templates\editbookmark.tpl.php:54
+#: ..\..\..\templates\importDelicious.tpl.php:20
+#: ..\..\..\templates\importNetscape.tpl.php:21
+msgid "Private"
+msgstr "निजी"
+
+#: ..\..\..\templates\editbookmark.tpl.php:66
+msgid "Delete Bookmark"
+msgstr "पृष्ठ-स्मृति मिटाएँ"
+
+#: ..\..\..\templates\editbookmark.tpl.php:93
+msgid "Bookmarklet"
+msgstr "पृष्ठ-स्मृति चिह्नक"
+
+#: ..\..\..\templates\editbookmark.tpl.php:94
+#, php-format
+msgid "Drag one of the following bookmarklets to your browser's bookmarks and click it whenever you want to add the page you are on to %s"
+msgstr "निम्न पृष्ठ-स्मृति चिह्नकों में से किसी एक को अपने ब्राउज़र के पृष्ठ-स्मृति में खींच लाएँ व जब भी आप %s पर हों व कोई पृष्ठ जोड़ना चाहेँ तो उस पर क्लिक करें"
+
+#: ..\..\..\templates\editbookmark.tpl.php:106
+#, php-format
+msgid "Post to %s"
+msgstr "%s को पोस्ट करें"
+
+#: ..\..\..\templates\editbookmark.tpl.php:107
+#, php-format
+msgid "Post to %s (Pop-up)"
+msgstr "%s को पोस्ट करें (पॉप-अप)"
+
+#: ..\..\..\templates\editbookmark.tpl.php:111
+#: ..\..\..\templates\importDelicious.tpl.php:26
+#: ..\..\..\templates\importNetscape.tpl.php:27
+msgid "Import"
+msgstr "आयात"
+
+#: ..\..\..\templates\editbookmark.tpl.php:113
+msgid "Import bookmarks from bookmark file"
+msgstr "पृष्ठ-स्मृति को पृष्ठ-स्मृति फ़ाइल से आयात करें"
+
+#: ..\..\..\templates\editbookmark.tpl.php:113
+msgid "Internet Explorer, Mozilla Firefox and Netscape"
+msgstr "इंटरनेट एक्सप्लोरर, मॉज़िल्ला फ़ॉयरफ़ॉक्स तथा नेटस्केप"
+
+#: ..\..\..\templates\editbookmark.tpl.php:114
+msgid "Import bookmarks from del.icio.us"
+msgstr "del.icio.us से पृष्ठ-स्मृति आयात करें"
+
+#: ..\..\..\templates\editprofile.tpl.php:10
+msgid "Account Details"
+msgstr "खाते की जानकारी"
+
+#: ..\..\..\templates\editprofile.tpl.php:14
+#: ..\..\..\templates\login.tpl.php:15
+#: ..\..\..\templates\password.tpl.php:10
+#: ..\..\..\templates\profile.tpl.php:7
+#: ..\..\..\templates\register.tpl.php:16
+msgid "Username"
+msgstr "उपयोक्ता नाम"
+
+#: ..\..\..\templates\editprofile.tpl.php:19
+msgid "New Password"
+msgstr "नया कूटशब्द"
+
+#: ..\..\..\templates\editprofile.tpl.php:24
+#, fuzzy
+msgid "Confirm Password"
+msgstr "नया कूटशब्द सत्यापित करें"
+
+#: ..\..\..\templates\editprofile.tpl.php:29
+#: ..\..\..\templates\register.tpl.php:26
+msgid "E-mail"
+msgstr "ईमेल"
+
+#: ..\..\..\templates\editprofile.tpl.php:35
+msgid "Personal Details"
+msgstr "व्यक्तिगत जानकारी"
+
+#: ..\..\..\templates\editprofile.tpl.php:39
+#: ..\..\..\templates\profile.tpl.php:12
+msgid "Name"
+msgstr "नाम"
+
+#: ..\..\..\templates\editprofile.tpl.php:43
+#: ..\..\..\templates\profile.tpl.php:18
+msgid "Homepage"
+msgstr "गृहपृष्ठ"
+
+#: ..\..\..\templates\error.404.tpl.php:5
+msgid "Not Found"
+msgstr "नहीं मिला"
+
+#: ..\..\..\templates\error.404.tpl.php:6
+msgid "The requested URL was not found on this server"
+msgstr "इस सर्वर पर निवेदित यूआरएल नहीं मिला"
+
+#: ..\..\..\templates\error.500.tpl.php:5
+msgid "General server error"
+msgstr "सामान्य सर्वर त्रुटि"
+
+#: ..\..\..\templates\error.500.tpl.php:6
+msgid "The requested URL could not be processed"
+msgstr "निवेदित यूआरएल को प्रोसेस नहीं किया जा सका"
+
+#: ..\..\..\templates\importDelicious.tpl.php:33
+msgid "Log in to the <a href=\"http://del.icio.us/api/posts/all\">export page at del.icio.us</a>"
+msgstr "<a href=\"http://del.icio.us/api/posts/all\">del.icio.us के निर्यात पृष्ठ पर</a> लॉगइन करें"
+
+#: ..\..\..\templates\importDelicious.tpl.php:34
+msgid "Save the resulting <abbr title=\"Extensible Markup Language\">XML</abbr> file to your computer"
+msgstr "परिणाम <abbr title=\"Extensible Markup Language\">एक्सएमएल</abbr> को अपने कम्प्यूटर पर सहेजें"
+
+#: ..\..\..\templates\importDelicious.tpl.php:35
+msgid "Click <kbd>Browse...</kbd> to find this file on your computer. The maximum size the file can be is 1MB"
+msgstr "इस फ़ाइल को अपने कम्प्यूटर पर ढूंढने के लिए <kbd>ब्राउज़...</kbd> पर क्लिक करें. फ़ाइल का अधिकतम आकार 1 मे.बा. तक हो सकता है"
+
+#: ..\..\..\templates\importDelicious.tpl.php:36
+#: ..\..\..\templates\importNetscape.tpl.php:43
+msgid "Select the default privacy setting for your imported bookmarks"
+msgstr "आपके आयातित पृष्ठ-स्मृति के डिफ़ॉल्ट गोपनीयता विन्यास चुनें"
+
+#: ..\..\..\templates\importDelicious.tpl.php:37
+#: ..\..\..\templates\importNetscape.tpl.php:44
+msgid "Click <kbd>Import</kbd> to start importing the bookmarks; it may take a minute"
+msgstr "पृष्ठ-स्मृति आयात चालू करने के लिए <kbd>आयात</kbd> पर क्लिक करें, इसमें कुछ समय लग सकता है"
+
+#: ..\..\..\templates\importNetscape.tpl.php:32
+msgid "Instructions"
+msgstr "निर्देश"
+
+#: ..\..\..\templates\importNetscape.tpl.php:35
+msgid "Export your bookmarks from your browser to a file"
+msgstr "अपने ब्राउज़र से अपने पृष्ठ-स्मृति को एक फ़ाइल में निर्यात करें"
+
+#: ..\..\..\templates\importNetscape.tpl.php:37
+msgid "Internet Explorer: <kbd>File &gt; Import and Export... &gt; Export Favorites"
+msgstr "इंटरनेट एक्सप्लोरर: <kbd>फ़ाइल &gt; आयात व निर्यात... &gt; पृष्ठ-स्मृतियाँ निर्यात करें"
+
+#: ..\..\..\templates\importNetscape.tpl.php:38
+msgid "Mozilla Firefox: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; File &gt; Export..."
+msgstr "मॉज़िल्ला फ़ॉयरफ़ॉक्स: <kbd>पृष्ठ-स्मृतियाँ &gt; पृष्ठ-स्मृति प्रबंधन... &gt; फ़ाइल &gt; निर्यात..."
+
+#: ..\..\..\templates\importNetscape.tpl.php:39
+msgid "Netscape: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; Tools &gt; Export..."
+msgstr "नेटस्केप: <kbd>पृष्ठ-स्मृतियाँ &gt; पृष्ठ-स्मृति प्रबंधन... &gt; औजार &gt; निर्यात..."
+
+#: ..\..\..\templates\importNetscape.tpl.php:42
+msgid "Click <kbd>Browse...</kbd> to find the saved bookmark file on your computer. The maximum size the file can be is 1MB"
+msgstr "अपने कम्प्यूटर में सहेजे गए पृष्ठ-स्मृति फ़ाइलों को ढूंढने के लिए <kbd>ब्राउज़...</kbd> पर क्लिक करें. फ़ाइल का अधिकतम आकार 1मे.बा. तक हो सकता है."
+
+#: ..\..\..\templates\login.tpl.php:20
+#: ..\..\..\templates\register.tpl.php:21
+msgid "Password"
+msgstr "कूटशब्द"
+
+#: ..\..\..\templates\login.tpl.php:22
+msgid "Don't ask for my password for 2 weeks"
+msgstr "कूटशब्द के लिए मुझसे 2 सप्ताह तक नहीं पूछें"
+
+#: ..\..\..\templates\login.tpl.php:30
+msgid "Forgotten your password?"
+msgstr "अपना कूटशब्द भूल गये हैं?"
+
+#: ..\..\..\templates\password.tpl.php:5
+#, php-format
+msgid "If you have forgotten your password, %s can generate a new one. Enter the username and e-mail address of your account into the form below and we will e-mail your new password to you."
+msgstr "अगर आप अपना कूटशब्द भूल गये हों तो %s आपके एक नया कूटशब्द बना सकता है। खाते से संबद्ध अपना उपयोक्ता नाम और ईमेल पता नीचे प्रविष्ट करें और हम आपको एक नया कूटशब्द ईमेल कर देंगे."
+
+#: ..\..\..\templates\password.tpl.php:14
+msgid "<abbr title=\"Electronic mail\">E-mail</abbr>"
+msgstr "<abbr title=\"इलेक्ट्रानिक मेल\">ईमेल</abbr>"
+
+#: ..\..\..\templates\password.tpl.php:19
+msgid "Generate Password"
+msgstr "नया कूटशब्द बनायें"
+
+#: ..\..\..\templates\profile.tpl.php:23
+msgid "Member Since"
+msgstr "सदस्यता अवधि"
+
+#: ..\..\..\templates\profile.tpl.php:35
+#: ..\..\..\templates\sidebar.block.watchlist.php:8
+msgid "Watching"
+msgstr "निगरानी में"
+
+#: ..\..\..\templates\profile.tpl.php:50
+msgid "Watched By"
+msgstr "द्वारा देखा गया"
+
+#: ..\..\..\templates\register.tpl.php:11
+#, php-format
+msgid "Sign up here to create a free %s account. All the information requested below is required"
+msgstr "मुफ़्त %s खाता बनाने के लिए यहाँ साइन करें. नीचे निवेदित सभी जानकारियाँ आवश्यक हैं"
+
+#: ..\..\..\templates\rss.tpl.php:9
+#, php-format
+msgid "Recent bookmarks posted to %s"
+msgstr "%s को पोस्ट की गईं हालिया पृष्ठ-स्मृतियाँ  "
+
+#: ..\..\..\templates\rss.tpl.php:17
+#: ..\..\..\templates\rss.tpl.php:19
+msgid "No bookmarks found"
+msgstr "कोई पृष्ठ-स्मृति नहीं मिली"
+
+#: ..\..\..\templates\sidebar.block.recent.php:15
+msgid "Recent Tags"
+msgstr "हालिया टैग"
+
+#: ..\..\..\templates\sidebar.block.related.php:15
+msgid "Related Tags"
+msgstr "सम्बंधित टैग"
+
+#: ..\..\..\templates\sidebar.block.watchstatus.php:10
+msgid "Remove from Watchlist"
+msgstr "निगरानी सूची से मिटाएँ"
+
+#: ..\..\..\templates\sidebar.block.watchstatus.php:12
+msgid "Add to Watchlist"
+msgstr "निगरानी सूची में जोड़ें"
+
+#: ..\..\..\templates\sidebar.block.watchstatus.php:17
+#, fuzzy
+msgid "Actions"
+msgstr "निर्देश"
+
+#: ..\..\..\templates\tags.tpl.php:8
+msgid "Alphabet"
+msgstr "वर्ण"
+
+#: ..\..\..\templates\tags.tpl.php:9
+msgid "Popularity"
+msgstr "लोकप्रियता"
+
+#: ..\..\..\templates\toolbar.inc.php:11
+msgid "Bookmarks"
+msgstr "पृष्ठ-स्मृतियाँ"
+
+#: ..\..\..\templates\toolbar.inc.php:16
+msgid "Log Out"
+msgstr "लॉग आउट"
+
