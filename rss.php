@@ -90,7 +90,7 @@ foreach(array_keys($bookmarks_tmp) as $key) {
     if ($GLOBALS['useredir']) {
         $_link = $GLOBALS['url_redir'] . $_link;
     }
-    $_pubdate = gmdate("r", strtotime($row['bDatetime']));
+    $_pubdate = date("r", strtotime($row['bDatetime']));
     // array_walk($row['tags'], 'filter');
 
     $bookmarks_tpl[] = array(

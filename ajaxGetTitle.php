@@ -40,7 +40,7 @@ function getTitle($url) {
         $encoding = strtoupper($matches[1][0]);
 
         // Convert to UTF-8 from the original encoding
-        if (function_exists('mb_convert_encoding') {
+        if (function_exists('mb_convert_encoding')) {
             $title = @mb_convert_encoding($title, 'UTF-8', $encoding);
         }
 
