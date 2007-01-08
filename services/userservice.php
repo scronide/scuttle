@@ -335,7 +335,7 @@ class UserService {
     }
 
     function isValidEmail($email) {
-        if (eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,6})$", $email)) {
+        if (eregi("^((?:(?:(?:\w[\.\-\+_]?)*)\w)+)\@((?:(?:(?:\w[\.\-_]?){0,62})\w)+)\.(\w{2,6})$", $email)) {
             list($emailUser, $emailDomain) = split("@", $email);
 
             // Check if the email domain has a DNS record
