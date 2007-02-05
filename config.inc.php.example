@@ -2,7 +2,7 @@
 ######################################################################
 # SCUTTLE: Online social bookmarks manager
 ######################################################################
-# Copyright (C) 2005 - 2006 Scuttle project
+# Copyright (C) 2005 - 2007 Scuttle project
 # http://sourceforge.net/projects/scuttle/
 # http://scuttle.org/
 #
@@ -16,21 +16,21 @@
 ######################################################################
 # Database Configuration
 #
-# dbtype:   Database driver - mysql, mysqli, mysql4, oracle, postgres,
-#                             sqlite, db2, firebird, mssql, mssq-odbc
+# dbtype:   Database driver - firebird, mssql, mssql_odbc, mysql
+#                             mysqli, oracle, postgres, sqlite
 # dbhost:   Database hostname
 # dbport:   Database port
+# dbname:   Database name
 # dbuser:   Database username
 # dbpass:   Database password
-# dbname:   Database name
 ######################################################################
 
-$dbtype = 'mysql4';
+$dbtype = 'mysql';
 $dbhost = '127.0.0.1';
 $dbport = '3306';
+$dbname = 'scuttle';
 $dbuser = 'username';
 $dbpass = 'password';
-$dbname = 'scuttle';
 
 ######################################################################
 # You have finished configuring the database!

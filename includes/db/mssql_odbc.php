@@ -2,7 +2,7 @@
 /** 
 *
 * @package dbal
-* @version $Id: oracle.php,v 1.32 2007/01/27 12:29:53 acydburn Exp $
+* @version $Id: mssql_odbc.php,v 1.26 2007/01/17 18:38:54 acydburn Exp $
 * @copyright (c) 2005 phpBB Group 
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *
@@ -11,10 +11,12 @@
 include_once('dbal.php');
 
 /**
-* Oracle Database Abstraction Layer
+* Unified ODBC functions
+* Unified ODBC functions support any database having ODBC driver, for example Adabas D, IBM DB2, iODBC, Solid, Sybase SQL Anywhere...
+* Here we only support MSSQL Server 2000+ because of the provided schema
 * @package dbal
 */
-class dbal_oracle extends dbal
+class dbal_mssql_odbc extends dbal
 {
 	var $last_query_text = '';
 
@@ -27,8 +29,8 @@ class dbal_oracle extends dbal
 		$this->user = $sqluser;
 		$this->server = $sqlserver . (($port) ? ':' . $port : '');
 		$this->dbname = $database;
-		
-		$this->db_connect_id = ($this->persistency) ? @ociplogon($this->user, $sqlpassword, $this->server, 'UTF8') : @ocinlogon($this->user, $sqlpassword, $this->server, 'UTF8');
+
+		$this->db_connect_id = ($this->persistency) ? @odbc_pconnect($this->server, $this->user, $sqlpassword) : @odbc_connect($this->server, $this->user, $sqlpassword);
 
 		return ($this->db_connect_id) ? $this->db_connect_id : $this->sql_error('');
 	}
@@ -38,7 +40,21 @@ class dbal_oracle extends dbal
 	*/
 	function sql_server_info()
 	{
-		return @ociserverversion($this->db_connect_id);
+		$result_id = @odbc_exec($this->db_connect_id, "SELECT SERVERPROPERTY('productversion'), SERVERPROPERTY('productlevel'), SERVERPROPERTY('edition')");
+
+		$row = false;
+		if ($result_id)
+		{
+			$row = @odbc_fetch_array($result_id);
+			@odbc_free_result($result_id);
+		}
+
+		if ($row)
+		{
+			return 'MSSQL (ODBC)<br />' . implode(' ', $row);
+		}
+
+		return 'MSSQL (ODBC)';
 	}
 
 	/**
@@ -50,15 +66,19 @@ class dbal_oracle extends dbal
 		switch ($status)
 		{
 			case 'begin':
-				return true;
+				return @odbc_autocommit($this->db_connect_id, false);
 			break;
 
 			case 'commit':
-				return @ocicommit($this->db_connect_id);
+				$result = @odbc_commit($this->db_connect_id);
+				@odbc_autocommit($this->db_connect_id, true);
+				return $result;
 			break;
 
 			case 'rollback':
-				return @ocirollback($this->db_connect_id);
+				$result = @odbc_rollback($this->db_connect_id);
+				@odbc_autocommit($this->db_connect_id, true);
+				return $result;
 			break;
 		}
 
@@ -92,86 +112,9 @@ class dbal_oracle extends dbal
 
 			if ($this->query_result === false)
 			{
-				$in_transaction = false;
-				if (!$this->transaction)
-				{
-					$this->sql_transaction('begin');
-				}
-				else
-				{
-					$in_transaction = true;
-				}
-
-				$array = array();
-
-				// We overcome Oracle's 4000 char limit by binding vars
-				if (preg_match('/^(INSERT INTO[^(]+)\\(([^()]+)\\) VALUES[^(]+\\(([^()]+)\\)$/', $query, $regs))
-				{
-					if (strlen($regs[3]) > 4000)
-					{
-						$cols = explode(', ', $regs[2]);
-						$vals = explode(', ', $regs[3]);
-						foreach ($vals as $key => $value)
-						{
-							if (strlen($value) > 4002) // check to see if this thing is greater than the max + 'x2
-							{
-								$vals[$key] = ':' . strtoupper($cols[$key]);
-								$array[$vals[$key]] = substr($value, 1, -1);
-							}
-						}
-						$query = $regs[1] . '(' . implode(', ', $cols) . ') VALUES (' . implode(', ', $vals) . ')';
-					}
-				}
-				else if (preg_match('/^(UPDATE.*?)SET (.*)(\\sWHERE.*)$/s', $query, $regs))
-				{
-					if (strlen($regs[2]) > 4000)
-					{
-						$args = explode(', ', $regs[2]);
-						$cols = array();
-						foreach ($args as $value)
-						{
-							$temp_array = explode('=', $value);
-							$cols[$temp_array[0]] = $temp_array[1];
-						}
-
-						foreach ($cols as $col => $val)
-						{
-							if (strlen($val) > 4003) // check to see if this thing is greater than the max + 'x2 + a space
-							{
-								$cols[$col] = ' :' . strtoupper(rtrim($col));
-								$array[ltrim($cols[$col])] = substr(trim($val), 2, -1);
-							}
-						}
-
-						$art = array();
-						foreach ($cols as $col => $val)
-						{
-							$art[] = $col . '=' . $val; 
-						}
-						$query = $regs[1] . 'SET ' . implode(', ', $art) . $regs[3];
-					}
-				}
-
-				$this->query_result = @ociparse($this->db_connect_id, $query);
-
-				foreach ($array as $key => $value)
-				{
-					@ocibindbyname($this->query_result, $key, $array[$key], -1);
-				}
-
-				$success = @ociexecute($this->query_result, OCI_DEFAULT);
-
-				if (!$success)
+				if (($this->query_result = @odbc_exec($this->db_connect_id, $query)) === false)
 				{
 					$this->sql_error($query);
-					$this->query_result = false;
-				}
-				else
-				{
-					if (!$in_transaction)
-					{
-						$this->sql_transaction('commit');
-					}
 				}
 
 				if (defined('DEBUG_EXTRA'))
@@ -207,11 +150,31 @@ class dbal_oracle extends dbal
 	*/
 	function _sql_query_limit($query, $total, $offset = 0, $cache_ttl = 0) 
 	{
-		$this->query_result = false; 
+		$this->query_result = false;
 
-		$query = 'SELECT * FROM (SELECT /*+ FIRST_ROWS */ rownum AS xrownum, a.* FROM (' . $query . ') a WHERE rownum <= ' . ($offset + $total) . ') WHERE xrownum >= ' . $offset;
+		// Since TOP is only returning a set number of rows we won't need it if total is set to 0 (return all rows)
+		if ($total)
+		{
+			// We need to grab the total number of rows + the offset number of rows to get the correct result
+			if (strpos($query, 'SELECT DISTINCT') === 0)
+			{
+				$query = 'SELECT DISTINCT TOP ' . ($total + $offset) . ' ' . substr($query, 15);
+			}
+			else
+			{
+				$query = 'SELECT TOP ' . ($total + $offset) . ' ' . substr($query, 6);
+			}
+		}
 
-		return $this->sql_query($query, $cache_ttl); 
+		$result = $this->sql_query($query, $cache_ttl);
+
+		// Seek by $offset rows
+		if ($offset)
+		{
+			$this->sql_rowseek($offset, $result);
+		}
+
+		return $result;
 	}
 
 	/**
@@ -219,7 +182,7 @@ class dbal_oracle extends dbal
 	*/
 	function sql_affectedrows()
 	{
-		return ($this->query_result) ? @ocirowcount($this->query_result) : false;
+		return ($this->db_connect_id) ? @odbc_num_rows($this->query_result) : false;
 	}
 
 	/**
@@ -239,32 +202,7 @@ class dbal_oracle extends dbal
 			return $cache->sql_fetchrow($query_id);
 		}
 
-		if ($query_id !== false)
-		{
-			$row = array();
-			$result = @ocifetchinto($query_id, $row, OCI_ASSOC + OCI_RETURN_NULLS);
-
-			if (!$result || !$row)
-			{
-				return false;
-			}
-
-			$result_row = array();
-			foreach ($row as $key => $value)
-			{
-				// OCI->CLOB?
-				if (is_object($value))
-				{
-					$value = $value->load();
-				}
-			
-				$result_row[strtolower($key)] = $value;
-			}
-
-			return $result_row;
-		}
-
-		return false;
+		return ($query_id !== false) ? @odbc_fetch_array($query_id) : false;
 	}
 
 	/**
@@ -290,8 +228,13 @@ class dbal_oracle extends dbal
 			return false;
 		}
 
-		// Reset internal pointer
-		@ociexecute($query_id, OCI_DEFAULT);
+		$this->sql_freeresult($query_id);
+		$query_id = $this->sql_query($this->last_query_text);
+
+		if ($query_id === false)
+		{
+			return false;
+		}
 
 		// We do not fetch the row for rownum == 0 because then the next resultset would be the second row
 		for ($i = 0; $i < $rownum; $i++)
@@ -310,28 +253,17 @@ class dbal_oracle extends dbal
 	*/
 	function sql_nextid()
 	{
-		$query_id = $this->query_result;
+		$result_id = @odbc_exec($this->db_connect_id, 'SELECT @@IDENTITY');
 
-		if ($query_id !== false && $this->last_query_text != '')
+		if ($result_id)
 		{
-			if (preg_match('#^INSERT[\t\n ]+INTO[\t\n ]+([a-z0-9\_\-]+)#is', $this->last_query_text, $tablename))
+			if (@odbc_fetch_array($result_id))
 			{
-				$query = 'SELECT ' . $tablename[1] . '_seq.currval FROM DUAL';
-				$stmt = @ociparse($this->db_connect_id, $query);
-				@ociexecute($stmt, OCI_DEFAULT);
-
-				$temp_result = @ocifetchinto($stmt, $temp_array, OCI_ASSOC + OCI_RETURN_NULLS);
-				@ocifreestatement($stmt);
-
-				if ($temp_result)
-				{
-					return $temp_array['CURRVAL'];
-				}
-				else
-				{
-					return false;
-				}
+				$id = @odbc_result($result_id, 1);	
+				@odbc_free_result($result_id);
+				return $id;
 			}
+			@odbc_free_result($result_id);
 		}
 
 		return false;
@@ -357,7 +289,7 @@ class dbal_oracle extends dbal
 		if (isset($this->open_queries[(int) $query_id]))
 		{
 			unset($this->open_queries[(int) $query_id]);
-			return @ocifreestatement($query_id);
+			return @odbc_free_result($query_id);
 		}
 
 		return false;
@@ -371,6 +303,10 @@ class dbal_oracle extends dbal
 		return str_replace("'", "''", $msg);
 	}
 
+	/**
+	* Build db-specific query data
+	* @access private
+	*/
 	function _sql_custom_build($stage, $data)
 	{
 		return $data;
@@ -382,20 +318,10 @@ class dbal_oracle extends dbal
 	*/
 	function _sql_error()
 	{
-		$error = @ocierror();
-		$error = (!$error) ? @ocierror($this->query_result) : $error;
-		$error = (!$error) ? @ocierror($this->db_connect_id) : $error;
-
-		if ($error)
-		{
-			$this->last_error_result = $error;
-		}
-		else
-		{
-			$error = (isset($this->last_error_result) && $this->last_error_result) ? $this->last_error_result : array();
-		}
-
-		return $error;
+		return array(
+			'message'	=> @odbc_errormsg(),
+			'code'		=> @odbc_error()
+		);
 	}
 
 	/**
@@ -404,7 +330,7 @@ class dbal_oracle extends dbal
 	*/
 	function _sql_close()
 	{
-		return @ocilogoff($this->db_connect_id);
+		return @odbc_close($this->db_connect_id);
 	}
 
 	/**
@@ -416,21 +342,48 @@ class dbal_oracle extends dbal
 		switch ($mode)
 		{
 			case 'start':
+				$explain_query = $query;
+				if (preg_match('/UPDATE ([a-z0-9_]+).*?WHERE(.*)/s', $query, $m))
+				{
+					$explain_query = 'SELECT * FROM ' . $m[1] . ' WHERE ' . $m[2];
+				}
+				else if (preg_match('/DELETE FROM ([a-z0-9_]+).*?WHERE(.*)/s', $query, $m))
+				{
+					$explain_query = 'SELECT * FROM ' . $m[1] . ' WHERE ' . $m[2];
+				}
+
+				if (preg_match('/^SELECT/', $explain_query))
+				{
+					$html_table = false;
+					@odbc_exec($this->db_connect_id, "SET SHOWPLAN_TEXT ON;");
+					if ($result = @odbc_exec($this->db_connect_id, $explain_query))
+					{
+						@odbc_next_result($result);
+						while ($row = @odbc_fetch_array($result))
+						{
+							$html_table = $this->sql_report('add_select_row', $query, $html_table, $row);
+						}
+					}
+					@odbc_exec($this->db_connect_id, "SET SHOWPLAN_TEXT OFF;");
+					@odbc_free_result($result);
+
+					if ($html_table)
+					{
+						$this->html_hold .= '</table>';
+					}
+				}
 			break;
 
 			case 'fromcache':
 				$endtime = explode(' ', microtime());
 				$endtime = $endtime[0] + $endtime[1];
 
-				$result = @ociparse($this->db_connect_id, $query);
-				$success = @ociexecute($result, OCI_DEFAULT);
-				$row = array();
-
-				while (@ocifetchinto($result, $row, OCI_ASSOC + OCI_RETURN_NULLS))
+				$result = @odbc_exec($this->db_connect_id, $query);
+				while ($void = @odbc_fetch_array($result))
 				{
 					// Take the time spent on parsing rows into account
 				}
-				@ocifreestatement($result);
+				@odbc_free_result($result);
 
 				$splittime = explode(' ', microtime());
 				$splittime = $splittime[0] + $splittime[1];

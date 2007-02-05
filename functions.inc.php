@@ -5,7 +5,7 @@ require_once(dirname(__FILE__) .'/includes/utf8.php');
 // Translation
 require_once(dirname(__FILE__) .'/includes/php-gettext/gettext.inc');
 $domain = 'messages';
-T_setlocale(LC_MESSAGES, $locale);
+T_setlocale(LC_ALL, $locale);
 T_bindtextdomain($domain, dirname(__FILE__) .'/locales');
 T_bind_textdomain_codeset($domain, 'UTF-8');
 T_textdomain($domain);

@@ -9,7 +9,7 @@ class ServiceFactory {
         static $db;
         if (!isset($db)) {
             require_once(dirname(__FILE__) .'/../includes/db/'. $dbtype .'.php');
-            $db = new sql_db();
+            $db = new $sql_db();
             $db->sql_connect($dbhost, $dbuser, $dbpass, $dbname, $dbport, $dbpersist);
             if(!$db->db_connect_id) {
                 message_die(CRITICAL_ERROR, "Could not connect to the database", $db);

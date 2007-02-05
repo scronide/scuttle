@@ -13,10 +13,6 @@ function _playerAdd(anchor) {
     anchor.parentNode.innerHTML = code +' '+ anchor.parentNode.innerHTML;
 }
 
-String.prototype.trim = function() {
-    return this.replace(/^\s+|\s+$/g, '');
-};
-
 var deleted = false;
 function deleteBookmark(ele, input){
     var confirmDelete = "<span><?php echo T_('Are you sure?') ?> <a href=\"#\" onclick=\"deleteConfirmed(this, " + input + ", \'\'); return false;\"><?php echo T_('Yes'); ?></a> - <a href=\"#\" onclick=\"deleteCancelled(this); return false;\"><?php echo T_('No'); ?></a></span>";
@@ -57,7 +53,7 @@ function isAvailable(input, response){
     var usernameField = document.getElementById("username");
     var username = usernameField.value;
     username = username.toLowerCase();
-    username = username.trim();
+    username = $.trim(username);
     var availability = document.getElementById("availability");
     if (username != '') {
         usernameField.style.backgroundImage = 'url(<?php echo $root; ?>loading.gif)';
@@ -131,11 +127,9 @@ function processStateChange() {
 }
 
 function playerLoad() {
-    var anchors = document.getElementsByTagName('a');
-    var anchors_length = anchors.length;
-    for (var i = 0; i < anchors_length; i++) {
-        if (anchors[i].className == 'taggedlink' && anchors[i].href.match(/\.mp3$/i)) {
-            _playerAdd(anchors[i]);
-        }
-    }
+   var links         = $("a.taggedlink[@href$=.mp3]");
+   var links_length  = links.length;
+   for (var i = 0; i < links_length; i++) {
+      _playerAdd(links[i]);
+   }
 }

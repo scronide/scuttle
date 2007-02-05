@@ -385,32 +385,36 @@ class BookmarkService {
         return true;
     }
 
-    function countOthers($address) {
-        if (!$address) {
-            return false;
-        }
-
-        $userservice = & ServiceFactory :: getServiceInstance('UserService');
-        $sId = $userservice->getCurrentUserId();
-
-        if ($userservice->isLoggedOn()) {
+   function countOthers($address) {
+      if (strlen($address) > 0) {
+         $userservice = & ServiceFactory :: getServiceInstance('UserService');
+         if ($userservice->isLoggedOn()) {
             // All public bookmarks, user's own bookmarks and any shared with user
-            $privacy = ' AND ((B.bStatus = 0) OR (B.uId = '. $sId .')';
+            $sId        = $userservice->getCurrentUserId();
+            $privacy    = ' AND ((b.bStatus = 0) OR (b.uId = '. $sId .')';
             $watchnames = $userservice->getWatchNames($sId, true);
             foreach($watchnames as $watchuser) {
-                $privacy .= ' OR (U.username = "'. $watchuser .'" AND B.bStatus = 1)'; 
+               $privacy .= ' OR (u.username = "'. $this->db->sql_escape($watchuser) .'" AND b.bStatus = 1)'; 
             }
             $privacy .= ')';
-        } else {
+         } else {
             // Just public bookmarks
-            $privacy = ' AND B.bStatus = 0';
-        }
+            $privacy = ' AND b.bStatus = 0';
+         }
 
-        $sql = 'SELECT COUNT(*) FROM '. $userservice->getTableName() .' AS U, '. $GLOBALS['tableprefix'] .'bookmarks AS B WHERE U.'. $userservice->getFieldName('primary') .' = B.uId AND B.bHash = "'. md5($address) .'"'. $privacy;
-        if (!($dbresult = & $this->db->sql_query($sql))) {
-            message_die(GENERAL_ERROR, 'Could not get vars', '', __LINE__, __FILE__, $sql, $this->db);
-        }
-        return $this->db->sql_fetchfield(0, 0) - 1;
-    }
+         $sql = $this->db->sql_build_query('SELECT', array(
+            'SELECT' => 'COUNT(b.bId) AS c',
+            'FROM'   => array(
+               $userservice->getTableName()           => 'u',
+               $GLOBALS['tableprefix'] .'bookmarks'   => 'b'
+            ),
+            'WHERE'  => 'u.'. $userservice->getFieldName('primary') .' = b.uId AND b.bHash = "'. md5($address) .'"'. $privacy
+         ));
+         $this->db->sql_query($sql);
+         return $this->db->sql_fetchfield('c', false) - 1;
+      } else {
+         return 0;
+      }
+   }
 }
 ?>

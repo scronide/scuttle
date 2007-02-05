@@ -15,8 +15,8 @@ CREATE TABLE `sc_bookmarks` (
   `bHash` varchar(32) NOT NULL default '',
   PRIMARY KEY  (`bId`),
   KEY `sc_bookmarks_usd` (`uId`,`bStatus`,`bDatetime`),
-  KEY `sc_bookmarks_hui` (`bHash`,`uId`,`bId`),
-  KEY `sc_bookmarks_du` (`bDatetime`,`uId`)
+  KEY `sc_bookmarks_du` (`bDatetime`,`uId`),
+  KEY `sc_bookmarks_hu` (`bHash`,`uId`)
 );
 
 -- --------------------------------------------------------
@@ -30,14 +30,14 @@ CREATE TABLE `sc_tags` (
   `bId` int(11) NOT NULL default '0',
   `tag` varchar(32) NOT NULL default '',
   PRIMARY KEY  (`id`),
-  UNIQUE KEY `sc_tags_tb` (`tag`,`bId`),
-  KEY `sc_tags_b` (`bId`)
+  KEY `sc_tags_b` (`bId`),
+  KEY `sc_tags_tb` (`tag`(5),`bId`)
 );
 
 -- --------------------------------------------------------
 
 -- 
--- Table structure for table `scUsers`
+-- Table structure for table `sc_users`
 -- 
 
 CREATE TABLE `sc_users` (
@@ -50,7 +50,11 @@ CREATE TABLE `sc_users` (
   `email` varchar(50) NOT NULL default '',
   `homepage` varchar(255) default NULL,
   `uContent` text,
-  PRIMARY KEY  (`uId`)
+  `uIp` varchar(15) default NULL,
+  `uStatus` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`uId`),
+  KEY `sc_users_ui` (`username`(10),`uId`),
+  KEY `sc_users_pi` (`uIp`(12),`uId`)
 );
 
 -- --------------------------------------------------------

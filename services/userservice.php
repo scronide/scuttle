@@ -186,50 +186,46 @@ class UserService {
         $this->getCurrentUser(TRUE, false);
     }
 
-    function getWatchlist($uId) {
-        // Gets the list of user IDs being watched by the given user.
-        $query = 'SELECT watched FROM '. $GLOBALS['tableprefix'] .'watched WHERE uId = '. intval($uId);
+   // Gets the list of user IDs being watched by the given user.
+   function getWatchlist($uId) {
+      $sql = 'SELECT watched FROM '. $GLOBALS['tableprefix'] .'watched WHERE uId = '. intval($uId);
 
-        if (! ($dbresult =& $this->db->sql_query($query)) ) {
-            message_die(GENERAL_ERROR, 'Could not get watchlist', '', __LINE__, __FILE__, $query, $this->db);
-            return false;
-        }
+      $result = $this->db->sql_query($sql);
+      $watched = array();
+      while ($row = $this->db->sql_fetchrow($result)) {
+         $watched[] = $row['watched'];
+      }
+      $this->db->sql_freeresult($result);
 
-        $arrWatch = array();
-        if ($this->db->sql_numrows($dbresult) == 0)
-            return $arrWatch;
-        while ($row =& $this->db->sql_fetchrow($dbresult))
-            $arrWatch[] = $row['watched'];
-        return $arrWatch;
-    }
+      return $watched;
+   }
 
-    function getWatchNames($uId, $watchedby = false) {
-        // Gets the list of user names being watched by the given user.
-        // - If $watchedby is false get the list of users that $uId watches
-        // - If $watchedby is true get the list of users that watch $uId
-        if ($watchedby) {
-            $table1 = 'b';
-            $table2 = 'a';
-        } else {
-            $table1 = 'a';
-            $table2 = 'b';
-        }
-        $query = 'SELECT '. $table1 .'.'. $this->getFieldName('username') .' FROM '. $GLOBALS['tableprefix'] .'watched AS W, '. $this->getTableName() .' AS a, '. $this->getTableName() .' AS b WHERE W.watched = a.'. $this->getFieldName('primary') .' AND W.uId = b.'. $this->getFieldName('primary') .' AND '. $table2 .'.'. $this->getFieldName('primary') .' = '. intval($uId) .' ORDER BY '. $table1 .'.'. $this->getFieldName('username');
+   function getWatchNames($uId, $watchedby = false) {
+      // Gets the list of user names being watched by the given user.
+      // - If $watchedby is false get the list of users that $uId watches
+      // - If $watchedby is true get the list of users that watch $uId
+      if ($watchedby) {
+         $table1 = 'b';
+         $table2 = 'a';
+      } else {
+         $table1 = 'a';
+         $table2 = 'b';
+      }
 
-        if (!($dbresult =& $this->db->sql_query($query))) {
-            message_die(GENERAL_ERROR, 'Could not get watchlist', '', __LINE__, __FILE__, $query, $this->db);
-            return false;
-        }
+      $sql = 'SELECT ' . $table1 .'.'. $this->getFieldName('username') .
+         ' FROM ' . $this->getTableName() .' AS a, '. $this->getTableName() .' AS b, '. $GLOBALS['tableprefix'] .'watched AS w' .
+         ' WHERE w.watched = a.'. $this->getFieldName('primary') .' AND w.uId = b.'. $this->getFieldName('primary') .' AND '. $table2 .'.'. $this->getFieldName('primary') .' = '. intval($uId) .
+         ' ORDER BY ' . $table1 .'.'. $this->getFieldName('username');
 
-        $arrWatch = array();
-        if ($this->db->sql_numrows($dbresult) == 0) {
-            return $arrWatch;
-        }
-        while ($row =& $this->db->sql_fetchrow($dbresult)) {
-            $arrWatch[] = $row[$this->getFieldName('username')];
-        }
-        return $arrWatch;
-    }
+      $result = $this->db->sql_query($sql);
+      $usernames = array();
+      while ($row = $this->db->sql_fetchrow($result)) {
+         $usernames[] = $row['username'];
+      }
+      $this->db->sql_freeresult($result);
+
+      return $usernames;
+   }
 
     function getWatchStatus($watcheduser, $currentuser) {
         // Returns true if the current user is watching the given user, and false otherwise.
@@ -292,7 +288,7 @@ class UserService {
             else
                 $ip = getenv('HTTP_X_FORWARDED_FOR');
                 
-        $values = array(
+      $values = array(
 			'username' => $username,
 			'password' => $password,
 			'email' => $email,
@@ -365,7 +361,8 @@ class UserService {
     }
 
     function isValidEmail($email) {
-        if (eregi("^((?:(?:(?:\w[\.\-\+_]?)*)\w)+)\@((?:(?:(?:\w[\.\-_]?){0,62})\w)+)\.(\w{2,6})$", $email)) {
+		$pattern = '/^((?:(?:(?:\w[\.\-\+_]?)*)\w)+)\@((?:(?:(?:\w[\.\-_]?){0,62})\w)+)\.(\w{2,6})$/i';
+        if (preg_match($pattern, $email)) {
             list($emailUser, $emailDomain) = split("@", $email);
 
             // Check if the email domain has a DNS record
