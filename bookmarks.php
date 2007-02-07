@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
+Copyright (C) 2004 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -88,44 +88,58 @@ $pagetitle = substr($pagetitle, 2);
 $tplVars['loadjs'] = true;
 
 // ADD A BOOKMARK
-$saved = false;
-$templatename = 'bookmarks.tpl';
+$saved         = false;
+$templatename  = 'bookmarks.tpl';
 if ($loggedon && isset($_POST['submitted'])) {
-    if (!$_POST['title'] || !$_POST['address']) {
-        $tplVars['error'] = T_('Your bookmark must have a title and an address');
-        $templatename = 'editbookmark.tpl';
-    } else {
-        $address = trim($_POST['address']);
-        // If the bookmark exists already, edit the original
-        if ($bookmarkservice->bookmarkExists($address, $currentUserID)) {
-            $bookmark =& $bookmarkservice->getBookmarkByAddress($address);
-            header('Location: '. createURL('edit', $bookmark['bId']));
-            exit();
-        // If it's new, save it
-        } else {
-            $title = trim($_POST['title']);
-            $description = trim($_POST['description']);
-            $status = intval($_POST['status']);
-            $categories = trim($_POST['tags']);
-            $saved = true;
-            if ($bookmarkservice->addBookmark($address, $title, $description, $status, $categories)) {
-                if (isset($_POST['popup'])) {
-                    $tplVars['msg'] = '<script type="text/javascript">window.close();</script>';
-                } else {
-                    $tplVars['msg'] = T_('Bookmark saved');
-                    // Redirection option
-                    if ($GLOBALS['useredir']) {
-                        $address = $GLOBALS['url_redir'] . $address;
-                    }
-                    header('Location: '. $address);
-                }
-            } else {
-                $tplVars['error'] = T_('There was an error saving your bookmark. Please try again or contact the administrator.');
-                $templatename = 'editbookmark.tpl';
-                $saved = false;
-            }
-        }
-    }
+   if (!$_POST['title'] || !$_POST['address']) {
+      $tplVars['error'] = T_('Your bookmark must have a title and an address');
+      $templatename = 'editbookmark.tpl';
+   } else {
+      $address = trim($_POST['address']);
+
+      // Don't add if URL matches blacklist
+      if ($bookmarkservice->isBlockedUrl($address)) {
+         // Block user
+         $userservice->setStatus(2);
+         // Set all bookmarks to private
+         $updates = array('bStatus' => 2);
+         $bookmarkservice->setAll($updates);
+         // Log out
+         $userservice->logout($path);
+         header('Location: '. createURL('index'));
+         exit();
+
+      // If the bookmark exists already, edit the original
+      } elseif ($bookmarkservice->bookmarkExists($address, $currentUserID)) {
+         $bookmark =& $bookmarkservice->getBookmarkByAddress($address);
+         header('Location: '. createURL('edit', $bookmark['bId']));
+         exit();
+
+      // If it's new, save it
+      } else {
+         $title = trim($_POST['title']);
+         $description = trim($_POST['description']);
+         $status = intval($_POST['status']);
+         $categories = trim($_POST['tags']);
+         $saved = true;
+         if ($bookmarkservice->addBookmark($address, $title, $description, $status, $categories)) {
+             if (isset($_POST['popup'])) {
+                 $tplVars['msg'] = '<script type="text/javascript">window.close();</script>';
+             } else {
+                 $tplVars['msg'] = T_('Bookmark saved');
+                 // Redirection option
+                 if ($GLOBALS['useredir']) {
+                     $address = $GLOBALS['url_redir'] . $address;
+                 }
+                 header('Location: '. $address);
+             }
+         } else {
+             $tplVars['error'] = T_('There was an error saving your bookmark. Please try again or contact the administrator.');
+             $templatename = 'editbookmark.tpl';
+             $saved = false;
+         }
+      }
+   }
 }
 
 if (isset($_GET['action']) && ($_GET['action'] == "add")) {
@@ -167,7 +181,7 @@ if ($templatename == 'editbookmark.tpl') {
         $tplVars['error'] = T_('You must be logged in before you can add bookmarks.');
     }
 } else if ($user && !isset($_GET['popup'])) {
-        
+
     $tplVars['sidebar_blocks'] = array('profile', 'watchstatus');
 
     if (!$cat) {
@@ -181,12 +195,12 @@ if ($templatename == 'editbookmark.tpl') {
     }
     $tplVars['popCount'] = 30;
     $tplVars['sidebar_blocks'][] = 'popular';
-    
-    $tplVars['userid'] = $userid;
-    $tplVars['userinfo'] =& $userinfo;
-    $tplVars['user'] = $user;
-    $tplVars['range'] = $user;
-    
+
+    $tplVars['userid']     = $userid;
+    $tplVars['userinfo']   =& $userinfo;
+    $tplVars['user']       = $user;
+    $tplVars['range']      = $user;
+
     // Pagination
     $perpage = getPerPageCount();
     if (isset($_GET['page']) && intval($_GET['page']) > 1) {
@@ -196,28 +210,28 @@ if ($templatename == 'editbookmark.tpl') {
         $page = 0;
         $start = 0;
     }
-    
+
     // Set template vars
     $tplVars['rsschannels'] = array(
         array(filter($sitename .': '. $pagetitle), createURL('rss', filter($user, 'url') . $rssCat))
     );
 
-    $tplVars['page'] = $page;
-    $tplVars['start'] = $start;
+    $tplVars['page']          = $page;
+    $tplVars['start']         = $start;
     $tplVars['bookmarkCount'] = $start + 1;
     
     $bookmarks =& $bookmarkservice->getBookmarks($start, $perpage, $userid, $cat, $terms, getSortOrder());
-    $tplVars['total'] = $bookmarks['total'];
-    $tplVars['bookmarks'] =& $bookmarks['bookmarks'];
-    $tplVars['cat_url'] = createURL('bookmarks', '%s/%s');
-    $tplVars['nav_url'] = createURL('bookmarks', '%s/%s%s');
+    $tplVars['total']      = $bookmarks['total'];
+    $tplVars['bookmarks']  =& $bookmarks['bookmarks'];
+    $tplVars['cat_url']    = createURL('bookmarks', '%s/%s');
+    $tplVars['nav_url']    = createURL('bookmarks', '%s/%s%s');
     if ($user == $currentUsername) {
         $title = T_('My Bookmarks') . filter($catTitle);
     } else {
         $title = filter($pagetitle);
     }
-    $tplVars['pagetitle'] = $title;
-    $tplVars['subtitle'] = $title;
+    $tplVars['pagetitle']  = $title;
+    $tplVars['subtitle']   = $title;
 }
 $templateservice->loadTemplate($templatename, $tplVars);
 

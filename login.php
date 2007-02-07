@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
+Copyright (C) 2004 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -27,26 +27,28 @@ $tplVars = array();
 
 // Load bookmarks if already logged in
 if ($userservice->isLoggedOn()) {
-	$cUser = $userservice->getCurrentUser();
-	$cUsername = utf8_strtolower($cUser[$userservice->getFieldName('username')]);
-	header('Location: '. createURL('bookmarks', $cUsername));
+   $cUser = $userservice->getCurrentUser();
+   $cUsername = utf8_strtolower($cUser[$userservice->getFieldName('username')]);
+   header('Location: '. createURL('bookmarks', $cUsername));
 }
 
 $login = false;
 if (isset($_POST['submitted']) && isset($_POST['username']) && isset($_POST['password'])) {
-    $posteduser = trim(utf8_strtolower($_POST['username']));	
+    $posteduser = trim(utf8_strtolower($_POST['username']));
     $login = $userservice->login($posteduser, $_POST['password'], ($_POST['keeppass'] == "yes"), $path);
-    
-    if ($login == "success") {
-		if ($_POST['query']) {
-			header('Location: '. createURL('bookmarks', $posteduser .'?'. $_POST['query']));
-		} else {
-			header('Location: '. createURL('bookmarks', $posteduser));
-		}    
-    } else if ($login == "unverified") {
-		$tplVars['error'] = T_('You must verify your account before you can log in.');    
-    } else {
-        $tplVars['error'] = T_('The details you have entered are incorrect. Please try again.');
+    switch ($login) {
+      case "success":
+         if ($_POST['query']) {
+            header('Location: '. createURL('bookmarks', $posteduser .'?'. $_POST['query']));
+         } else {
+            header('Location: '. createURL('bookmarks', $posteduser));
+         }
+         break;
+      case "unverified":
+         $tplVars['error'] = T_('You must verify your account before you can log in.');
+         break;
+      default:
+         $tplVars['error'] = T_('The details you have entered are incorrect. Please try again.');
     }
 }
 

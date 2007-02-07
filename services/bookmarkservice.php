@@ -34,6 +34,15 @@ class BookmarkService {
         }
     }
 
+    function _in_regex_array($value, $array) {
+        foreach ($array as $key => $pattern) {
+            if (preg_match($pattern, $value)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     function & getBookmark($bid, $include_tags = false) {
         if (!is_numeric($bid))
             return;
@@ -415,6 +424,22 @@ class BookmarkService {
       } else {
          return 0;
       }
+   }
+
+   function isBlockedUrl($address) {
+      $blacklist = $GLOBALS['email_blacklist'];
+      if (!is_null($blacklist) && is_array($blacklist)) {
+         if ($this->_in_regex_array($address, $blacklist)) {
+            // In blacklist -> blocked
+            return true;
+         }
+      }
+      return false;
+   }
+
+   function setAll($updates) {
+      $sql = 'UPDATE '. $GLOBALS['tableprefix'] .'_bookmarks SET ' . $this->db->sql_build_array('UPDATE', $updates) .' WHERE uId = '. intval($sId);
+      return $this->db->sql_query($sql);
    }
 }
 ?>

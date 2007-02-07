@@ -115,10 +115,12 @@ $filetypes          = array(
                         'video' => array('avi', 'mov', 'mp4', 'mpeg', 'mpg', 'wmv')
                         );
 
-$reservedusers      = array('all', 'watchlist');
+$reservedusers       = array('all', 'watchlist');
 
-$emailwhitelist     = null;
-$emailblacklist     = array(
+$url_blacklist       = null;
+
+$email_whitelist     = null;
+$email_blacklist     = array(
                         '/(.*-){2,}/',
                         '/mailinator\.com/i'
                         );

@@ -336,9 +336,9 @@ class UserService {
         return true;
     }
 
-    function sanitisePassword($password) {
-        return sha1(trim($password));
-    }
+   function sanitisePassword($password) {
+      return sha1(trim($password));
+   }
 
     function generatePassword($uId) {
         if (!is_numeric($uId))
@@ -352,71 +352,67 @@ class UserService {
             return false;
     }
 
-    function isReserved($username) {
-        if (in_array($username, $GLOBALS['reservedusers'])) {
+   function isBlockedEmail($email) {
+      // Check whitelist
+      $whitelist = $GLOBALS['email_whitelist'];
+      if (!is_null($whitelist) && is_array($whitelist)) {
+         if (!$this->_in_regex_array($email, $whitelist)) {
+            // Not in whitelist -> blocked
             return true;
-        } else {
-            return false;
-        }
-    }
+         }
+      }
 
-    function isValidEmail($email) {
-		$pattern = '/^((?:(?:(?:\w[\.\-\+_]?)*)\w)+)\@((?:(?:(?:\w[\.\-_]?){0,62})\w)+)\.(\w{2,6})$/i';
-        if (preg_match($pattern, $email)) {
-            list($emailUser, $emailDomain) = split("@", $email);
+      // Check blacklist
+      $blacklist = $GLOBALS['email_blacklist'];
+      if (!is_null($blacklist) && is_array($blacklist)) {
+         if ($this->_in_regex_array($email, $blacklist)) {
+            // In blacklist -> blocked
+            return true;
+         }
+      }
 
-            // Check if the email domain has a DNS record
-            if ($this->_checkdns($emailDomain)) {
-                 return true;
-            }
-        }
-        return false;
-    }
+      // Not blocked
+      return false;
+   }
 
-    function isBlockedEmail($email) {
-        // Check whitelist
-        $whitelist = $GLOBALS['emailwhitelist'];
-        if (!is_null($whitelist) && is_array($whitelist)) {
-            if (!$this->_in_regex_array($email, $whitelist)) {
-                // Not in whitelist -> blocked
-                return true;
-            }
-        }
+   function isReserved($username) {
+      return (in_array($username, $GLOBALS['reservedusers']));
+   }
 
-        // Check blacklist
-        $blacklist = $GLOBALS['emailblacklist'];
-        if (!is_null($blacklist) && is_array($blacklist)) {
-            if ($this->_in_regex_array($email, $blacklist)) {
-                // In blacklist -> blocked
-                return true;
-            }
-        }
+   function isValidEmail($email) {
+      $pattern = '/^((?:(?:(?:\w[\.\-\+_]?)*)\w)+)\@((?:(?:(?:\w[\.\-_]?){0,62})\w)+)\.(\w{2,6})$/i';
+      if (preg_match($pattern, $email)) {
+         list($emailUser, $emailDomain) = split("@", $email);
 
-        // Not blocked
-        return false;
-    }
-    
-    function isVerified($username) {
- 		$userinfo = $this->getUserByUsername($username);
- 		if ($userinfo['uStatus'] == 1) {
-			return true;
-		} else {
-			return false;
-		}
-    }
-    
-    function verify($username, $hash) {
-		$userinfo = $this->getUserByUsername($username);
-		$datetime =& $userinfo['uDatetime'];
-		$userid =& $userinfo[$this->getFieldName('primary')];
-		$storedhash = md5($username . $datetime);
-		 
-		if ($storedhash == $hash) {
-			return $this->_updateuser($userid, 'uStatus', 1);
-		} else {
-			return false;
-		}
-	}
+         // Check if the email domain has a DNS record
+         if ($this->_checkdns($emailDomain)) {
+            return true;
+         }
+      }
+      return false;
+   }
+
+   function isVerified($username) {
+      $userinfo = $this->getUserByUsername($username);
+      return ($userinfo['uStatus'] == 1);
+   }
+
+   function setStatus($status) {
+      $sql = 'UPDATE '. $this->getTableName() .' SET uStatus = '. intval($status);
+      return $this->db->sql_query($sql);
+   }
+
+   function verify($username, $hash) {
+      $userinfo = $this->getUserByUsername($username);
+      $datetime =& $userinfo['uDatetime'];
+      $userid =& $userinfo[$this->getFieldName('primary')];
+      $storedhash = md5($username . $datetime);
+      if ($storedhash == $hash) {
+         return $this->_updateuser($userid, 'uStatus', 1);
+      } else {
+         return false;
+      }
+   }
 
     // Properties
     function getTableName()       { return $this->tablename; }
