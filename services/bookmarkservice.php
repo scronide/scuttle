@@ -427,7 +427,7 @@ class BookmarkService {
    }
 
    function isBlockedUrl($address) {
-      $blacklist = $GLOBALS['email_blacklist'];
+      $blacklist = $GLOBALS['url_blacklist'];
       if (!is_null($blacklist) && is_array($blacklist)) {
          if ($this->_in_regex_array($address, $blacklist)) {
             // In blacklist -> blocked
@@ -438,7 +438,7 @@ class BookmarkService {
    }
 
    function setAll($updates) {
-      $sql = 'UPDATE '. $GLOBALS['tableprefix'] .'_bookmarks SET ' . $this->db->sql_build_array('UPDATE', $updates) .' WHERE uId = '. intval($sId);
+      $sql = 'UPDATE '. $GLOBALS['tableprefix'] .'bookmarks SET ' . $this->db->sql_build_array('UPDATE', $updates) .' WHERE uId = '. intval($sId);
       return $this->db->sql_query($sql);
    }
 }
