@@ -1,6 +1,6 @@
 <?
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
+Copyright (C) 2004 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -20,8 +20,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
 require_once('header.inc.php');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
-$templateservice =& ServiceFactory::getServiceInstance('TemplateService');
+$templateservice  =& ServiceFactory::getServiceInstance('TemplateService');
+$userservice      =& ServiceFactory::getServiceInstance('UserService');
 $tplVars = array();
 
 if ($userservice->isLoggedOn() && sizeof($_FILES) > 0 && $_FILES['userfile']['size'] > 0) {
@@ -82,7 +82,7 @@ function startElement($parser, $name, $attrs) {
                     break;
             }
         }
-        if ($bookmarkservice->bookmarkExists($bAddress, $userservice->getCurrentUserId())) {
+        if ($bookmarkservice->bookmarkExists($bAddress)) {
             $tplVars['error'] = T_('You have already submitted this bookmark.');
         } else {
             // Strangely, PHP can't work out full ISO 8601 dates, so we have to chop off the Z.

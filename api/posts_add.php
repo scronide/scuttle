@@ -65,15 +65,17 @@ if (isset($_REQUEST['status'])) {
     }
 }
 
-// Error out if there's no address or description
+// Require address and description
 if (is_null($url) || is_null($description)) {
     $added = false;
 } else {
-// We're good with info; now insert it!
-    if ($bookmarkservice->bookmarkExists($url, $userservice->getCurrentUserId()))
-        $added = false;
-    else
-        $added = $bookmarkservice->addBookmark($url, $description, $extended, $status, $tags, $dt, true);
+   // Check that it doesn't exist already
+   if ($bookmarkservice->bookmarkExists($url)) {
+      $added = false;
+   // If not, try to add it
+   } else {
+      $added = $bookmarkservice->addBookmark($url, $description, $extended, $status, $tags, $dt, true);
+   }
 }
 
 // Set up the XML file and output the result.

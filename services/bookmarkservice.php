@@ -1,47 +1,47 @@
 <?php
 class BookmarkService {
-    var $db;
+   var $db;
 
-    function & getInstance(& $db) {
-        static $instance;
-        if (!isset ($instance))
-            $instance = & new BookmarkService($db);
-        return $instance;
-    }
+   function & getInstance(& $db) {
+      static $instance;
+      if (!isset ($instance))
+         $instance = & new BookmarkService($db);
+      return $instance;
+   }
 
-    function BookmarkService(& $db) {
-        $this->db = & $db;
-    }
+   function BookmarkService(& $db) {
+      $this->db = & $db;
+   }
 
-    function _getbookmark($fieldname, $value, $all = false) {
-        if (!$all) {
-            $userservice = & ServiceFactory :: getServiceInstance('UserService');
-            $sId = $userservice->getCurrentUserId();
-            $range = ' AND uId = '. $sId;
-        }
+   function _getbookmark($fieldname, $value, $all = false) {
+      if (!$all) {
+         $userservice = & ServiceFactory :: getServiceInstance('UserService');
+         $sId     = $userservice->getCurrentUserId();
+         $range   = ' AND uId = '. $sId;
+      }
 
-        $query = 'SELECT * FROM '. $GLOBALS['tableprefix'] .'bookmarks WHERE '. $fieldname .' = "'. $this->db->sql_escape($value) .'"'. $range;
+      $query = 'SELECT * FROM '. $GLOBALS['tableprefix'] .'bookmarks WHERE '. $fieldname .' = "'. $this->db->sql_escape($value) .'"'. $range;
 
-        if (!($dbresult = & $this->db->sql_query_limit($query, 1, 0))) {
-            message_die(GENERAL_ERROR, 'Could not get bookmark', '', __LINE__, __FILE__, $query, $this->db);
-            return false;
-        }
+      if (!($dbresult = & $this->db->sql_query_limit($query, 1, 0))) {
+         message_die(GENERAL_ERROR, 'Could not get bookmark', '', __LINE__, __FILE__, $query, $this->db);
+         return false;
+      }
 
-        if ($row =& $this->db->sql_fetchrow($dbresult)) {
-            return $row;
-        } else {
-            return false;
-        }
-    }
+      if ($row =& $this->db->sql_fetchrow($dbresult)) {
+         return $row;
+      } else {
+         return false;
+      }
+   }
 
-    function _in_regex_array($value, $array) {
-        foreach ($array as $key => $pattern) {
-            if (preg_match($pattern, $value)) {
-                return true;
-            }
-        }
-        return false;
-    }
+   function _in_regex_array($value, $array) {
+      foreach ($array as $key => $pattern) {
+         if (preg_match($pattern, $value)) {
+            return true;
+         }
+      }
+      return false;
+   }
 
     function & getBookmark($bid, $include_tags = false) {
         if (!is_numeric($bid))
@@ -88,27 +88,24 @@ class BookmarkService {
             return ($bookmark['uId'] == $userid);
     }
 
-    function bookmarkExists($address = false, $uid = NULL) {
-        if (!$address) {
-            return;
-        }
+   function bookmarkExists($address) {
+      $userservice   = &ServiceFactory::getServiceInstance('UserService');
+      $userId        = $userservice->getCurrentUserId();
+         
+      // If address doesn't contain ":", add "http://" as the default protocol
+      if (strpos($address, ':') === false) {
+         $address = 'http://'. $address;
+      }
 
-        // If address doesn't contain ":", add "http://" as the default protocol
-        if (strpos($address, ':') === false) {
-            $address = 'http://'. $address;
-        }
-
-        $crit = array ('bHash' => md5($address));
-        if (isset ($uid)) {
-            $crit['uId'] = $uid;
-        }
-
-        $sql = 'SELECT COUNT(*) FROM '. $GLOBALS['tableprefix'] .'bookmarks WHERE '. $this->db->sql_build_array('SELECT', $crit);
-        if (!($dbresult = & $this->db->sql_query($sql))) {
-            message_die(GENERAL_ERROR, 'Could not get vars', '', __LINE__, __FILE__, $sql, $this->db);
-        }
-        return ($this->db->sql_fetchfield(0, 0) > 0);
-    }
+      $criteria = array(
+         'bHash'  => md5($address),
+         'uId'    => $userId
+      );
+      $query = 'SELECT COUNT(bId) AS found FROM '. $GLOBALS['tableprefix'] .'bookmarks WHERE '. $this->db->sql_build_array('SELECT', $criteria);
+      $this->db->sql_query($query);
+      $result = $this->db->sql_fetchfield('found') > 0 ? true : false;
+      return $result;
+   }
 
     // Adds a bookmark to the database.
     // Note that date is expected to be a string that's interpretable by strtotime().

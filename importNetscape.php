@@ -1,6 +1,6 @@
 <?
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
+Copyright (C) 2004 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -20,9 +20,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
 require_once('header.inc.php');
-$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
-$templateservice =& ServiceFactory::getServiceInstance('TemplateService');
+$bookmarkservice  =& ServiceFactory::getServiceInstance('BookmarkService');
+$templateservice  =& ServiceFactory::getServiceInstance('TemplateService');
+$userservice      =& ServiceFactory::getServiceInstance('UserService');
 $tplVars = array();
 
 if ($userservice->isLoggedOn() && sizeof($_FILES) > 0 && $_FILES['userfile']['size'] > 0) {
@@ -60,7 +60,7 @@ if ($userservice->isLoggedOn() && sizeof($_FILES) > 0 && $_FILES['userfile']['si
         }
         $bTitle = eregi_replace('"', '&quot;', trim($titles[$i]));
 
-        if ($bookmarkservice->bookmarkExists($bAddress, $userservice->getCurrentUserId())) {
+        if ($bookmarkservice->bookmarkExists($bAddress)) {
             $tplVars['error'] = T_('You have already submitted this bookmark.');
         } else {
             // If bookmark claims to be from the future, set it to be now instead

@@ -13,40 +13,27 @@ function _playerAdd(anchor) {
     anchor.parentNode.innerHTML = code +' '+ anchor.parentNode.innerHTML;
 }
 
-var deleted = false;
-function deleteBookmark(ele, input){
-    var confirmDelete = "<span><?php echo T_('Are you sure?') ?> <a href=\"#\" onclick=\"deleteConfirmed(this, " + input + ", \'\'); return false;\"><?php echo T_('Yes'); ?></a> - <a href=\"#\" onclick=\"deleteCancelled(this); return false;\"><?php echo T_('No'); ?></a></span>";
-    ele.style.display = 'none';
-    ele.parentNode.innerHTML = ele.parentNode.innerHTML + confirmDelete;
+function deleteBookmark(ele, item){
+   var confirmDelete = "<span><?php echo T_('Are you sure?') ?> <a href=\"#\" onclick=\"deleteConfirmed(this, " + item + ", \'\'); return false;\"><?php echo T_('Yes'); ?></a> - <a href=\"#\" onclick=\"deleteCancelled(this); return false;\"><?php echo T_('No'); ?></a></span>";
+   ele.style.display = 'none';
+   ele.parentNode.innerHTML = ele.parentNode.innerHTML + confirmDelete;
 }
 
 function deleteCancelled(ele) {
-    var del = previousElement(ele.parentNode);
-    del.style.display = 'inline';
-    ele.parentNode.parentNode.removeChild(ele.parentNode);
-    return false;
+   var span = $(ele).parents("span");
+   span.prev("a").show();
+   span.remove();
 }
 
-function deleteConfirmed(ele, input, response) {
-    if (deleted == false) {
-        deleted = ele.parentNode.parentNode.parentNode;
-    }
-    var post = deleted;
-    post.className = 'xfolkentry deleted';
-    if (response != '') {
-        post.style.display = 'none';
-        deleted = false;
-    } else {
-        loadXMLDoc('<?php echo $root; ?>ajaxDelete.php?id=' + input);
-    }
-}
-
-function previousElement(ele) {
-    ele = ele.previousSibling;
-    while (ele.nodeType != 1) {
-        ele = ele.previousSibling;
-    }
-    return ele;
+function deleteConfirmed(ele, item) {
+   $.ajax({
+      type: "POST",
+      url:  "<?php echo $root; ?>ajaxDelete.php",
+      data: "id=" + item,
+      success: function(msg) {
+         $(ele).parents("li.xfolkentry").remove();
+      }
+   });
 }
 
 function isAvailable(input, response){
@@ -83,19 +70,21 @@ function useAddress(ele) {
     }
 }
 
-function getTitle(input, response){
-    var title = document.getElementById('titleField');
-    if (title.value == '') {
-        title.style.backgroundImage = 'url(<?php echo $root; ?>loading.gif)';
-        if (response != null) {
-            title.style.backgroundImage = 'none';
-            title.value = response;
-        } else if (input.indexOf('http') > -1) {
-            loadXMLDoc('<?php echo $root; ?>ajaxGetTitle.php?url=' + input);
-        } else {
-            return false;
-        }
-    }
+function getTitle(address) {
+   var title = document.getElementById("titleField");
+   title.style.backgroundImage = 'url(<?php echo $root; ?>loading.gif)';
+   $.ajax({
+      type: "GET",
+      url:  "<?php echo $root; ?>ajaxGetTitle.php",
+      data: "url=" + address,
+      datatType: "html",
+      complete: function(obj, response) {
+         title.style.backgroundImage = 'none';
+      },
+      success: function(response) {
+         title.value = response;
+      }
+   });
 }
 
 var xmlhttp;

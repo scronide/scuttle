@@ -1,28 +1,28 @@
 <?php
 class TagService {
-    var $db;
-    var $tablename;
+   var $db;
+   var $tablename;
 
-    function &getInstance(&$db) {
-        static $instance;
-        if (!isset($instance))
-            $instance =& new TagService($db);
-        return $instance;
-    }
+   function &getInstance(&$db) {
+      static $instance;
+      if (!isset($instance))
+         $instance =& new TagService($db);
+      return $instance;
+   }
 
-    function TagService(&$db) {
-        $this->db =& $db;
-        $this->tablename = $GLOBALS['tableprefix'] .'tags';
-    }
+   function TagService(&$db) {
+      $this->db =& $db;
+      $this->tablename = $GLOBALS['tableprefix'] .'tags';
+   }
 
-    function isNotSystemTag($var) {
-        if (utf8_substr($var, 0, 7) == 'system:')
-            return false;
-        else
-            return true;
-    }
+   function isNotSystemTag($var) {
+      if (utf8_substr($var, 0, 7) == 'system:')
+         return false;
+      else
+         return true;
+   }
 
-    function attachTags($bookmarkid, $tags, $fromApi = false, $extension = NULL, $replace = true, $fromImport = false) {
+   function attachTags($bookmarkid, $tags, $fromApi = false, $extension = NULL, $replace = true, $fromImport = false) {
         // Make sure that categories is an array of trimmed strings, and that if the categories are
         // coming in from an API call to add a bookmark, that underscores are converted into strings.
         if (!is_array($tags)) {
@@ -356,8 +356,8 @@ class TagService {
         return $output;
     }
 
-    // Properties
-    function getTableName()       { return $this->tablename; }
-    function setTableName($value) { $this->tablename = $value; }
+   // Properties
+   function getTableName()       { return $this->tablename; }
+   function setTableName($value) { $this->tablename = $value; }
 }
 ?>

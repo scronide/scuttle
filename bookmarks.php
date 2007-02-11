@@ -21,10 +21,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 require_once('header.inc.php');
 
-$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-$templateservice =& ServiceFactory::getServiceInstance('TemplateService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
-$cacheservice =& ServiceFactory::getServiceInstance('CacheService');
+$bookmarkservice  =& ServiceFactory::getServiceInstance('BookmarkService');
+$cacheservice     =& ServiceFactory::getServiceInstance('CacheService');
+$templateservice  =& ServiceFactory::getServiceInstance('TemplateService');
+$userservice      =& ServiceFactory::getServiceInstance('UserService');
 
 $tplVars = array();
 
@@ -110,7 +110,7 @@ if ($loggedon && isset($_POST['submitted'])) {
          exit();
 
       // If the bookmark exists already, edit the original
-      } elseif ($bookmarkservice->bookmarkExists($address, $currentUserID)) {
+      } elseif ($bookmarkservice->bookmarkExists($address)) {
          $bookmark =& $bookmarkservice->getBookmarkByAddress($address);
          header('Location: '. createURL('edit', $bookmark['bId']));
          exit();
@@ -144,7 +144,7 @@ if ($loggedon && isset($_POST['submitted'])) {
 
 if (isset($_GET['action']) && ($_GET['action'] == "add")) {
     // If the bookmark exists already, edit the original
-    if ($bookmarkservice->bookmarkExists(stripslashes($_GET['address']), $currentUserID)) {
+    if ($bookmarkservice->bookmarkExists(stripslashes($_GET['address']))) {
         $bookmark =& $bookmarkservice->getBookmarkByAddress(stripslashes($_GET['address']));
         $popup = (isset($_GET['popup'])) ? '?popup=1' : '';
         header('Location: '. createURL('edit', $bookmark['bId'] . $popup));

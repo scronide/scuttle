@@ -1,17 +1,17 @@
 <?php
 $userservice =& ServiceFactory::getServiceInstance('UserService');
 if ($userservice->isLoggedOn()) {
-    $currentUser = $userservice->getCurrentUser();
-    $currentUsername = $currentUser[$userservice->getFieldName('username')];
+   $currentUser = $userservice->getCurrentUser();
+   $currentUsername = $currentUser[$userservice->getFieldName('username')];
 
-    if ($currentUsername != $user) {
-        $result = $userservice->getWatchStatus($userid, $userservice->getCurrentUserId());
-        if ($result) {
-            $linkText = T_('Remove from Watchlist');
-        } else {
-            $linkText = T_('Add to Watchlist');
-        }
-        $linkAddress = createURL('watch', $user);
+   if ($currentUsername != $user) {
+      $result = $userservice->getWatchStatus($userid, $userservice->getCurrentUserId());
+      if ($result) {
+         $linkText = T_('Remove from Watchlist');
+      } else {
+         $linkText = T_('Add to Watchlist');
+      }
+      $linkAddress = createURL('watch', $user);
 ?>
 
 <div id="watchlist">
@@ -22,6 +22,6 @@ if ($userservice->isLoggedOn()) {
 </div>
 
 <?php
-    }
+   }
 }
 ?>

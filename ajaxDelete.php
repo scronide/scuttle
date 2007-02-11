@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2005 - 2006 Scuttle project
+Copyright (C) 2005 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -24,14 +24,14 @@ header('Last-Modified: '. gmdate("D, d M Y H:i:s") .' GMT');
 header('Cache-Control: no-cache, must-revalidate');
 require_once('header.inc.php');
 
-$bookmarkservice = & ServiceFactory :: getServiceInstance('BookmarkService');
-$bookmark = intval($_GET['id']);
+$bookmarkservice = &ServiceFactory::getServiceInstance('BookmarkService');
+$bookmark = intval($_POST['id']);
 if (!$bookmarkservice->editAllowed($bookmark)) {
-    $result = T_('You are not allowed to delete this bookmark');
+   $result = T_('You are not allowed to delete this bookmark');
 } elseif ($bookmarkservice->deleteBookmark($bookmark)) {
-    $result = 'true';
+   $result = 'true';
 } else {
-    $result = T_('Failed to delete bookmark');
+   $result = T_('Failed to delete bookmark');
 }
 ?>
 <response>

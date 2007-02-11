@@ -22,10 +22,10 @@ class UserService {
 
     function UserService(&$db) {
         $this->db =& $db;
-        $this->tablename = $GLOBALS['tableprefix'] .'users';
-        $this->sessionkey = $GLOBALS['cookieprefix'] .'-currentuserid';
-        $this->cookiekey = $GLOBALS['cookieprefix'] .'-login';
-        $this->profileurl = createURL('profile', '%2$s');
+        $this->tablename   = $GLOBALS['tableprefix'] .'users';
+        $this->sessionkey  = $GLOBALS['cookieprefix'] .'-currentuserid';
+        $this->cookiekey   = $GLOBALS['cookieprefix'] .'-login';
+        $this->profileurl  = createURL('profile', '%2$s');
     }
 
     function _checkdns($host) {
@@ -227,21 +227,13 @@ class UserService {
       return $usernames;
    }
 
-    function getWatchStatus($watcheduser, $currentuser) {
-        // Returns true if the current user is watching the given user, and false otherwise.
-        $query = 'SELECT watched FROM '. $GLOBALS['tableprefix'] .'watched AS W INNER JOIN '. $this->getTableName() .' AS U ON U.'. $this->getFieldName('primary') .' = W.watched WHERE U.'. $this->getFieldName('primary') .' = '. intval($watcheduser) .' AND W.uId = '. intval($currentuser);
-        
-        if (! ($dbresult =& $this->db->sql_query($query)) ) {
-            message_die(GENERAL_ERROR, 'Could not get watchstatus', '', __LINE__, __FILE__, $query, $this->db);
-            return false;
-        }
-
-        $arrWatch = array();
-        if ($this->db->sql_numrows($dbresult) == 0)
-            return false;
-        else 
-            return true;
-    }
+   function getWatchStatus($watcheduser, $currentuser) {
+      // Returns true if the current user is watching the given user, and false otherwise
+      $query = 'SELECT COUNT(wId) AS watching FROM '. $GLOBALS['tableprefix'] .'watched WHERE uId = '. intval($currentuser) .' AND watched = '. intval($watcheduser);
+      $this->db->sql_query($query);
+      $result = $this->db->sql_fetchfield('watching') > 0 ? true : false;
+      return $result;
+   }
 
     function setWatchStatus($subjectUserID) {
         if (!is_numeric($subjectUserID))
