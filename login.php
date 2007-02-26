@@ -20,35 +20,32 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
 require_once('header.inc.php');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
-$templateservice =& ServiceFactory::getServiceInstance('TemplateService');
+$userservice      =& ServiceFactory::getServiceInstance('UserService');
+$templateservice  =& ServiceFactory::getServiceInstance('TemplateService');
 
 $tplVars = array();
 
 // Load bookmarks if already logged in
 if ($userservice->isLoggedOn()) {
-   $cUser = $userservice->getCurrentUser();
-   $cUsername = utf8_strtolower($cUser[$userservice->getFieldName('username')]);
-   header('Location: '. createURL('bookmarks', $cUsername));
+    $cUser      = $userservice->getCurrentUser();
+    $cUsername  = utf8_strtolower($cUser[$userservice->getFieldName('username')]);
+    header('Location: '. createURL('bookmarks', $cUsername));
 }
 
 $login = false;
 if (isset($_POST['submitted']) && isset($_POST['username']) && isset($_POST['password'])) {
-    $posteduser = trim(utf8_strtolower($_POST['username']));
-    $login = $userservice->login($posteduser, $_POST['password'], ($_POST['keeppass'] == "yes"), $path);
-    switch ($login) {
-      case "success":
-         if ($_POST['query']) {
-            header('Location: '. createURL('bookmarks', $posteduser .'?'. $_POST['query']));
-         } else {
-            header('Location: '. createURL('bookmarks', $posteduser));
-         }
-         break;
-      case "unverified":
-         $tplVars['error'] = T_('You must verify your account before you can log in.');
-         break;
-      default:
-         $tplVars['error'] = T_('The details you have entered are incorrect. Please try again.');
+    $posteduser     = trim(utf8_strtolower($_POST['username']));
+    $login          = $userservice->login($posteduser, $_POST['password'], ($_POST['keeppass'] == 'yes'), $path);
+    switch ($login['message']) {
+        case 'success':
+            $request = ($_POST['query']) ? $posteduser : $posteduser . '?' . $_POST['query'];
+            header('Location: ' . createURL('bookmarks', $request);
+            break;
+        case 'unverified':
+            $tplVars['error'] = T_('You must verify your account before you can log in.');
+            break;
+        default:
+            $tplVars['error'] = T_('The details you have entered are incorrect. Please try again.');
     }
 }
 

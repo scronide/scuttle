@@ -44,14 +44,14 @@ if ($fd) {
       $title = @mb_convert_encoding($title, 'UTF-8', $encoding);
    }
 
-   if (utf8_strlen($title) > 0) {
-      echo $title;
-   } else {
+   if (utf8_strlen($title) < 1) {
       // No title, so return filename
       $uriparts = explode('/', $url);
       $filename = end($uriparts);
       unset($uriparts);
 
-      echo $filename;
+      $title = $filename;
    }
 }
+echo $title;
+?>

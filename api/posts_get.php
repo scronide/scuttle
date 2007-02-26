@@ -1,44 +1,50 @@
 <?php
 // Implements the del.icio.us API request for a user's posts, optionally filtered by tag and/or
-// date.  Note that when using a date to select the posts returned, del.icio.us uses GMT dates --
+// date. Note that when using a date to select the posts returned, del.icio.us uses GMT dates --
 // so we do too.
 
 // del.icio.us behavior:
-// - includes an empty tag attribute on the root element when it hasn't been specified
-
-// Scuttle behavior:
-// - Uses today, instead of the last bookmarked date, if no date is specified
+// - Does not appear to filter on tag alone
 
 // Force HTTP authentication first!
 require_once('httpauth.inc.php');
-require_once('../header.inc.php');
 
-$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
+$bookmarkservice    =& ServiceFactory::getServiceInstance('BookmarkService');
+$userservice        =& ServiceFactory::getServiceInstance('UserService');
 
-// Check to see if a tag was specified.
-if (isset($_REQUEST['tag']) && (trim($_REQUEST['tag']) != ''))
-    $tag = trim($_REQUEST['tag']);
-else
+// Filter by tag
+if (isset($_REQUEST['tag']) && strlen($_REQUEST['tag']) > 0) {
+    $tag = $_REQUEST['tag'];
+} else {
     $tag = NULL;
+}
 
-// Check to see if a date was specified; the format should be YYYY-MM-DD
-if (isset($_REQUEST['dt']) && (trim($_REQUEST['dt']) != ""))
+// Filter by date; the format should be YYYY-MM-DD
+if (isset($_REQUEST['dt']) && strlen($_REQUEST['dt']) > 0) {
     $dtstart = trim($_REQUEST['dt']);
-else
-    $dtstart = date('Y-m-d H:i:s');
+} else {
+    $bookmarks  =& $bookmarkservice->getBookmarks(0, 1, $userservice->getCurrentUserId());
+    $dtstart    = date('Y-m-d', strtotime($bookmarks['bookmarks'][0]['bDatetime']));
+}
 $dtend = date('Y-m-d H:i:s', strtotime($dtstart .'+1 day'));
 
-// Get the posts relevant to the passed-in variables.
-$bookmarks =& $bookmarkservice->getBookmarks(0, NULL, $userservice->getCurrentUserId(), $tag, NULL, NULL, NULL, $dtstart, $dtend);
+// Filter by URL
+if (isset($_REQUEST['url']) && strlen($_REQUEST['url']) > 0) {
+    $hash = sha1($_REQUEST['url']);
+} else {
+    $hash = NULL;
+}
 
-$currentuser = $userservice->getCurrentUser();
-$currentusername = $currentuser[$userservice->getFieldName('username')];
+// Get the posts relevant to the passed-in variables.
+$bookmarks =& $bookmarkservice->getBookmarks(0, NULL, $userservice->getCurrentUserId(), $tag, NULL, NULL, NULL, $dtstart, $dtend, $hash);
+
+$currentuser        = $userservice->getCurrentUser();
+$currentusername    = $currentuser[$userservice->getFieldName('username')];
 
 // Set up the XML file and output all the tags.
 header('Content-Type: text/xml');
 echo '<?xml version="1.0" standalone="yes" ?'.">\r\n";
-echo '<posts'. (is_null($dtstart) ? '' : ' dt="'. $dtstart .'"') .' tag="'. (is_null($tag) ? '' : filter($tag, 'xml')) .'" user="'. filter($currentusername, 'xml') ."\">\r\n";
+echo '<posts dt="'. $_REQUEST['dt'] .'" tag="'. (is_null($tag) ? '' : filter($tag, 'xml')) .'" user="'. filter($currentusername, 'xml') ."\">\r\n";
 
 foreach($bookmarks['bookmarks'] as $row) {
     if (is_null($row['bDescription']) || (trim($row['bDescription']) == ''))

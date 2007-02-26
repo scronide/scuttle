@@ -357,9 +357,6 @@ p#sort a {
     margin-right: 0.5em;
     padding: 0 1em;
 }
-html > body p#sort a {
-    margin-right: 0;
-}
 p#sort a:hover {
     background: #CCC;
     text-decoration: none !important;

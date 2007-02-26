@@ -5,7 +5,6 @@
 // - doesn't include the filtered tag as an attribute on the root element (we do)
 
 // Force HTTP authentication first!
-require_once('httpauth.inc.php');
 require_once('../header.inc.php');
 
 $bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');

@@ -1,22 +1,20 @@
 <?php
-//  Provides HTTP Basic authentication of a user, and sets two variables, sId and username,
-//  with the user's info.
+// Provides HTTP Basic authentication of a user
 
 function authenticate() {
-   header('WWW-Authenticate: Basic realm="del.icio.us API"');
-   header('HTTP/1.0 401 Unauthorized');
-   die("Use of the API calls requires authentication.");
+    header('WWW-Authenticate: Basic realm="del.icio.us API"');
+    header('HTTP/1.0 401 Unauthorized');
+    die("Use of the API calls requires authentication.");
 }
 
-if (!isset($_SERVER['PHP_AUTH_USER'])) {
-   authenticate();
+require_once('../header.inc.php');
+if (isset($_SERVER['PHP_AUTH_USER']) && strlen($_SERVER['PHP_AUTH_USER']) > 0) {
+    $userservice    =& ServiceFactory::getServiceInstance('UserService');
+    $login          = $userservice->login($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
+    if ($login['result'] === false) {
+        authenticate();
+    }
 } else {
-   require_once('../header.inc.php');
-   $userservice =& ServiceFactory::getServiceInstance('UserService');
-
-   $login = $userservice->login($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']); 
-   if (!$login) {
-      authenticate();
-   }
+    authenticate();
 }
 ?>

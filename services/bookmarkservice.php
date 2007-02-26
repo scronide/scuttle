@@ -43,7 +43,7 @@ class BookmarkService {
       return false;
    }
 
-    function & getBookmark($bid, $include_tags = false) {
+    function &getBookmark($bid, $include_tags = false) {
         if (!is_numeric($bid))
             return;
 
@@ -88,24 +88,24 @@ class BookmarkService {
             return ($bookmark['uId'] == $userid);
     }
 
-   function bookmarkExists($address) {
-      $userservice   = &ServiceFactory::getServiceInstance('UserService');
-      $userId        = $userservice->getCurrentUserId();
-         
-      // If address doesn't contain ":", add "http://" as the default protocol
-      if (strpos($address, ':') === false) {
-         $address = 'http://'. $address;
-      }
+    function bookmarkExists($address) {
+        $userservice    = &ServiceFactory::getServiceInstance('UserService');
+        $userId         = $userservice->getCurrentUserId();
 
-      $criteria = array(
-         'bHash'  => md5($address),
-         'uId'    => $userId
-      );
-      $query = 'SELECT COUNT(bId) AS found FROM '. $GLOBALS['tableprefix'] .'bookmarks WHERE '. $this->db->sql_build_array('SELECT', $criteria);
-      $this->db->sql_query($query);
-      $result = $this->db->sql_fetchfield('found') > 0 ? true : false;
-      return $result;
-   }
+        // If address doesn't contain ":", add "http://" as the default protocol
+        if (strpos($address, ':') === false) {
+            $address = 'http://'. $address;
+        }
+
+        $criteria = array(
+            'bHash' => md5($address),
+            'uId'   => $userId
+        );
+        $query = 'SELECT COUNT(bId) AS found FROM '. $GLOBALS['tableprefix'] .'bookmarks WHERE '. $this->db->sql_build_array('SELECT', $criteria);
+        $this->db->sql_query($query);
+        $result = $this->db->sql_fetchfield('found') > 0 ? true : false;
+        return $result;
+    }
 
     // Adds a bookmark to the database.
     // Note that date is expected to be a string that's interpretable by strtotime().
@@ -215,7 +215,7 @@ class BookmarkService {
         return true;
     }
 
-    function & getBookmarks($start = 0, $perpage = NULL, $user = NULL, $tags = NULL, $terms = NULL, $sortOrder = NULL, $watched = NULL, $startdate = NULL, $enddate = NULL, $hash = NULL) {
+    function &getBookmarks($start = 0, $perpage = NULL, $user = NULL, $tags = NULL, $terms = NULL, $sortOrder = NULL, $watched = NULL, $startdate = NULL, $enddate = NULL, $hash = NULL) {
         // Only get the bookmarks that are visible to the current user.  Our rules:
         //  - if the $user is NULL, that means get bookmarks from ALL users, so we need to make
         //    sure to check the logged-in user's watchlist and get the contacts-only bookmarks from

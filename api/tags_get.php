@@ -6,7 +6,6 @@
 
 // Force HTTP authentication first!
 require_once('httpauth.inc.php');
-require_once('../header.inc.php');
 
 $tagservice =& ServiceFactory::getServiceInstance('TagService');
 $userservice =& ServiceFactory::getServiceInstance('UserService');

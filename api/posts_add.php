@@ -11,10 +11,9 @@
 
 // Force HTTP authentication
 require_once('httpauth.inc.php');
-require_once('../header.inc.php');
 
-$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
+$bookmarkservice    =& ServiceFactory::getServiceInstance('BookmarkService');
+$userservice        =& ServiceFactory::getServiceInstance('UserService');
 
 // Get all the bookmark's passed-in information
 if (isset($_REQUEST['url']) && (trim($_REQUEST['url']) != ''))
@@ -69,13 +68,13 @@ if (isset($_REQUEST['status'])) {
 if (is_null($url) || is_null($description)) {
     $added = false;
 } else {
-   // Check that it doesn't exist already
-   if ($bookmarkservice->bookmarkExists($url)) {
-      $added = false;
-   // If not, try to add it
-   } else {
-      $added = $bookmarkservice->addBookmark($url, $description, $extended, $status, $tags, $dt, true);
-   }
+    // Check that it doesn't exist already
+    if ($bookmarkservice->bookmarkExists($url)) {
+        $added = false;
+    // If not, try to add it
+    } else {
+        $added = $bookmarkservice->addBookmark($url, $description, $extended, $status, $tags, $dt, true);
+    }
 }
 
 // Set up the XML file and output the result.

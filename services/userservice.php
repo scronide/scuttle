@@ -154,29 +154,32 @@ class UserService {
         return false;
     }
 
-    function login($username, $password, $remember = FALSE, $path = '/') {
+    function login($username, $password, $remember = false, $path = '/') {
         $password = $this->sanitisePassword($password);
         $query = 'SELECT '. $this->getFieldName('primary') .' FROM '. $this->getTableName() .' WHERE '. $this->getFieldName('username') .' = "'. $this->db->sql_escape($username) .'" AND '. $this->getFieldName('password') .' = "'. $this->db->sql_escape($password) .'"';
 
-        if (! ($dbresult =& $this->db->sql_query($query)) ) {
-            message_die(GENERAL_ERROR, 'Could not get user', '', __LINE__, __FILE__, $query, $this->db);
-            return false;
+        $result     = false;
+        $message    = 'fail';
+
+        $dbresult =& $this->db->sql_query($query);
+        if ($row =& $this->db->sql_fetchrow($dbresult)) {
+            if ($this->isVerified($username)) {
+                $id = $_SESSION[$this->getSessionKey()] = $row[$this->getFieldName('primary')];
+                if ($remember) {
+                    $cookie = $id .':'. md5($username . $password);
+                    setcookie($this->cookiekey, $cookie, time() + $this->cookietime, $path);
+                }
+                $result     = true;
+                $message    = 'success';
+            } else {
+                $message    = 'unverified';
+            }
         }
 
-		if ($row =& $this->db->sql_fetchrow($dbresult)) {		
-			if ($this->isVerified($username)) {				
-				$id = $_SESSION[$this->getSessionKey()] = $row[$this->getFieldName('primary')];
-				if ($remember) {
-					$cookie = $id .':'. md5($username . $password);
-					setcookie($this->cookiekey, $cookie, time() + $this->cookietime, $path);
-				}
-				return "success";
-			} else {
-				return "unverified";
-			}
-		} else {
-			return "fail";
-		}
+        return array(
+            'result'    => $result,
+            'message'   => $message
+        );
     }
 
     function logout($path = '/') {
@@ -271,7 +274,7 @@ class UserService {
         $datetime = gmdate('Y-m-d H:i:s', time());
         $password = $this->sanitisePassword($password);
         
-		// Get the client's IP address and the date; note that the date is in GMT.
+        // Get the client's IP address and the date; note that the date is in GMT.
         if (getenv('HTTP_CLIENT_IP'))
             $ip = getenv('HTTP_CLIENT_IP');
         else
@@ -280,14 +283,14 @@ class UserService {
             else
                 $ip = getenv('HTTP_X_FORWARDED_FOR');
                 
-      $values = array(
-			'username' => $username,
-			'password' => $password,
-			'email' => $email,
-			'uDatetime' => $datetime,
-			'uModified' => $datetime,
-			'uIp' => $ip
-		);
+        $values = array(
+            'username'  => $username,
+            'password'  => $password,
+            'email'     => $email,
+            'uDatetime' => $datetime,
+            'uModified' => $datetime,
+            'uIp'       => $ip
+        );
         $sql = 'INSERT INTO '. $this->getTableName() .' '. $this->db->sql_build_array('INSERT', $values);
 
         // Execute the statement.
@@ -384,38 +387,38 @@ class UserService {
       return false;
    }
 
-   function isVerified($username) {
-      $userinfo = $this->getUserByUsername($username);
-      return ($userinfo['uStatus'] == 1);
-   }
+    function isVerified($username) {
+        $userinfo = $this->getUserByUsername($username);
+        return ($userinfo['uStatus'] == 1);
+    }
 
-   function setStatus($status) {
-      $sql = 'UPDATE '. $this->getTableName() .' SET uStatus = '. intval($status);
-      return $this->db->sql_query($sql);
-   }
+    function setStatus($status) {
+        $sql = 'UPDATE '. $this->getTableName() .' SET uStatus = '. intval($status);
+        return $this->db->sql_query($sql);
+    }
 
-   function verify($username, $hash) {
-      $userinfo = $this->getUserByUsername($username);
-      $datetime =& $userinfo['uDatetime'];
-      $userid =& $userinfo[$this->getFieldName('primary')];
-      $storedhash = md5($username . $datetime);
-      if ($storedhash == $hash) {
-         return $this->_updateuser($userid, 'uStatus', 1);
-      } else {
-         return false;
-      }
-   }
+    function verify($username, $hash) {
+        $userinfo = $this->getUserByUsername($username);
+        $datetime =& $userinfo['uDatetime'];
+        $userid =& $userinfo[$this->getFieldName('primary')];
+        $storedhash = md5($username . $datetime);
+        if ($storedhash == $hash) {
+            return $this->_updateuser($userid, 'uStatus', 1);
+        } else {
+            return false;
+        }
+    }
 
     // Properties
     function getTableName()       { return $this->tablename; }
     function setTableName($value) { $this->tablename = $value; }
-
+    
     function getFieldName($field)         { return $this->fields[$field]; }
     function setFieldName($field, $value) { $this->fields[$field] = $value; }
-
+    
     function getSessionKey()       { return $this->sessionkey; }
     function setSessionKey($value) { $this->sessionkey = $value; }
-
+    
     function getCookieKey()       { return $this->cookiekey; }
     function setCookieKey($value) { $this->cookiekey = $value; }
 }

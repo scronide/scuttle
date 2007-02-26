@@ -4,7 +4,6 @@
 
 // Force HTTP authentication first!
 require_once('httpauth.inc.php');
-require_once('../header.inc.php');
 
 $bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
 $userservice =& ServiceFactory::getServiceInstance('UserService');
@@ -21,7 +20,7 @@ $bookmarks =& $bookmarkservice->getBookmarks(0, NULL, $userservice->getCurrentUs
 $currentuser = $userservice->getCurrentUser();
 $currentusername = $currentuser[$userservice->getFieldName('username')];
 
-//	Set up the XML file and output all the tags.
+// Set up the XML file and output all the tags.
 header('Content-Type: text/xml');
 echo '<?xml version="1.0" standalone="yes" ?'.">\r\n";
 echo '<dates tag="'. (is_null($tag) ? '' : filter($tag, 'xml')) .'" user="'. filter($currentusername, 'xml') ."\">\r\n";
