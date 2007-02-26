@@ -38,8 +38,8 @@ if (isset($_POST['submitted']) && isset($_POST['username']) && isset($_POST['pas
     $login          = $userservice->login($posteduser, $_POST['password'], ($_POST['keeppass'] == 'yes'), $path);
     switch ($login['message']) {
         case 'success':
-            $request = ($_POST['query']) ? $posteduser : $posteduser . '?' . $_POST['query'];
-            header('Location: ' . createURL('bookmarks', $request);
+            $request = (strlen($_POST['query']) > 0) ? $posteduser . '?' . $_POST['query'] : $posteduser;
+            header('Location: ' . createURL('bookmarks', $request));
             break;
         case 'unverified':
             $tplVars['error'] = T_('You must verify your account before you can log in.');
