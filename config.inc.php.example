@@ -1,8 +1,8 @@
 <?php
 ######################################################################
-# SCUTTLE: Online social bookmarks manager
+# SCUTTLE: Web-based social bookmarks manager
 ######################################################################
-# Copyright (C) 2005 - 2007 Scuttle project
+# Copyright (c) 2005 - 2007 Scuttle project
 # http://sourceforge.net/projects/scuttle/
 # http://scuttle.org/
 #
@@ -15,9 +15,9 @@
 
 ######################################################################
 # Database Configuration
-#
-# dbtype:   Database driver - firebird, mssql, mssql_odbc, mysql
-#                             mysqli, oracle, postgres, sqlite
+######################################################################
+# dbtype:   Database driver - firebird, mssql, mssql_odbc, mysql, mysqli,
+#           oracle, postgres, sqlite
 # dbhost:   Database hostname
 # dbport:   Database port
 # dbname:   Database name
@@ -33,13 +33,25 @@ $dbuser = 'username';
 $dbpass = 'password';
 
 ######################################################################
-# You have finished configuring the database!
-# ONLY EDIT THE INFORMATION BELOW IF YOU KNOW WHAT YOU ARE DOING.
+# Basic Configuration
+######################################################################
+# sitename:     The name of this site
+# locale:       The locale used - de_DE, dk_DK, en_GB, es_ES, fr_FR, hi_IN,
+#               it_IT, ja_JP, lt_LT, nl_NL, pt_BR, sk_SK, zh_CN, zh_TW
+# adminemail:   Contact address for the site administrator. Used as the from:
+#               address in password retrieval e-mails.
+######################################################################
+
+$sitename   = 'Scuttle';
+$locale     = 'en_GB';
+$adminemail = 'admin@example.org';
+
+######################################################################
+# Advanced Configuration
+# ONLY EDIT THE INFORMATION BELOW IF YOU KNOW WHAT YOU ARE DOING
 ######################################################################
 # System Configuration
 #
-# sitename:         The name of this site.
-# locale:           The locale used.
 # top_include:      The header file.
 # bottom_include:   The footer file.
 # shortdate:        The format of short dates.
@@ -82,11 +94,15 @@ $dbpass = 'password';
 #
 # filetypes    : An array of bookmark extensions that Scuttle should
 #                add system tags for.
-# reservedusers : An array of usernames that cannot be registered
+# reservedusers     : An array of usernames that cannot be registered.
+# url_blacklist     : Array of regex patterns. User is banned and existing
+#                     bookmarks are hidden if a match is found.
+# email_whitelist   : Array of regex patterns. Used to whitelist addresses that
+#                     may otherwise match the blacklist.
+# email_blacklist   : Array of regex patterns. Registration is blocked if a
+#                     match is found.
 ######################################################################
 
-$sitename           = 'Scuttle';
-$locale             = 'en_GB';
 $top_include        = 'top.inc.php';
 $bottom_include     = 'bottom.inc.php';
 $shortdate          = 'd-m-Y';
@@ -99,7 +115,6 @@ $TEMPLATES_DIR      = dirname(__FILE__) .'/templates/';
 $root               = null;
 $cookieprefix       = 'SCUTTLE';
 $tableprefix        = 'sc_';
-$adminemail         = 'admin@example.org';
 $cleanurls          = false;
 
 $usecache           = false;
@@ -109,11 +124,11 @@ $useredir           = false;
 $url_redir          = 'http://www.google.com/url?sa=D&q=';
 
 $filetypes          = array(
-                        'audio' => array('mp3', 'ogg', 'wav'),
-                        'document' => array('doc', 'odt', 'pdf'),
-                        'image' => array('gif', 'jpeg', 'jpg', 'png'),
-                        'video' => array('avi', 'mov', 'mp4', 'mpeg', 'mpg', 'wmv')
-                        );
+    'audio'     => array('mp3', 'ogg', 'wav'),
+    'document'  => array('doc', 'odt', 'pdf'),
+    'image'     => array('gif', 'jpeg', 'jpg', 'png'),
+    'video'     => array('avi', 'mov', 'mp4', 'mpeg', 'mpg', 'wmv')
+);
 
 $reservedusers       = array('all', 'watchlist');
 
@@ -121,9 +136,9 @@ $url_blacklist       = null;
 
 $email_whitelist     = null;
 $email_blacklist     = array(
-                        '/(.*-){2,}/',
-                        '/mailinator\.com/i'
-                        );
+    '/(.*-){2,}/',
+    '/mailinator\.com/i'
+);
 
 include_once('debug.inc.php');
 ?>
