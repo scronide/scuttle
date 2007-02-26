@@ -6,7 +6,7 @@ $this->includeTemplate($GLOBALS['top_include']);
 <li><?php echo T_('<strong>Store</strong> all your favourite links in one place, accessible from anywhere.'); ?></li>
 <li><?php echo T_('<strong>Share</strong> your bookmarks with everyone, with friends on your watchlist or just keep them private.') ;?></li>
 <li><?php echo T_('<strong>Tag</strong> your bookmarks with as many labels as you want, instead of wrestling with folders.'); ?></li>
-<li><?php echo sprintf(T_('<strong><a href="register.php">Register now</a></strong> to start using %s!'), $GLOBALS['sitename']); ?></li>
+<li><?php echo sprintf(T_('<strong><a href="%s">Register now</a></strong> to start using %s!'), createURL('register'), $GLOBALS['sitename']); ?></li>
 </ul>
 
 <h3><?php echo T_('Geek Stuff'); ?></h3>

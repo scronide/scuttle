@@ -12,11 +12,11 @@
         echo '<link rel="alternate" type="application/rss+xml" title="'. $rsschannels[$i][0] .'" href="'. $rsschannels[$i][1] .'" />';
     }
     if ($loadjs) {
-		echo '<script type="text/javascript" src="'. $GLOBALS['root'] .'includes/jquery.js"></script>'; 
-    	echo '<script type="text/javascript" src="'. $GLOBALS['root'] .'javascript.php"></script>';
+        echo '<script type="text/javascript" src="'. $GLOBALS['root'] .'includes/jquery.js"></script>'; 
+        echo '<script type="text/javascript" src="'. $GLOBALS['root'] .'javascript.php"></script>';
     }
     if ($GLOBALS['nofollow']) {
-    	echo '<meta name="robots" content="index, nofollow" />';
+        echo '<meta name="robots" content="index, nofollow" />';
     }
     ?>
 </head>
