@@ -16,7 +16,7 @@ class TemplateService {
     function loadTemplate($template, $vars = NULL) {
         if (substr($template, -4) != '.php')
             $template .= '.php';
-        $tpl =& new Template($this->basedir .'/'. $template, $vars, $this);
+        $tpl =& new Template($this->basedir . $template, $vars, $this);
         $tpl->parse();
         return $tpl;
     }

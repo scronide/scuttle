@@ -1,39 +1,37 @@
-# Scuttle ja-JP Translation
+# Scuttle ca-CA Translation
 # Copyright (C) 2005 - 2006 Scuttle project
 # This file is distributed under the same license as the Scuttle package.
-# Tadashi Jokagi <elf2000@users.sourceforge.net>, 2005-2006.
+# Ignasi Artigas <ignasi.artigas@gmail.com>
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: scuttle\n"
-"Report-Msgid-Bugs-To: elf2000@users.sourceforge.net\n"
-"POT-Creation-Date: 2005-11-15 19:51+0000\n"
+"Project-Id-Version: Scuttle\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-12-16 06:31+0200\n"
 "PO-Revision-Date: 2007-02-25 23:09-0800\n"
 "Last-Translator: Marcus Campbell <marcus.campbell@gmail.com>\n"
-"Language-Team: Japanese <elf2000@users.sourceforge.net>\n"
+"Language-Team: ca-CA <ignasi.artigas@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: Japanese\n"
-"X-Poedit-Country: JAPAN\n"
 
 #: ..\..\..\about.php:25
 #: ..\..\..\templates\toolbar.inc.php:24
 msgid "About"
-msgstr "このサイトについて"
+msgstr "Quant a"
 
 #: ..\..\..\ajaxDelete.php:29
 msgid "You are not allowed to delete this bookmark"
-msgstr "このブックマークの削除は許可されていません"
+msgstr "No pot esborrar aquests enllaços"
 
 #: ..\..\..\ajaxDelete.php:33
 msgid "Failed to delete bookmark"
-msgstr "ブックマークの削除に失敗"
+msgstr "Error al esborrar els enllaços"
 
 #: ..\..\..\alltags.php:50
 msgid "All Tags"
-msgstr "すべてのタグ"
+msgstr "Totes"
 
 #: ..\..\..\alltags.php:59
 #: ..\..\..\populartags.php:63
@@ -44,246 +42,246 @@ msgstr "すべてのタグ"
 #: ..\..\..\watched.php:62
 #, php-format
 msgid "User with username %s not was not found"
-msgstr "ユーザー名「%s」のユーザーは見つかりません"
+msgstr "No s'ha trobat l'usuari %s"
 
 #: ..\..\..\bookmarks.php:71
 #, php-format
 msgid "User with username %s was not found"
-msgstr "ユーザー名「%s」のユーザーは見つかりません"
+msgstr "No s'ha trobat l'usuari %s"
 
 #: ..\..\..\bookmarks.php:94
 #: ..\..\..\edit.php:44
 msgid "Your bookmark must have a title and an address"
-msgstr "ブックマークは題名とアドレスがなければなりません"
+msgstr "El seu enllaç ha de tenir un titol i una direcció"
 
 #: ..\..\..\bookmarks.php:114
 #: ..\..\..\edit.php:58
 msgid "Bookmark saved"
-msgstr "ブックマークを保存しました"
+msgstr "Enllaç desat"
 
 #: ..\..\..\bookmarks.php:122
 #: ..\..\..\import.php:99
 #: ..\..\..\importNetscape.php:74
 msgid "There was an error saving your bookmark. Please try again or contact the administrator."
-msgstr "ブックマークの保存でエラーです。再度試すか、管理者に連絡してください。"
+msgstr "Hi ha hagut un error al desar el seu enllaç. Si us plau, intenta-ho una altra vegada o posa't en contacte amb un administrador."
 
 #: ..\..\..\bookmarks.php:160
 #: ..\..\..\templates\toolbar.inc.php:13
 msgid "Add a Bookmark"
-msgstr "ブックマーク追加"
+msgstr "Afegir un enllaç"
 
 #: ..\..\..\bookmarks.php:163
 msgid "Add Bookmark"
-msgstr "ブックマークを追加する"
+msgstr "Afegir Enllaç"
 
 #: ..\..\..\bookmarks.php:166
 msgid "You must be logged in before you can add bookmarks."
-msgstr "ブックマークを追加する前にログインしなければなりません。"
+msgstr "Has d'introducir en teu usuari i paraula de pas per a poder afegir enllaços"
 
 #: ..\..\..\bookmarks.php:213
 msgid "My Bookmarks"
-msgstr "自分のブックマーク"
+msgstr "Els Meus Enllaços"
 
 #: ..\..\..\edit.php:29
 msgid "Edit Bookmark"
-msgstr "ブックマークを編集する"
+msgstr "Editar enllaç"
 
 #: ..\..\..\edit.php:34
 #, php-format
 msgid "Bookmark with id %s not was not found"
-msgstr "ID「%s」とブックマークは見つかりません"
+msgstr "L'enllaç amb la id %s no funciona"
 
 #: ..\..\..\edit.php:39
 msgid "You are not allowed to edit this bookmark"
-msgstr "このブックマークの編集は許可されていません"
+msgstr "No tens permisos per editar aquest enllaç"
 
 #: ..\..\..\edit.php:55
 msgid "Error while saving your bookmark"
-msgstr "ブックマークの保存中にエラー"
+msgstr "S'ha produit un error al desar el seu enllaç"
 
 #: ..\..\..\edit.php:78
 msgid "Failed to delete the bookmark"
-msgstr "ブックマークの削除に失敗"
+msgstr "Error al esborrar l'enllaç"
 
 #: ..\..\..\edit.php:88
 #: ..\..\..\templates\editprofile.tpl.php:52
 msgid "Save Changes"
-msgstr "変更を保存する"
+msgstr "Desar Canvis"
 
 #: ..\..\..\functions.inc.php:92
 msgid "message_die() was called multiple times."
-msgstr "message_die() は複数回呼ばれました。"
+msgstr "message_die() requerit en varies ocasions."
 
 #: ..\..\..\functions.inc.php:104
 msgid "SQL Error"
-msgstr "SQL エラー"
+msgstr "Error de SQL"
 
 #: ..\..\..\functions.inc.php:110
 msgid "Line"
-msgstr "行"
+msgstr "Línia"
 
 #: ..\..\..\functions.inc.php:110
 #: ..\..\..\templates\importDelicious.tpl.php:8
 #: ..\..\..\templates\importNetscape.tpl.php:9
 msgid "File"
-msgstr "ファイル"
+msgstr "Fitxer"
 
 #: ..\..\..\functions.inc.php:116
 msgid "Information"
-msgstr "情報"
+msgstr "Informació"
 
 #: ..\..\..\functions.inc.php:121
 msgid "Critical Information"
-msgstr "重要な情報"
+msgstr "Informació Crítica"
 
 #: ..\..\..\functions.inc.php:126
 msgid "An error occured"
-msgstr "エラーが発生しました"
+msgstr "Hi ha hagut un error"
 
 #: ..\..\..\functions.inc.php:129
 msgid "General Error"
-msgstr "一般エラー"
+msgstr "Error General"
 
 #: ..\..\..\functions.inc.php:137
 msgid "An critical error occured"
-msgstr "重大なエラーが発生しました"
+msgstr "Hi ha hagut un error critic"
 
 #: ..\..\..\functions.inc.php:140
 msgid "Critical Error"
-msgstr "重大なエラー"
+msgstr "Error Critic"
 
 #: ..\..\..\functions.inc.php:149
 msgid "DEBUG MODE"
-msgstr "デバッグモード"
+msgstr "MODE DEPURACIÓ"
 
 #: ..\..\..\history.php:65
 msgid "History"
-msgstr "履歴"
+msgstr "Historial"
 
 #: ..\..\..\history.php:66
 #, php-format
 msgid "History for %s"
-msgstr "%s の履歴"
+msgstr "Historial de %s"
 
 #: ..\..\..\history.php:81
 msgid "Address was not found"
-msgstr "アドレスは見つかりません"
+msgstr "La direcció no existeix"
 
 #: ..\..\..\import.php:41
 msgid "Could not open XML input"
-msgstr "入力 XML を開けません"
+msgstr "No s'ha pogut obrir la entrada XML"
 
 #: ..\..\..\import.php:45
 #, php-format
 msgid "XML error: %s at line %d"
-msgstr "XML エラー: %s の %d 行目"
+msgstr "Errors: %s a la linia %d del XML"
 
 #: ..\..\..\import.php:54
 msgid "Import Bookmarks from del.icio.us"
-msgstr "del.icio.us からブックマークをインポートする"
+msgstr "Importar enllaços de del.icio.us"
 
 #: ..\..\..\import.php:86
 #: ..\..\..\importNetscape.php:64
 msgid "You have already submitted this bookmark."
-msgstr "このブックマークは既に送信しています。"
+msgstr "Ja has afegit aquest enllaç"
 
 #: ..\..\..\import.php:97
 #: ..\..\..\importNetscape.php:72
 msgid "Bookmark imported."
-msgstr "ブックマークをインポートしました。"
+msgstr "Enllaços importats."
 
 #: ..\..\..\importNetscape.php:81
 msgid "Import Bookmarks from Browser File"
-msgstr "ブラウザーのファイルからブックマークをインポートする"
+msgstr "Importar enllaços des d'un Navegador"
 
 #: ..\..\..\index.php:32
 msgid "You have now logged out"
-msgstr "ログアウトしました"
+msgstr "T'has desconectat"
 
 #: ..\..\..\index.php:39
 #, php-format
 msgid "%s: Recent bookmarks"
-msgstr "%s: 最近のブックマーク"
+msgstr "%s: Enllaços recents"
 
 #: ..\..\..\index.php:72
 msgid "Store, share and tag your favourite links"
-msgstr "お気に入りのリンクの保存、共有、タグ付けをします。"
+msgstr "Desa, navega i etiqueta els teus enllaços favorits"
 
 #: ..\..\..\index.php:73
 msgid "Recent Bookmarks"
-msgstr "最近のブックマーク"
+msgstr "Enllaços Recents"
 
 #: ..\..\..\jsScuttle.php:22
 msgid "Are you sure?"
-msgstr "本当にしますか?"
+msgstr "Estas segur?"
 
 #: ..\..\..\jsScuttle.php:22
 msgid "Yes"
-msgstr "はい"
+msgstr "Si"
 
 #: ..\..\..\jsScuttle.php:22
 msgid "No"
-msgstr "いいえ"
+msgstr "No"
 
 #: ..\..\..\jsScuttle.php:68
 msgid "Available"
-msgstr "利用できます"
+msgstr "Disponible"
 
 #: ..\..\..\jsScuttle.php:71
 msgid "Not Available"
-msgstr "利用できません"
+msgstr "No hi ha enllaços disponibles"
 
 #: ..\..\..\login.php:38
 msgid "The details you have entered are incorrect. Please try again."
-msgstr "入力した詳細は正しくありません。再び試みてください。"
+msgstr "Los dades introduides no son correctes. Si us plau, intenta-ho de nou."
 
 #: ..\..\..\login.php:48
 #: ..\..\..\templates\login.tpl.php:26
 #: ..\..\..\templates\toolbar.inc.php:28
 msgid "Log In"
-msgstr "ログイン"
+msgstr "Accedir"
 
 #: ..\..\..\password.php:31
 msgid "You must enter your username."
-msgstr "ユーザー名を入力してください。"
+msgstr "Introdueix el teu nom d'usuari"
 
 #: ..\..\..\password.php:35
 msgid "You must enter your <abbr title=\"electronic mail\">e-mail</abbr> address."
-msgstr "<abbr title=\"電子メール\">電子メール</abbr>アドレスを入力しなければなりません。"
+msgstr "Has <em>d'especificar</em> usuari, clau, nom i <abbr title=\"electronic mail\"> correu electrònic</abbr>."
 
 #: ..\..\..\password.php:42
 msgid "No matches found for that username."
-msgstr "一致するユーザー名が見つかりません。"
+msgstr "No s'ha trobat cap usuari amb aquest nom"
 
 #: ..\..\..\password.php:45
 msgid "No matches found for that combination of username and <abbr title=\"electronic mail\">e-mail</abbr> address."
-msgstr "一致する<abbr title=\"電子メール\">電子メール</abbr>アドレスとユーザー名の組み合わせが見つかりませんでした。"
+msgstr "No s'ha trobat cap usuari amb aquest nom i <abbr title=\"electronic mail\">correu electrònic</abbr>."
 
 #: ..\..\..\password.php:53
 msgid "There was an error while generating your new password. Please try again."
-msgstr "新規パスワードの生成中にエラーです。再度試してください。"
+msgstr "Hi ha hagut un error al desar el seu enllaç. Si us plau, intenta-ho de nou o posa't en contacte amb l'administrador."
 
 #: ..\..\..\password.php:57
 msgid "Your new password is:"
-msgstr "新規パスワード:"
+msgstr "La teva nova paraula de pas es:"
 
 #: ..\..\..\password.php:57
 msgid "To keep your bookmarks secure, you should change this password in your profile the next time you log in."
-msgstr "ブックマークの安全性を維持するために、次回のログイン時にプロフィールのこのパスワードを変えるべきです。"
+msgstr "Perque siguin segurs els teus enllaços, has de canviar la paraula de pas al següent accés"
 
 #: ..\..\..\password.php:60
 #, php-format
 msgid "%s Account Information"
-msgstr "%sアカウント情報"
+msgstr "Informació de %s"
 
 #: ..\..\..\password.php:62
 #, php-format
 msgid "New password generated and sent to %s"
-msgstr "新規アカウントを生成し、%s に送信しました"
+msgstr "S'ha creat una nova paraula de pas i s'ha enviat a %s"
 
 #: ..\..\..\password.php:69
 msgid "Forgotten Password"
-msgstr "パスワード忘れ"
+msgstr "Paraula de pas oblidada"
 
 #: ..\..\..\populartags.php:54
 #: ..\..\..\templates\dynamictags.inc.php:101
@@ -291,175 +289,175 @@ msgstr "パスワード忘れ"
 #: ..\..\..\templates\sidebar.block.popular.php:15
 #: ..\..\..\templates\sidebar.block.recent.php:25
 msgid "Popular Tags"
-msgstr "人気のタグ"
+msgstr "Mes visitades"
 
 #: ..\..\..\profile.php:54
 #: ..\..\..\watched.php:114
 msgid "Username was not specified"
-msgstr "ユーザー名が指定されていない"
+msgstr "Usuari no introduït"
 
 #: ..\..\..\profile.php:60
 msgid "My Profile"
-msgstr "自分のプロフィール"
+msgstr "El meu Perfil"
 
 #: ..\..\..\profile.php:62
 #: ..\..\..\templates\sidebar.block.profile.php:12
 msgid "Profile"
-msgstr "プロフィール"
+msgstr "Perfil"
 
 #: ..\..\..\profile.php:80
 msgid "Password and confirmation do not match."
-msgstr "パスワードと確認が一致しません。"
+msgstr "La paraula de pas i la seva confirmació no coincideixen."
 
 #: ..\..\..\profile.php:84
 msgid "Password must be at least 6 characters long."
-msgstr "パスワードは少なくとも 6 文字以上です。"
+msgstr "La paraula de pas ha de tenir una longitud mínima de 6 caracters."
 
 #: ..\..\..\profile.php:88
 msgid "E-mail address is not valid."
-msgstr "電子メールアドレスは有効ではありません。"
+msgstr "Correu incorrecte."
 
 #: ..\..\..\profile.php:92
 msgid "An error occurred while saving your changes."
-msgstr "変更の保存中にエラーです。"
+msgstr "Hi ha hagut un error al desar els canvis."
 
 #: ..\..\..\profile.php:94
 msgid "Changes saved."
-msgstr "変更を保存しました。"
+msgstr "Canvis desats."
 
 #: ..\..\..\register.php:33
 msgid "You <em>must</em> enter a username, password and e-mail address."
-msgstr "ユーザー名、パスワード、名前と電子メールアドレスを入力しなければなりません。"
+msgstr "Has <em>d'especificar</em> usuari, paraula de pas, nom i <abbr title=\"electronic mail\"> correu electrònic</abbr>."
 
 #: ..\..\..\register.php:37
 msgid "This username already exists, please make another choice."
-msgstr "ユーザー名は既に存在します。他を選んでください。"
+msgstr "Aquest usuari ja existeix, si us plau introdueixne un altre."
 
 #: ..\..\..\register.php:41
 msgid "E-mail address is not valid. Please try again."
-msgstr "電子メールアドレスは有効ではありません。再度試してください。"
+msgstr "Correu incorrecte."
 
 #: ..\..\..\register.php:50
 msgid "You have successfully registered. Enjoy!"
-msgstr "登録に成功しました。楽しんでください!"
+msgstr "El registre ha sigut correcte. Pots continuar!"
 
 #: ..\..\..\register.php:52
 msgid "Registration failed. Please try again."
-msgstr "登録に失敗しました。再度試してください。"
+msgstr "Registre erroni. Si us plau, intenta-ho de nou."
 
 #: ..\..\..\register.php:57
 #: ..\..\..\templates\register.tpl.php:32
 #: ..\..\..\templates\toolbar.inc.php:27
 msgid "Register"
-msgstr "登録する"
+msgstr "Registrar-se"
 
 #: ..\..\..\search.inc.php:29
 #: ..\..\..\search.inc.php:57
 msgid "Search"
-msgstr "検索"
+msgstr "Cercar"
 
 #: ..\..\..\search.inc.php:35
 msgid "this user's bookmarks"
-msgstr "このユーザーのブックマーク"
+msgstr "enllaços d'aquest usuari"
 
 #: ..\..\..\search.inc.php:40
 msgid "my bookmarks"
-msgstr "自分のブックマーク"
+msgstr "els meus enllaços"
 
 #: ..\..\..\search.inc.php:41
 msgid "my watchlist"
-msgstr "自分の注目一覧"
+msgstr "les meves consultes"
 
 #: ..\..\..\search.inc.php:45
 msgid "all bookmarks"
-msgstr "すべてのブックマーク"
+msgstr "tots"
 
 #: ..\..\..\search.inc.php:48
 msgid "for"
-msgstr "キーワード"
+msgstr "per"
 
 #: ..\..\..\search.php:91
 #: ..\..\..\search.php:128
 msgid "Search Bookmarks"
-msgstr "ブックマークを検索する"
+msgstr "Cercar Enllaços"
 
 #: ..\..\..\search.php:97
 msgid "Search Results"
-msgstr "検索結果"
+msgstr "Cercar Resultats"
 
 #: ..\..\..\tags.php:38
 #: ..\..\..\templates\editbookmark.tpl.php:44
 #: ..\..\..\templates\sidebar.block.profile.php:13
 msgid "Tags"
-msgstr "タグ"
+msgstr "Etiquetes"
 
 #: ..\..\..\watch.php:79
 #, php-format
 msgid "%s Bookmarks"
-msgstr "%sブックマーク"
+msgstr "Enllaç de %s"
 
 #: ..\..\..\watch.php:84
 msgid "User removed from your watchlist"
-msgstr "注目一覧からユーザーを削除しました"
+msgstr "Usuari esborrat de consultats"
 
 #: ..\..\..\watch.php:86
 msgid "User added to your watchlist"
-msgstr "注目一覧にユーザーを追加しました"
+msgstr "Usuari afegit a consultats"
 
 #: ..\..\..\watched.php:105
 msgid "My Watchlist"
-msgstr "自分の注目一覧"
+msgstr "Les Meves Consultes"
 
 #: ..\..\..\watched.php:107
 #: ..\..\..\templates\sidebar.block.profile.php:14
 #: ..\..\..\templates\toolbar.inc.php:12
 msgid "Watchlist"
-msgstr "注目一覧"
+msgstr "Consultats"
 
 #: ..\..\..\templates\about.tpl.php:6
 msgid "<strong>Store</strong> all your favourite links in one place, accessible from anywhere."
-msgstr "いかなる場所からもアクセス可能な 1 つの場所に、好きなリンクをすべて<strong>格納</strong>します。"
+msgstr "<strong>Desa</strong> tots els teus enllaços favorits en un lloc i accededeix des d'on vulguis."
 
 #: ..\..\..\templates\about.tpl.php:7
 msgid "<strong>Share</strong> your bookmarks with everyone, with friends on your watchlist or just keep them private."
-msgstr ""
+msgstr "<strong>Comparteix</strong> els teus enllaços, nomes amb els amics de la llista de consultats o manten-los privats."
 
 #: ..\..\..\templates\about.tpl.php:8
 msgid "<strong>Tag</strong> your bookmarks with as many labels as you want, instead of wrestling with folders."
-msgstr "フォルダーと格闘する代わりに、望むならいくつかのラベルととしてブックマークのタグを付けてください。"
+msgstr "<strong>Etiqueta</strong> els teus enllaços amb tantes etiquetes com  vulguis, enlloc de barallar-te amb les carpetes."
 
 #: ..\..\..\templates\about.tpl.php:9
 #, php-format
 msgid "<strong><a href=\"register.php\">Register now</a></strong> to start using %s!"
-msgstr "%s を使い始めるには<strong><a href=\"register.php\">今すぐ登録</a>してください</strong>!"
+msgstr "<strong><a href=\"register.php\">Registra't ara</a></strong> per utilitzar %s!"
 
 #: ..\..\..\templates\about.tpl.php:12
 msgid "Geek Stuff"
-msgstr "Geek スタッフ"
+msgstr "Endavant"
 
 #: ..\..\..\templates\about.tpl.php:14
 #, php-format
 msgid "%s is based on <a href=\"http://sourceforge.net/projects/scuttle/\">an open-source project</a> licensed under the <a href=\"http://www.gnu.org/copyleft/gpl.html\"><acronym title=\"GNU's Not Unix\">GNU</acronym> General Public License</a>. This means you can host it on your own web server for free, whether it is on the Internet, a private network or just your own computer."
-msgstr "%s は <a href=\"http://sourceforge.net/projects/scuttle/\">オープンソース</a>に基づいた、<a href=\"http://www.gnu.org/copyleft/gpl.html\"><acronym title=\"GNU's Not Unix\">GNU</acronym>General Public License</a> の元でライセンスされています。これは、インターネットや個人のネットワーク、あるいは自分のコンピュータや、自分のウェブサーバで無料で運営することができることを意味します。"
+msgstr "%s esta basat en <a href=\"http://sourceforge.net/projects/scuttle/\"> un projecte open-source </a> amb lliçencia <a href=\"http://www.gnu.org/copyleft/gpl.html\"><acronym title=\"GNU's Not Unix\">GNU</acronym> General Public License</a>. Aixo significa que pots utilitzarlo al teu servidor web gratuitament, sigui a internet, una xarxa privada o simplement al teu ordinador."
 
 #: ..\..\..\templates\about.tpl.php:15
 #, php-format
 msgid "%1$s supports most of the <a href=\"http://del.icio.us/doc/api\">del.icio.us <abbr title=\"Application Programming Interface\">API</abbr></a>. Almost all of the neat tools made for that system can be modified to work with %1$s instead. If you find a tool that won't let you change the API address, ask the creator to add this setting. You never know, they might just do it."
-msgstr "%1$s はほとんどの <a href=\"http://del.icio.us/doc/api\">del.icio.us <abbr title=\"Application Programming Interface\">API</abbr></a> をサポートします。Almost all of the neat tools made for that system can be modified to work with %1$s instead. If you find a tool that won't let you change the API address, ask the creator to add this setting. You never know, they might just do it."
+msgstr "%1$s esta basat en la <a href=\"http://del.icio.us/doc/api\"><abbr title=\"Application Programming Interface\">API</abbr></a> de <a href=\"http://del.icio.us/doc/api\">del.icio.us </a>. La majoria de les eines utilizades per construir aquest sistema es poden modificar per treballar amb %1$s. Si trobes una eina en la que no pugui modificar la direcció de la API, pregunta al creador si pot canviar aquesta configuració.Mai se sap, pot ser que ja s'hagi cambiat aquesta configuració."
 
 #: ..\..\..\templates\bookmarks.tpl.php:17
 #: ..\..\..\templates\tags.tpl.php:7
 msgid "Sort by:"
-msgstr "ソート基準"
+msgstr "Ordenat per:"
 
 #: ..\..\..\templates\bookmarks.tpl.php:18
 msgid "Date"
-msgstr "日付"
+msgstr "Data"
 
 #: ..\..\..\templates\bookmarks.tpl.php:19
 #: ..\..\..\templates\editbookmark.tpl.php:34
 msgid "Title"
-msgstr "題名"
+msgstr "Titol"
 
 #: ..\..\..\templates\bookmarks.tpl.php:23
 msgid "URL"
@@ -467,58 +465,58 @@ msgstr "URL"
 
 #: ..\..\..\templates\bookmarks.tpl.php:60
 msgid "Edit"
-msgstr "編集する"
+msgstr "Editar"
 
 #: ..\..\..\templates\bookmarks.tpl.php:60
 msgid "Delete"
-msgstr "削除する"
+msgstr "Esborrar"
 
 #: ..\..\..\templates\bookmarks.tpl.php:66
 msgid "by"
-msgstr ""
+msgstr "per"
 
 #: ..\..\..\templates\bookmarks.tpl.php:78
 #, php-format
 msgid " and %s1 other%s"
-msgstr "とその他%sひとり%s"
+msgstr "i %s1 mes %s"
 
 #: ..\..\..\templates\bookmarks.tpl.php:81
 #, php-format
 msgid " and %2$s%1$s others%3$s"
-msgstr "とその他 %2$s%1$s 人%3$s"
+msgstr "i %2$s%1$s altres %3$s"
 
 #: ..\..\..\templates\bookmarks.tpl.php:90
 msgid "Copy"
-msgstr "コピーする"
+msgstr "Copiar"
 
 #: ..\..\..\templates\bookmarks.tpl.php:136
 #: ..\..\..\templates\bookmarks.tpl.php:142
 msgid "First"
-msgstr "最初へ"
+msgstr "Primera"
 
 #: ..\..\..\templates\bookmarks.tpl.php:137
 #: ..\..\..\templates\bookmarks.tpl.php:143
 msgid "Previous"
-msgstr "前へ"
+msgstr "Anterior"
 
 #: ..\..\..\templates\bookmarks.tpl.php:150
 #: ..\..\..\templates\bookmarks.tpl.php:153
 msgid "Next"
-msgstr "次へ"
+msgstr "Següent"
 
 #: ..\..\..\templates\bookmarks.tpl.php:151
 #: ..\..\..\templates\bookmarks.tpl.php:154
 msgid "Last"
-msgstr "最後へ"
+msgstr "Última"
 
 #: ..\..\..\templates\bookmarks.tpl.php:156
 #, php-format
 msgid "Page %d of %d"
-msgstr "ページ(%d/%d)"
+msgstr "Pàgina %d de %d"
 
 #: ..\..\..\templates\bookmarks.tpl.php:160
 msgid "No bookmarks available"
-msgstr "ブックマークは利用できません"
+msgstr "No hi ha enllaços disponibles"
 
 #: ..\..\..\templates\dynamictags.inc.php:108
 #: ..\..\..\templates\sidebar.block.common.php:15
@@ -527,97 +525,97 @@ msgstr "ブックマークは利用できません"
 #: ..\..\..\templates\tags.tpl.php:16
 msgid "bookmark"
 msgid_plural "bookmarks"
-msgstr[0] "ブックマーク"
-msgstr[1] "ブックマーク"
+msgstr[0] "enllaç"
+msgstr[1] "enllaços"
 
 #: ..\..\..\templates\editbookmark.tpl.php:29
 msgid "Address"
-msgstr "アドレス"
+msgstr "Direcció"
 
 #: ..\..\..\templates\editbookmark.tpl.php:31
 #: ..\..\..\templates\editbookmark.tpl.php:36
 #: ..\..\..\templates\editprofile.tpl.php:31
 msgid "Required"
-msgstr "必須"
+msgstr "Requerit"
 
 #: ..\..\..\templates\editbookmark.tpl.php:39
 #: ..\..\..\templates\editprofile.tpl.php:47
 #: ..\..\..\templates\profile.tpl.php:28
 msgid "Description"
-msgstr "説明"
+msgstr "Descripció"
 
 #: ..\..\..\templates\editbookmark.tpl.php:46
 msgid "Comma-separated"
-msgstr "カンマ区切り"
+msgstr "Separat per comes"
 
 #: ..\..\..\templates\editbookmark.tpl.php:49
 #: ..\..\..\templates\importDelicious.tpl.php:15
 #: ..\..\..\templates\importNetscape.tpl.php:16
 msgid "Privacy"
-msgstr "プライバシー"
+msgstr "Permisos"
 
 #: ..\..\..\templates\editbookmark.tpl.php:52
 #: ..\..\..\templates\importDelicious.tpl.php:18
 #: ..\..\..\templates\importNetscape.tpl.php:19
 msgid "Public"
-msgstr "公開"
+msgstr "Públic"
 
 #: ..\..\..\templates\editbookmark.tpl.php:53
 #: ..\..\..\templates\importDelicious.tpl.php:19
 #: ..\..\..\templates\importNetscape.tpl.php:20
 msgid "Shared with Watch List"
-msgstr "注目リストで共有"
+msgstr "Compartit en Consultats"
 
 #: ..\..\..\templates\editbookmark.tpl.php:54
 #: ..\..\..\templates\importDelicious.tpl.php:20
 #: ..\..\..\templates\importNetscape.tpl.php:21
 msgid "Private"
-msgstr "プライベート"
+msgstr "Privat"
 
 #: ..\..\..\templates\editbookmark.tpl.php:66
 msgid "Delete Bookmark"
-msgstr "ブックマークを削除する"
+msgstr "Esborrar enllaç"
 
 #: ..\..\..\templates\editbookmark.tpl.php:93
 msgid "Bookmarklet"
-msgstr "ブックマークレット"
+msgstr "Favorits"
 
 #: ..\..\..\templates\editbookmark.tpl.php:94
 #, php-format
 msgid "Drag one of the following bookmarklets to your browser's bookmarks and click it whenever you want to add the page you are on to %s"
-msgstr "ブラウザーのブックマークに次のブックマークレットのうちの 1 つをドラッグし、%s にページを追加したい場合、常にそれをクリックします。"
+msgstr "Arrossega els enllaços als favorits del teu navegador i fes-hi click sempre que vulgui afegir la pagina que estas veient a %s"
 
 #: ..\..\..\templates\editbookmark.tpl.php:106
 #, php-format
 msgid "Post to %s"
-msgstr "%s に投稿する"
+msgstr "Afegir a %s"
 
 #: ..\..\..\templates\editbookmark.tpl.php:107
 #, php-format
 msgid "Post to %s (Pop-up)"
-msgstr "%s に投稿する (ポップアップ)"
+msgstr "Afegir a %s (Pop-up)"
 
 #: ..\..\..\templates\editbookmark.tpl.php:111
 #: ..\..\..\templates\importDelicious.tpl.php:26
 #: ..\..\..\templates\importNetscape.tpl.php:27
 msgid "Import"
-msgstr "インポートする"
+msgstr "Importar"
 
 #: ..\..\..\templates\editbookmark.tpl.php:113
 msgid "Import bookmarks from bookmark file"
-msgstr "ブックマークファイルからブックマークをインポートする"
+msgstr "Importar enllaços des d'un fitxer"
 
 #: ..\..\..\templates\editbookmark.tpl.php:113
 msgid "Internet Explorer, Mozilla Firefox and Netscape"
-msgstr "Internet Explorer、Mozilla Firefox と Netscape"
+msgstr "Internet Explorer, Mozilla Firefox y Netscape"
 
 #: ..\..\..\templates\editbookmark.tpl.php:114
 msgid "Import bookmarks from del.icio.us"
-msgstr "del.icio.us からブックマークをインポートする"
+msgstr "Importar els enllaçso de del.icio.us"
 
 #: ..\..\..\templates\editprofile.tpl.php:10
 msgid "Account Details"
-msgstr "アカウントの詳細"
+msgstr "Detalls de l'usuari"
 
 #: ..\..\..\templates\editprofile.tpl.php:14
 #: ..\..\..\templates\login.tpl.php:15
@@ -625,184 +623,185 @@ msgstr "アカウントの詳細"
 #: ..\..\..\templates\profile.tpl.php:7
 #: ..\..\..\templates\register.tpl.php:16
 msgid "Username"
-msgstr "ユーザー名"
+msgstr "Usuari"
 
 #: ..\..\..\templates\editprofile.tpl.php:19
 msgid "New Password"
-msgstr "新規パスワード"
+msgstr "Nova paraula de pas"
 
 #: ..\..\..\templates\editprofile.tpl.php:24
+#, fuzzy
 msgid "Confirm Password"
-msgstr "パスワード(確認)"
+msgstr "Confirmar la paraula de pas"
 
 #: ..\..\..\templates\editprofile.tpl.php:29
 #: ..\..\..\templates\register.tpl.php:26
 msgid "E-mail"
-msgstr "電子メール"
+msgstr "Correu"
 
 #: ..\..\..\templates\editprofile.tpl.php:35
 msgid "Personal Details"
-msgstr "個人の詳細"
+msgstr "Dades de l'usuari"
 
 #: ..\..\..\templates\editprofile.tpl.php:39
 #: ..\..\..\templates\profile.tpl.php:12
 msgid "Name"
-msgstr "名前"
+msgstr "Nom"
 
 #: ..\..\..\templates\editprofile.tpl.php:43
 #: ..\..\..\templates\profile.tpl.php:18
 msgid "Homepage"
-msgstr "ホームページ"
+msgstr "Pàgina web"
 
 #: ..\..\..\templates\error.404.tpl.php:5
 msgid "Not Found"
-msgstr "見つかりません"
+msgstr "No funciona"
 
 #: ..\..\..\templates\error.404.tpl.php:6
 msgid "The requested URL was not found on this server"
-msgstr "要求された URL はこのサーバーで見つかりません"
+msgstr "No s'ha trobat la URL solicitada"
 
 #: ..\..\..\templates\error.500.tpl.php:5
 msgid "General server error"
-msgstr "サーバー全体のエラー"
+msgstr "Error general del servidor"
 
 #: ..\..\..\templates\error.500.tpl.php:6
 msgid "The requested URL could not be processed"
-msgstr "要求された URL は処理できません"
+msgstr "La URL solicitada no pot ser trobada"
 
 #: ..\..\..\templates\importDelicious.tpl.php:33
 msgid "Log in to the <a href=\"http://del.icio.us/api/posts/all\">export page at del.icio.us</a>"
-msgstr "<a href=\"http://del.icio.us/api/posts/all\">del.icio.us のエクスポートページ</a> にログインします。"
+msgstr "Registra't per <a href=\"http://del.icio.us/api/posts/all\">exportar la pagina a del.icio.us</a>"
 
 #: ..\..\..\templates\importDelicious.tpl.php:34
 msgid "Save the resulting <abbr title=\"Extensible Markup Language\">XML</abbr> file to your computer"
-msgstr "結果の <abbr title=\"Extensible Markup Language\">XML</abbr> ファイルをコンピューターに保存します。"
+msgstr "Desar els resultats en un fitxer <abbr title=\"Extensible Markup Language\">XML</abbr> del teu ordinador"
 
 #: ..\..\..\templates\importDelicious.tpl.php:35
 msgid "Click <kbd>Browse...</kbd> to find this file on your computer. The maximum size the file can be is 1MB"
-msgstr "コンピューター上のこのファイルを見つけるために <kbd>参照...</kbd> をクリックします。ファイルの最大サイズは 1MB です。"
+msgstr "Fes Click a <kbd>Examinar...</kbd> per cercar el fitxer al teu ordinador. La mida màxima no pot ser superior a 1MB"
 
 #: ..\..\..\templates\importDelicious.tpl.php:36
 #: ..\..\..\templates\importNetscape.tpl.php:43
 msgid "Select the default privacy setting for your imported bookmarks"
-msgstr "インポートしたブックマークのデフォルトプライバシー設定を選択します。"
+msgstr "Tria els permisos pels enllaços importats"
 
 #: ..\..\..\templates\importDelicious.tpl.php:37
 #: ..\..\..\templates\importNetscape.tpl.php:44
 msgid "Click <kbd>Import</kbd> to start importing the bookmarks; it may take a minute"
-msgstr "<kbd>インポートする</kbd> をクリックするとブックマークのインポートを開始します。しばらくかかるかもしれません。"
+msgstr "Fes Click a <kbd>Importar</kbd> per començar a importar els enllaços, aixo pot trigar alguns minuts."
 
 #: ..\..\..\templates\importNetscape.tpl.php:32
 msgid "Instructions"
-msgstr "手順"
+msgstr "Instruccions"
 
 #: ..\..\..\templates\importNetscape.tpl.php:35
 msgid "Export your bookmarks from your browser to a file"
-msgstr "ブラウザーからファイルにブックマークをエクスポートする"
+msgstr "Exporta els seus enllaços de seu navegador a un fitxer"
 
 #: ..\..\..\templates\importNetscape.tpl.php:37
 msgid "Internet Explorer: <kbd>File &gt; Import and Export... &gt; Export Favorites"
-msgstr "Internet Explorer: <kbd>ファイル &gt; インポートとエクスポート... &gt; お気に入りのエクスポート"
+msgstr "Internet Explorer: <kbd>Archivo &gt; Importar y Exportar... &gt; Exportar Favoritos"
 
 #: ..\..\..\templates\importNetscape.tpl.php:38
 msgid "Mozilla Firefox: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; File &gt; Export..."
-msgstr "Mozilla Firefox: <kbd>ブックマーク &gt; ブックマークの管理... &gt; ファイル &gt; Export..."
+msgstr "Mozilla Firefox: <kbd>Enlaces &gt; Manejar Enlaces... &gt; Archivo &gt; Exportar..."
 
 #: ..\..\..\templates\importNetscape.tpl.php:39
 msgid "Netscape: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; Tools &gt; Export..."
-msgstr "Netscape: <kbd>ブックマーク &gt; ブックマークの管理... &gt; ツール &gt; エクスポート..."
+msgstr "Netscape: <kbd>Enllaço &gt; Manejar Enllaços... &gt; Utilidtates &gt; Exportar..."
 
 #: ..\..\..\templates\importNetscape.tpl.php:42
 msgid "Click <kbd>Browse...</kbd> to find the saved bookmark file on your computer. The maximum size the file can be is 1MB"
-msgstr "コンピューター上に保存されたブックマークを見つけるために <kbd>参照...</kbd> をクリックします。ファイルの最大サイズは 1MB です。"
+msgstr "Fes Click a <kbd>Examinar...</kbd> per cercar els enllaços desats en un fitxer del teu ordinador. La mida màxima no pot ser superior a 1MB"
 
 #: ..\..\..\templates\login.tpl.php:20
 #: ..\..\..\templates\register.tpl.php:21
 msgid "Password"
-msgstr "パスワード"
+msgstr "Paraula de pas"
 
 #: ..\..\..\templates\login.tpl.php:22
 msgid "Don't ask for my password for 2 weeks"
-msgstr "2 週間自分のパスワードを問い合わせません"
+msgstr "Recordar la meva paraula de pas 2 setmanes"
 
 #: ..\..\..\templates\login.tpl.php:30
 msgid "Forgotten your password?"
-msgstr "パスワードを忘れましたか?"
+msgstr "Has oblidat la teva paraula de pas?"
 
 #: ..\..\..\templates\password.tpl.php:5
 #, php-format
 msgid "If you have forgotten your password, %s can generate a new one. Enter the username and e-mail address of your account into the form below and we will e-mail your new password to you."
-msgstr "パスワードを忘れてしまった場合、%s は新しいパスワードを生成できます。アカウントのユーザー名と電子メールアドレスを下のフォームに入力してください。そうすれば、新しいパスワードを電子メールで送信するでしょう。"
+msgstr "Si has oblidat la teva paraula de pas, %s pot crearte'n una de nova. Introdueix la seva direcció de correu electrònic del teu perfil al formulari seguent i s'et enviara una nova paraula de pas"
 
 #: ..\..\..\templates\password.tpl.php:14
 msgid "<abbr title=\"Electronic mail\">E-mail</abbr>"
-msgstr "<abbr title=\"電子メール\">電子メール</abbr>"
+msgstr "<abbr title=\"Electronic mail\">Correu Electrònic</abbr>"
 
 #: ..\..\..\templates\password.tpl.php:19
 msgid "Generate Password"
-msgstr "パスワードを生成する"
+msgstr "Nova paraula de pas"
 
 #: ..\..\..\templates\profile.tpl.php:23
 msgid "Member Since"
-msgstr "メンバー登録日"
+msgstr "Membre desde"
 
 #: ..\..\..\templates\profile.tpl.php:35
 #: ..\..\..\templates\sidebar.block.watchlist.php:8
 msgid "Watching"
-msgstr "注目一覧"
+msgstr "Consultades"
 
 #: ..\..\..\templates\profile.tpl.php:50
 msgid "Watched By"
-msgstr ""
+msgstr "Consultada per"
 
 #: ..\..\..\templates\register.tpl.php:11
 #, php-format
 msgid "Sign up here to create a free %s account. All the information requested below is required"
-msgstr "ここでサインアップし、%s のアカウントを自由に作成できます。下記で要求された情報はすべて必須です。"
+msgstr "Entra les dades per crear un compte gratuït a %s. Es necesaria tota la informació requerida."
 
 #: ..\..\..\templates\rss.tpl.php:9
 #, php-format
 msgid "Recent bookmarks posted to %s"
-msgstr "最近のブックマークを %s に投稿しました"
+msgstr "Enllaços recents afegits a %s"
 
 #: ..\..\..\templates\rss.tpl.php:17
 #: ..\..\..\templates\rss.tpl.php:19
 msgid "No bookmarks found"
-msgstr "ブックマークが見つかりません"
+msgstr "No s'han trobat enllaços"
 
 #: ..\..\..\templates\sidebar.block.recent.php:15
 msgid "Recent Tags"
-msgstr "最近のタグ"
+msgstr "Recents"
 
 #: ..\..\..\templates\sidebar.block.related.php:15
 msgid "Related Tags"
-msgstr "関連するタグ"
+msgstr "Etiquetes relacionades"
 
 #: ..\..\..\templates\sidebar.block.watchstatus.php:10
 msgid "Remove from Watchlist"
-msgstr "注目一覧から削除する"
+msgstr "Esborrar de Consultats"
 
 #: ..\..\..\templates\sidebar.block.watchstatus.php:12
 msgid "Add to Watchlist"
-msgstr "注目一覧に追加"
+msgstr "Afegir a Consultats"
 
 #: ..\..\..\templates\sidebar.block.watchstatus.php:17
 msgid "Actions"
-msgstr "操作"
+msgstr "Instruccions"
 
 #: ..\..\..\templates\tags.tpl.php:8
 msgid "Alphabet"
-msgstr "アルファベット"
+msgstr "Alfabetic"
 
 #: ..\..\..\templates\tags.tpl.php:9
 msgid "Popularity"
-msgstr "人気"
+msgstr "Mes visitades"
 
 #: ..\..\..\templates\toolbar.inc.php:11
 msgid "Bookmarks"
-msgstr "ブックマーク"
+msgstr "Enllaços"
 
 #: ..\..\..\templates\toolbar.inc.php:16
 msgid "Log Out"
-msgstr "ログアウト"
+msgstr "Sortir"
 

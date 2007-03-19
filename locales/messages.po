@@ -3,21 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-03-18 21:39-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2007-02-25 23:09-0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ..\..\..\about.php:25 ..\..\..\templates\toolbar.inc.php:24
+#: ..\..\..\about.php:25
+#: ..\..\..\templates\toolbar.inc.php:24
 msgid "About"
 msgstr ""
 
@@ -33,8 +33,12 @@ msgstr ""
 msgid "All Tags"
 msgstr ""
 
-#: ..\..\..\alltags.php:59 ..\..\..\populartags.php:63 ..\..\..\profile.php:46
-#: ..\..\..\rss.php:55 ..\..\..\search.php:61 ..\..\..\watch.php:35
+#: ..\..\..\alltags.php:59
+#: ..\..\..\populartags.php:63
+#: ..\..\..\profile.php:46
+#: ..\..\..\rss.php:55
+#: ..\..\..\search.php:61
+#: ..\..\..\watch.php:35
 #: ..\..\..\watched.php:62
 #, php-format
 msgid "User with username %s not was not found"
@@ -45,22 +49,24 @@ msgstr ""
 msgid "User with username %s was not found"
 msgstr ""
 
-#: ..\..\..\bookmarks.php:94 ..\..\..\edit.php:44
+#: ..\..\..\bookmarks.php:94
+#: ..\..\..\edit.php:44
 msgid "Your bookmark must have a title and an address"
 msgstr ""
 
-#: ..\..\..\bookmarks.php:114 ..\..\..\edit.php:58
+#: ..\..\..\bookmarks.php:114
+#: ..\..\..\edit.php:58
 msgid "Bookmark saved"
 msgstr ""
 
-#: ..\..\..\bookmarks.php:122 ..\..\..\import.php:99
+#: ..\..\..\bookmarks.php:122
+#: ..\..\..\import.php:99
 #: ..\..\..\importNetscape.php:74
-msgid ""
-"There was an error saving your bookmark. Please try again or contact the "
-"administrator."
+msgid "There was an error saving your bookmark. Please try again or contact the administrator."
 msgstr ""
 
-#: ..\..\..\bookmarks.php:160 ..\..\..\templates\toolbar.inc.php:13
+#: ..\..\..\bookmarks.php:160
+#: ..\..\..\templates\toolbar.inc.php:13
 msgid "Add a Bookmark"
 msgstr ""
 
@@ -97,7 +103,8 @@ msgstr ""
 msgid "Failed to delete the bookmark"
 msgstr ""
 
-#: ..\..\..\edit.php:88 ..\..\..\templates\editprofile.tpl.php:52
+#: ..\..\..\edit.php:88
+#: ..\..\..\templates\editprofile.tpl.php:52
 msgid "Save Changes"
 msgstr ""
 
@@ -113,7 +120,8 @@ msgstr ""
 msgid "Line"
 msgstr ""
 
-#: ..\..\..\functions.inc.php:110 ..\..\..\templates\importDelicious.tpl.php:8
+#: ..\..\..\functions.inc.php:110
+#: ..\..\..\templates\importDelicious.tpl.php:8
 #: ..\..\..\templates\importNetscape.tpl.php:9
 msgid "File"
 msgstr ""
@@ -172,11 +180,13 @@ msgstr ""
 msgid "Import Bookmarks from del.icio.us"
 msgstr ""
 
-#: ..\..\..\import.php:86 ..\..\..\importNetscape.php:64
+#: ..\..\..\import.php:86
+#: ..\..\..\importNetscape.php:64
 msgid "You have already submitted this bookmark."
 msgstr ""
 
-#: ..\..\..\import.php:97 ..\..\..\importNetscape.php:72
+#: ..\..\..\import.php:97
+#: ..\..\..\importNetscape.php:72
 msgid "Bookmark imported."
 msgstr ""
 
@@ -225,7 +235,8 @@ msgstr ""
 msgid "The details you have entered are incorrect. Please try again."
 msgstr ""
 
-#: ..\..\..\login.php:48 ..\..\..\templates\login.tpl.php:26
+#: ..\..\..\login.php:48
+#: ..\..\..\templates\login.tpl.php:26
 #: ..\..\..\templates\toolbar.inc.php:28
 msgid "Log In"
 msgstr ""
@@ -235,8 +246,7 @@ msgid "You must enter your username."
 msgstr ""
 
 #: ..\..\..\password.php:35
-msgid ""
-"You must enter your <abbr title=\"electronic mail\">e-mail</abbr> address."
+msgid "You must enter your <abbr title=\"electronic mail\">e-mail</abbr> address."
 msgstr ""
 
 #: ..\..\..\password.php:42
@@ -244,14 +254,11 @@ msgid "No matches found for that username."
 msgstr ""
 
 #: ..\..\..\password.php:45
-msgid ""
-"No matches found for that combination of username and <abbr title="
-"\"electronic mail\">e-mail</abbr> address."
+msgid "No matches found for that combination of username and <abbr title=\"electronic mail\">e-mail</abbr> address."
 msgstr ""
 
 #: ..\..\..\password.php:53
-msgid ""
-"There was an error while generating your new password. Please try again."
+msgid "There was an error while generating your new password. Please try again."
 msgstr ""
 
 #: ..\..\..\password.php:57
@@ -259,9 +266,7 @@ msgid "Your new password is:"
 msgstr ""
 
 #: ..\..\..\password.php:57
-msgid ""
-"To keep your bookmarks secure, you should change this password in your "
-"profile the next time you log in."
+msgid "To keep your bookmarks secure, you should change this password in your profile the next time you log in."
 msgstr ""
 
 #: ..\..\..\password.php:60
@@ -278,14 +283,16 @@ msgstr ""
 msgid "Forgotten Password"
 msgstr ""
 
-#: ..\..\..\populartags.php:54 ..\..\..\templates\dynamictags.inc.php:101
+#: ..\..\..\populartags.php:54
+#: ..\..\..\templates\dynamictags.inc.php:101
 #: ..\..\..\templates\sidebar.block.common.php:9
 #: ..\..\..\templates\sidebar.block.popular.php:15
 #: ..\..\..\templates\sidebar.block.recent.php:25
 msgid "Popular Tags"
 msgstr ""
 
-#: ..\..\..\profile.php:54 ..\..\..\watched.php:114
+#: ..\..\..\profile.php:54
+#: ..\..\..\watched.php:114
 msgid "Username was not specified"
 msgstr ""
 
@@ -293,7 +300,8 @@ msgstr ""
 msgid "My Profile"
 msgstr ""
 
-#: ..\..\..\profile.php:62 ..\..\..\templates\sidebar.block.profile.php:12
+#: ..\..\..\profile.php:62
+#: ..\..\..\templates\sidebar.block.profile.php:12
 msgid "Profile"
 msgstr ""
 
@@ -337,12 +345,14 @@ msgstr ""
 msgid "Registration failed. Please try again."
 msgstr ""
 
-#: ..\..\..\register.php:57 ..\..\..\templates\register.tpl.php:32
+#: ..\..\..\register.php:57
+#: ..\..\..\templates\register.tpl.php:32
 #: ..\..\..\templates\toolbar.inc.php:27
 msgid "Register"
 msgstr ""
 
-#: ..\..\..\search.inc.php:29 ..\..\..\search.inc.php:57
+#: ..\..\..\search.inc.php:29
+#: ..\..\..\search.inc.php:57
 msgid "Search"
 msgstr ""
 
@@ -366,7 +376,8 @@ msgstr ""
 msgid "for"
 msgstr ""
 
-#: ..\..\..\search.php:91 ..\..\..\search.php:128
+#: ..\..\..\search.php:91
+#: ..\..\..\search.php:128
 msgid "Search Bookmarks"
 msgstr ""
 
@@ -374,7 +385,8 @@ msgstr ""
 msgid "Search Results"
 msgstr ""
 
-#: ..\..\..\tags.php:38 ..\..\..\templates\editbookmark.tpl.php:44
+#: ..\..\..\tags.php:38
+#: ..\..\..\templates\editbookmark.tpl.php:44
 #: ..\..\..\templates\sidebar.block.profile.php:13
 msgid "Tags"
 msgstr ""
@@ -396,33 +408,27 @@ msgstr ""
 msgid "My Watchlist"
 msgstr ""
 
-#: ..\..\..\watched.php:107 ..\..\..\templates\sidebar.block.profile.php:14
+#: ..\..\..\watched.php:107
+#: ..\..\..\templates\sidebar.block.profile.php:14
 #: ..\..\..\templates\toolbar.inc.php:12
 msgid "Watchlist"
 msgstr ""
 
 #: ..\..\..\templates\about.tpl.php:6
-msgid ""
-"<strong>Store</strong> all your favourite links in one place, accessible "
-"from anywhere."
+msgid "<strong>Store</strong> all your favourite links in one place, accessible from anywhere."
 msgstr ""
 
 #: ..\..\..\templates\about.tpl.php:7
-msgid ""
-"<strong>Share</strong> your bookmarks with everyone, with friends on your "
-"watchlist or just keep them private."
+msgid "<strong>Share</strong> your bookmarks with everyone, with friends on your watchlist or just keep them private."
 msgstr ""
 
 #: ..\..\..\templates\about.tpl.php:8
-msgid ""
-"<strong>Tag</strong> your bookmarks with as many labels as you want, instead "
-"of wrestling with folders."
+msgid "<strong>Tag</strong> your bookmarks with as many labels as you want, instead of wrestling with folders."
 msgstr ""
 
 #: ..\..\..\templates\about.tpl.php:9
 #, php-format
-msgid ""
-"<strong><a href=\"register.php\">Register now</a></strong> to start using %s!"
+msgid "<strong><a href=\"register.php\">Register now</a></strong> to start using %s!"
 msgstr ""
 
 #: ..\..\..\templates\about.tpl.php:12
@@ -431,25 +437,16 @@ msgstr ""
 
 #: ..\..\..\templates\about.tpl.php:14
 #, php-format
-msgid ""
-"%s is based on <a href=\"http://sourceforge.net/projects/scuttle/\">an open-"
-"source project</a> licensed under the <a href=\"http://www.gnu.org/copyleft/"
-"gpl.html\"><acronym title=\"GNU's Not Unix\">GNU</acronym> General Public "
-"License</a>. This means you can host it on your own web server for free, "
-"whether it is on the Internet, a private network or just your own computer."
+msgid "%s is based on <a href=\"http://sourceforge.net/projects/scuttle/\">an open-source project</a> licensed under the <a href=\"http://www.gnu.org/copyleft/gpl.html\"><acronym title=\"GNU's Not Unix\">GNU</acronym> General Public License</a>. This means you can host it on your own web server for free, whether it is on the Internet, a private network or just your own computer."
 msgstr ""
 
 #: ..\..\..\templates\about.tpl.php:15
 #, php-format
-msgid ""
-"%1$s supports most of the <a href=\"http://del.icio.us/doc/api\">del.icio.us "
-"<abbr title=\"Application Programming Interface\">API</abbr></a>. Almost all "
-"of the neat tools made for that system can be modified to work with %1$s "
-"instead. If you find a tool that won't let you change the API address, ask "
-"the creator to add this setting. You never know, they might just do it."
+msgid "%1$s supports most of the <a href=\"http://del.icio.us/doc/api\">del.icio.us <abbr title=\"Application Programming Interface\">API</abbr></a>. Almost all of the neat tools made for that system can be modified to work with %1$s instead. If you find a tool that won't let you change the API address, ask the creator to add this setting. You never know, they might just do it."
 msgstr ""
 
-#: ..\..\..\templates\bookmarks.tpl.php:17 ..\..\..\templates\tags.tpl.php:7
+#: ..\..\..\templates\bookmarks.tpl.php:17
+#: ..\..\..\templates\tags.tpl.php:7
 msgid "Sort by:"
 msgstr ""
 
@@ -585,9 +582,7 @@ msgstr ""
 
 #: ..\..\..\templates\editbookmark.tpl.php:94
 #, php-format
-msgid ""
-"Drag one of the following bookmarklets to your browser's bookmarks and click "
-"it whenever you want to add the page you are on to %s"
+msgid "Drag one of the following bookmarklets to your browser's bookmarks and click it whenever you want to add the page you are on to %s"
 msgstr ""
 
 #: ..\..\..\templates\editbookmark.tpl.php:106
@@ -623,8 +618,10 @@ msgid "Account Details"
 msgstr ""
 
 #: ..\..\..\templates\editprofile.tpl.php:14
-#: ..\..\..\templates\login.tpl.php:15 ..\..\..\templates\password.tpl.php:10
-#: ..\..\..\templates\profile.tpl.php:7 ..\..\..\templates\register.tpl.php:16
+#: ..\..\..\templates\login.tpl.php:15
+#: ..\..\..\templates\password.tpl.php:10
+#: ..\..\..\templates\profile.tpl.php:7
+#: ..\..\..\templates\register.tpl.php:16
 msgid "Username"
 msgstr ""
 
@@ -672,21 +669,15 @@ msgid "The requested URL could not be processed"
 msgstr ""
 
 #: ..\..\..\templates\importDelicious.tpl.php:33
-msgid ""
-"Log in to the <a href=\"http://del.icio.us/api/posts/all\">export page at "
-"del.icio.us</a>"
+msgid "Log in to the <a href=\"http://del.icio.us/api/posts/all\">export page at del.icio.us</a>"
 msgstr ""
 
 #: ..\..\..\templates\importDelicious.tpl.php:34
-msgid ""
-"Save the resulting <abbr title=\"Extensible Markup Language\">XML</abbr> "
-"file to your computer"
+msgid "Save the resulting <abbr title=\"Extensible Markup Language\">XML</abbr> file to your computer"
 msgstr ""
 
 #: ..\..\..\templates\importDelicious.tpl.php:35
-msgid ""
-"Click <kbd>Browse...</kbd> to find this file on your computer. The maximum "
-"size the file can be is 1MB"
+msgid "Click <kbd>Browse...</kbd> to find this file on your computer. The maximum size the file can be is 1MB"
 msgstr ""
 
 #: ..\..\..\templates\importDelicious.tpl.php:36
@@ -696,9 +687,7 @@ msgstr ""
 
 #: ..\..\..\templates\importDelicious.tpl.php:37
 #: ..\..\..\templates\importNetscape.tpl.php:44
-msgid ""
-"Click <kbd>Import</kbd> to start importing the bookmarks; it may take a "
-"minute"
+msgid "Click <kbd>Import</kbd> to start importing the bookmarks; it may take a minute"
 msgstr ""
 
 #: ..\..\..\templates\importNetscape.tpl.php:32
@@ -710,28 +699,23 @@ msgid "Export your bookmarks from your browser to a file"
 msgstr ""
 
 #: ..\..\..\templates\importNetscape.tpl.php:37
-msgid ""
-"Internet Explorer: <kbd>File &gt; Import and Export... &gt; Export Favorites"
+msgid "Internet Explorer: <kbd>File &gt; Import and Export... &gt; Export Favorites"
 msgstr ""
 
 #: ..\..\..\templates\importNetscape.tpl.php:38
-msgid ""
-"Mozilla Firefox: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; File &gt; "
-"Export..."
+msgid "Mozilla Firefox: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; File &gt; Export..."
 msgstr ""
 
 #: ..\..\..\templates\importNetscape.tpl.php:39
-msgid ""
-"Netscape: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; Tools &gt; Export..."
+msgid "Netscape: <kbd>Bookmarks &gt; Manage Bookmarks... &gt; Tools &gt; Export..."
 msgstr ""
 
 #: ..\..\..\templates\importNetscape.tpl.php:42
-msgid ""
-"Click <kbd>Browse...</kbd> to find the saved bookmark file on your computer. "
-"The maximum size the file can be is 1MB"
+msgid "Click <kbd>Browse...</kbd> to find the saved bookmark file on your computer. The maximum size the file can be is 1MB"
 msgstr ""
 
-#: ..\..\..\templates\login.tpl.php:20 ..\..\..\templates\register.tpl.php:21
+#: ..\..\..\templates\login.tpl.php:20
+#: ..\..\..\templates\register.tpl.php:21
 msgid "Password"
 msgstr ""
 
@@ -745,10 +729,7 @@ msgstr ""
 
 #: ..\..\..\templates\password.tpl.php:5
 #, php-format
-msgid ""
-"If you have forgotten your password, %s can generate a new one. Enter the "
-"username and e-mail address of your account into the form below and we will "
-"e-mail your new password to you."
+msgid "If you have forgotten your password, %s can generate a new one. Enter the username and e-mail address of your account into the form below and we will e-mail your new password to you."
 msgstr ""
 
 #: ..\..\..\templates\password.tpl.php:14
@@ -774,9 +755,7 @@ msgstr ""
 
 #: ..\..\..\templates\register.tpl.php:11
 #, php-format
-msgid ""
-"Sign up here to create a free %s account. All the information requested "
-"below is required"
+msgid "Sign up here to create a free %s account. All the information requested below is required"
 msgstr ""
 
 #: ..\..\..\templates\rss.tpl.php:9
@@ -784,7 +763,8 @@ msgstr ""
 msgid "Recent bookmarks posted to %s"
 msgstr ""
 
-#: ..\..\..\templates\rss.tpl.php:17 ..\..\..\templates\rss.tpl.php:19
+#: ..\..\..\templates\rss.tpl.php:17
+#: ..\..\..\templates\rss.tpl.php:19
 msgid "No bookmarks found"
 msgstr ""
 
@@ -823,3 +803,4 @@ msgstr ""
 #: ..\..\..\templates\toolbar.inc.php:16
 msgid "Log Out"
 msgstr ""
+

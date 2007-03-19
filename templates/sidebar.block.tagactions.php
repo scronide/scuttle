@@ -11,8 +11,8 @@ if ($userservice->isLoggedOn()) {
         $deletelink = createURL('tagdelete', $currenttag);
 ?>
 
-<h2><?php echo T_('Actions'); ?></h2>
 <div id="tagactions">
+    <h2><?php echo T_('Actions'); ?></h2>
     <ul>
         <li><a href="<?php echo $renamelink; ?>"><?php echo $renametext ?></a></li>
         <?php if (count($tags) == 1): ?>
