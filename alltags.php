@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
+Copyright (C) 2004 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -20,12 +20,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
 require_once('header.inc.php');
-$templateservice =& ServiceFactory::getServiceInstance('TemplateService');
-$tagservice =& ServiceFactory::getServiceInstance('TagService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
-$cacheservice =& ServiceFactory::getServiceInstance('CacheService');
+$templateservice    =& ServiceFactory::getServiceInstance('TemplateService');
+$tagservice         =& ServiceFactory::getServiceInstance('TagService');
+$userservice        =& ServiceFactory::getServiceInstance('UserService');
+$cacheservice       =& ServiceFactory::getServiceInstance('CacheService');
 
-list($url, $user) = explode('/', $_SERVER['PATH_INFO']);
+$user = isset($_GET['query']) ? $_GET['query'] : NULL;
 if (!$user) {
     header('Location: '. createURL('populartags'));
     exit;
@@ -74,6 +74,20 @@ if (isset($userid)) {
 } else {
     $tplVars['cat_url'] = createURL('tags', '%2$s');
 }
+
+// Sorting
+$tplVars['sortOrders'] = array(
+    array(
+        'link'  => '?sort=alphabet_asc',
+        'title' => T_('Sort alphabetically'),
+        'text'  => T_('Alphabet')
+    ),
+    array(
+        'link'  => '?sort=popularity_asc',
+        'title' => T_('Sort by popularity'),
+        'text'  => T_('Popularity')
+    )
+);
 
 $tplVars['subtitle'] = $pagetitle;
 $templateservice->loadTemplate('tags.tpl', $tplVars);

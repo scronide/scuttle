@@ -6,11 +6,11 @@ window.onload = function() {
     document.getElementById("new").focus();
 }
 </script>
-<form action="<?= $formaction ?>" method="post">
+<form action="<?php echo $formaction; ?>" method="post">
 <table>
 <tr>
     <th align="left"><?php echo T_('Old'); ?></th>
-    <td><input type="text" name="old" id="old" value="<?= $old ?>" /></td>
+    <td><input type="text" name="old" id="old" value="<?php echo $old; ?>" /></td>
     <td>&larr; <?php echo T_('Required'); ?></td>
 </tr>
 <tr>
@@ -39,4 +39,3 @@ window.onload = function() {
 <?php
 $this->includeTemplate($GLOBALS['bottom_include']); 
 ?>
- 	  	 

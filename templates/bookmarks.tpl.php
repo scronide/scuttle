@@ -1,11 +1,16 @@
 <?php
-$userservice =& ServiceFactory::getServiceInstance('UserService');
-$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
+$bookmarkservice    =& ServiceFactory::getServiceInstance('BookmarkService');
+$userservice        =& ServiceFactory::getServiceInstance('UserService');
 
 $logged_on_userid = $userservice->getCurrentUserId();
 $this->includeTemplate($GLOBALS['top_include']);
 
+$access = array('public', 'shared', 'private');
+
 include('search.inc.php');
+if ($user) {
+    include('profilebar.tpl.php');
+}
 if (count($bookmarks) > 0) {
 ?>
 
@@ -13,76 +18,39 @@ if (count($bookmarks) > 0) {
 window.onload = playerLoad;
 </script>
 
-<p id="sort">
-    <?php echo T_("Sort by:"); ?>
-    <a href="?sort=date_desc"><?php echo T_("Date"); ?></a><span> / </span>
-    <a href="?sort=title_asc"><?php echo T_("Title"); ?></a><span> / </span>
-    <?php
-    if (!isset($hash)) {
-    ?>
-    <a href="?sort=url_asc"><?php echo T_("URL"); ?></a>
-    <?php
-    }
-    ?>
-</p>
-
-<ol<?php echo ($start > 0 ? ' start="'. ++$start .'"' : ''); ?> id="bookmarks">
+<div id="main" class="with-sidebar">
+    <ol<?php echo ($start > 0 ? ' start="'. ++$start .'"' : ''); ?> id="bookmarks">
 
     <?php
     foreach(array_keys($bookmarks) as $key) {
         $row =& $bookmarks[$key];
-        switch ($row['bStatus']) {
-            case 0:
-                $access = '';
-                break;
-            case 1:
-                $access = ' shared';
-                break;
-            case 2:
-                $access = ' private';
-                break;
-        }
+
+        $classes = array('xfolkentry', $access[$row['bStatus']]);
 
         $cats = '';
         $tags = $row['tags'];
         foreach(array_keys($tags) as $key) {
-            $tag =& $tags[$key];
-            $cats .= '<a href="'. sprintf($cat_url, filter($user, 'url'), filter($tag, 'url')) .'" rel="tag">'. filter($tag) .'</a>, ';
+            $tag    =& $tags[$key];
+            $cats   .= '<a href="'. sprintf($cat_url, filter($user, 'url'), filter($tag, 'url')) .'" rel="tag">'. filter($tag) .'</a><span>, </span>';
         }
-        $cats = substr($cats, 0, -2);
-        if ($cats != '') {
-            $cats = ' '. T_('to') .' '. $cats;
-        }
+        $cats = substr($cats, 0, -15);
 
+        $options = '';
         // Edit and delete links
-        $edit = '';
         if ($bookmarkservice->editAllowed($row['bId'])) {
-            $edit = ' - <a href="'. createURL('edit', $row['bId']) .'">'. T_('Edit') .'</a><script type="text/javascript">document.write(" - <a href=\"#\" onclick=\"deleteBookmark(this, '. $row['bId'] .'); return false;\">'. T_('Delete') .'<\/a>");</script>';
-        }
-
-        // User attribution
-        $copy = '';
-        if (!$userservice->isLoggedOn() || ($logged_on_userid != $row['uId'])) {
-            $copy = ' '. T_('by') .' <a href="'. createURL('bookmarks', $row['username']) .'">'. $row['username'] .'</a>';
+            array_push($classes, 'editable');
+            $options = ' <a href="'. createURL('edit', $row['bId']) .'" class="edit"><img src="'. $GLOBALS['root'] .'images/edit.png" width="16" height="16" alt="'. T_('Edit') .'" title="'. T_('Edit') .'" /></a><script type="text/javascript">document.write(" <a href=\"#\" onclick=\"deleteBookmark(this, '. $row['bId'] .'); return false;\" class=\"delete\"><img src=\"'. $GLOBALS['root'] .'images/delete.png\" width=\"16\" height=\"16\" alt=\"'. T_('Delete') .'\" title=\"'. T_('Delete') .'\" /><\/a>");</script>';
+        } elseif ($userservice->isLoggedOn()) {
+            array_push($classes, 'blockable');
+            $options = ' <a href="'. createURL('block', 'bookmark/'. $row['bId']) .'" class="block"><img src="'. $GLOBALS['root'] .'images/block.png" width="16" height="16" alt="'. T_('Block') .'" title="'. T_('Block') .'" /></a>';
         }
 
         // Udders!
-        if (!isset($hash)) {
-            $others = $bookmarkservice->countOthers($row['bAddress']);
-            $ostart = '<a href="'. createURL('history', $row['bHash']) .'">';
-            $oend = '</a>';
-            switch ($others) {
-                case 0:
-                    break;
-                case 1:
-                    $copy .= sprintf(T_(' and %s1 other%s'), $ostart, $oend);
-                    break;
-                default:
-                    $copy .= sprintf(T_(' and %2$s%1$s others%3$s'), $others, $ostart, $oend);
-            }
-        }
+        $popularity     = $bookmarkservice->countOthers($row['bAddress']) + 1;
+        $url_history    = createURL('history', $row['bHash']);
 
         // Copy link
+        $copy = '';
         if ($userservice->isLoggedOn() && ($logged_on_userid != $row['uId'])) {
             // Get the username of the current user
             $currentUser = $userservice->getCurrentUser();
@@ -97,24 +65,32 @@ window.onload = playerLoad;
         }
 
         $address = filter($row['bAddress']);
-        
+
         // Redirection option
         if ($GLOBALS['useredir']) {
             $address = $GLOBALS['url_redir'] . $address;
         }
-        
-        // Output
-        echo '<li class="xfolkentry'. $access .'">'."\n";
-        echo '<div class="link"><a href="'. $address .'"'. $rel .' class="taggedlink">'. filter($row['bTitle']) ."</a></div>\n";
-        if ($row['bDescription'] != '') {
-            echo '<div class="description">'. filter($row['bDescription']) ."</div>\n";
-        }
-        echo '<div class="meta">'. date($GLOBALS['shortdate'], strtotime($row['bDatetime'])) . $cats . $copy . $edit ."</div>\n";
-        echo "</li>\n";
+        ?>
+        <li class="<?php echo implode(' ', $classes); ?>">
+            <ul>
+                <li class="link"><a href="<?php echo $address; ?>"<?php echo $rel; ?> class="taggedlink"><?php echo filter($row['bTitle']); ?></a><?php echo $options; ?></li>
+                <?php if ($row['bDescription'] != ''): ?>
+                <li class="description"><?php echo filter($row['bDescription']); ?></li>
+                <?php
+                endif;
+                if ($cats != ''):
+                ?>
+                <li class="tags"><?php echo $cats; ?></li>
+                <?php endif; ?>
+                <li class="popularity"><a href="<?php echo $url_history; ?>"><?php echo $popularity; ?></a></li>
+                <li class="byline"><?php echo date($GLOBALS['shortdate'], strtotime($row['bDatetime'])) ?> &middot; <a href="<?php echo createURL('bookmarks', $row['username']); ?>"><?php echo $row['username']; ?></a></li>
+            </ul>
+        </li>
+    <?php
     }
     ?>
 
-</ol>
+    </ol>
 
     <?php
     // PAGINATION
@@ -165,6 +141,11 @@ window.onload = playerLoad;
 
 <?php
 }
+?>
+
+</div>
+
+<?php
 $this->includeTemplate('sidebar.tpl');
 $this->includeTemplate($GLOBALS['bottom_include']);
 ?>

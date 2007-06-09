@@ -12,7 +12,7 @@ $recentTags =& $tagservice->tagCloud($recentTags, 5, 90, 225, 'alphabet_asc');
 if ($recentTags && count($recentTags) > 0) {
 ?>
 
-<div id="recent">
+<div id="recent" class="box">
     <h2><?php echo T_('Recent Tags'); ?></h2>
     <?php
     $contents = '<p class="tags">';

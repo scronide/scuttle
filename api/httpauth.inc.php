@@ -8,7 +8,12 @@ function authenticate() {
 }
 
 require_once('../header.inc.php');
-if (isset($_SERVER['PHP_AUTH_USER']) && strlen($_SERVER['PHP_AUTH_USER']) > 0) {
+if (isset($_GET['Authorization'])) {
+    if (preg_match('/Basic\s+(.*)$/i', $_GET['Authorization'], $Authorization)) {
+        list($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) = explode(':', base64_decode($Authorization[1]));
+    }
+}
+if (isset($_SERVER['PHP_AUTH_USER']) && strlen($_SERVER['PHP_AUTH_PW']) > 0) {
     $userservice    =& ServiceFactory::getServiceInstance('UserService');
     $login          = $userservice->login($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
     if ($login['result'] === false) {

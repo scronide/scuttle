@@ -96,6 +96,31 @@ class UserService {
         return true;
     }
 
+    function block($user) {
+        if (!is_numeric($user)) {
+            $userinfo   = $this->getUserByUsername($user);
+            $user       = $userinfo[$this->getFieldName('primary')];
+        }
+
+        $uid            = $this->getCurrentUserId();
+        $datetime       = gmdate('Y-m-d H:i:s', time());
+
+        $values = array(
+            'uId'       => $uid,
+            'item'      => $user,
+            'score'     => -1,
+            'sDatetime' => $datetime,
+            'sModified' => $datetime
+        );
+        $sql    = 'INSERT INTO '. $GLOBALS['tableprefix'] .'scores '. $this->db->sql_build_array('INSERT', $values);
+        if (!($dbresult =& $this->db->sql_query($sql))){
+            message_die(GENERAL_ERROR, 'userservice: block', '', __LINE__, __FILE__, $sql, $this->db);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     function getProfileUrl($id, $username) {
         return sprintf($this->profileurl, urlencode($id), urlencode($username));
     }
@@ -126,7 +151,7 @@ class UserService {
     }
 
     function isAdmin($userid) {
-        return false; //not implemented yet
+        return false;
     }
 
     function getCurrentUserId() {
@@ -332,7 +357,7 @@ class UserService {
     }
 
    function sanitisePassword($password) {
-      return sha1(trim($password));
+        return sha1(trim($password));
    }
 
     function generatePassword($uId) {
@@ -371,7 +396,7 @@ class UserService {
    }
 
    function isReserved($username) {
-      return (in_array($username, $GLOBALS['reservedusers']));
+        return (in_array($username, $GLOBALS['reservedusers']));
    }
 
    function isValidEmail($email) {
@@ -398,9 +423,9 @@ class UserService {
     }
 
     function verify($username, $hash) {
-        $userinfo = $this->getUserByUsername($username);
-        $datetime =& $userinfo['uDatetime'];
-        $userid =& $userinfo[$this->getFieldName('primary')];
+        $userinfo   = $this->getUserByUsername($username);
+        $datetime   =& $userinfo['uDatetime'];
+        $userid     =& $userinfo[$this->getFieldName('primary')];
         $storedhash = md5($username . $datetime);
         if ($storedhash == $hash) {
             return $this->_updateuser($userid, 'uStatus', 1);
@@ -412,13 +437,13 @@ class UserService {
     // Properties
     function getTableName()       { return $this->tablename; }
     function setTableName($value) { $this->tablename = $value; }
-    
+
     function getFieldName($field)         { return $this->fields[$field]; }
     function setFieldName($field, $value) { $this->fields[$field] = $value; }
-    
+
     function getSessionKey()       { return $this->sessionkey; }
     function setSessionKey($value) { $this->sessionkey = $value; }
-    
+
     function getCookieKey()       { return $this->cookiekey; }
     function setCookieKey($value) { $this->cookiekey = $value; }
 }

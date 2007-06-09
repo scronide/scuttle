@@ -24,8 +24,8 @@ $tagservice       = & ServiceFactory :: getServiceInstance('TagService');
 $templateservice  = & ServiceFactory :: getServiceInstance('TemplateService');
 $userservice      = & ServiceFactory :: getServiceInstance('UserService');
 
-list ($url, $tag) = explode('/', $_SERVER['PATH_INFO']);
-$template         = 'tagrename.tpl';
+$tag        = isset($_GET['query']) ? $_GET['query'] : NULL;
+$template   = 'tagrename.tpl';
 
 if ($_POST['confirm']) {
    if (isset($_POST['old']) && trim($_POST['old']) != '')

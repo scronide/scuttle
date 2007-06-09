@@ -1,8 +1,8 @@
 <?php
 class ServiceFactory {
-    function ServiceFactory(&$db, $serviceoverrules = array()) {    
+    function ServiceFactory(&$db, $serviceoverrules = array()) {
     }
-  
+
     function &getServiceInstance($name, $servicedir = NULL) {
         global $dbhost, $dbuser, $dbpass, $dbname, $dbport, $dbpersist, $dbtype;
         static $instances = array();
@@ -23,7 +23,7 @@ class ServiceFactory {
                 if (!isset($servicedir)) {
                     $servicedir = dirname(__FILE__) .'/';
                 }
-                require_once($servicedir . strtolower($name) . '.php');
+                require_once($servicedir . strtolower($name) .'.php');
             }
             $instances[$name] = call_user_func(array($name, 'getInstance'), $db);
         }        

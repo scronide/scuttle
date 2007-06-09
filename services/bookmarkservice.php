@@ -1,61 +1,82 @@
 <?php
 class BookmarkService {
-   var $db;
+    var $db;
 
-   function & getInstance(& $db) {
-      static $instance;
-      if (!isset ($instance))
-         $instance = & new BookmarkService($db);
-      return $instance;
+    function &getInstance(&$db) {
+        static $instance;
+        if (!isset($instance)) {
+            $instance = & new BookmarkService($db);
+        }
+        return $instance;
+    }
+
+    function BookmarkService(&$db) {
+        $this->db = &$db;
+    }
+
+    function _getbookmark($fieldname, $value) {
+        $criteria = array(
+            $fieldname => $value
+        );
+
+        $query = 'SELECT * FROM '. $GLOBALS['tableprefix'] .'bookmarks WHERE '. $this->db->sql_build_array('SELECT', $criteria);
+
+        if (!($dbresult =& $this->db->sql_query_limit($query, 1, 0))) {
+            message_die(GENERAL_ERROR, 'Could not get bookmark', '', __LINE__, __FILE__, $query, $this->db);
+            return false;
+        }
+
+        if ($row =& $this->db->sql_fetchrow($dbresult)) {
+            return $row;
+        } else {
+            return false;
+        }
    }
 
-   function BookmarkService(& $db) {
-      $this->db = & $db;
-   }
+    function _in_regex_array($value, $array) {
+        foreach ($array as $key => $pattern) {
+            if (preg_match($pattern, $value)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-   function _getbookmark($fieldname, $value, $all = false) {
-      if (!$all) {
-         $userservice = & ServiceFactory :: getServiceInstance('UserService');
-         $sId     = $userservice->getCurrentUserId();
-         $range   = ' AND uId = '. $sId;
-      }
+    function block($bid) {
+        if (!is_numeric($bid)) {
+            return false;
+        }
 
-      $query = 'SELECT * FROM '. $GLOBALS['tableprefix'] .'bookmarks WHERE '. $fieldname .' = "'. $this->db->sql_escape($value) .'"'. $range;
+        $userservice    =& ServiceFactory::getServiceInstance('UserService');
+        $uid            = intval($userservice->getCurrentUserId());
+        $datetime       = gmdate('Y-m-d H:i:s', time());
 
-      if (!($dbresult = & $this->db->sql_query_limit($query, 1, 0))) {
-         message_die(GENERAL_ERROR, 'Could not get bookmark', '', __LINE__, __FILE__, $query, $this->db);
-         return false;
-      }
-
-      if ($row =& $this->db->sql_fetchrow($dbresult)) {
-         return $row;
-      } else {
-         return false;
-      }
-   }
-
-   function _in_regex_array($value, $array) {
-      foreach ($array as $key => $pattern) {
-         if (preg_match($pattern, $value)) {
+        $values = array(
+            'uId'       => $uid,
+            'item'      => $bid,
+            'score'     => -1,
+            'sDatetime' => $datetime,
+            'sModified' => $datetime
+        );
+        $sql    = 'INSERT INTO '. $GLOBALS['tableprefix'] .'scores '. $this->db->sql_build_array('INSERT', $values);
+        if (!($dbresult =& $this->db->sql_query($sql))){
+            message_die(GENERAL_ERROR, 'bookmarkservice: block', '', __LINE__, __FILE__, $sql, $this->db);
+            return false;
+        } else {
             return true;
-         }
-      }
-      return false;
-   }
+        }
+    }
 
-    function &getBookmark($bid, $include_tags = false) {
-        if (!is_numeric($bid))
-            return;
+    function &getBookmark($bid, $includeTags = false) {
+        if (!is_numeric($bid)) {
+            return false;
+        }
 
-        $sql = 'SELECT * FROM '. $GLOBALS['tableprefix'] .'bookmarks WHERE bId = '. $this->db->sql_escape($bid);
-
-        if (!($dbresult = & $this->db->sql_query($sql)))
-            message_die(GENERAL_ERROR, 'Could not get vars', '', __LINE__, __FILE__, $sql, $this->db);
-
-        if ($row = & $this->db->sql_fetchrow($dbresult)) {
-            if ($include_tags) {
-                $tagservice = & ServiceFactory :: getServiceInstance('TagService');
-                $row['tags'] = $tagservice->getTagsForBookmark($bid);
+        $row = $this->_getbookmark('bId', $bid);
+        if ($row) {
+            if ($includeTags) {
+                $tagservice     =& ServiceFactory :: getServiceInstance('TagService');
+                $row['tags']    = $tagservice->getTagsForBookmark($bid);
             }
             return $row;
         } else {
@@ -69,7 +90,7 @@ class BookmarkService {
     }
 
     function getBookmarkByHash($hash) {
-        return $this->_getbookmark('bHash', $hash, true);
+        return $this->_getbookmark('bHash', $hash);
     }
 
     function editAllowed($bookmark) {
@@ -224,26 +245,15 @@ class BookmarkService {
         //    if that user is on the logged-in user's watchlist, get the public AND contacts-only
         //    bookmarks; otherwise, just get the public bookmarks.
         //  - if the $user is set and IS the logged-in user, then get all bookmarks.
-        $userservice =& ServiceFactory::getServiceInstance('UserService');
-        $tagservice =& ServiceFactory::getServiceInstance('TagService');
-        $sId = $userservice->getCurrentUserId();
+        $userservice    =& ServiceFactory::getServiceInstance('UserService');
+        $tagservice     =& ServiceFactory::getServiceInstance('TagService');
+        $sId            = $userservice->getCurrentUserId();
 
-        if ($userservice->isLoggedOn()) {
-            // All public bookmarks, user's own bookmarks and any shared with user
-            $privacy = ' AND ((B.bStatus = 0) OR (B.uId = '. $sId .')';
-            $watchnames = $userservice->getWatchNames($sId, true);
-            foreach($watchnames as $watchuser) {
-                $privacy .= ' OR (U.username = "'. $watchuser .'" AND B.bStatus = 1)'; 
-            }
-            $privacy .= ')';
-        } else {
-            // Just public bookmarks
-            $privacy = ' AND B.bStatus = 0';
-        }
+        $isLoggedOn     = $userservice->isLoggedOn();
 
         // Set up the tags, if need be.
         if (!is_array($tags) && !is_null($tags)) {
-            $tags = explode('+', trim($tags));
+            $tags = explode(',', trim($tags));
         }
 
         $tagcount = count($tags);
@@ -256,14 +266,37 @@ class BookmarkService {
         if (SQL_LAYER == 'mysql4') {
             $query_1 .= 'SQL_CALC_FOUND_ROWS ';
         }
-        $query_1 .= 'B.*, U.'. $userservice->getFieldName('username');
+        $query_1 .= 'B.*, U.'. $userservice->getFieldName('username') .' ';
 
-        $query_2 = ' FROM '. $userservice->getTableName() .' AS U, '. $GLOBALS['tableprefix'] .'bookmarks AS B';
+        $query_2 = '';
+        $query_2 .= 'FROM '. $GLOBALS['tableprefix'] .'bookmarks AS B ';
+        $query_2 .= 'INNER JOIN '. $userservice->getTableName() .' AS U ';
+        $query_2 .= 'ON (U.'. $userservice->getFieldName('primary') .' = B.uId) ';
 
-        $query_3 = ' WHERE B.uId = U.'. $userservice->getFieldName('primary') . $privacy;
+        if ($isLoggedOn) {
+            $query_2 .= 'LEFT JOIN '. $GLOBALS['tableprefix'] .'scores AS S ';
+            $query_2 .= 'ON (S.item = B.bId) ';
+        }
+
+        $query_3 .= 'WHERE ';
+
+        // Privacy
+        if ($isLoggedOn) {
+            // All public bookmarks, user's own bookmarks and any shared with user
+            $query_3 .= '((B.bStatus = 0) OR (B.uId = '. $sId .')';
+            $watchnames = $userservice->getWatchNames($sId, true);
+            foreach($watchnames as $watchuser) {
+                $privacy .= 'OR (U.username = "'. $watchuser .'" AND B.bStatus = 1) '; 
+            }
+            $query_3 .= ') ';
+        } else {
+            // Just public bookmarks
+            $query_3 .= 'B.bStatus = 0 ';
+        }
+
         if (is_null($watched)) {
             if (!is_null($user)) {
-                $query_3 .= ' AND B.uId = '. $user;
+                $query_3 .= 'AND B.uId = '. $user .' ';
             }
         } else {
             $arrWatch = $userservice->getWatchlist($user);
@@ -275,34 +308,15 @@ class BookmarkService {
             } else {
                 $query_3_1 = 'B.uId = -1';
             }
-            $query_3 .= ' AND ('. $query_3_1 .') AND B.bStatus IN (0, 1)';
-        }
-
-        switch($sortOrder) {
-            case 'date_asc':
-                $query_5 = ' ORDER BY B.bDatetime ASC ';
-                break;
-            case 'title_desc':
-                $query_5 = ' ORDER BY B.bTitle DESC ';
-                break;
-            case 'title_asc':
-                $query_5 = ' ORDER BY B.bTitle ASC ';
-                break;
-            case 'url_desc':
-                $query_5 = ' ORDER BY B.bAddress DESC ';
-                break;
-            case 'url_asc':
-                $query_5 = ' ORDER BY B.bAddress ASC ';
-                break;
-            default:
-                $query_5 = ' ORDER BY B.bDatetime DESC ';
+            $query_3 .= 'AND ('. $query_3_1 .') AND B.bStatus IN (0, 1) ';
         }
 
         // Handle the parts of the query that depend on any tags that are present.
         $query_4 = '';
         for ($i = 0; $i < $tagcount; $i ++) {
-            $query_2 .= ', '. $GLOBALS['tableprefix'] .'tags AS T'. $i;
-            $query_4 .= ' AND T'. $i .'.tag = "'. $this->db->sql_escape($tags[$i]) .'" AND T'. $i .'.bId = B.bId';
+            $query_2 .= 'LEFT JOIN '. $GLOBALS['tableprefix'] .'tags AS T'. $i .' ';
+            $query_2 .= 'ON (T'. $i .'.bId = B.bId) ';
+            $query_4 .= 'AND T'. $i .'.tag = "'. $this->db->sql_escape($tags[$i]) .'" ';
         }
 
         // Search terms
@@ -313,7 +327,8 @@ class BookmarkService {
 
             // Search terms in tags as well when none given
             if (!count($tags)) {
-                $query_2 .= ' LEFT JOIN '. $GLOBALS['tableprefix'] .'tags AS T ON B.bId = T.bId';
+                $query_2 .= 'LEFT JOIN '. $GLOBALS['tableprefix'] .'tags AS T ';
+                $query_2 .= 'ON (T.bId = B.bId) ';
                 $dotags = true;
             } else {
                 $dotags = false;
@@ -321,29 +336,57 @@ class BookmarkService {
 
             $query_4 = '';
             for ($i = 0; $i < count($aTerms); $i++) {
-                $query_4 .= ' AND (B.bTitle LIKE "%'. $this->db->sql_escape($aTerms[$i]) .'%"';
-                $query_4 .= ' OR B.bDescription LIKE "%'. $this->db->sql_escape($aTerms[$i]) .'%"';
+                $query_4 .= 'AND (B.bTitle LIKE "%'. $this->db->sql_escape($aTerms[$i]) .'%" ';
+                $query_4 .= 'OR B.bDescription LIKE "%'. $this->db->sql_escape($aTerms[$i]) .'%" ';
                 if ($dotags) {
-                    $query_4 .= ' OR T.tag = "'. $this->db->sql_escape($aTerms[$i]) .'"';
+                    $query_4 .= 'OR T.tag = "'. $this->db->sql_escape($aTerms[$i]) .'" ';
                 }
-                $query_4 .= ')';
+                $query_4 .= ') ';
             }
         }
 
         // Start and end dates
         if ($startdate) {
-            $query_4 .= ' AND B.bDatetime > "'. $startdate .'"';
+            $query_4 .= 'AND B.bDatetime > "'. $startdate .'" ';
         }
         if ($enddate) {
-            $query_4 .= ' AND B.bDatetime < "'. $enddate .'"';
+            $query_4 .= 'AND B.bDatetime < "'. $enddate .'" ';
         }
 
         // Hash
         if ($hash) {
-            $query_4 .= ' AND B.bHash = "'. $hash .'"';
+            $query_4 .= 'AND B.bHash = "'. $hash .'" ';
+        }
+
+        // Scoring
+        if ($isLoggedOn) {
+            $query_4 .= 'AND (S.uId IS NULL OR (S.uId = '. $sId .' AND S.score > -1)) ';
+        }
+
+        // Sorting
+        $query_5 = 'ORDER BY ';
+        switch($sortOrder) {
+            case 'date_asc':
+                $query_5 .= 'B.bDatetime ASC';
+                break;
+            case 'title_desc':
+                $query_5 .= 'B.bTitle DESC';
+                break;
+            case 'title_asc':
+                $query_5 .= 'B.bTitle ASC';
+                break;
+            case 'url_desc':
+                $query_5 .= 'B.bAddress DESC';
+                break;
+            case 'url_asc':
+                $query_5 .= 'B.bAddress ASC';
+                break;
+            default:
+                $query_5 .= 'B.bDatetime DESC';
         }
 
         $query = $query_1 . $query_2 . $query_3 . $query_4 . $query_5;
+        // $this->db->sql_return_on_error(true);
         if (!($dbresult = & $this->db->sql_query_limit($query, intval($perpage), intval($start)))) {
             message_die(GENERAL_ERROR, 'Could not get bookmarks', '', __LINE__, __FILE__, $query, $this->db);
             return false;
@@ -352,7 +395,7 @@ class BookmarkService {
         if (SQL_LAYER == 'mysql4') {
             $totalquery = 'SELECT FOUND_ROWS() AS total';
         } else {
-            $totalquery = 'SELECT COUNT(*) AS total'. $query_2 . $query_3 . $query_4;
+            $totalquery = 'SELECT COUNT(*) AS total '. $query_2 . $query_3 . $query_4;
         }
 
         if (!($totalresult = & $this->db->sql_query($totalquery)) || (!($row = & $this->db->sql_fetchrow($totalresult)))) {
@@ -434,9 +477,9 @@ class BookmarkService {
       return false;
    }
 
-   function setAll($updates) {
-      $sql = 'UPDATE '. $GLOBALS['tableprefix'] .'bookmarks SET ' . $this->db->sql_build_array('UPDATE', $updates) .' WHERE uId = '. intval($sId);
-      return $this->db->sql_query($sql);
-   }
+    function setAll($updates) {
+        $sql = 'UPDATE '. $GLOBALS['tableprefix'] .'bookmarks SET '. $this->db->sql_build_array('UPDATE', $updates) .' WHERE uId = '. intval($sId);
+        return $this->db->sql_query($sql);
+    }
 }
 ?>

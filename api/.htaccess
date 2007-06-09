@@ -1,10 +1,13 @@
+<IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteRule ^tags/get tags_get.php
-RewriteRule ^posts/dates posts_dates.php
-RewriteRule ^posts/get posts_get.php
-RewriteRule ^posts/recent posts_recent.php
-RewriteRule ^posts/all posts_all.php
-RewriteRule ^posts/update posts_update.php
-RewriteRule ^posts/add posts_add.php
-RewriteRule ^posts/delete posts_delete.php
-RewriteRule ^tags/rename tags_rename.php
+RewriteCond %{HTTP:Authorization} ^Basic.*
+RewriteRule ^posts/add posts_add.php?Authorization=%{HTTP:Authorization} [QSA]
+RewriteRule ^posts/all posts_all.php?Authorization=%{HTTP:Authorization} [QSA]
+RewriteRule ^posts/dates posts_dates.php?Authorization=%{HTTP:Authorization} [QSA]
+RewriteRule ^posts/delete posts_delete.php?Authorization=%{HTTP:Authorization} [QSA]
+RewriteRule ^posts/get posts_get.php?Authorization=%{HTTP:Authorization} [QSA]
+RewriteRule ^posts/recent posts_recent.php?Authorization=%{HTTP:Authorization} [QSA]
+RewriteRule ^posts/update posts_update.php?Authorization=%{HTTP:Authorization} [QSA]
+RewriteRule ^tags/get tags_get.php?Authorization=%{HTTP:Authorization} [QSA]
+RewriteRule ^tags/rename tags_rename.php?Authorization=%{HTTP:Authorization} [QSA,L]
+</IfModule>

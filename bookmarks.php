@@ -26,23 +26,23 @@ $cacheservice     =& ServiceFactory::getServiceInstance('CacheService');
 $templateservice  =& ServiceFactory::getServiceInstance('TemplateService');
 $userservice      =& ServiceFactory::getServiceInstance('UserService');
 
+// Set user details if logged on
+$isLoggedOn = $userservice->isLoggedOn();
+if ($isLoggedOn) {
+    $currentUser        = $userservice->getCurrentUser();
+    $currentUserID      = $userservice->getCurrentUserId();
+    $currentUsername    = $currentUser[$userservice->getFieldName('username')];
+}
+
 $tplVars = array();
 
-if (isset($_GET['action']) && ($_GET['action'] == "add") && !$userservice->isLoggedOn()) {
+if (isset($_GET['action']) && ($_GET['action'] == "add") && !$isLoggedOn) {
     $loginqry = str_replace("'", '%27', stripslashes($_SERVER['QUERY_STRING']));
     header('Location: '. createURL('login', '?'. $loginqry));
     exit();
 }
 
-@list($url, $user, $cat) = isset($_SERVER['PATH_INFO']) ? explode('/', $_SERVER['PATH_INFO']) : NULL;
-
-$loggedon = false;
-if ($userservice->isLoggedOn()) {
-    $loggedon = true;
-    $currentUser = $userservice->getCurrentUser();
-    $currentUserID = $userservice->getCurrentUserId();
-    $currentUsername = $currentUser[$userservice->getFieldName('username')];
-}
+@list($user, $cat) = isset($_GET['query']) ? explode('/', $_GET['query']) : NULL;
 
 $endcache = false;
 if ($usecache) {
@@ -50,7 +50,7 @@ if ($usecache) {
     $hash = md5($_SERVER['REQUEST_URI'] . $user);
 
     // Don't cache if its users' own bookmarks
-    if ($loggedon) {
+    if ($isLoggedOn) {
         if ($currentUsername != $user) {
             // Cache for 5 minutes
             $cacheservice->Start($hash);
@@ -79,7 +79,7 @@ if ($user) {
     $pagetitle .= ': '. $user;
 }
 if ($cat) {
-    $catTitle = ': '. str_replace('+', ' + ', $cat);
+    $catTitle = ': '. str_replace(',', ' + ', $cat);
     $pagetitle .= $catTitle;
 }
 $pagetitle = substr($pagetitle, 2);
@@ -90,7 +90,7 @@ $tplVars['loadjs'] = true;
 // ADD A BOOKMARK
 $saved         = false;
 $templatename  = 'bookmarks.tpl';
-if ($loggedon && isset($_POST['submitted'])) {
+if ($isLoggedOn && isset($_POST['submitted'])) {
    if (!$_POST['title'] || !$_POST['address']) {
       $tplVars['error'] = T_('Your bookmark must have a title and an address');
       $templatename = 'editbookmark.tpl';
@@ -125,13 +125,6 @@ if ($loggedon && isset($_POST['submitted'])) {
          if ($bookmarkservice->addBookmark($address, $title, $description, $status, $categories)) {
              if (isset($_POST['popup'])) {
                  $tplVars['msg'] = '<script type="text/javascript">window.close();</script>';
-             } else {
-                 $tplVars['msg'] = T_('Bookmark saved');
-                 // Redirection option
-                 if ($GLOBALS['useredir']) {
-                     $address = $GLOBALS['url_redir'] . $address;
-                 }
-                 header('Location: '. $address);
              }
          } else {
              $tplVars['error'] = T_('There was an error saving your bookmark. Please try again or contact the administrator.');
@@ -154,35 +147,35 @@ if (isset($_GET['action']) && ($_GET['action'] == "add")) {
 }
  
 if ($templatename == 'editbookmark.tpl') {
-    if ($loggedon) {
+    if ($isLoggedOn) {
         $tplVars['formaction']  = createURL('bookmarks', $currentUsername);
         if (isset($_POST['submitted'])) {
             $tplVars['row'] = array(
-                'bTitle' => stripslashes($_POST['title']),
-                'bAddress' => stripslashes($_POST['address']),
-                'bDescription' => stripslashes($_POST['description']),
-                'tags' => ($_POST['tags'] ? explode(',', stripslashes($_POST['tags'])) : array())
+                'bTitle'        => stripslashes($_POST['title']),
+                'bAddress'      => stripslashes($_POST['address']),
+                'bDescription'  => stripslashes($_POST['description']),
+                'tags'          => ($_POST['tags'] ? explode(',', stripslashes($_POST['tags'])) : array())
             );
             $tplVars['tags'] = $_POST['tags'];
         } else {
             $tplVars['row'] = array(
-                'bTitle' => stripslashes($_GET['title']),
-                'bAddress' => stripslashes($_GET['address']),
-                'bDescription' => stripslashes($_GET['description']),
-                'tags' => ($_GET['tags'] ? explode(',', stripslashes($_GET['tags'])) : array())
+                'bTitle'        => stripslashes($_GET['title']),
+                'bAddress'      => stripslashes($_GET['address']),
+                'bDescription'  => stripslashes($_GET['description']),
+                'tags'          => ($_GET['tags'] ? explode(',', stripslashes($_GET['tags'])) : array())
             );
         }
-        $title = T_('Add a Bookmark');
-        $tplVars['pagetitle'] = $title;
-        $tplVars['subtitle'] = $title;
-        $tplVars['btnsubmit'] = T_('Add Bookmark');
-        $tplVars['popup'] = (isset($_GET['popup'])) ? $_GET['popup'] : null;
+        $title                  = T_('Add a Bookmark');
+        $tplVars['pagetitle']   = $title;
+        $tplVars['subtitle']    = $title;
+        $tplVars['btnsubmit']   = T_('Add Bookmark');
+        $tplVars['popup']       = (isset($_GET['popup'])) ? $_GET['popup'] : null;
     } else {
         $tplVars['error'] = T_('You must be logged in before you can add bookmarks.');
     }
 } else if ($user && !isset($_GET['popup'])) {
 
-    $tplVars['sidebar_blocks'] = array('profile', 'watchstatus');
+    $tplVars['sidebar_blocks'] = array('watchstatus');
 
     if (!$cat) {
         $cat = NULL;
@@ -200,6 +193,10 @@ if ($templatename == 'editbookmark.tpl') {
     $tplVars['userinfo']   =& $userinfo;
     $tplVars['user']       = $user;
     $tplVars['range']      = $user;
+
+    $tplVars['name']        = (utf8_strlen($userinfo['name']) > 0) ? $userinfo['name'] : $user;
+    $tplVars['description'] = $userinfo['uContent'];
+    $tplVars['info']        = T_('...');
 
     // Pagination
     $perpage = getPerPageCount();
@@ -233,6 +230,28 @@ if ($templatename == 'editbookmark.tpl') {
     $tplVars['pagetitle']  = $title;
     $tplVars['subtitle']   = $title;
 }
+
+// Sorting
+$tplVars['sortOrders'] = array(
+    array(
+        'link'  => '?sort=date_desc',
+        'title' => T_('Sort by date'),
+        'text'  => T_('Date')
+    ),
+    array(
+        'link'  => '?sort=title_asc',
+        'title' => T_('Sort by title'),
+        'text'  => T_('Title')
+    ),
+    array(
+        'link'  => '?sort=url_asc',
+        'title' => T_('Sort by URL'),
+        'text'  => T_('URL')
+    )
+);
+
+$tplVars['isLoggedOn']          = $isLoggedOn;
+$tplVars['currentUsername']     = $currentUsername;
 $templateservice->loadTemplate($templatename, $tplVars);
 
 if ($usecache && $endcache) {

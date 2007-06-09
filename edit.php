@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
+Copyright (C) 2004 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -21,15 +21,16 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 require_once('header.inc.php');
 
-$bookmarkservice = & ServiceFactory :: getServiceInstance('BookmarkService');
-$templateservice = & ServiceFactory :: getServiceInstance('TemplateService');
-$userservice = & ServiceFactory :: getServiceInstance('UserService');
+$bookmarkservice    = & ServiceFactory :: getServiceInstance('BookmarkService');
+$templateservice    = & ServiceFactory :: getServiceInstance('TemplateService');
+$userservice        = & ServiceFactory :: getServiceInstance('UserService');
 
 // Header variables
 $tplVars['subtitle'] = T_('Edit Bookmark');
 $tplVars['loadjs'] = true;
 
-list ($url, $bookmark) = explode('/', $_SERVER['PATH_INFO']);
+$bookmark = isset($_GET['query']) ? $_GET['query'] : NULL;
+
 if (!($row = $bookmarkservice->getBookmark(intval($bookmark), true))) {
     $tplVars['error'] = sprintf(T_('Bookmark with id %s not was not found'), $bookmark);
     $templateservice->loadTemplate('error.404.tpl', $tplVars);

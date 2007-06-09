@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
+Copyright (C) 2004 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -18,27 +18,26 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
+
 require_once('header.inc.php');
 
-$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-$templateservice =& ServiceFactory::getServiceInstance('TemplateService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
-$cacheservice =& ServiceFactory::getServiceInstance('CacheService');
+$bookmarkservice    =& ServiceFactory::getServiceInstance('BookmarkService');
+$cacheservice       =& ServiceFactory::getServiceInstance('CacheService');
+$templateservice    =& ServiceFactory::getServiceInstance('TemplateService');
+$userservice        =& ServiceFactory::getServiceInstance('UserService');
 
-$tplVars = array();
+@list($user, $page) = isset($_GET['query']) ? explode('/', $_GET['query']) : NULL;
 
-@list($url, $user, $page) = isset($_SERVER['PATH_INFO']) ? explode('/', $_SERVER['PATH_INFO']) : NULL;
-
-$loggedon = false;
-if ($userservice->isLoggedOn()) {
-    $loggedon = true;
-    $currentUser = $userservice->getCurrentUser();
-    $currentUsername = $currentUser[$userservice->getFieldName('username')];
+// Set user details if logged on
+$isLoggedOn = $userservice->isLoggedOn();
+if ($isLoggedOn) {
+    $currentUser        = $userservice->getCurrentUser();
+    $currentUsername    = $currentUser[$userservice->getFieldName('username')];
 }
 
 if ($usecache) {
     // Generate hash for caching on
-    if ($loggedon) {
+    if ($isLoggedOn) {
         if ($currentUsername != $user) {
             $cachehash = md5($_SERVER['REQUEST_URI'] . $currentUsername);
 
@@ -51,6 +50,8 @@ if ($usecache) {
         $cacheservice->Start($cachehash, 1800);
     }
 }
+
+$tplVars = array();
 
 if ($user) {
     if (is_int($user)) {
@@ -70,10 +71,11 @@ if ($user) {
 // Header variables
 $tplVars['loadjs'] = true;
 
+$template = 'bookmarks.tpl';
 if ($user) {
-    $tplVars['user'] = $user;
-    $tplVars['userid'] = $userid;
-    $tplVars['userinfo'] =& $userinfo;
+    $tplVars['user']        = $user;
+    $tplVars['userid']      = $userid;
+    $tplVars['userinfo']    =& $userinfo;
 
     // Pagination
     $perpage = getPerPageCount();
@@ -110,13 +112,34 @@ if ($user) {
     $tplVars['rsschannels'] = array(
         array(filter($sitename .': '. $title), createURL('rss', 'watchlist/'. filter($user, 'url')))
     );
-
-    $templateservice->loadTemplate('bookmarks.tpl', $tplVars);
 } else {
-    $tplVars['error'] = T_('Username was not specified');
-    $templateservice->loadTemplate('error.404.tpl', $tplVars);
-    exit();
+    $template           = 'error.404.tpl';
+    $tplVars['error']   = T_('Username was not specified');
 }
+
+// Sorting
+$tplVars['sortOrders'] = array(
+    array(
+        'link'  => '?sort=date_desc',
+        'title' => T_('Sort by date'),
+        'text'  => T_('Date')
+    ),
+    array(
+        'link'  => '?sort=title_asc',
+        'title' => T_('Sort by title'),
+        'text'  => T_('Title')
+    ),
+    array(
+        'link'  => '?sort=url_asc',
+        'title' => T_('Sort by URL'),
+        'text'  => T_('URL')
+    )
+);
+
+$tplVars['range']           = 'watchlist';
+$tplVars['isLoggedOn']      = $isLoggedOn;
+$tplVars['currentUsername'] = $currentUsername;
+$templateservice->loadTemplate($template, $tplVars);
 
 if ($usecache) {
     // Cache output if existing copy has expired

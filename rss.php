@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
+Copyright (C) 2004 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -20,14 +20,14 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
 require_once('header.inc.php');
-$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-$cacheservice =& ServiceFactory::getServiceInstance('CacheService');
-$templateservice =& ServiceFactory::getServiceInstance('TemplateService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
+$bookmarkservice    =& ServiceFactory::getServiceInstance('BookmarkService');
+$cacheservice       =& ServiceFactory::getServiceInstance('CacheService');
+$templateservice    =& ServiceFactory::getServiceInstance('TemplateService');
+$userservice        =& ServiceFactory::getServiceInstance('UserService');
 
 $tplVars = array();
 header('Content-Type: application/xml');
-list($url, $user, $cat) = explode('/', $_SERVER['PATH_INFO']);
+@list($user, $cat) = isset($_GET['query']) ? explode('/', $_GET['query']) : NULL;
 
 if ($usecache) {
     // Generate hash for caching on
@@ -71,7 +71,7 @@ if ($user && $user != 'all') {
 }
 
 if ($cat) {
-    $pagetitle .= ": ". str_replace('+', ' + ', $cat);
+    $pagetitle .= ": ". str_replace(',', ' + ', $cat);
 }
 
 $tplVars['feedtitle'] = filter($GLOBALS['sitename'] . (isset($pagetitle) ? $pagetitle : ''));

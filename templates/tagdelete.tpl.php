@@ -2,7 +2,7 @@
 $this->includeTemplate($GLOBALS['top_include']);
 ?>
 
-<form action="<?= $formaction ?>" method="post">
+<form action="<?php echo $formaction; ?>" method="post">
 <p><?php echo T_('Are you sure?'); ?></p>
 <p>
     <input type="submit" name="confirm" value="<?php echo T_('Yes'); ?>" />

@@ -11,12 +11,12 @@ if ($currenttag) {
     if (sizeof($relatedTags) > 0) {
 ?>
 
-<div id="related">
+<div id="related" class="box">
     <h2><?php echo T_('Related Tags'); ?></h2>
     <table>
     <?php foreach($relatedTags as $row): ?>
     <tr>
-        <td><a href="<?php echo sprintf($cat_url, filter($user, 'url'), filter($currenttag, 'url') .'+'. filter($row['tag'], 'url')); ?>">+</a></td>
+        <td><a href="<?php echo sprintf($cat_url, filter($user, 'url'), filter($currenttag, 'url') .','. filter($row['tag'], 'url')); ?>">+</a></td>
         <td><a href="<?php echo sprintf($cat_url, filter($user, 'url'), filter($row['tag'], 'url')); ?>" rel="tag"><?php echo filter($row['tag']); ?></a></td>
     </tr>
     <?php endforeach; ?>

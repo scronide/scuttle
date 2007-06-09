@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
+Copyright (C) 2004 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -21,25 +21,32 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 require_once('header.inc.php');
 
-$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-$templateservice =& ServiceFactory::getServiceInstance('TemplateService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
-$cacheservice =& ServiceFactory::getServiceInstance('CacheService');
+$bookmarkservice    =& ServiceFactory::getServiceInstance('BookmarkService');
+$cacheservice       =& ServiceFactory::getServiceInstance('CacheService');
+$templateservice    =& ServiceFactory::getServiceInstance('TemplateService');
+$userservice        =& ServiceFactory::getServiceInstance('UserService');
+
+// Set user details if logged on
+$isLoggedOn = $userservice->isLoggedOn();
+if ($isLoggedOn) {
+    $currentUser        = $userservice->getCurrentUser();
+    $currentUsername    = $currentUser[$userservice->getFieldName('username')];
+}
 
 $tplVars = array();
 
-list($url, $cat) = explode('/', $_SERVER['PATH_INFO']);
+$cat = isset($_GET['query']) ? $_GET['query'] : NULL;
 if (!$cat) {
     header('Location: '. createURL('populartags'));
     exit;
 } else {
-    $cattitle = str_replace('+', ' + ', $cat);
+    $cattitle = str_replace(',', ' + ', $cat);
 }
 $pagetitle = T_('Tags') .': '. $cattitle;
 
 if ($usecache) {
     // Generate hash for caching on
-    if ($userservice->isLoggedOn()) {
+    if ($isLoggedOn) {
         $hash = md5($_SERVER['REQUEST_URI'] . $userservice->getCurrentUserID());
     } else {
         $hash = md5($_SERVER['REQUEST_URI']);
@@ -79,6 +86,27 @@ $tplVars['bookmarks'] =& $bookmarks['bookmarks'];
 $tplVars['cat_url'] = createURL('tags', '%2$s');
 $tplVars['nav_url'] = createURL('tags', '%2$s%3$s');
 
+// Sorting
+$tplVars['sortOrders'] = array(
+    array(
+        'link'  => '?sort=date_desc',
+        'title' => T_('Sort by date'),
+        'text'  => T_('Date')
+    ),
+    array(
+        'link'  => '?sort=title_asc',
+        'title' => T_('Sort by title'),
+        'text'  => T_('Title')
+    ),
+    array(
+        'link'  => '?sort=url_asc',
+        'title' => T_('Sort by URL'),
+        'text'  => T_('URL')
+    )
+);
+
+$tplVars['isLoggedOn']      = $isLoggedOn;
+$tplVars['currentUsername'] = $currentUsername;
 $templateservice->loadTemplate('bookmarks.tpl', $tplVars);
 
 if ($usecache) {

@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2006 Scuttle project
+Copyright (C) 2006 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -24,7 +24,7 @@ $tagservice = & ServiceFactory :: getServiceInstance('TagService');
 $templateservice = & ServiceFactory :: getServiceInstance('TemplateService');
 $userservice = & ServiceFactory :: getServiceInstance('UserService');
 
-list ($url, $tag) = explode('/', $_SERVER['PATH_INFO']);
+$cat = isset($_GET['query']) ? $_GET['query'] : NULL;
 
 if ($_POST['confirm']) {
     if ($tagservice->deleteTag($tag)) {

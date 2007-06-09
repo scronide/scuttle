@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
+Copyright (C) 2004 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -26,7 +26,7 @@ $userservice =& ServiceFactory::getServiceInstance('UserService');
 
 $tplVars = array();
 
-@list($url, $user) = isset($_SERVER['PATH_INFO']) ? explode('/', $_SERVER['PATH_INFO']) : NULL;
+$user = isset($_GET['query']) ? $_GET['query'] : NULL;
 
 $loggedon = false;
 if ($userservice->isLoggedOn()) {

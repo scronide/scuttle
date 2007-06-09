@@ -1,10 +1,18 @@
+# Change a few PHP settings
+php_flag display_errors on
+php_flag mysql.trace_mode off
+php_flag register_globals off
+php_flag session.use_only_cookies on
+php_flag session.use_trans_sid off
+php_flag short_open_tag off
+
+# Rewrite clean URLs onto real files
+<IfModule mod_rewrite.c>
 Options +FollowSymlinks
-<IfDefine APACHE2>
-    AcceptPathInfo On
-</IfDefine>
 RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^([^/]+)/?(.*)      $1.php/$2   [L]
+RewriteRule ^([^/]+)/?(.*) $1.php?query=$2 [L,QSA]
+</IfModule>

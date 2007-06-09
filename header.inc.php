@@ -1,10 +1,5 @@
 <?php
-ini_set('display_errors',   '1');
-ini_set('mysql.trace_mode', '0');
-
-error_reporting(E_ALL ^ E_NOTICE);
-
-define('DEBUG', true);
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 session_start();
 
 require_once(dirname(__FILE__) .'/services/servicefactory.php');
@@ -27,9 +22,9 @@ if (!isset($root)) {
     $root = 'http://'. $_SERVER['HTTP_HOST'] . $root;
 }
 
-// Error codes
-define('GENERAL_MESSAGE', 200);
-define('GENERAL_ERROR', 202);
-define('CRITICAL_MESSAGE', 203);
-define('CRITICAL_ERROR', 204);
+define('GENERAL_MESSAGE',   200);
+define('GENERAL_ERROR',     202);
+define('CRITICAL_MESSAGE',  203);
+define('CRITICAL_ERROR',    204);
+define('DEBUG',             true);
 ?>

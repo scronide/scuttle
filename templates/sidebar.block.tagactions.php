@@ -5,13 +5,13 @@ if ($userservice->isLoggedOn()) {
     $currentUsername = $currentUser[$userservice->getFieldName('username')];
 
     if ($currentUsername == $user) {
-        $tags = explode('+', $currenttag);
+        $tags = explode(',', $currenttag);
         $renametext = T_ngettext('Rename Tag', 'Rename Tags', count($tags));
         $renamelink = createURL('tagrename', $currenttag);
         $deletelink = createURL('tagdelete', $currenttag);
 ?>
 
-<div id="tagactions">
+<div id="tagactions" class="box">
     <h2><?php echo T_('Actions'); ?></h2>
     <ul>
         <li><a href="<?php echo $renamelink; ?>"><?php echo $renametext ?></a></li>

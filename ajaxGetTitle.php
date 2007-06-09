@@ -19,39 +19,49 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
-header('Content-Type: text/html; charset=UTF-8');
-header("Last-Modified: ". gmdate("D, d M Y H:i:s") ." GMT");
-header("Cache-Control: no-cache, must-revalidate");
+header('Content-Type: text/plain; charset=UTF-8');
+header('Last-Modified: '. gmdate("D, d M Y H:i:s") .' GMT');
+header('Cache-Control: no-cache, must-revalidate');
 
 require_once('header.inc.php');
 
-$url  = $_GET['url'];
-$fd   = @fopen($url, 'r');
-if ($fd) {
-   $html = fread($fd, 1750);
-   fclose($fd);
+$title  = '';
+$url    = $_GET['url'];
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_CONNECTTIMEOUT,    2);
+curl_setopt($handle, CURLOPT_FOLLOWLOCATION,    true);
+curl_setopt($handle, CURLOPT_MAXREDIRS,         2);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER,    true);
+curl_setopt($handle, CURLOPT_TIMEOUT,           2);
+if ($handle) {
+    $buffer = curl_exec($handle);
 
-   // Get title from title tag
-   preg_match_all('/<title>(.*)<\/title>/si', $html, $matches);
-   $title = $matches[1][0];
+    // Get page title from title tag
+    $found  = preg_match('/<title>(.*)<\/title>/si', $buffer, $matches);
 
-   // Get encoding from charset attribute
-   preg_match_all('/<meta.*charset=([^;"]*)">/i', $html, $matches);
-   $encoding = strtoupper($matches[1][0]);
+    if ($found) {
+        $title = $matches[1];
 
-   // Convert to UTF-8 from the original encoding
-   if (function_exists('mb_convert_encoding')) {
-      $title = @mb_convert_encoding($title, 'UTF-8', $encoding);
-   }
+        // Get character encoding from charset attribute
+        preg_match('/<meta.*charset=([^;"]*)">/i', $buffer, $matches);
+        $encoding = strtoupper($matches[1]);
 
-   if (utf8_strlen($title) < 1) {
-      // No title, so return filename
-      $uriparts = explode('/', $url);
-      $filename = end($uriparts);
-      unset($uriparts);
-
-      $title = $filename;
-   }
+        // Convert to UTF-8 from the original encoding
+        if (function_exists('mb_convert_encoding')) {
+            $title = @mb_convert_encoding($title, 'UTF-8', $encoding);
+        }
+    }
 }
+curl_close($handle);
+
+// If no title is found, return the filename instead
+if (utf8_strlen($title) < 1) {
+    $uriparts = explode('/', $url);
+    $filename = end($uriparts);
+    unset($uriparts);
+    $title = $filename;
+}
+
 echo $title;
 ?>

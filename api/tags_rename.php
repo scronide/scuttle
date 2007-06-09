@@ -7,8 +7,8 @@
 // Force HTTP authentication first!
 require_once('httpauth.inc.php');
 
-$tagservice =& ServiceFactory::getServiceInstance('TagService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
+$tagservice     =& ServiceFactory::getServiceInstance('TagService');
+$userservice    =& ServiceFactory::getServiceInstance('UserService');
 
 // Get the tag info.
 if (isset($_REQUEST['old']) && (trim($_REQUEST['old']) != ''))

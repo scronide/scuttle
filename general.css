@@ -1,0 +1,376 @@
+* {
+    font-family: "trebuchet ms", arial, sans-serif;
+}
+a {
+    color: #09D;
+    text-decoration: none;
+}
+a:hover {
+    color: #06A;
+}
+a img {
+    border: 0;
+    vertical-align: middle;
+}
+a.block,
+a.delete,
+a.edit {
+    display: none;
+}
+body {
+    background: #FFF;
+    margin: 0;
+    padding: 0;
+}
+form {
+    margin: 0;
+}
+form.edit {
+   font-size: small;
+   line-height: 2;
+   margin: 0;
+   padding: 0;
+}
+form.edit label {
+   display: block;
+   float: left;
+   font-weight: bold;
+   width: 6em;
+}
+form.edit p {
+   margin: 0;
+}
+h1 {
+    background: url(images/logo.png) 0.5em center no-repeat;
+    display: inline;
+    font-size: x-large;
+    font-weight: bold;
+    left: 1px;
+    margin: 0;
+    padding: 1em 1em 1em 48px;
+    top: 1px;
+}
+h1 a {
+    color: #666;
+    padding: 0.1em 1em;
+}
+h1 a:hover {
+    color: #000;
+}
+h3 {
+    background: #EEE;
+    color: #888;
+    padding: 0.25em 0.5em;
+}
+label {
+    margin-right: 2em;
+}
+li.byline {
+    color: #ACA;
+    font-size: x-small;
+    margin-top: 0.75em;
+}
+li.byline a {
+    color: #ACA;
+}
+li.byline a:hover {
+    text-decoration: underline;
+}
+li.description {
+    color: #888;
+    margin-right: 5em;
+    text-align: justify;
+}
+li.description,
+li.tags {
+    font-size: small;
+    margin-top: 0.5em;
+}
+li.link {
+    margin-right: 4em;
+}
+li.link a {
+    color: #000;
+    font-size: large;
+}
+li.link a:hover {
+    color: #06A;
+}
+li.popularity {
+   position: absolute;
+   right: 1em;
+   top: 1.1em;
+}
+li.popularity a {
+    border: 1px solid #CDC;
+    color: #6BA;
+    font-size: medium;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+}
+li.popularity a:hover {
+    border-color: #080;
+    color: #080;
+}
+li.tags {
+    display: none;
+    line-height: 1.5;
+}
+li.tags a {
+    border: 1px solid #CCD;
+    font-size: x-small;
+    margin-right: -0.5em;
+    padding: 0.1em 0.5em;
+    white-space: nowrap;
+}
+li.tags a:hover {
+    border-color: #06A;
+}
+li.tags span {
+    visibility: hidden;
+}
+li.xfolkentry {
+    border-left: 4px solid;
+    color: #EEE;
+    margin-right: 1em;
+    padding: 0.75em 1em;
+    position: relative;
+}
+li.xfolkentry.edit {
+    background: #6BA;
+    border-color: #7CB;
+    color: #FFF;
+}
+li.xfolkentry.private {
+    background: #FEE;
+    border-color: #F00;
+}
+li.xfolkentry.shared {
+    background: #FEC;
+    border-color: #FA0;
+}
+li.xfolkentry ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ol {
+    background: #FFF;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+p.error {
+    background: #FEE;
+    border: 1px solid #CAA;
+    color: #A00;
+    margin: 0.5em;
+    padding: 0.5em 1em;
+}
+p.tags {
+    line-height: 1.75em;
+    overflow: hidden;
+    text-align: justify;
+}
+#access {
+    color: #888;
+    font-size: small;
+    margin: 0;
+    position: absolute;
+    right: 0.75em;
+    top: 0.5em;
+}
+#access a {
+    font-size: small;
+    font-weight: bold;
+}
+#access a:hover {
+    color: #000;
+}
+#add {
+    background: #6BA;
+    border-bottom: 3px solid #5A9;
+    color: #FFF;
+    display: none;
+    margin: 0;
+    padding: 1em;
+}
+#add h2 {
+    display: none;
+}
+#add td {
+    white-space: nowrap;
+}
+#add th {
+    padding-right: 2em;
+}
+#header {
+    background: #FFF url(images/bg_header.png) bottom center repeat-x;
+    border-bottom: 2px solid #9CD;
+    margin: 0;
+    padding: 1.5em 0;
+}
+#login input {
+    font-size: x-small;
+}
+#main {
+    clear: both;
+    margin: 1em;
+}
+#main.with-sidebar {
+    margin: 1em 0;
+    width: 80%;
+}
+#main.with-sidebar,
+#sidebar {
+    float: left;
+}
+#profile {
+    background: #EEE;
+    border-color: #CCC;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    color: #888;
+    font-size: x-small;
+    margin: 0 1.6em;
+    padding: 0.1em 1em;
+}
+#profile ul {
+    list-style-type: none;
+}
+#profile .avatar {
+    float: left;
+    height: 50px;
+    margin-right: 1em;
+    width: 50px;
+}
+#profile .name {
+    font-size: medium;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#profile .info {
+    color: #AAA;
+}
+#sidebar {
+    margin-top: 1em;
+    width: 20%;
+}
+#sidebar div.box {
+    margin-bottom: 1em;
+    margin-right: 1.25em;
+}
+#sidebar div.box h2 {
+    color: #888;
+    font-size: large;
+    font-weight: normal;
+}
+#sidebar div.box ul {
+    margin: 1em 0;
+}
+#search {
+    font-size: x-small;
+    margin: 1em 0.25em 0.5em;
+}
+#search input[type=submit] {
+    font-size: x-small;
+    position: relative;
+    top: -0.2em;
+}
+#search input[type=text] {
+    background: url(images/search.png) 2px center no-repeat;
+    border: 1px solid #AAA;
+    color: #888;
+    font-size: x-small;
+    padding-left: 16px;
+    position: relative;
+    top: -0.2em;
+}
+#search label {
+    color: #888;
+    position: absolute;
+    left: 3em;
+}
+#sort {
+    font-size: medium;
+    font-weight: bold;
+    position: absolute;
+    right: 1em;
+    top: -0.4em;
+}
+#sort a {
+    color: #AAA;
+    margin-left: 0.5em;
+}
+#sort a:hover {
+    color: #000;
+}
+#title {
+    background: #EEE url(images/bg_title.png) center center repeat-x;
+    border-color: #CCC;
+    border-style: solid;
+    border-width: 1px 0;
+    color: #888;
+    margin: 0;
+    padding: 0.5em 1em;
+    position: relative;
+}
+#title h2 {
+    font-size: large;
+    margin: 0;
+}
+#toolbar {
+    bottom: -1.15em;
+    display: inline;
+    position: relative;
+    right: 0;
+    white-space: nowrap;
+}
+#toolbar a {
+    background: #9CD;
+    color: #FFF;
+    font-weight: bold;
+    padding: 0.5em 2em;
+    -moz-border-radius: 0.5em 0.5em 0 0;
+}
+#toolbar a:hover {
+    background: #8BC;
+}
+#toolbar a.active {
+    background: #EEE;
+    color: #888;
+}
+#toolbar a.active:hover {
+    color: #000;
+}
+#toolbar a.add {
+    background: #7CB;
+}
+#toolbar a.add:hover {
+    background: #6BA;
+}
+p.paging {
+    font-size: small;
+    margin: 1em 1.5em;
+}
+p.paging a,
+p.paging span.disable {
+    border: 1px solid;
+    font-size: x-small;
+    font-weight: bold;
+    padding: 0.25em 1em;
+}
+p.paging span.disable {
+    color: #CCC;
+}
+span.confirm,
+span.confirm a {
+    color: #a00;
+    font-size: small;
+}
+span.confirm {
+    margin-left: 0.25em;
+}
+span.confirm a {
+    font-weight: bold;
+}

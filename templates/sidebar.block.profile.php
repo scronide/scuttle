@@ -6,11 +6,11 @@ if (utf8_strlen($userinfo['name']) > 0) {
     $name = $userinfo['username'];
 }
 ?>
-<div id="profile">
-    <h2><?php echo $name; ?></h2>
-    <ul>
-        <li><a href="<?php echo $userservice->getProfileUrl($userid, $user); ?>"><?php echo T_('Profile'); ?></a> &rarr;</li>
-        <li><a href="<?php echo createURL('alltags', $user); ?>"><?php echo T_('Tags'); ?></a> &rarr;</li>
-        <li><a href="<?php echo createURL('watchlist', $user); ?>"><?php echo T_('Watchlist'); ?></a> &rarr;</li>
-    </ul>
+<div id="profile" class="box">
+    <p class="avatar"><img src="" width="64" height="64" alt="" /></p>
+    <ol>
+        <li class="name"><?php echo $name; ?></li>
+        <li class="bio">Test test test test.</li>
+        <li class="info">Test test test test.</li>
+    </ol>
 </div>

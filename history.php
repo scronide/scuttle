@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2006 Scuttle project
+Copyright (C) 2006 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -21,26 +21,26 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 require_once('header.inc.php');
 
-$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-$templateservice =& ServiceFactory::getServiceInstance('TemplateService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
-$cacheservice =& ServiceFactory::getServiceInstance('CacheService');
+$bookmarkservice    =& ServiceFactory::getServiceInstance('BookmarkService');
+$cacheservice       =& ServiceFactory::getServiceInstance('CacheService');
+$templateservice    =& ServiceFactory::getServiceInstance('TemplateService');
+$userservice        =& ServiceFactory::getServiceInstance('UserService');
+
+$hash = isset($_GET['query']) ? $_GET['query'] : NULL;
+
+// Set user details if logged on
+$isLoggedOn = $userservice->isLoggedOn();
+if ($isLoggedOn) {
+    $currentUser        = $userservice->getCurrentUser();
+    $currentUsername    = $currentUser[$userservice->getFieldName('username')];
+}
 
 $tplVars = array();
-
-@list($url, $hash) = isset($_SERVER['PATH_INFO']) ? explode('/', $_SERVER['PATH_INFO']) : NULL;
-
-$loggedon = false;
-if ($userservice->isLoggedOn()) {
-    $loggedon = true;
-    $currentUser = $userservice->getCurrentUser();
-    $currentUsername = $currentUser[$userservice->getFieldName('username')];
-}
 
 if ($usecache) {
     // Generate hash for caching on
     $hashtext = $_SERVER['REQUEST_URI'];
-    if ($userservice->isLoggedOn()) {
+    if ($isLoggedOn) {
         $hashtext .= $currentUsername;
     }
     $cachehash = md5($hashtext);
@@ -59,6 +59,7 @@ if (isset($_GET['page']) && intval($_GET['page']) > 1) {
     $start = 0;
 }
 
+$template = 'bookmarks.tpl';
 if ($bookmark =& $bookmarkservice->getBookmarkByHash($hash)) {
     // Template variables
     $bookmarks =& $bookmarkservice->getBookmarks($start, $perpage, NULL, NULL, NULL, getSortOrder(), NULL, NULL, NULL, $hash);
@@ -75,13 +76,29 @@ if ($bookmark =& $bookmarkservice->getBookmarkByHash($hash)) {
     $tplVars['sidebar_blocks'] = array('common');
     $tplVars['cat_url'] = createURL('tags', '%2$s');
     $tplVars['nav_url'] = createURL('history', $hash .'/%3$s');
-    $templateservice->loadTemplate('bookmarks.tpl', $tplVars);
 } else {
     // Throw a 404 error
-    $tplVars['error'] = T_('Address was not found');
-    $templateservice->loadTemplate('error.404.tpl', $tplVars);
-    exit();
+    $template           = 'error.404.tpl';
+    $tplVars['error']   = T_('Address was not found');
 }
+
+// Sorting
+$tplVars['sortOrders'] = array(
+    array(
+        'link'  => '?sort=date_desc',
+        'title' => T_('Sort by date'),
+        'text'  => T_('Date')
+    ),
+    array(
+        'link'  => '?sort=title_asc',
+        'title' => T_('Sort by title'),
+        'text'  => T_('Title')
+    )
+);
+
+$tplVars['isLoggedOn']      = $isLoggedOn;
+$tplVars['currentUsername'] = $currentUsername;
+$templateservice->loadTemplate($template, $tplVars);
 
 if ($usecache) {
     // Cache output if existing copy has expired

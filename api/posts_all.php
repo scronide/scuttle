@@ -7,8 +7,8 @@
 // Force HTTP authentication first!
 require_once('../header.inc.php');
 
-$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
+$bookmarkservice    =& ServiceFactory::getServiceInstance('BookmarkService');
+$userservice        =& ServiceFactory::getServiceInstance('UserService');
 
 // Check to see if a tag was specified.
 if (isset($_REQUEST['tag']) && (trim($_REQUEST['tag']) != ''))
@@ -19,8 +19,8 @@ else
 // Get the posts relevant to the passed-in variables.
 $bookmarks =& $bookmarkservice->getBookmarks(0, NULL, $userservice->getCurrentUserId(), $tag);
 
-$currentuser = $userservice->getCurrentUser();
-$currentusername = $currentuser[$userservice->getFieldName('username')];
+$currentuser        = $userservice->getCurrentUser();
+$currentusername    = $currentuser[$userservice->getFieldName('username')];
 
 // Set up the XML file and output all the posts.
 header('Content-Type: text/xml');

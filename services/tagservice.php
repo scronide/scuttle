@@ -198,7 +198,7 @@ class TagService {
         if (is_numeric($tags))
             $tags = NULL;
         if (!is_array($tags) and !is_null($tags))
-            $tags = explode('+', trim($tags));
+            $tags = explode(',', trim($tags));
 
         $tagcount = count($tags);
         for ($i = 0; $i < $tagcount; $i++) {

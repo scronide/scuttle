@@ -1,7 +1,8 @@
 <?php
 /***************************************************************************
-Copyright (C) 2006 Scuttle project
+Copyright (C) 2006 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
+http://scuttle.org/
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,29 +20,29 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
 require_once('header.inc.php');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
-$templateservice =& ServiceFactory::getServiceInstance('TemplateService');
+$userservice        =& ServiceFactory::getServiceInstance('UserService');
+$templateservice    =& ServiceFactory::getServiceInstance('TemplateService');
 $tplVars = array();
 
-@list($url, $user, $hash) = isset($_SERVER['PATH_INFO']) ? explode('/', $_SERVER['PATH_INFO']) : NULL;
+@list($user, $hash) = isset($_GET['query']) ? explode('/', $_GET['query']) : NULL;
 
-$templatename			= 'register.tpl';
+$templatename           = 'register.tpl';
 $tplVars['subtitle']    = T_('Register');
 $tplVars['formaction']  = createURL('register');
 
 if ($user && $hash) {
-	if ($userservice->verify($user, $hash)) {
-		$templatename			= 'login.tpl';
-		$tplVars['subtitle']	= T_('Log In');
-		$tplVars['formaction']	= createURL('login');		
-		$tplVars['msg']			= sprintf(T_('Account verified. Log in to start using %s.'), $sitename);
-	} else {
-		$tplVars['loadjs']	= true;
-		$tplVars['error']	= T_('Account verification failed');
-	}
+    if ($userservice->verify($user, $hash)) {
+        $templatename           = 'login.tpl';
+        $tplVars['subtitle']    = T_('Log In');
+        $tplVars['formaction']  = createURL('login');
+        $tplVars['msg']         = sprintf(T_('Account verified. Log in to start using %s.'), $sitename);
+    } else {
+        $tplVars['loadjs']  = true;
+        $tplVars['error']   = T_('Account verification failed');
+    }
 } else {
-	$tplVars['loadjs']	= true;
-	$tplVars['error']	= T_('Account verification failed');
+    $tplVars['loadjs']  = true;
+    $tplVars['error']   = T_('Account verification failed');
 }
 
 $templateservice->loadTemplate($templatename, $tplVars);

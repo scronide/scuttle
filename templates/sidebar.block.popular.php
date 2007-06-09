@@ -12,7 +12,7 @@ $popularTags =& $tagservice->tagCloud($popularTags, 5, 90, 225, 'alphabet_asc');
 if ($popularTags && count($popularTags) > 0) {
 ?>
 
-<div id="popular">
+<div id="popular" class="box">
     <h2><?php echo T_('Popular Tags'); ?></h2>
     <p class="tags">
     <?php

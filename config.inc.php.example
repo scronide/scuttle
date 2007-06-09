@@ -16,21 +16,23 @@
 ######################################################################
 # Database Configuration
 ######################################################################
-# dbtype:   Database driver - firebird, mssql, mssql_odbc, mysql, mysqli,
-#           oracle, postgres, sqlite
-# dbhost:   Database hostname
-# dbport:   Database port
-# dbname:   Database name
-# dbuser:   Database username
-# dbpass:   Database password
+# dbtype:       Database driver - firebird, mssql, mssql_odbc, mysql, mysqli,
+#               oracle, postgres, sqlite
+# dbhost:       Database hostname
+# dbport:       Database port
+# dbname:       Database name
+# dbuser:       Database username
+# dbpass:       Database password
+# dbpersist:    Open persistent database connections - true, false
 ######################################################################
 
-$dbtype = 'mysql';
-$dbhost = '127.0.0.1';
-$dbport = '3306';
-$dbname = 'scuttle';
-$dbuser = 'username';
-$dbpass = 'password';
+$dbtype     = 'mysql';
+$dbhost     = '127.0.0.1';
+$dbport     = '3306';
+$dbname     = 'scuttle';
+$dbuser     = 'username';
+$dbpass     = 'password';
+$dbpersist  = false;
 
 ######################################################################
 # Basic Configuration

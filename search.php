@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2005 - 2006 Scuttle project
+Copyright (C) 2005 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -28,14 +28,14 @@ if (isset($_POST['terms'])) {
 
 // GET
 } else {
-    $bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-    $templateservice =& ServiceFactory::getServiceInstance('TemplateService');
-    $userservice =& ServiceFactory::getServiceInstance('UserService');
+    $bookmarkservice    =& ServiceFactory::getServiceInstance('BookmarkService');
+    $templateservice    =& ServiceFactory::getServiceInstance('TemplateService');
+    $userservice        =& ServiceFactory::getServiceInstance('UserService');
 
     $logged_on_userid = $userservice->getCurrentUserId();
-    list($url, $range, $terms, $page) = explode('/', $_SERVER['PATH_INFO']);
+    @list($range, $terms, $page) = isset($_GET['query']) ? explode('/', $_GET['query']) : NULL;
 
-    $tplvars = array();
+    $tplVars = array();
     $tplVars['loadjs'] = true;
     
     // Pagination

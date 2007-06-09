@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
+Copyright (C) 2004 - 2007 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -22,7 +22,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 require_once('header.inc.php');
 $userservice =& ServiceFactory::getServiceInstance('UserService');
 
-@list($url, $user) = isset($_SERVER['PATH_INFO']) ? explode('/', $_SERVER['PATH_INFO']) : NULL;
+$user = isset($_GET['query']) ? $_GET['query'] : NULL;
+
 if ($userservice->isLoggedOn() && $user) {
     $tplVars = array();
     $pagetitle = '';

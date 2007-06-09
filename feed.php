@@ -20,66 +20,66 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
 require_once('header.inc.php');
-$bookmarkservice	=& ServiceFactory::getServiceInstance('BookmarkService');
-$cacheservice		=& ServiceFactory::getServiceInstance('CacheService');
-$templateservice	=& ServiceFactory::getServiceInstance('TemplateService');
-$userservice		=& ServiceFactory::getServiceInstance('UserService');
+$bookmarkservice    =& ServiceFactory::getServiceInstance('BookmarkService');
+$cacheservice       =& ServiceFactory::getServiceInstance('CacheService');
+$templateservice    =& ServiceFactory::getServiceInstance('TemplateService');
+$userservice        =& ServiceFactory::getServiceInstance('UserService');
 
 $tplVars = array();
 header('Content-Type: application/xml');
-list($url, $user, $cat) = explode('/', $_SERVER['PATH_INFO']);
+@list($user, $cat) = isset($_GET['query']) ? explode('/', $_GET['query']) : NULL;
 
 if ($usecache) {
-	// Generate hash for caching on
-	$hashtext = $_SERVER['REQUEST_URI'];
-	if ($userservice->isLoggedOn()) {
-		$hashtext .= $userservice->getCurrentUserID();
-		$currentUser = $userservice->getCurrentUser();
-		$currentUsername = $currentUser[$userservice->getFieldName('username')];
-		if ($currentUsername == $user) {
-			$hashtext .= $user;
-		}
-	}
-	$hash = md5($hashtext);
+    // Generate hash for caching on
+    $hashtext = $_SERVER['REQUEST_URI'];
+    if ($userservice->isLoggedOn()) {
+        $hashtext .= $userservice->getCurrentUserID();
+        $currentUser = $userservice->getCurrentUser();
+        $currentUsername = $currentUser[$userservice->getFieldName('username')];
+        if ($currentUsername == $user) {
+            $hashtext .= $user;
+        }
+    }
+    $hash = md5($hashtext);
 
-	// Cache for an hour
-	$cacheservice->Start($hash, 3600);
+    // Cache for an hour
+    $cacheservice->Start($hash, 3600);
 }
 
 $watchlist = null;
 if ($user && $user != 'all') {
-	if ($user == 'watchlist') {
-		$user		= $cat;
-		$cat		= null;
-        $watchlist	= true;
-	}
-	if (is_int($user)) {
-		$userid = intval($user);
-	} else {
-		if ($userinfo = $userservice->getUserByUsername($user)) {
-			$userid =& $userinfo[$userservice->getFieldName('primary')];
-		} else {
-			$tplVars['error'] = sprintf(T_('User with username %s was not found'), $user);
-			$templateservice->loadTemplate('error.404.tpl', $tplVars);
-			exit();
-		}
-	}
-	$pagetitle .= ": ". $user;
+    if ($user == 'watchlist') {
+        $user       = $cat;
+        $cat        = null;
+        $watchlist  = true;
+    }
+    if (is_int($user)) {
+        $userid = intval($user);
+    } else {
+        if ($userinfo = $userservice->getUserByUsername($user)) {
+            $userid =& $userinfo[$userservice->getFieldName('primary')];
+        } else {
+            $tplVars['error'] = sprintf(T_('User with username %s was not found'), $user);
+            $templateservice->loadTemplate('error.404.tpl', $tplVars);
+            exit();
+        }
+    }
+    $pagetitle .= ": ". $user;
 } else {
-	$userid = NULL;
+    $userid = NULL;
 }
 
 if ($cat) {
-	$pagetitle .= ": ". str_replace('+', ' + ', $cat);
+    $pagetitle .= ": ". str_replace(',', ' + ', $cat);
 }
 
-$tplVars['feedtitle']		= filter($GLOBALS['sitename'] . (isset($pagetitle) ? $pagetitle : ''));
-$tplVars['feedlink']		= $GLOBALS['root'];
-$tplVars['feeddescription']	= sprintf(T_('Recent bookmarks posted to %s'), $GLOBALS['sitename']);
+$tplVars['feedtitle']       = filter($GLOBALS['sitename'] . (isset($pagetitle) ? $pagetitle : ''));
+$tplVars['feedlink']        = $GLOBALS['root'];
+$tplVars['feeddescription'] = sprintf(T_('Recent bookmarks posted to %s'), $GLOBALS['sitename']);
 
-$bookmarks		=& $bookmarkservice->getBookmarks(0, 15, $userid, $cat, NULL, getSortOrder(), $watchlist);
-$bookmarks_tmp	=& filter($bookmarks['bookmarks']);
-$bookmarks_tpl	= array();
+$bookmarks      =& $bookmarkservice->getBookmarks(0, 15, $userid, $cat, NULL, getSortOrder(), $watchlist);
+$bookmarks_tmp  =& filter($bookmarks['bookmarks']);
+$bookmarks_tpl  = array();
 
 foreach(array_keys($bookmarks_tmp) as $key) {
     $row =& $bookmarks_tmp[$key];
@@ -93,12 +93,12 @@ foreach(array_keys($bookmarks_tmp) as $key) {
     // array_walk($row['tags'], 'filter');
 
     $bookmarks_tpl[] = array(
-        'title'			=> $row['bTitle'],
-        'link'			=> $_link,
-        'description'	=> $row['bDescription'],
-        'creator'		=> $row['username'],
-        'pubdate'		=> $_pubdate,
-        'tags'			=> $row['tags']
+        'title'         => $row['bTitle'],
+        'link'          => $_link,
+        'description'   => $row['bDescription'],
+        'creator'       => $row['username'],
+        'pubdate'       => $_pubdate,
+        'tags'          => $row['tags']
     );
 }
 unset($bookmarks_tmp);
@@ -108,7 +108,7 @@ $tplVars['bookmarks'] =& $bookmarks_tpl;
 $templateservice->loadTemplate('atom.tpl', $tplVars);
 
 if ($usecache) {
-	// Cache output if existing copy has expired
-	$cacheservice->End($hash);
+    // Cache output if existing copy has expired
+    $cacheservice->End($hash);
 }
 ?>

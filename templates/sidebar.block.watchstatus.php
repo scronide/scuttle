@@ -14,7 +14,7 @@ if ($userservice->isLoggedOn()) {
       $linkAddress = createURL('watch', $user);
 ?>
 
-<div id="watchlist">
+<div id="watchlist" class="box">
     <h2><?php echo T_('Actions'); ?></h2>
     <ul>
         <li><a href="<?php echo $linkAddress ?>"><?php echo $linkText ?></a></li>

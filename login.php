@@ -23,8 +23,6 @@ require_once('header.inc.php');
 $userservice      =& ServiceFactory::getServiceInstance('UserService');
 $templateservice  =& ServiceFactory::getServiceInstance('TemplateService');
 
-$tplVars = array();
-
 // Load bookmarks if already logged in
 if ($userservice->isLoggedOn()) {
     $cUser      = $userservice->getCurrentUser();
@@ -38,8 +36,7 @@ if (isset($_POST['submitted']) && isset($_POST['username']) && isset($_POST['pas
     $login          = $userservice->login($posteduser, $_POST['password'], ($_POST['keeppass'] == 'yes'), $path);
     switch ($login['message']) {
         case 'success':
-            $request = (strlen($_POST['query']) > 0) ? $posteduser . '?' . $_POST['query'] : $posteduser;
-            header('Location: ' . createURL('bookmarks', $request));
+            header('Location: '. createURL('bookmarks', $posteduser));
             break;
         case 'unverified':
             $tplVars['error'] = T_('You must verify your account before you can log in.');
@@ -49,6 +46,8 @@ if (isset($_POST['submitted']) && isset($_POST['username']) && isset($_POST['pas
     }
 }
 
+$tplVars = array();
+$tplVars['loadjs']      = true;
 $tplVars['subtitle']    = T_('Log In');
 $tplVars['formaction']  = createURL('login');
 $tplVars['querystring'] = filter($_SERVER['QUERY_STRING']);
