@@ -25,7 +25,7 @@
 # dbname:   Database name
 ######################################################################
 
-$dbtype = 'mysql4';
+$dbtype = 'mysql';
 $dbhost = '127.0.0.1';
 $dbport = '3306';
 $dbuser = 'username';
