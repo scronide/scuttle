@@ -72,8 +72,6 @@ class UserService {
     }
 
     function _randompassword() {
-        $seed = (integer) md5(microtime());
-        mt_srand($seed);
         $password = mt_rand(1, 99999999);
         $password = substr(md5($password), mt_rand(0, 19), mt_rand(6, 12));
         return $password;
