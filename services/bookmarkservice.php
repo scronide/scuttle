@@ -180,8 +180,7 @@ class BookmarkService {
         $updates = array('bModified' => $moddatetime, 'bTitle' => $title, 'bAddress' => $address, 'bDescription' => $description, 'bStatus' => $status, 'bHash' => md5($address));
 
         if (!is_null($date)) {
-            $datetime = gmdate('Y-m-d H:i:s', strtotime($date));
-            $updates[] = array('bDateTime' => $datetime);
+            $updates['bDateTime'] = gmdate('Y-m-d H:i:s', strtotime($date));
         }
 
         $sql = 'UPDATE '. $GLOBALS['tableprefix'] .'bookmarks SET '. $this->db->sql_build_array('UPDATE', $updates) .' WHERE bId = '. intval($bId);

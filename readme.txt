@@ -1,4 +1,4 @@
-Scuttle 0.7.3
+Scuttle 0.7.4
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -14,10 +14,3 @@ INSTALLATION
 * Edit config.inc.php.example and save the changes as a new config.inc.php file in the same directory.
 
 * Set the CHMOD permissions on the /cache/ subdirectory to 777
-
-=============
-PROJECT LINKS
-=============
-
-Scuttle Project:
-http://sourceforge.net/projects/scuttle/

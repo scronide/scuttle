@@ -63,8 +63,6 @@ class UserService {
     }
 
     function _randompassword() {
-        $seed = (integer) md5(microtime());
-        mt_srand($seed);
         $password = mt_rand(1, 99999999);
         $password = substr(md5($password), mt_rand(0, 19), mt_rand(6, 12));
         return $password;
@@ -145,7 +143,7 @@ class UserService {
         return false;
     }
 
-    function login($username, $password, $remember = FALSE) {
+    function login($username, $password, $remember = FALSE, $path = '/') {
         $password = $this->sanitisePassword($password);
         $query = 'SELECT '. $this->getFieldName('primary') .' FROM '. $this->getTableName() .' WHERE '. $this->getFieldName('username') .' = "'. $this->db->sql_escape($username) .'" AND '. $this->getFieldName('password') .' = "'. $this->db->sql_escape($password) .'"';
 
@@ -158,7 +156,7 @@ class UserService {
             $id = $_SESSION[$this->getSessionKey()] = $row[$this->getFieldName('primary')];
             if ($remember) {
                 $cookie = $id .':'. md5($username.$password);
-                setcookie($this->cookiekey, $cookie, time() + $this->cookietime);
+                setcookie($this->cookiekey, $cookie, time() + $this->cookietime, $path);
             }
             return true;
         } else {
@@ -166,8 +164,8 @@ class UserService {
         }
     }
 
-    function logout() {
-        @setcookie($this->cookiekey, NULL, time() - 1);
+    function logout($path = '/') {
+        @setcookie($this->cookiekey, NULL, time() - 1, $path);
         unset($_COOKIE[$this->cookiekey]);
         session_unset();
         $this->getCurrentUser(TRUE, false);
@@ -335,7 +333,7 @@ class UserService {
     }
 
     function isValidEmail($email) {
-        if (eregi("^((?:(?:(?:\w[\.\-\+_]?)*)\w)+)\@((?:(?:(?:\w[\.\-_]?){0,62})\w)+)\.(\w{2,6})$", $email)) {
+        if (preg_match("/^((?:(?:(?:\w[\.\-\+_]?)*)\w)+)\@((?:(?:(?:\w[\.\-_]?){0,62})\w)+)\.(\w{2,6})$/i", $email) > 0) {
             list($emailUser, $emailDomain) = split("@", $email);
 
             // Check if the email domain has a DNS record

@@ -28,7 +28,7 @@ $cacheservice =& ServiceFactory::getServiceInstance('CacheService');
 $tplvars = array();
 if (isset($_GET['action'])){
     if ($_GET['action'] == "logout") {
-        $userservice->logout();
+        $userservice->logout($path);
         $tplvars['msg'] = T_('You have now logged out');
     }
 }

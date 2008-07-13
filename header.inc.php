@@ -23,6 +23,7 @@ if (!isset($root)) {
     if (($root != '/') && (substr($root, -1, 1) != '/')) {
         $root .= '/';
     }
+    $path = $root;
     $root = 'http://'. $_SERVER['HTTP_HOST'] . $root;
 }
 
