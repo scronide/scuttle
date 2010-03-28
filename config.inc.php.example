@@ -2,7 +2,7 @@
 ######################################################################
 # SCUTTLE: Online social bookmarks manager
 ######################################################################
-# Copyright (C) 2005 - 2006 Scuttle project
+# Copyright (c) 2005 - 2010 Scuttle project
 # http://sourceforge.net/projects/scuttle/
 # http://scuttle.org/
 #
@@ -116,5 +116,4 @@ $filetypes          = array(
                         );
 $reservedusers      = array('all', 'watchlist');
 
-include_once('debug.inc.php');
-?>
+include_once 'debug.inc.php';

@@ -1,17 +1,13 @@
 <?php
-$userservice =& ServiceFactory::getServiceInstance('UserService');
+$userservice     =& ServiceFactory::getServiceInstance('UserService');
 $bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
 
 $logged_on_userid = $userservice->getCurrentUserId();
 $this->includeTemplate($GLOBALS['top_include']);
 
-include('search.inc.php');
+include 'search.inc.php';
 if (count($bookmarks) > 0) {
 ?>
-
-<script type="text/javascript">
-window.onload = playerLoad;
-</script>
 
 <p id="sort">
     <?php echo T_("Sort by:"); ?>
@@ -25,7 +21,6 @@ window.onload = playerLoad;
     }
     ?>
 </p>
-
 <ol<?php echo ($start > 0 ? ' start="'. ++$start .'"' : ''); ?> id="bookmarks">
 
     <?php

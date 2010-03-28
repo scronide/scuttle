@@ -1,12 +1,11 @@
 PACKAGE = php-gettext-$(VERSION)
-VERSION = 1.0.7
+VERSION = 1.0.10
 
 DIST_FILES = \
 	gettext.php \
 	gettext.inc \
 	streams.php \
 	AUTHORS     \
-	ChangeLog   \
 	README      \
 	COPYING     \
 	Makefile    \
@@ -17,9 +16,14 @@ DIST_FILES = \
 	examples/locale/sr_CS/LC_MESSAGES/messages.mo \
 	examples/locale/de_CH/LC_MESSAGES/messages.po \
 	examples/locale/de_CH/LC_MESSAGES/messages.mo \
-	examples/update
+	examples/update \
+	tests/LocalesTest.php \
+	tests/ParsingTest.php
 
-dist:
+check:
+	phpunit --verbose tests
+
+dist: check
 	if [ -d $(PACKAGE) ]; then \
 	    rm -rf $(PACKAGE); \
 	fi; \
@@ -30,3 +34,5 @@ dist:
 	    rm -rf $(PACKAGE); \
 	fi;
 
+clean:
+	rm -f $(PACKAGE).tar.gz

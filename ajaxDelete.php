@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2005 - 2006 Scuttle project
+Copyright (c) 2005 - 2010 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -19,22 +19,17 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
-header('Content-Type: text/xml; charset=UTF-8');
+header('Content-Type: text/plain; charset=UTF-8');
 header('Last-Modified: '. gmdate("D, d M Y H:i:s") .' GMT');
 header('Cache-Control: no-cache, must-revalidate');
-require_once('header.inc.php');
+require_once 'header.inc.php';
 
-$bookmarkservice = & ServiceFactory :: getServiceInstance('BookmarkService');
+$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
 $bookmark = intval($_GET['id']);
 if (!$bookmarkservice->editAllowed($bookmark)) {
-    $result = T_('You are not allowed to delete this bookmark');
+  echo T_('You are not allowed to delete this bookmark');
 } elseif ($bookmarkservice->deleteBookmark($bookmark)) {
-    $result = 'true';
+  echo true;
 } else {
-    $result = T_('Failed to delete bookmark');
+  echo T_('Failed to delete bookmark');
 }
-?>
-<response>
-  <method>deleteConfirmed</method>
-  <result><?php echo $result; ?></result>
-</response>

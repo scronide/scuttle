@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004 - 2006 Marcus Campbell
+Copyright (c) 2004 - 2010 Marcus Campbell
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -19,9 +19,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
-require_once('header.inc.php');
-$userservice        =& ServiceFactory::getServiceInstance('UserService');
-$templateservice    =& ServiceFactory::getServiceInstance('TemplateService');
+require_once 'header.inc.php';
+$userservice      =& ServiceFactory::getServiceInstance('UserService');
+$templateservice  =& ServiceFactory::getServiceInstance('TemplateService');
 
 $tplVars = array();
 
@@ -61,4 +61,3 @@ $tplVars['loadjs']      = true;
 $tplVars['subtitle']    = T_('Register');
 $tplVars['formaction']  = createURL('register');
 $templateservice->loadTemplate('register.tpl', $tplVars);
-?>

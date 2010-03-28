@@ -1,6 +1,6 @@
 <?php
 /*
-   Copyright (c) 2003,2004,2005 Danilo Segan <danilo@kvota.net>.
+   Copyright (c) 2003,2004,2005,2009 Danilo Segan <danilo@kvota.net>.
    Copyright (c) 2005,2006 Steven Armstrong <sa@c-area.ch>
 
    This file is part of PHP-gettext.
@@ -21,10 +21,12 @@
 
 */
 
+error_reporting(E_ALL | E_STRICT);
+
 // define constants
-define(PROJECT_DIR, realpath('./'));
-define(LOCALE_DIR, PROJECT_DIR .'/locale');
-define(DEFAULT_LOCALE, 'en_US');
+define('PROJECT_DIR', realpath('./'));
+define('LOCALE_DIR', PROJECT_DIR .'/locale');
+define('DEFAULT_LOCALE', 'en_US');
 
 require_once('../gettext.inc');
 

@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2005 - 2006 Scuttle project
+Copyright (c) 2005 - 2010 Marcus Campbell
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -19,8 +19,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
-$tagservice = & ServiceFactory :: getServiceInstance('TagService');
-$userservice = & ServiceFactory :: getServiceInstance('UserService');
+$tagservice  =& ServiceFactory::getServiceInstance('TagService');
+$userservice =& ServiceFactory::getServiceInstance('UserService');
 
 $logged_on_userid = $userservice->getCurrentUserId();
 
@@ -115,6 +115,4 @@ document.write('<\/p>');
 document.write('<\/div>');
 </script>
 
-<?php
-}
-?>
+<?php } ?>

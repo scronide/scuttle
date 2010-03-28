@@ -1,8 +1,8 @@
-Scuttle 0.7.4
+Scuttle 0.7.5
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
-Copyright (C) 2004 - 2008 Scuttle project
+Copyright (C) 2004 - 2010 Scuttle project
 Available under the GNU General Public License
 
 ============

@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2006 Scuttle project
+Copyright (c) 2006 - 2010 Scuttle project
 http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
@@ -19,19 +19,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
-header('Content-Type: text/xml; charset=UTF-8');
-header("Last-Modified: ". gmdate("D, d M Y H:i:s") ." GMT");
-header("Cache-Control: no-cache, must-revalidate");
+header('Content-Type: text/plain; charset=UTF-8');
+header('Last-Modified: '. gmdate("D, d M Y H:i:s") .' GMT');
+header('Cache-Control: no-cache, must-revalidate');
+require_once 'header.inc.php';
 
-require_once('header.inc.php');
-$userservice = & ServiceFactory :: getServiceInstance('UserService');
-if ($userservice->isReserved($_GET['username'])) {
-    $result = 'false';
-} else {
-    $result = $userservice->getUserByUsername($_GET['username']) ? 'false' : 'true';
-}
-?>
-<response>
-  <method>isAvailable</method>
-  <result><?php echo $result; ?></result>
-</response>
+$userservice =& ServiceFactory::getServiceInstance('UserService');
+echo !($userservice->isReserved($_GET['username']) || $userservice->getUserByUsername($_GET['username']));

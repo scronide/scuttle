@@ -1,24 +1,25 @@
 <?php
 class UserService {
-    var $db;
+  var $db;
 
-    function &getInstance(&$db) {
-        static $instance;
-        if (!isset($instance))
-            $instance =& new UserService($db);
-        return $instance;
+  function &getInstance(&$db) {
+    static $instance;
+    if (!isset($instance)) {
+      $instance = new UserService($db);
     }
+    return $instance;
+  }
 
-    var $fields = array(
-        'primary'   =>  'uId',
-        'username'  =>  'username',
-        'password'  =>  'password'
-    );
-    var $profileurl;
-    var $tablename;
-    var $sessionkey;
-    var $cookiekey;
-    var $cookietime = 1209600; // 2 weeks
+  var $fields = array(
+    'primary'   => 'uId',
+    'username'  => 'username',
+    'password'  => 'password'
+  );
+  var $profileurl;
+  var $tablename;
+  var $sessionkey;
+  var $cookiekey;
+  var $cookietime = 1209600; // 2 weeks
 
     function UserService(&$db) {
         $this->db =& $db;
@@ -334,7 +335,7 @@ class UserService {
 
     function isValidEmail($email) {
         if (preg_match("/^((?:(?:(?:\w[\.\-\+_]?)*)\w)+)\@((?:(?:(?:\w[\.\-_]?){0,62})\w)+)\.(\w{2,6})$/i", $email) > 0) {
-            list($emailUser, $emailDomain) = split("@", $email);
+            list($emailUser, $emailDomain) = explode("@", $email);
 
             // Check if the email domain has a DNS record
             if ($this->_checkdns($emailDomain)) {
@@ -357,4 +358,3 @@ class UserService {
     function getCookieKey()       { return $this->cookiekey; }
     function setCookieKey($value) { $this->cookiekey = $value; }
 }
-?>

@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004, 2005 Scuttle project
+Copyright (c) 2004 - 2010 Scuttle project
 http://sourceforge.net/projects/scuttle/
 
 This program is free software; you can redistribute it and/or modify
@@ -18,10 +18,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
-require_once('header.inc.php');
+require_once 'header.inc.php';
 $templateservice =& ServiceFactory::getServiceInstance('TemplateService');
 
-$tplVars = array();
+$tplVars             = array();
 $tplVars['subtitle'] = T_('About');
 $templateservice->loadTemplate('about.tpl', $tplVars);
-?>
