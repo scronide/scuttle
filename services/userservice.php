@@ -63,6 +63,15 @@ class UserService {
             return false;
     }
 
+    function _in_regex_array($value, $array) {
+      foreach ($array as $key => $pattern) {
+        if (preg_match($pattern, $value)) {
+          return TRUE;
+        }
+      }
+      return FALSE;
+    }
+
     function _randompassword() {
         $password = mt_rand(1, 99999999);
         $password = substr(md5($password), mt_rand(0, 19), mt_rand(6, 12));
@@ -323,6 +332,29 @@ class UserService {
             return $password;
         else
             return false;
+    }
+
+    function isBlockedEmail($email) {
+      // Check whitelist
+      $whitelist = $GLOBALS['email_whitelist'];
+      if (!is_null($whitelist) && is_array($whitelist)) {
+        if (!$this->_in_regex_array($email, $whitelist)) {
+          // Not in whitelist -> blocked
+          return TRUE;
+        }
+      }
+
+      // Check blacklist
+      $blacklist = $GLOBALS['email_blacklist'];
+      if (!is_null($blacklist) && is_array($blacklist)) {
+        if ($this->_in_regex_array($email, $blacklist)) {
+          // In blacklist -> blocked
+          return TRUE;
+        }
+      }
+
+      // Not blocked
+      return FALSE;
     }
 
     function isReserved($username) {

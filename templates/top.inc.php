@@ -13,7 +13,7 @@
     }
     ?>
     <?php if ($loadjs): ?>
-      <script type="text/javascript" src="<?php echo $GLOBALS['root']; ?>includes/jquery-1.4.2.min.js"></script>
+      <script type="text/javascript" src="<?php echo $GLOBALS['root']; ?>includes/jquery-1.4.4.min.js"></script>
       <script type="text/javascript" src="<?php echo $GLOBALS['root']; ?>jsScuttle.php"></script>
     <?php endif; ?>
 </head>
