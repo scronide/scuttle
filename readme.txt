@@ -1,5 +1,4 @@
-Scuttle 0.7.5
-http://sourceforge.net/projects/scuttle/
+Scuttle 0.8.0
 http://scuttle.org/
 
 Copyright (C) 2004 - 2010 Scuttle project
