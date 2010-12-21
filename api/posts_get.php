@@ -10,11 +10,11 @@
 // - Uses today, instead of the last bookmarked date, if no date is specified
 
 // Force HTTP authentication first!
-require_once('httpauth.inc.php');
-require_once('../header.inc.php');
+require_once 'httpauth.inc.php';
+require_once '../header.inc.php';
 
 $bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
+$userservice     =& ServiceFactory::getServiceInstance('UserService');
 
 // Check to see if a tag was specified.
 if (isset($_REQUEST['tag']) && (trim($_REQUEST['tag']) != ''))
@@ -40,7 +40,7 @@ header('Content-Type: text/xml');
 echo '<?xml version="1.0" standalone="yes" ?'.">\r\n";
 echo '<posts'. (is_null($dtstart) ? '' : ' dt="'. $dtstart .'"') .' tag="'. (is_null($tag) ? '' : filter($tag, 'xml')) .'" user="'. filter($currentusername, 'xml') ."\">\r\n";
 
-foreach($bookmarks['bookmarks'] as $row) {
+foreach ($bookmarks['bookmarks'] as $row) {
     if (is_null($row['bDescription']) || (trim($row['bDescription']) == ''))
         $description = '';
     else
@@ -59,4 +59,3 @@ foreach($bookmarks['bookmarks'] as $row) {
 }
 
 echo '</posts>';
-?>

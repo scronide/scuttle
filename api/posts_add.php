@@ -10,11 +10,11 @@
 // - No support for 'replace' variable
 
 // Force HTTP authentication
-require_once('httpauth.inc.php');
-require_once('../header.inc.php');
+require_once 'httpauth.inc.php';
+require_once '../header.inc.php';
 
 $bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
+$userservice     =& ServiceFactory::getServiceInstance('UserService');
 
 // Get all the bookmark's passed-in information
 if (isset($_REQUEST['url']) && (trim($_REQUEST['url']) != ''))
@@ -67,17 +67,16 @@ if (isset($_REQUEST['status'])) {
 
 // Error out if there's no address or description
 if (is_null($url) || is_null($description)) {
-    $added = false;
+    $added = FALSE;
 } else {
 // We're good with info; now insert it!
     if ($bookmarkservice->bookmarkExists($url, $userservice->getCurrentUserId()))
-        $added = false;
+        $added = FALSE;
     else
-        $added = $bookmarkservice->addBookmark($url, $description, $extended, $status, $tags, $dt, true);
+        $added = $bookmarkservice->addBookmark($url, $description, $extended, $status, $tags, $dt, TRUE);
 }
 
 // Set up the XML file and output the result.
 header('Content-Type: text/xml');
 echo '<?xml version="1.0" standalone="yes" ?'.">\r\n";
 echo '<result code="'. ($added ? 'done' : 'something went wrong') .'" />';
-?>

@@ -2,7 +2,7 @@
 ######################################################################
 # SCUTTLE: Online social bookmarks manager
 ######################################################################
-# Copyright (c) 2005 - 2010 Scuttle project
+# Copyright (c) 2005 - 2010 Marcus Campbell
 # http://scuttle.org/
 #
 # This module is to configure the main options for your site
@@ -92,8 +92,6 @@ $adminemail = 'admin@example.org';
 # filetypes    : An array of bookmark extensions that Scuttle should
 #                add system tags for.
 # reservedusers : An array of usernames that cannot be registered
-# url_blacklist   : Array of regex patterns. User is banned and existing
-#                     bookmarks are hidden if a match is found.
 # email_whitelist : Array of regex patterns. Used to whitelist addresses that
 #                     may otherwise match the blacklist.
 # email_blacklist : Array of regex patterns. Registration is blocked if a
@@ -104,7 +102,7 @@ $top_include       = 'top.inc.php';
 $bottom_include    = 'bottom.inc.php';
 $shortdate         = 'd-m-Y';
 $longdate          = 'j F Y';
-$nofollow          = true;
+$nofollow          = TRUE;
 $defaultPerPage    = 10;
 $defaultRecentDays = 14;
 $defaultOrderBy    = 'date_desc';
@@ -113,12 +111,12 @@ $root              = NULL;
 $cookieprefix      = 'SCUTTLE';
 $tableprefix       = 'sc_';
 $adminemail        = 'admin@example.org';
-$cleanurls         = false;
+$cleanurls         = FALSE;
 
-$usecache          = false;
+$usecache          = FALSE;
 $dir_cache         = dirname(__FILE__) .'/cache/';
 
-$useredir          = false;
+$useredir          = FALSE;
 $url_redir         = 'http://www.google.com/url?sa=D&q=';
 
 $filetypes         = array(

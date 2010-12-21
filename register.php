@@ -30,14 +30,20 @@ if ($_POST['submitted']) {
     $posteduser = trim(utf8_strtolower($_POST['username']));
     $postedpass = trim($_POST['password']);
     $postedconf = trim($_POST['passconf']);
+    $postedmail = trim($_POST['email']);
 
     // Check token
     if (!isset($_SESSION['token']) || $_POST['token'] != $_SESSION['token']) {
       $tplVars['error'] = T_('Form could not be authenticated. Please try again.');
     }
 
+    // Check elapsed time
+    if (!isset($_SESSION['token_time']) || time() - $_SESSION['token_time'] < 1) {
+      $tplVars['error'] = T_('Form was submitted too quickly. Please wait before trying again.');
+    }
+
     // Check if form is incomplete
-    elseif (!$posteduser || !$postedpass || !($_POST['email'])) {
+    elseif (!$posteduser || !$postedpass || !$postedmail) {
       $tplVars['error'] = T_('You <em>must</em> enter a username, password and e-mail address.');
     }
 
@@ -62,17 +68,17 @@ if ($_POST['submitted']) {
     }
 
     // Check if e-mail address is blocked
-    elseif ($userservice->isBlockedEmail($_POST['email'])) {
+    elseif ($userservice->isBlockedEmail($postedmail)) {
       $tplVars['error'] = T_('This e-mail address is not permitted.');
     }
 
     // Check if e-mail address is valid
-    elseif (!$userservice->isValidEmail($_POST['email'])) {
+    elseif (!$userservice->isValidEmail($postedmail)) {
       $tplVars['error'] = T_('E-mail address is not valid. Please try again.');
     }
 
     // Register details
-    elseif ($userservice->addUser($posteduser, $_POST['password'], $_POST['email'])) {
+    elseif ($userservice->addUser($posteduser, $_POST['password'], $postedmail)) {
       // Log in with new username
       $login = $userservice->login($posteduser, $_POST['password']);
       if ($login) {

@@ -1,7 +1,6 @@
 <?php
 /***************************************************************************
 Copyright (c) 2005 - 2010 Marcus Campbell
-http://sourceforge.net/projects/scuttle/
 http://scuttle.org/
 
 This program is free software; you can redistribute it and/or modify

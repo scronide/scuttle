@@ -1,7 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (C) 2004 - 2006 Scuttle project
-http://sourceforge.net/projects/scuttle/
+Copyright (C) 2004 - 2006 Marcus Campbell
 http://scuttle.org/
 
 This program is free software; you can redistribute it and/or modify
@@ -19,7 +18,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
-require_once('header.inc.php');
+require_once 'header.inc.php';
 $templateservice =& ServiceFactory::getServiceInstance('TemplateService');
 $userservice =& ServiceFactory::getServiceInstance('UserService');
 

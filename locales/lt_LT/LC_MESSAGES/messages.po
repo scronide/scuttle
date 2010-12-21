@@ -1,5 +1,5 @@
 # Scuttle lt-LT Translation
-# Copyright (C) 2005 - 2006 Scuttle project
+# Copyright (C) 2005 - 2006 Marcus Campbell
 # This file is distributed under the same license as the Scuttle package.
 # Audrius Radzevičius <audrius@gmail.com>
 #

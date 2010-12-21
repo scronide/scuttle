@@ -1,7 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (c) 2004 - 2006 Scuttle project
-http://sourceforge.net/projects/scuttle/
+Copyright (c) 2004 - 2010 Marcus Campbell
 http://scuttle.org/
 
 This program is free software; you can redistribute it and/or modify
@@ -19,12 +18,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
-require_once('header.inc.php');
+require_once 'header.inc.php';
 
 $bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
 $templateservice =& ServiceFactory::getServiceInstance('TemplateService');
-$userservice =& ServiceFactory::getServiceInstance('UserService');
-$cacheservice =& ServiceFactory::getServiceInstance('CacheService');
+$userservice     =& ServiceFactory::getServiceInstance('UserService');
+$cacheservice    =& ServiceFactory::getServiceInstance('CacheService');
 
 $tplVars = array();
 
@@ -96,11 +95,13 @@ if ($loggedon && isset($_POST['submitted'])) {
         $templatename = 'editbookmark.tpl';
     } else {
         $address = trim($_POST['address']);
+
         // If the bookmark exists already, edit the original
         if ($bookmarkservice->bookmarkExists($address, $currentUserID)) {
             $bookmark =& $bookmarkservice->getBookmarkByAddress($address);
             header('Location: '. createURL('edit', $bookmark['bId']));
             exit();
+
         // If it's new, save it
         } else {
             $title = trim($_POST['title']);
@@ -113,11 +114,6 @@ if ($loggedon && isset($_POST['submitted'])) {
                     $tplVars['msg'] = '<script type="text/javascript">window.close();</script>';
                 } else {
                     $tplVars['msg'] = T_('Bookmark saved');
-                    // Redirection option
-                    if ($GLOBALS['useredir']) {
-                        $address = $GLOBALS['url_redir'] . $address;
-                    }
-                    header('Location: '. $address);
                 }
             } else {
                 $tplVars['error'] = T_('There was an error saving your bookmark. Please try again or contact the administrator.');
@@ -225,4 +221,3 @@ if ($usecache && $endcache) {
     // Cache output if existing copy has expired
     $cacheservice->End($hash);
 }
-?>

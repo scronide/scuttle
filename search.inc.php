@@ -2,23 +2,21 @@
     <table>
     <tr>
         <?php
-        $logged_on = false;
+        $logged_on = FALSE;
         if ($userservice->isLoggedOn()) {
-            $currentUser = $userservice->getCurrentUser();
-            $currentUsername = $currentUser[$userservice->getFieldName('username')];
-            $logged_on = true;
+          $currentUser = $userservice->getCurrentUser();
+          $currentUsername = $currentUser[$userservice->getFieldName('username')];
+          $logged_on = TRUE;
         }
         if ($logged_on || isset($user)) {
         ?>
         <td><?php echo T_('Search' /* Search ... for */); ?></td>
         <td>
             <select name="range">
-                <?php
-                if (!in_array($range, array($currentUsername, 'all', 'watchlist'))) {
-                ?>
+                <?php if (!in_array($range, array($currentUsername, 'all', 'watchlist')) && $user != $currentUsername): ?>
                 <option value="<?php echo $user ?>"<?php echo $selectUser; ?>><?php echo T_("this user's bookmarks"); ?></option>
                 <?php
-                }
+                endif;
                 if ($logged_on) {
                 ?>
                 <option value="<?php echo $currentUsername; ?>"<?php echo $selectMy; ?>><?php echo T_('my bookmarks'); ?></option>

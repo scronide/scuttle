@@ -5,7 +5,7 @@
 function authenticate() {
     header('WWW-Authenticate: Basic realm="del.icio.us API"');
     header('HTTP/1.0 401 Unauthorized');
-    die("Use of the API calls requires authentication.");
+    die(T_('Use of the API calls requires authentication.'));
 }
 
 if (!isset($_SERVER['PHP_AUTH_USER'])) {

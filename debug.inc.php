@@ -1,6 +1,6 @@
 <?php
 // Turn debugging on
-define('SCUTTLE_DEBUG',true);
+define('SCUTTLE_DEBUG', TRUE);
 
 // generic debugging function
 // Sample:
@@ -13,4 +13,3 @@ function pc_debug($file, $line, $message) {
         error_log("SCUTTLE_DEBUG disabled");
     }
 }
-?>

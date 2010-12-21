@@ -1,7 +1,7 @@
 Scuttle 0.8.0
 http://scuttle.org/
 
-Copyright (C) 2004 - 2010 Scuttle project
+Copyright (C) 2004 - 2010 Marcus Campbell
 Available under the GNU General Public License
 
 ============

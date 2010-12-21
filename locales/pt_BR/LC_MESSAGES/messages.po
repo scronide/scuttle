@@ -1,5 +1,5 @@
 # Scuttle pt-BR Translation
-# Copyright (C) 2006 Scuttle project
+# Copyright (C) 2006 Marcus Campbell
 # This file is distributed under the same license as the Scuttle package.
 # Marcelo Jorge Vieira (metal) <metal@alucinados.com>, 2006.
 #
