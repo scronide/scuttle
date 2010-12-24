@@ -10,16 +10,12 @@ if (count($bookmarks) > 0) {
 ?>
 
 <p id="sort">
-    <?php echo T_("Sort by:"); ?>
-    <a href="?sort=date_desc"><?php echo T_("Date"); ?></a><span> / </span>
-    <a href="?sort=title_asc"><?php echo T_("Title"); ?></a><span> / </span>
-    <?php
-    if (!isset($hash)) {
-    ?>
+  <?php echo T_("Sort by:"); ?>
+  <a href="?sort=date_desc"><?php echo T_("Date"); ?></a><span> / </span>
+  <a href="?sort=title_asc"><?php echo T_("Title"); ?></a><span> / </span>
+  <?php if (!isset($hash)): ?>
     <a href="?sort=url_asc"><?php echo T_("URL"); ?></a>
-    <?php
-    }
-    ?>
+  <?php endif; ?>
 </p>
 <ol<?php echo ($start > 0 ? ' start="'. ++$start .'"' : ''); ?> id="bookmarks">
 

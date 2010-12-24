@@ -19,17 +19,20 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ***************************************************************************/
 
 require_once 'header.inc.php';
-$userservice =& ServiceFactory::getServiceInstance('UserService');
+
+$userservice     =& ServiceFactory::getServiceInstance('UserService');
 $templateservice =& ServiceFactory::getServiceInstance('TemplateService');
+
 $tplVars = array();
 
 if ($userservice->isLoggedOn() && sizeof($_FILES) > 0 && $_FILES['userfile']['size'] > 0) {
     $userinfo = $userservice->getCurrentUser();
 
     if (isset($_POST['status']) && is_numeric($_POST['status'])) {
-        $status = intval($_POST['status']);
-    } else {
-        $status = 2;
+      $status = intval($_POST['status']);
+    }
+    else {
+      $status = 2;
     }
 
     $depth = array();
@@ -48,11 +51,12 @@ if ($userservice->isLoggedOn() && sizeof($_FILES) > 0 && $_FILES['userfile']['si
     }
     xml_parser_free($xml_parser);
     header('Location: '. createURL('bookmarks', $userinfo[$userservice->getFieldName('username')]));
-} else {
-    $templatename = 'importDelicious.tpl';
-    $tplVars['subtitle'] = T_('Import Bookmarks from del.icio.us');
-    $tplVars['formaction']  = createURL('import');
-    $templateservice->loadTemplate($templatename, $tplVars);
+}
+else {
+  $templatename = 'importDelicious.tpl';
+  $tplVars['subtitle'] = T_('Import Bookmarks from del.icio.us');
+  $tplVars['formaction']  = createURL('import');
+  $templateservice->loadTemplate($templatename, $tplVars);
 }
 
 function startElement($parser, $name, $attrs) {
