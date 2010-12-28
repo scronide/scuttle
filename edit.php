@@ -1,6 +1,6 @@
 <?php
 /***************************************************************************
-Copyright (c) 2004 - 2006 Marcus Campbell
+Copyright (c) 2004 - 2010 Marcus Campbell
 http://scuttle.org/
 
 This program is free software; you can redistribute it and/or modify
@@ -20,17 +20,18 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 require_once 'header.inc.php';
 
-$bookmarkservice = & ServiceFactory::getServiceInstance('BookmarkService');
-$templateservice = & ServiceFactory::getServiceInstance('TemplateService');
-$userservice     = & ServiceFactory::getServiceInstance('UserService');
+$bookmarkservice =& ServiceFactory::getServiceInstance('BookmarkService');
+$templateservice =& ServiceFactory::getServiceInstance('TemplateService');
+$userservice     =& ServiceFactory::getServiceInstance('UserService');
 
 // Header variables
 $tplVars['subtitle'] = T_('Edit Bookmark');
-$tplVars['loadjs'] = true;
+$tplVars['loadjs']   = TRUE;
 
 list ($url, $bookmark) = explode('/', $_SERVER['PATH_INFO']);
+
 if (!($row = $bookmarkservice->getBookmark(intval($bookmark), true))) {
-    $tplVars['error'] = sprintf(T_('Bookmark with id %s not was not found'), $bookmark);
+    $tplVars['error'] = sprintf(T_('Bookmark with id %s was not found'), $bookmark);
     $templateservice->loadTemplate('error.404.tpl', $tplVars);
     exit();
 } else {
@@ -89,4 +90,3 @@ if (!($row = $bookmarkservice->getBookmark(intval($bookmark), true))) {
     $tplVars['referrer'] = $_SERVER['HTTP_REFERER'];
     $templateservice->loadTemplate('editbookmark.tpl', $tplVars);
 }
-?>

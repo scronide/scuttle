@@ -51,7 +51,7 @@ function getTitle(input) {
 
 /* Page load */
 $(function() {
-  /* Insert Flash player for MP3 links */
+  // Insert Flash player for MP3 links
   if ($("#bookmarks").length > 0) {
     $("a[href$=.mp3].taggedlink").each(function() {
       var url  = this.href;

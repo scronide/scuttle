@@ -21,7 +21,7 @@
 
 <?php
 $headerstyle = '';
-if(isset($_GET['popup'])) {
+if (isset($_GET['popup'])) {
     $headerstyle = ' class="popup"';
 }
 ?>
@@ -29,7 +29,7 @@ if(isset($_GET['popup'])) {
 <div id="header"<?php echo $headerstyle; ?>>
     <h1><a href="<?php echo $GLOBALS['root']; ?>"><?php echo $GLOBALS['sitename']; ?></a></h1>
     <?php
-    if(!isset($_GET['popup'])) {
+    if (!isset($_GET['popup'])) {
         $this->includeTemplate('toolbar.inc');
     }
     ?>

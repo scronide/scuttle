@@ -120,18 +120,19 @@ $useredir          = FALSE;
 $url_redir         = 'http://www.google.com/url?sa=D&q=';
 
 $filetypes         = array(
-                       'audio' => array('mp3', 'ogg', 'wav'),
-                       'document' => array('doc', 'odt', 'pdf'),
-                       'image' => array('gif', 'jpeg', 'jpg', 'png'),
-                       'video' => array('avi', 'mov', 'mp4', 'mpeg', 'mpg', 'wmv')
+                      'audio'      => array('aac', 'mp3', 'm4a', 'oga', 'ogg', 'wav'),
+                      'document'   => array('doc', 'docx', 'odt', 'pages', 'pdf', 'txt'),
+                      'image'      => array('gif', 'jpe', 'jpeg', 'jpg', 'png', 'svg'),
+                      'bittorrent' => array('torrent'),
+                      'video'      => array('avi', 'flv', 'mov', 'mp4', 'mpeg', 'mpg', 'm4v', 'ogv', 'wmv')
                      );
 
 $reservedusers     = array('all', 'watchlist');
 
 $email_whitelist   = NULL;
 $email_blacklist   = array(
-                       '/(.*-){2,}/',
-                        '/mailinator\.com/i'
+                      '/(.*-){2,}/',
+                      '/mailinator\.com/i'
                      );
 
 include_once 'debug.inc.php';

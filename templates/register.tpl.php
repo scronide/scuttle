@@ -6,7 +6,7 @@
 <table>
 <tr>
   <th align="left"><label for="username"><?php echo T_('Username'); ?></label></th>
-  <td><input type="text" id="username" name="username" size="20" class="required" /></td>
+  <td><input type="text" id="username" name="username" size="20" maxlength="25" class="required" /></td>
   <td id="availability"></td>
 </tr>
 <tr>
@@ -21,7 +21,7 @@
 </tr>
 <tr>
   <th align="left"><label for="email"><?php echo T_('E-mail'); ?></label></th>
-  <td><input type="text" id="email" name="email" size="40" class="required" /></td>
+  <td><input type="text" id="email" name="email" size="40" maxlength="50" class="required" /></td>
   <td></td>
 </tr>
 <tr>

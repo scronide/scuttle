@@ -19,23 +19,30 @@ body {
   margin: 0;
   padding: 0;
 }
+input[type=submit] {
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF), to(#DDD));
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-shadow: #FFF 1px 1px 0px;
+  -moz-border-radius: 5px;
+}
+input[type=submit]:active {
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DDD), to(#FFF));
+}
+input[type=submit]:hover {
+  border-color: #666;
+}
 input[type=text],
 input[type=password],
 select,
 textarea {
-  border: 1px solid #AAA;
-  padding: .1em;
-}
-input[type=text],
-input[type=password],
-textarea {
-  padding: .2em;
-}
-input[type=text]:focus,
-input[type=password]:focus,
-select:focus,
-textarea:focus {
-  border-color: #666;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  font-size: 13px;
+  padding: 4px 5px;
+  -moz-border-radius: 3px;
 }
 p.error,
 p.success {
