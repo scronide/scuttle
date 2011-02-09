@@ -77,6 +77,7 @@ addonload(
 
 function addTag(ele) {
     var thisTag = ele.innerHTML;
+    thisTag = thisTag.replace(/&amp;/,'&');
     var taglist = document.getElementById('tags');
     var tags = taglist.value.split(', ');
     
