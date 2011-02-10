@@ -42,7 +42,7 @@ if ($_POST['confirm']) {
 	     exit();
 	} else {
 	    // Rename the tag.
-	    if($tagservice->renameTag($userservice->getCurrentUserId(), $old, $new, true)) {
+	    if($tagservice->renameTag($userservice->getCurrentUserId(), $old, $new, false)) {
 		     $tplVars['msg'] = T_('Tag renamed');
 		     $logged_on_user = $userservice->getCurrentUser();
 		     header('Location: '. createURL('bookmarks', $logged_on_user[$userservice->getFieldName('username')]));
