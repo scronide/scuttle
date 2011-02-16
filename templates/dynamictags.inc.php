@@ -24,7 +24,8 @@ $userservice =& ServiceFactory::getServiceInstance('UserService');
 $logged_on_userid = $userservice->getCurrentUserId();
 
 $userPopularTags        =& $tagservice->getPopularTags($logged_on_userid, 25, $logged_on_userid);
-$userPopularTagsCloud   =& $tagservice->tagCloud($userPopularTags, 5, 90, 175); 
+$userAllTags            =& $tagservice->getPopularTags($logged_on_userid, 10000, $logged_on_userid);
+$userPopularTagsCloud   =& $tagservice->tagCloud($userPopularTags, 5, 90, 175);
 $userPopularTagsCount   = count($userPopularTags);
 
 if ($userPopularTagsCount > 0) {
@@ -55,8 +56,8 @@ Array.prototype.remove = function (ele) {
 function addonload(addition) {
     var existing = window.onload;
     window.onload = function () {
-        existing();
-        addition();
+        existing;
+        addition;
     }
 }
 
@@ -112,6 +113,62 @@ foreach(array_keys($userPopularTagsCloud) as $key) {
 document.write('<?php echo $taglist ?>');
 document.write('<\/p>');
 document.write('<\/div>');
+
+var availableTags = [
+<?php
+
+foreach(array_keys($userAllTags) as $key) {
+  print '"'.$userAllTags[$key]['tag'].'",'."\n";
+}
+?>
+];
+function split( val ) {
+  return val.split( /,\s*/ );
+}
+function extractLast( term ) {
+  return split( term ).pop();
+}
+
+$( "#tags" )
+  // don't navigate away from the field on tab when selecting an item
+  .bind( "keydown", function( event ) {
+    if ( event.keyCode === $.ui.keyCode.TAB &&
+        $( this ).data( "autocomplete" ).menu.active ) {
+      event.preventDefault();
+    }
+  })
+  .autocomplete({
+    minLength: 0,
+    source: function( request, response ) {
+      // delegate back to autocomplete, but extract the last term
+      response( $.ui.autocomplete.filter(
+        availableTags, extractLast( request.term ) ) );
+    },
+    focus: function() {
+      // prevent value inserted on focus
+      return false;
+    },
+    select: function( event, ui ) {
+      var terms = split( this.value );
+      // remove the current input
+      terms.pop();
+      // add the selected item
+      var newterm = ui.item.value;
+      terms.push( newterm );
+
+      $("#popularTags").children().each(function() {
+        if (this.innerHTML == newterm) {
+          this.className = 'selected';
+        }
+      });
+      // add placeholder to get the comma-and-space at the end
+      terms.push( "" );
+      this.value = terms.join( ", " );
+      return false;
+    }
+});
+
+
 </script>
 
 <?php } ?>
