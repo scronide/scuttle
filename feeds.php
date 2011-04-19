@@ -30,8 +30,8 @@ $tplVars = array();
 // Check if we need a callback function (JSON format only)
 $callback = isset($_GET['callback']) ? $_GET['callback'] : NULL;
 
-// Only accept callback function names containing A-Z, a-z
-if ( preg_match('/[^a-zA-Z]/', $callback ) ) {
+// Only accept callback function names containing A-Z, a-z, 0-9, _
+if ( preg_match('/[^a-zA-Z0-9_]/', $callback ) ) {
     $callback = NULL;
 }
 
@@ -54,9 +54,7 @@ else {
       //throw a 404 error
       exit();
 }
-// special handling required (e.g., username is tag, recent, popular) [todo]
 
-$loggedon = false;
 if ($userservice->isLoggedOn()) {
     $loggedon = true;
     $currentUser = $userservice->getCurrentUser();
@@ -64,8 +62,6 @@ if ($userservice->isLoggedOn()) {
     $currentUsername = $currentUser[$userservice->getFieldName('username')];
 }
 
-$usecache = 0;
-$endcache = false;
 if ($usecache) {
   // Generate hash for caching on
   $hashtext = $_SERVER['REQUEST_URI'];
