@@ -3,6 +3,12 @@ header('Content-Type: text/javascript');
 require_once 'header.inc.php';
 require_once 'functions.inc.php';
 $player_root = $root .'includes/player/';
+
+$userservice     =& ServiceFactory::getServiceInstance('UserService');
+if ($userservice->isLoggedOn()) {
+    $currentUser = $userservice->getCurrentUser();
+    $currentUsername = $currentUser[$userservice->getFieldName('username')];
+}
 ?>
 
 var deleted = false;
@@ -49,8 +55,65 @@ function getTitle(input) {
   }
 }
 
+function autocomplete() {
+	$.ajax({
+		url: '<?php echo $root?>alltags/<?php echo $currentUsername?>',
+		success: function(data) {
+			//console.log($(data));
+			var availableTags = new Array();
+			$(data).find('a').each(function() {
+				availableTags.push($(this).html());
+				//console.log($(this).html());
+			});
+			
+			$( ".autocomplete" )
+				// don't navigate away from the field on tab when selecting an item
+				.bind( "keydown", function( event ) {
+					if ( event.keyCode === $.ui.keyCode.TAB &&
+							$( this ).data( "autocomplete" ).menu.active ) {
+						event.preventDefault();
+					}
+				})
+				.autocomplete({
+					minLength: 0,
+					source: function( request, response ) {
+						// delegate back to autocomplete, but extract the last term
+						response( $.ui.autocomplete.filter(
+							availableTags, extractLast( request.term ) ) );
+					},
+					focus: function() {
+						// prevent value inserted on focus
+						return false;
+					},
+					select: function( event, ui ) {
+						var terms = split( this.value );
+						// remove the current input
+						terms.pop();
+						// add the selected item
+						terms.push( ui.item.value );
+						// add placeholder to get the comma-and-space at the end
+						terms.push( "" );
+						this.value = terms.join( ", " );
+						return false;
+					}
+				});
+		}
+	});
+	
+}
+
+function split( val ) {
+		return val.split( /,\s*/ );
+	}
+function extractLast( term ) {
+	return split( term ).pop();
+}
+
 /* Page load */
 $(function() {
+	
+	autocomplete();
+	
   // Insert Flash player for MP3 links
   if ($("#bookmarks").length > 0) {
     $("a[href$=.mp3].taggedlink").each(function() {
