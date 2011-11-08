@@ -11,7 +11,7 @@ CREATE TABLE `sc_bookmarks` (
   `bModified` datetime NOT NULL default '0000-00-00 00:00:00',
   `bTitle` varchar(255) NOT NULL default '',
   `bAddress` text NOT NULL,
-  `bDescription` varchar(255) default NULL,
+  `bDescription` varchar(1000) default NULL,
   `bHash` varchar(32) NOT NULL default '',
   PRIMARY KEY  (`bId`),
   KEY `sc_bookmarks_usd` (`uId`,`bStatus`,`bDatetime`),

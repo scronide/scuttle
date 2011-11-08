@@ -31,7 +31,7 @@ switch ($row['bStatus']) {
 </tr>
 <tr>
     <th align="left"><?php echo T_('Description'); ?></th>
-    <td><input type="text" name="description" size="75" maxlength="255" value="<?php echo filter($row['bDescription'], 'xml'); ?>" /></td>
+    <td><textarea name="description" cols="74" rows="5" maxlength="1000"><?php echo filter($row['bDescription'], 'xml'); ?></textarea></td>
     <td></td>
 </tr>
 <tr>
