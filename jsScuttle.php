@@ -3,12 +3,6 @@ header('Content-Type: text/javascript');
 require_once 'header.inc.php';
 require_once 'functions.inc.php';
 $player_root = $root .'includes/player/';
-
-$userservice     =& ServiceFactory::getServiceInstance('UserService');
-if ($userservice->isLoggedOn()) {
-    $currentUser = $userservice->getCurrentUser();
-    $currentUsername = $currentUser[$userservice->getFieldName('username')];
-}
 ?>
 
 var deleted = false;
@@ -55,68 +49,11 @@ function getTitle(input) {
   }
 }
 
-function autocomplete() {
-	$.ajax({
-		url: '<?php echo $root?>alltags/<?php echo $currentUsername?>',
-		success: function(data) {
-			//console.log($(data));
-			var availableTags = new Array();
-			$(data).find('a').each(function() {
-				availableTags.push($(this).html());
-				//console.log($(this).html());
-			});
-			
-			$( ".autocomplete" )
-				// don't navigate away from the field on tab when selecting an item
-				.bind( "keydown", function( event ) {
-					if ( event.keyCode === $.ui.keyCode.TAB &&
-							$( this ).data( "autocomplete" ).menu.active ) {
-						event.preventDefault();
-					}
-				})
-				.autocomplete({
-					minLength: 0,
-					source: function( request, response ) {
-						// delegate back to autocomplete, but extract the last term
-						response( $.ui.autocomplete.filter(
-							availableTags, extractLast( request.term ) ) );
-					},
-					focus: function() {
-						// prevent value inserted on focus
-						return false;
-					},
-					select: function( event, ui ) {
-						var terms = split( this.value );
-						// remove the current input
-						terms.pop();
-						// add the selected item
-						terms.push( ui.item.value );
-						// add placeholder to get the comma-and-space at the end
-						terms.push( "" );
-						this.value = terms.join( ", " );
-						return false;
-					}
-				});
-		}
-	});
-	
-}
-
-function split( val ) {
-		return val.split( /,\s*/ );
-	}
-function extractLast( term ) {
-	return split( term ).pop();
-}
-
 /* Page load */
 $(function() {
-	
-	autocomplete();
-	
   // Insert Flash player for MP3 links
   if ($("#bookmarks").length > 0) {
-    $('a[href$=".mp3"].taggedlink').each(function() {
+    $("a[href$=.mp3].taggedlink").each(function() {
       var url  = this.href;
       var code = '<object type="application/x-shockwave-flash" data="<?php echo $player_root ?>musicplayer_f6.swf?song_url=' + url +'&amp;b_bgcolor=ffffff&amp;b_fgcolor=000000&amp;b_colors=0000ff,0000ff,ff0000,ff0000&buttons=<?php echo $player_root ?>load.swf,<?php echo $player_root ?>play.swf,<?php echo $player_root ?>stop.swf,<?php echo $player_root ?>error.swf" width="14" height="14">';
           code = code + '<param name="movie" value="<?php echo $player_root ?>musicplayer.swf?song_url=' + url +'&amp;b_bgcolor=ffffff&amp;b_fgcolor=000000&amp;b_colors=0000ff,0000ff,ff0000,ff0000&amp;buttons=<?php echo $player_root ?>load.swf,<?php echo $player_root ?>play.swf,<?php echo $player_root ?>stop.swf,<?php echo $player_root ?>error.swf" />';

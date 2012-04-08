@@ -5,9 +5,7 @@
     <title><?php echo filter($GLOBALS['sitename'] . (isset($pagetitle) ? ': ' . $pagetitle : '')); ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="icon" type="image/png" href="<?php echo $GLOBALS['root']; ?>icon.png" />
-    <link rel="stylesheet" type="text/css" href="<?php echo $GLOBALS['root']; ?>includes/smoothness/jquery-ui-1.8.9.custom.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $GLOBALS['root']; ?>scuttle.css" />
-
     <?php
     $size = count($rsschannels);
     for ($i = 0; $i < $size; $i++) {
@@ -15,10 +13,8 @@
     }
     ?>
     <?php if ($loadjs): ?>
-        <script type="text/javascript" src="<?php echo $GLOBALS['root']; ?>includes/jquery-1.5.min.js"></script>
-        <script type="text/javascript" src="<?php echo $GLOBALS['root']; ?>includes/jquery-ui-1.8.9.min.js"></script>
-      	<script type="text/javascript" src="<?php echo $GLOBALS['root']; ?>jsScuttle.php"></script>
-
+      <script type="text/javascript" src="<?php echo $GLOBALS['root']; ?>includes/jquery-1.4.4.min.js"></script>
+      <script type="text/javascript" src="<?php echo $GLOBALS['root']; ?>jsScuttle.php"></script>
     <?php endif; ?>
 </head>
 <body>
