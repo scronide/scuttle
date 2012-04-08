@@ -138,11 +138,16 @@ $( "#tags" )
     }
   })
   .autocomplete({
-    minLength: 0,
+    minLength: 2,
+    delay: 50,
     source: function( request, response ) {
-      // delegate back to autocomplete, but extract the last term
-      response( $.ui.autocomplete.filter(
-        availableTags, extractLast( request.term ) ) );
+      // if the term is >2 in legth delegate back to autocomplete
+      if (extractLast ( request.term ).length < 3) {
+        response( [] );
+      } else {
+        response( $.ui.autocomplete.filter(
+          availableTags, extractLast( request.term ) ) );
+      }
     },
     focus: function() {
       // prevent value inserted on focus
