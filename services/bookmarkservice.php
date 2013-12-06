@@ -364,6 +364,99 @@ class BookmarkService {
       return array ('bookmarks' => $bookmarks, 'total' => $total);
   }
 
+  function & getUntaggedBookmarks($start = 0, $perpage = NULL, $user = NULL, $tags = NULL, $terms = NULL, $sortOrder = NULL, $watched = NULL, $startdate = NULL, $enddate = NULL, $hash = NULL) {
+      // Only get the bookmarks that have no tag assigned for the current user.  Our rules:
+      //  - if the $user is NULL or not logged in, return nothing.
+      //  - if the $user is set and isn't the logged-in user, return nothing.
+      //  - if the $user is set and IS the logged-in user, then get all bookmarks that haven't been tagged yet.
+      $userservice =& ServiceFactory::getServiceInstance('UserService');
+      $tagservice =& ServiceFactory::getServiceInstance('TagService');
+      $sId = $userservice->getCurrentUserId();
+
+      if ($userservice->isLoggedOn()) {
+          // All public bookmarks, user's own bookmarks and any shared with user
+          $privacy = ' AND (B.uId = '. $sId .')';
+      } else {
+          // Just return nothing
+           return array ('bookmarks' => array(), 'total' => 0);
+      }
+
+      // Set up the SQL query.
+      $query_1 = 'SELECT DISTINCT ';
+      if (SQL_LAYER == 'mysql4') {
+          $query_1 .= 'SQL_CALC_FOUND_ROWS ';
+      }
+      $query_1 .= 'B.*, U.'. $userservice->getFieldName('username');
+
+      $query_2 = ' FROM '. $userservice->getTableName() .' AS U, '. $GLOBALS['tableprefix'] .'bookmarks AS B';
+
+      $query_3 = ' WHERE B.uId = U.'. $userservice->getFieldName('primary') . $privacy;
+
+      switch($sortOrder) {
+          case 'date_asc':
+              $query_5 = ' ORDER BY B.bDatetime ASC ';
+              break;
+          case 'title_desc':
+              $query_5 = ' ORDER BY B.bTitle DESC ';
+              break;
+          case 'title_asc':
+              $query_5 = ' ORDER BY B.bTitle ASC ';
+              break;
+          case 'url_desc':
+              $query_5 = ' ORDER BY B.bAddress DESC ';
+              break;
+          case 'url_asc':
+              $query_5 = ' ORDER BY B.bAddress ASC ';
+              break;
+          default:
+              $query_5 = ' ORDER BY B.bDatetime DESC ';
+      }
+
+      // Handle the parts of the query that depend on any tags that are present.
+      $query_4 = '';
+      $query_2 .= ', '. $GLOBALS['tableprefix'] .'tags AS T'. $i;
+      $query_4 .= ' AND T'. $i .'.tag like "system%" AND T'. $i .'.bId = B.bId';
+
+      // Start and end dates
+      if ($startdate) {
+          $query_4 .= ' AND B.bDatetime > "'. $startdate .'"';
+      }
+      if ($enddate) {
+          $query_4 .= ' AND B.bDatetime < "'. $enddate .'"';
+      }
+
+      // Hash
+      if ($hash) {
+          $query_4 .= ' AND B.bHash = "'. $hash .'"';
+      }
+
+      $query = $query_1 . $query_2 . $query_3 . $query_4 . $query_5;
+      if (!($dbresult = & $this->db->sql_query_limit($query, intval($perpage), intval($start)))) {
+          message_die(GENERAL_ERROR, 'Could not get bookmarks', '', __LINE__, __FILE__, $query, $this->db);
+          return false;
+      }
+
+      if (SQL_LAYER == 'mysql4') {
+          $totalquery = 'SELECT FOUND_ROWS() AS total';
+      } else {
+          $totalquery = 'SELECT COUNT(*) AS total'. $query_2 . $query_3 . $query_4;
+      }
+
+      if (!($totalresult = & $this->db->sql_query($totalquery)) || (!($row = & $this->db->sql_fetchrow($totalresult)))) {
+          message_die(GENERAL_ERROR, 'Could not get total bookmarks', '', __LINE__, __FILE__, $totalquery, $this->db);
+          return false;
+      }
+
+      $total = $row['total'];
+
+      $bookmarks = array();
+      while ($row = & $this->db->sql_fetchrow($dbresult)) {
+          $row['tags'] = $tagservice->getTagsForBookmark(intval($row['bId']));
+          $bookmarks[] = $row;
+      }
+      return array ('bookmarks' => $bookmarks, 'total' => $total);
+  }
+
   function deleteBookmark($bookmarkid) {
       $query = 'DELETE FROM '. $GLOBALS['tableprefix'] .'bookmarks WHERE bId = '. intval($bookmarkid);
       $this->db->sql_transaction('begin');
