@@ -20,6 +20,11 @@ echo $contents ."\n";
 ?>
 
 </p>
+<p class="tags">
+
+<a href="<?php echo $GLOBALS['root']; ?>tags.php/system:unfiled">Untagged bookmarks</a>
+
+</p>
 
 <?php
 }

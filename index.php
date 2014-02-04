@@ -46,6 +46,7 @@ if ($usecache) {
 
     // Cache for 15 minutes
     $cacheservice->Start($hash, 900);
+    $endcache = true;
 }
 
 // Pagination
@@ -59,7 +60,26 @@ $tplVars['range'] = 'all';
 $tplVars['pagetitle'] = T_('Store, share and tag your favourite links');
 $tplVars['subtitle'] = T_('Recent Bookmarks');
 $tplVars['bookmarkCount'] = 1;
-$bookmarks =& $bookmarkservice->getBookmarks(0, $perpage, NULL, NULL, NULL, getSortOrder(), NULL);
+
+// Pagination
+if (isset($_GET['page']) && intval($_GET['page']) > 1) {
+    $page = $_GET['page'];
+    $start = ($page - 1) * $perpage;
+} else {
+    $page = 0;
+    $start = 0;
+}
+
+// Set template vars
+$tplVars['rsschannels'] = array(
+    array(filter($sitename .': '. $pagetitle), createURL('rss', filter($user, 'url') . $rssCat))
+);
+
+$tplVars['page'] = $page;
+$tplVars['start'] = $start;
+$tplVars['bookmarkCount'] = $start + 1;
+    
+$bookmarks =& $bookmarkservice->getBookmarks($start, $perpage, NULL, NULL, NULL, getSortOrder(), NULL);
 $tplVars['total'] = $bookmarks['total'];
 $tplVars['bookmarks'] =& $bookmarks['bookmarks'];
 $tplVars['cat_url'] = createURL('tags', '%2$s');
@@ -67,7 +87,7 @@ $tplVars['nav_url'] = createURL('index', '%3$s');
 
 $templateservice->loadTemplate('bookmarks.tpl', $tplVars);
 
-if ($usecache) {
+if ($usecache && $endcache) {
     // Cache output if existing copy has expired
     $cacheservice->End($hash);
 }
